@@ -5,7 +5,7 @@
             <div class="site-navbar">
                 <div class="row align-items-center">
                     <div class="col-md-4 col-6">
-                        <a class="navbar-brand" href="#"><img src="images/logo-black.png" alt="logo"
+                        <a class="navbar-brand" href="#"><img src="{{asset('images/logo-black.png')}}" alt="logo"
                                 class="img-fluid"></a>
                     </div>
                     <div class="col-md-8 col-6">
@@ -34,7 +34,7 @@
                         <div class="add-list float-left">
                             <a class="btn v8" href="{{url('partner/add')}}">إضافة شريك <i
                                     class="ion-plus-round"></i></a>
-                            <a class="btn v8 active" href="#">  تسجيل سفير <i
+                            <a class="btn v8 active" href="{{url('embssador/register')}}">  تسجيل سفير <i
                                     class="ion-plus-round"></i></a>
                         </div>
 

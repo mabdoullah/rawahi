@@ -11,11 +11,11 @@
 /*-----------------------------------------------------------
     1  General Styles
     2  Typography
-    3  Buttons & Links 
+    3  Buttons & Links
     4  Fixed Header
     5  Menu
     6  Hero Area
-    7  Breadcrumb 
+    7  Breadcrumb
     8  Catagory Box
     9  Work Proces
     10 Popular category
@@ -49,7 +49,7 @@
 
 
 /*-----------------------------------------------------------
-            General Styles 
+            General Styles
 -------------------------------------------------------------*/
 
 body {
@@ -700,7 +700,7 @@ section.coupon {
 
 
 /*-----------------------------------------------------------
-                    Typography 
+                    Typography
 -------------------------------------------------------------*/
 
 body {
@@ -1378,7 +1378,7 @@ ul.list-inline li {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 999;
+    z-index: 1002;
     transition: 0.7s;
 }
 
@@ -2589,7 +2589,7 @@ ul.list-inline li {
 }
 
 /*--------------------------------------------
-            Popular category 
+            Popular category
 ----------------------------------------------*/
 .popular-catagory-content {
     position: relative;
@@ -2681,7 +2681,7 @@ ul.list-inline li {
 }
 
 /*------------------------------------------
-       Discount Coupon 
+       Discount Coupon
 --------------------------------------------*/
 .coupon-wrap .swiper-wrapper {
     padding-bottom: 10px;
@@ -3271,7 +3271,7 @@ ul.list-inline li {
 }
 
 /*----------------------------------------
-            Call to Action 
+            Call to Action
 ----------------------------------------*/
 .call-to-action {
     position: relative;
@@ -3920,7 +3920,7 @@ ul.list-inline li {
 
 
 /*------------------------------------------------
-                     Blog 
+                     Blog
 --------------------------------------------------*/
 
 .single-blog-item.v1 {
@@ -4283,7 +4283,7 @@ ul.icon li::before {
 }
 
 /*-------------------------------------------
-             Filter Listing 
+             Filter Listing
 --------------------------------------------*/
 .range-text {
     line-height: 39px;
@@ -6981,7 +6981,7 @@ input[type="radio"] {
 
 }
 
-/* ----------------------------------------------------------------- 
+/* -----------------------------------------------------------------
                          9. COLOR SWITCHER
 ------------------------------------------------------------------*/
 
@@ -8395,7 +8395,7 @@ span.infobox_rate {
         padding: 0 2px 0 0;
     }
 }
-
+.btn-save-embas{background-color: #fa8f1b}
 /*@media only screen (max-width:767px) and(orientation:landscape){
 
     .hero-title.v2,

@@ -13,13 +13,20 @@
 
 Route::get('/', function () {
     return view('layout_desgin.index');
-});
+})->name('home');;
 Route::get('partner/add', function () {
     return view('layout_desgin.add-listing');
 })->name('partner');
-Route::get('embssador/register', function () {
-    return view('layout_desgin.registration-form');
-})->name('embssador');
+// Route::get('embssador/register', function () {
+//     return view('layout_desgin.registration-form');
+// })->name('embssador.register');
+
+Route::get('embssador/register','EmbssadorController@create')->name('embssador.register');
+
+// Asmaa
+Route::POST('embssador/store','EmbssadorController@store')->name('embssador.store');
+Route::get('/getcities/{id}','EmbssadorController@getcities')->name('getcities');
+
 // Route::get('home', function () {
 //     return view('layout_desgin.index');
 // });

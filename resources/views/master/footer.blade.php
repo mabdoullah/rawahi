@@ -1,12 +1,12 @@
 <!--Footer Starts-->
   <div class="footer-wrapper no-pad-tb footer-fixed">
-      <div class="footer-top-area section-padding" style="background-image: url(images/bg/pattern.png)">
+      <div class="footer-top-area section-padding" style="background-image: url({{asset('images/bg/pattern.png')}})">
           <div class="overlay op-9 green"></div>
           <div class="container">
               <div class="row nav-folderized">
                   <div class="col-lg-3 col-md-12">
                       <div class="footer-logo">
-                          <a href="index.html"> <img src="images/logo-white.png" alt="logo"></a>
+                          <a href="index.html"> <img src="{{asset('images/logo-white.png')}}" alt="logo"></a>
                           <div class="company-desc">
                               <p>
                                   رواهي منصتك الأولى لاستكشاف العالم من حولك
