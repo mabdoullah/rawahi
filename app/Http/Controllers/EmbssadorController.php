@@ -27,9 +27,10 @@ class EmbssadorController extends Controller
      */
     public function create()
     {
-      $cities=City::where('countryID',1)->get();
-      $countries=Country::where('id',1)->first();
-      return view('layout_desgin.registration-form')->with('countries', $countries)->with('cities', $cities);
+    //  $cities = City::where('countryID',1)->get();
+    //  $countries = Country::where('id',1)->first();
+      return view('embassadors.registration-form');
+            //->with('countries', $countries)->with('cities', $cities)
 
     }
 
@@ -43,15 +44,14 @@ class EmbssadorController extends Controller
     {
       $validator = Validator::make($request->all(), [
                   'first_name' => 'required|max:18',
-                  'secound_name' => 'required|max:18',
+                  'second_name' => 'required|max:18',
                   'email' => 'required|email|unique:embassadors,email',
-                  'phone_number' => 'required|numeric|min:11|unique:embassadors,phonenumber',
-                  // 'code' => 'required',
-                  'country' => 'required',
-                  'city' => 'required|exists:cities,id',
+                  'phone' => 'required|numeric|min:11|unique:embassadors,phone',
+                //   'country' => 'required',
+                //   'city' => 'required|exists:cities,id',
                   'birth_date' => 'date|before:-18 years|required',
-                  'password' => 'min:6|required_with:confirm_password|same:confirm_password',
-                  'confirm_password' => 'min:6'
+                  'password' => 'min:8|required_with:confirm_password|same:confirm_password',
+                  'confirm_password' => 'min:8'
               ]);
 
               if ($validator->fails()) {
@@ -62,21 +62,21 @@ class EmbssadorController extends Controller
               }
 
         $embssador = new Embassador;
-        $embssador->firstname = $request->first_name;
-        $embssador->secoundname = $request->secound_name;
+        $embssador->first_name = $request->first_name;
+        $embssador->second_name = $request->second_name;
         $embssador->email = $request->email;
-        $embssador->phonenumber = $request->phone_number;
-        // $embssador->code_country = $request->code;
-        $embssador->country = $request->country;
-        $embssador->city = $request->city;
-        $embssador->dateofbirth = $request->birth_date;
+        $embssador->phone = $request->phone;
+        $embssador->phone_key = '+966';//$request->code;
+        // $embssador->country = $request->country;
+        // $embssador->city = $request->city;
+        $embssador->birth_date = $request->birth_date;
         $embssador->password = $request->password;
-        $embssador->confirmpassword = $request->confirm_password;
+        //$embssador->confirmpassword = $request->confirm_password;
         $save_embssador=$embssador->save();
-if($save_embssador){
-return redirect('embssador/register')->with('success', 'registeration successfull');
-    }
-}
+        if($save_embssador){
+                return redirect('embssador/register')->with('success', 'registeration successfull');
+            }
+        }
     /**
      * Display the specified resource.
      *

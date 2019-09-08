@@ -40,6 +40,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'agent' => [
+            'driver' => 'session',
+            'provider' => 'agents',
+        ],
+        'partner' => [
+            'driver' => 'session',
+            'provider' => 'partners',
+        ],
 
         'api' => [
             'driver' => 'token',
@@ -69,6 +81,18 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+        'agents' => [
+            'driver' => 'eloquent',
+            'model' => App\Agent::class,
+        ],
+        'partners' => [
+            'driver' => 'eloquent',
+            'model' => App\Partner::class,
         ],
 
         // 'users' => [
