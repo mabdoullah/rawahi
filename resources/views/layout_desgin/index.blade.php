@@ -1,4 +1,4 @@
-@extends('master.headerandfooter')
+@extends('master.app')
 
 @section('content')
 

@@ -54,6 +54,8 @@
 <!--Main js-->
 <script src="{{ asset('js/main.js') }}"></script>
 <!--Scripts ends-->
+
+@stack('jqueryCode')
 </body>
 
 </html>
