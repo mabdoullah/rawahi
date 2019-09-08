@@ -169,11 +169,11 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>رقم السفير</label>
-                                        <input name="ambassadorID" required type="number" class="form-control filter-input"
-                                            placeholder="رقم السفير " value="{{ old('ambassadorID')}}">
-                                            @if( $errors->has( 'ambassadorID' ) )
+                                        <input name="embassador_id" required type="number" class="form-control filter-input"
+                                            placeholder="رقم السفير " value="{{ old('embassador_id')}}">
+                                            @if( $errors->has( 'embassador_id' ) )
                                                    <span class="help-block text-danger">
-                                                       {{ $errors->first( 'ambassadorID' ) }}
+                                                       {{ $errors->first( 'embassador_id' ) }}
                                                    </span>
                                                @endif
 
@@ -808,5 +808,5 @@
             return false;
         });
       </script>
-      
+
     @endpush

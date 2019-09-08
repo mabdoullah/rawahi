@@ -34,10 +34,10 @@ class PartnerController extends Controller
      {
 
 
-      dd('asdfasdf');
+     
 
       $validator = Validator::make($request->all(), [
-         'ambassadorID' => 'required|unique:partners,ambassadorID|max:255',
+         'embassador_id' => 'required|unique:partners,ambassadorID|max:255',
          'services' => 'required',
          'legal_name' => ' required |max:255',
          'email' => 'required|email|unique:partners,email',
