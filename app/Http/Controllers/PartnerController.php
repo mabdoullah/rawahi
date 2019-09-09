@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Partner;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Partner;
 
 class PartnerController extends Controller
 {
@@ -14,8 +16,8 @@ class PartnerController extends Controller
      */
     public function index()
     {
-      // $partnar = Partner::all();
-      // return view('Partner')->with("partners",$partnar);
+        // $partnar = Partner::all();
+        // return view('Partner')->with("partners",$partnar);
     }
 
     /**
@@ -25,65 +27,75 @@ class PartnerController extends Controller
      */
     public function create()
     {
-
-        return view('partners.registration-form');
+        $partnersTypesArray= partnersTypesArray();
+        return view('partners.registration-form',compact('partnersTypesArray'));
     }
 
+    public function store(Request $request)
+    {
+            // first tab
+            $validator = Validator::make($request->all(), [
+                'embassador_id' => 'required|unique:partners,embassador_id|max:255',
+                'services' => 'required',
+                'legal_name' => ' required |max:255',
+                'email' => 'required|email|unique:partners,email',
+                'subscription_type' => 'required',
 
-     public function store(Request $request)
-     {
-
-
-     
-
-      $validator = Validator::make($request->all(), [
-         'embassador_id' => 'required|unique:partners,ambassadorID|max:255',
-         'services' => 'required',
-         'legal_name' => ' required |max:255',
-         'email' => 'required|email|unique:partners,email',
-         'subscription_type' => 'required',
-         'phone' => 'required|numeric|min:11|unique:partners,phone',
-         ]);
-         if ($validator->fails()) {
-           return redirect('partner/create')
-                              ->withErrors($validator)
-                              ->withInput()
-                              ->with('master_error', 'please fix error in below!');
-          }
+            ]);
+            if ($validator->fails()) {
+                session()->flash('activeTab','');
+                return redirect('partner/create')
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with('master_error', 'please fix error in below!');
+            }
 
 
+            // second tab
+            $validator = Validator::make($request->all(), [
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
 
-          $validator = Validator::make($request->all(), [
-             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-             ]);
-             if ($validator->fails()) {
-               return redirect('partner/create')
-                                  ->withErrors($validator)
-                                  ->withInput()
-                                  ->with('master_error', 'please fix error in below!');
-              }
+            if ($validator->fails()) {
+                session()->flash('activeTab','tab2');
+                return redirect('partner/create')
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with('master_error', 'please fix error in below!');
+            }
+
+            // third tab
+            $validator = Validator::make($request->all(), [
+                'phone' => 'required|numeric|min:11|unique:partners,phone',
+
+            ]);
+
+            if ($validator->fails()) {
+                session()->flash('activeTab','tab3');
+                return redirect('partner/create')
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with('master_error', 'please fix error in below!');
+            }
+
+            
 
 
+        $partner = new Partner($request->all());
+        $partner->image = '/public/images/' . $request->image;
 
+        if ($file = $request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = rand() . '.' . $file->getClientOriginalExtension();
+            $destinationPath = public_path() . '/images/';
+            $file->move($destinationPath, $fileName);
+            $partner->image = $fileName;
+        }
 
+        $partner->save();
 
-
-         $partner = new Partner($request->all()) ;
-         $partner->image = '/public/images/'. $request->image ;
-
-          if($file = $request->hasFile('image')) {
-             $file = $request->file('image') ;
-             $fileName = rand(). '.'.$file->getClientOriginalExtension() ;
-             $destinationPath = public_path().'/images/' ;
-             $file->move($destinationPath,$fileName);
-             $partner->image =  $fileName ;
-         }
-
-         $partner->save() ;
-
-         return redirect()->route('partner.create')->with('success', 'registeration successfull');
-     }
-
+        return redirect()->route('partner.create')->with('success', 'registeration successfull');
+    }
 
     /**
      * Display the specified resource.
@@ -93,8 +105,8 @@ class PartnerController extends Controller
      */
     public function show($id)
     {
-          // $partner = Partner::findOrFail($id);
-          // return view('show')->with("partner",$partnar);
+        // $partner = Partner::findOrFail($id);
+        // return view('show')->with("partner",$partnar);
     }
 
     /**
@@ -118,8 +130,8 @@ class PartnerController extends Controller
      */
     public function update(Request $request, $id)
     {
-      // $partner = Partner::find($id)->update($request->all());
-      // return redirect()->route('partner.show', $id)->with("message", "Updated Success");
+        // $partner = Partner::find($id)->update($request->all());
+        // return redirect()->route('partner.show', $id)->with("message", "Updated Success");
     }
 
     /**
@@ -130,8 +142,8 @@ class PartnerController extends Controller
      */
     public function destroy($id)
     {
-      // $partner = Partner::findOrFail($id);
-      // $partner->delete();
-      // return redirect()->route('partner.index')->with("message", "Delete Success");
+        // $partner = Partner::findOrFail($id);
+        // $partner->delete();
+        // return redirect()->route('partner.index')->with("message", "Delete Success");
     }
 }
