@@ -171,6 +171,9 @@ return [
         'available'             => 'مُتاح',
         'size'                  => 'الحجم',
         'birth_date'            =>'تاريخ الميلاد',
-        'confirm_password'      =>'تأكيد كلمة السر'
+        'confirm_password'      =>'تأكيد كلمة السر',
+        'services'              =>'الفئه',
+        'legal_name'            =>'اسم الشريك',
+        'subscription_type'     =>' نوع الاشتراك'
     ],
 ];
