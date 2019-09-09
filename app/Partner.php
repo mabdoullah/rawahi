@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Partner extends Authenticatable
 {
+    protected $fillable= ['embassador_id', 'services','legal_name','email','subscription_type','phone'];
+
     use Notifiable;
 
     /**

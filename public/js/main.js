@@ -204,53 +204,53 @@
                         "stylers": [
                             {
                                 "visibility": "off"
-      }
-    ]
-  },
+                            }
+                        ]
+                    },
                     {
                         "featureType": "administrative.land_parcel",
                         "elementType": "labels",
                         "stylers": [
                             {
                                 "visibility": "off"
-      }
-    ]
-  },
+                            }
+                        ]
+                    },
                     {
                         "featureType": "poi",
                         "stylers": [
                             {
                                 "visibility": "off"
-      }
-    ]
-  },
+                            }
+                        ]
+                    },
                     {
                         "featureType": "road",
                         "elementType": "labels.icon",
                         "stylers": [
                             {
                                 "visibility": "off"
-      }
-    ]
-  },
+                            }
+                        ]
+                    },
                     {
                         "featureType": "road.local",
                         "elementType": "labels",
                         "stylers": [
                             {
                                 "visibility": "off"
-      }
-    ]
-  },
+                            }
+                        ]
+                    },
                     {
                         "featureType": "transit",
                         "stylers": [
                             {
                                 "visibility": "off"
-      }
-    ]
-  }
-]
+                            }
+                        ]
+                    }
+                ]
             };
 
             // Get the HTML DOM element that will contain your map
@@ -260,16 +260,36 @@
             // Create the Google Map using our element and options defined above
             var map = new google.maps.Map(mapElement, mapOptions);
 
-            var image = 'images/others/marker.png';
+            var image = 'images/others/Marker.png';
             // Let's also add a marker while we're at it
             var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(24.6951, 46.6805),
+                position: new google.maps.LatLng(24.7136, 46.6753),
                 map: map,
                 icon: image,
                 draggable: true,
-                animation: google.maps.Animation.DROP
+                animation: google.maps.Animation.DROP,
+
             });
-            marker.addListener('click', toggleBounce);
+
+
+            // var directionsService = new google.maps.DirectionsService;
+            // var directionsDisplay = new google.maps.DirectionsRenderer({
+            //     draggable: true,
+            //     map: map,
+            //     panel: document.getElementById('right-panel')
+            // });
+            //
+            // console.log(directionsDisplay,directionsService);
+            //
+            // directionsDisplay.addListener('directions_changed', function (e) {
+            //     console.log(e);
+            //     computeTotalDistance(directionsDisplay.getDirections());
+            // });
+            //
+            // displayRoute('Perth, WA', 'Sydney, NSW', directionsService,
+            //     directionsDisplay);
+
+        marker.addListener('click', toggleBounce);
 
             function toggleBounce() {
                 if (marker.getAnimation() !== null) {
@@ -278,8 +298,44 @@
                     marker.setAnimation(google.maps.Animation.BOUNCE);
                 }
             }
+            let geocoder;
+            google.maps.event.addListener(marker,'dragend',function (e) {
+                // console.log(marker.getPosition().lat(),e);
+                geocoder = new google.maps.Geocoder();
+
+                let lat = marker.getPosition().lat(),
+                    lng = marker.getPosition().lng();
+
+                    
+                
+                var latlng = new google.maps.LatLng(lat,lng);
+                geocoder.geocode({'latLng' : latlng},function (result, status) {
+
+                    console.log( status,google.maps.GeocoderStatus  );
+
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[1]) {
+                            map.setZoom(11);
+                            marker = new google.maps.Marker({
+                                position: latlng,
+                                map: map
+                            });
+                            infowindow.setContent(results[1].formatted_address);
+                            
+                            infowindow.open(map, marker);
+                        }
+                    } else {
+                        alert("Geocoder failed due to: " + status);
+                    }
+                });
+
+
+
+            })
         }
+
     }
+
     // Intialize Map
 
 
@@ -397,7 +453,7 @@
         siteMenuClone();
 
         /*-------------------------------------------------
-                    rating stars in reviews
+                    rating stars in reviews 
         /*-------------------------------------------------*/
 
         var rateLine = $('.contact-form__rate-bx'),

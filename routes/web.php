@@ -27,6 +27,7 @@ Route::get('embssador/register','EmbssadorController@create')->name('embssador.r
 Route::POST('embssador/store','EmbssadorController@store')->name('embssador.store');
 Route::get('/getcities/{id}','EmbssadorController@getcities')->name('getcities');
 
+Route::resource("partner","PartnerController");
 
 // Route::get('home', function () {
 //     return view('layout_desgin.index');

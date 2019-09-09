@@ -1,0 +1,13 @@
+alert('aasdf');
+                // if (marker.getAnimation() !== null) {
+                //     marker.setAnimation(null);
+                // } else {
+                //     marker.setAnimation(google.maps.Animation.BOUNCE);
+                // }
+                var pos = map.getPostion();
+
+                pos.lat 
+                pos.lng
+
+                $('#latInput').val(pos.lat);
+                $('#lngInput').val(pos.lng);
