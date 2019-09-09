@@ -10,7 +10,9 @@ class CreatePartnersTable extends Migration {
 		Schema::create('partners', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('partner_type');
-			$table->string('location');
+			$table->string('map_address');
+			$table->decimal('lat', 10, 7);
+			$table->decimal('lng', 10, 7);
 			$table->string('legal_name');
 			$table->string('representative_name');
 			$table->string('email')->unique();
