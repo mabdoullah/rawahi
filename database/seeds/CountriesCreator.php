@@ -1,15 +1,17 @@
 <?php
+
 use Illuminate\Database\Seeder;
-class countrySeeder extends Seeder
+
+class CountriesCreator extends Seeder
 {
-/**
-* Run the database seeds.
-*
-* @return void
-*/
-public function run()
-{
-	DB::table('countries')->truncate();
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('countries')->truncate();
 	$countries = array(
 		array('id' => 1,'code' => 'AF' ,'name' => "Afghanistan",'phone_key' => 93),
 		array('id' => 2,'code' => 'AL' ,'name' => "Albania",'phone_key' => 355),
@@ -259,5 +261,5 @@ public function run()
 		array('id' => 246,'code' => 'ZW','name' => "Zimbabwe",'phone_key' => 263),
 		);
 		DB::table('countries')->insert($countries);
-	}
+    }
 }

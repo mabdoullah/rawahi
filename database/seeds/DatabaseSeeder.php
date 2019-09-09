@@ -13,8 +13,10 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         $this->call(CreateDefaultAdminUser::class);
-        $this->call(citySeeder::class);
-        $this->call(countrySeeder::class);
+        
+        $this->call(CountriesCreator::class);
+
+        $this->call(CitiesCreator::class);
 
         // $this->call(CountryTableSeeder::class);
 

@@ -11,10 +11,11 @@ class CreateDefaultAdminUser extends Seeder
      */
     public function run()
     {
-        \App\Admin::create(
-            [
-                'name'=> 'Admin','email'=>'admin@admin.com','password'=>bcrypt(123456789)
-            ]
+        DB::table('admins')->truncate();
+	    $arr = array(
+            array('name' => 'Admin' ,'email' => "admin@rawahi.com",'password' => bcrypt(123456789))
         );
+
+        DB::table('admins')->insert($arr);
     }
 }
