@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\front;
+use App\Http\Controllers\Controller;
 
-use App\Partner;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+
+use App\Partner;
 
 class PartnerController extends Controller
 {
@@ -28,7 +29,7 @@ class PartnerController extends Controller
     public function create()
     {
         $partnersTypesArray= partnersTypesArray();
-        return view('partners.registration-form',compact('partnersTypesArray'));
+        return view('front.partners.registration-form',compact('partnersTypesArray'));
     }
 
     public function store(Request $request)

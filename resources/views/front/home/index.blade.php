@@ -1,4 +1,4 @@
-@extends('master.app')
+@extends('front.master.app')
 
 @section('content')
 
@@ -16,8 +16,8 @@
         <div class="video-area v1">
             <div class="video-container">
                 <div class="overlay op-5"></div>
-                <!-- <div id="video-wrapper" style="background-image: url(images/header/video-bg.jpg)"> </div> -->
-                <!-- <a class="player" data-property="{videoURL:'https://youtu.be/6JBrppVIvi8'}"></a> -->
+                 <div id="video-wrapper" style="background-image: url(front/images/header/video-bg.jpg)"> </div> 
+               <a class="player" data-property="{videoURL:'https://youtu.be/6JBrppVIvi8'}"></a>
                 <div class="container video-content">
                     <div class="row">
                         <div class="col-md-12 text-center">
@@ -131,7 +131,7 @@
                         <a href="#">
                             <div class="popular-catagory-content v2">
                                 <div class="popular-catagory-img">
-                                    <img src="images/category/cat_5.jpg" alt="..." class="img_fluid">
+                                    <img src="front/images/category/cat_5.jpg" alt="..." class="img_fluid">
                                     <div class="overlay op-5"></div>
                                 </div>
                                 <div class="cat-content">
@@ -146,7 +146,7 @@
                         <a href="#">
                             <div class="popular-catagory-content v2">
                                 <div class="popular-catagory-img">
-                                    <img src="images/category/cat_2.jpg" alt="..." class="img_fluid">
+                                    <img src="front/images/category/cat_2.jpg" alt="..." class="img_fluid">
                                     <div class="overlay op-5"></div>
                                 </div>
                                 <div class="cat-content">
@@ -161,7 +161,7 @@
                         <a href="#">
                             <div class="popular-catagory-content v2">
                                 <div class="popular-catagory-img">
-                                    <img src="images/category/cat_1.jpg" alt="..." class="img_fluid">
+                                    <img src="front/images/category/cat_1.jpg" alt="..." class="img_fluid">
                                     <div class="overlay op-5"></div>
                                 </div>
                                 <div class="cat-content">
@@ -176,7 +176,7 @@
                         <a href="#">
                             <div class="popular-catagory-content v2">
                                 <div class="popular-catagory-img">
-                                    <img src="images/category/cat-1.jpg" alt="..." class="img_fluid">
+                                    <img src="front/images/category/cat-1.jpg" alt="..." class="img_fluid">
                                     <div class="overlay op-5"></div>
                                 </div>
                                 <div class="cat-content">
@@ -191,7 +191,7 @@
                         <a href="#">
                             <div class="popular-catagory-content v2">
                                 <div class="popular-catagory-img">
-                                    <img src="images/category/cat_3.jpg" alt="..." class="img_fluid">
+                                    <img src="front/images/category/cat_3.jpg" alt="..." class="img_fluid">
                                     <div class="overlay op-5"></div>
                                 </div>
                                 <div class="cat-content">
@@ -206,7 +206,7 @@
                         <a href="#">
                             <div class="popular-catagory-content v2">
                                 <div class="popular-catagory-img">
-                                    <img src="images/category/cat_4.jpg" alt="..." class="img_fluid">
+                                    <img src="front/images/category/cat_4.jpg" alt="..." class="img_fluid">
                                     <div class="overlay op-5"></div>
                                 </div>
                                 <div class="cat-content">
@@ -233,7 +233,7 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide trending-place-item">
                                     <div class="trending-img">
-                                        <img src="images/category/places/place-1.jpg" alt="#">
+                                        <img src="front/images/category/places/place-1.jpg" alt="#">
                                         <span class="trending-rating-green">7</span>
                                         <span class="save-btn"><i class="icofont-heart"></i></span>
                                     </div>
@@ -282,7 +282,7 @@
                                 </div>
                                 <div class="swiper-slide trending-place-item">
                                     <div class="trending-img">
-                                        <img src="images/category/places/cafe.jpg" alt="#">
+                                        <img src="front/images/category/places/cafe.jpg" alt="#">
                                         <span class="trending-rating-orange">9</span>
                                         <span class="save-btn"><i class="icofont-heart"></i></span>
                                     </div>
@@ -333,7 +333,7 @@
                                 </div>
                                 <div class="swiper-slide trending-place-item">
                                     <div class="trending-img">
-                                        <img src="images/category/places/place-5.jpg" alt="#">
+                                        <img src="front/images/category/places/place-5.jpg" alt="#">
                                         <span class="trending-rating-pink">6.5</span>
                                         <span class="save-btn"><i class="icofont-heart"></i></span>
                                     </div>
@@ -383,7 +383,7 @@
                                 </div>
                                 <div class="swiper-slide trending-place-item">
                                     <div class="trending-img">
-                                        <img src="images/category/places/place-4.jpg" alt="#">
+                                        <img src="front/images/category/places/place-4.jpg" alt="#">
                                         <span class="trending-rating-green">8</span>
                                         <span class="save-btn"><i class="icofont-heart"></i></span>
                                     </div>
@@ -434,7 +434,7 @@
                                 </div>
                                 <div class="swiper-slide trending-place-item">
                                     <div class="trending-img">
-                                        <img src="images/category/places/place-9.jpg" alt="#">
+                                        <img src="front/images/category/places/place-9.jpg" alt="#">
                                         <span class="trending-rating-orange">6.5</span>
                                         <span class="save-btn"><i class="icofont-heart"></i></span>
                                     </div>
@@ -482,7 +482,7 @@
                                 </div>
                                 <div class="swiper-slide trending-place-item">
                                     <div class="trending-img">
-                                        <img src="images/category/places/place-11.jpg" alt="#">
+                                        <img src="front/images/category/places/place-11.jpg" alt="#">
                                         <span class="trending-rating-green">8</span>
                                         <span class="save-btn"><i class="icofont-heart"></i></span>
                                     </div>
@@ -547,7 +547,7 @@
                     <div class="col-md-4">
                         <div class="popular-item sm-grid mar-bot-30">
                             <div class="single-place">
-                                <img class="single-place-image" src="images/category/ny.jpg" alt="place-image">
+                                <img class="single-place-image" src="front/images/category/ny.jpg" alt="place-image">
                                 <div class="single-place-content">
                                     <h2 class="single-place-title">
                                         <a href="#">الرياض</a>
@@ -563,7 +563,7 @@
                     <div class="col-md-8">
                         <div class="popular-item sm-grid mar-bot-30">
                             <div class="single-place">
-                                <img class="single-place-image" src="images/category/miami.jpg" alt="place-image">
+                                <img class="single-place-image" src="front/images/category/miami.jpg" alt="place-image">
                                 <div class="single-place-content">
                                     <h2 class="single-place-title">
                                         <a href="#">جدة</a>
@@ -579,7 +579,7 @@
                     <div class="col-md-8">
                         <div class="popular-item sm-grid mar-bot-30">
                             <div class="single-place">
-                                <img class="single-place-image" src="images/category/london.jpg" alt="place-image">
+                                <img class="single-place-image" src="front/images/category/london.jpg" alt="place-image">
                                 <div class="single-place-content">
                                     <h2 class="single-place-title">
                                         <a href="#">الدمام</a>
@@ -595,7 +595,7 @@
                     <div class="col-md-4">
                         <div class="popular-item sm-grid mar-bot-30">
                             <div class="single-place">
-                                <img class="single-place-image" src="images/category/sp.jpg" alt="place-image">
+                                <img class="single-place-image" src="front/images/category/sp.jpg" alt="place-image">
                                 <div class="single-place-content">
                                     <h2 class="single-place-title">
                                         <a href="#">دبي</a>
@@ -629,7 +629,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="coupon-img">
-                                                <img class="img-fluid" src="images/category/coupon/3.jpg" alt="...">
+                                                <img class="img-fluid" src="front/images/category/coupon/3.jpg" alt="...">
                                             </div>
                                         </div>
                                         <div class="col-md-6 text-right">
@@ -665,7 +665,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="coupon-img">
-                                                <img class="img-fluid" src="images/category/coupon/5.jpg" alt="...">
+                                                <img class="img-fluid" src="front/images/category/coupon/5.jpg" alt="...">
                                             </div>
                                         </div>
                                         <div class="col-md-6 text-right">
@@ -702,7 +702,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="coupon-img">
-                                                <img class="img-fluid" src="images/category/coupon/4.jpg" alt="...">
+                                                <img class="img-fluid" src="front/images/category/coupon/4.jpg" alt="...">
                                             </div>
                                         </div>
                                         <div class="col-md-6 text-right">
@@ -738,7 +738,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="coupon-img">
-                                                <img class="img-fluid" src="images/category/coupon/1.jpg" alt="...">
+                                                <img class="img-fluid" src="front/images/category/coupon/1.jpg" alt="...">
                                             </div>
                                         </div>
                                         <div class="col-md-6 text-right">

@@ -5,7 +5,7 @@
             <div class="site-navbar">
                 <div class="row align-items-center">
                     <div class="col-md-4 col-6">
-                        <a class="navbar-brand" href="#"><img src="{{asset('images/logo-black.png')}}" alt="logo"
+                        <a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('front/images/logo-black.png')}}" alt="logo"
                                 class="img-fluid"></a>
                     </div>
                     <div class="col-md-8 col-6">
@@ -13,15 +13,15 @@
                             <div class="container">
                                 <ul class="site-menu js-clone-nav d-none d-lg-block">
                                     <li class="has-children">
-                                        <a href="index.html">الرئيسية</a>
+                                        <a href="{{route('index')}}">الرئيسية</a>
 
                                     </li>
                                     <li class="has-children">
                                         <a href="#">تسجيل الدخول</a>
                                     </li>
-                                    <li class="d-lg-none"><a class="btn v1" href="{{url('partner/create')}}">إضافة شريك
+                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partner.create')}}">إضافة شريك
                                             <i class="ion-plus-round"></i></a></li>
-                                    <li class="d-lg-none"><a class="btn v1 active" href="{{url('embssador/register')}}"> تسجيل سفير
+                                    <li class="d-lg-none"><a class="btn v1 active" href="{{route('embssador.create')}}"> تسجيل سفير
                                             <i class="ion-plus-round"></i></a></li>
                                 </ul>
                             </div>
@@ -32,9 +32,9 @@
                             </a>
                         </div>
                         <div class="add-list float-left">
-                            <a class="btn v8" href="{{url('partner/create')}}">إضافة شريك <i
+                            <a class="btn v8" href="{{route('partner.create')}}">إضافة شريك <i
                                     class="ion-plus-round"></i></a>
-                            <a class="btn v8 active" href="{{url('embssador/register')}}">  تسجيل سفير <i
+                            <a class="btn v8 active" href="{{route('embssador.create')}}">  تسجيل سفير <i
                                     class="ion-plus-round"></i></a>
                         </div>
 

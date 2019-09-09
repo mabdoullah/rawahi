@@ -1,4 +1,4 @@
-@extends('master.app')
+@extends('front.master.app')
 
 @section('content')
   <!--Breadcrumb section starts-->
