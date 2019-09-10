@@ -48,7 +48,7 @@ class PartnerController extends Controller
                 return redirect('partner/create')
                     ->withErrors($validator)
                     ->withInput()
-                    ->with('master_error', 'please fix error in below!');
+                    ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
             }
 
 
@@ -62,7 +62,7 @@ class PartnerController extends Controller
                 return redirect('partner/create')
                     ->withErrors($validator)
                     ->withInput()
-                    ->with('master_error', 'please fix error in below!');
+                    ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
             }
 
             // third tab
@@ -76,10 +76,10 @@ class PartnerController extends Controller
                 return redirect('partner/create')
                     ->withErrors($validator)
                     ->withInput()
-                    ->with('master_error', 'please fix error in below!');
+                    ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
             }
 
-            
+
 
 
         $partner = new Partner($request->all());
@@ -95,7 +95,7 @@ class PartnerController extends Controller
 
         $partner->save();
 
-        return redirect()->route('partner.create')->with('success', 'registeration successfull');
+        return redirect()->route('partner.create')->with('success', 'تم التسجيل بنجاح');
     }
 
     /**
