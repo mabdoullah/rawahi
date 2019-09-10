@@ -12,4 +12,7 @@ function partnersTypesArray()
         ];
     return $types;
 }
+function unique_validate($field){
+    return "unique:partners,".$field."|unique:embassadors,".$field."|unique:agents,".$field;
+}
 ?>
