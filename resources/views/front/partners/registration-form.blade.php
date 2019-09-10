@@ -1,4 +1,4 @@
-@extends('master.app')
+@extends('front.master.app')
 
 @section('content')
   <!--Breadcrumb section starts-->
@@ -168,7 +168,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <label>رقم السفير</label>
                                         <input name="embassador_id"  type="number" class="form-control filter-input"
                                             placeholder="رقم السفير " value="{{ old('embassador_id')}}">
@@ -178,13 +178,25 @@
                                                    </span>
                                                @endif
 
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-md-6">
                                         <label>اسم السفير</label>
                                         <input  type="text" class="form-control filter-input"
                                             placeholder="this must be auto fill based on the ID">
                                     </div>
+                                       {{-- <br> <br>
+                                    <div class="col-md-6">
+                                            <label>ادخل الرقم السر</label>
+                                            <input  type="password" class="form-control filter-input"
+                                                placeholder="ادخل الرقم السر">
+                                        </div>
+                                            <br> <br>
+                                    <div class="col-md-6">
+                                        <label> تاكيد كلمه السر</label>
+                                                <input  type="password" class="form-control filter-input"
+                                                    placeholder="تاكيد كلمه السر">
+                                            </div> --}}
                                     <div class="col-md-4">
                                         <a href="javascript:;"  class="btn v7 mar-top-20 next">حفظ ومتابعة</a>
                                     </div>
@@ -233,9 +245,9 @@
                                            <option  selected disabled>اختر الدولة</option>
 
                                             <option class="option">السعودية</option>
-                                            <option class="option">الامارات</option>
-                                            <option class="option">الكويت</option>
-                                            <option class="option">مصر</li>
+                                            <option disabled>الامارات</option>
+                                            <option disabled>الكويت</option>
+                                            <option disabled>مصر</li>
 
                                         </select>
                                         @if( $errors->has( 'image' ) )
@@ -256,22 +268,20 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>المدينة</label>
-                                    <input  type="text" class="form-control filter-input"
-                                        placeholder="fdfssdfاختر المدينة">
-                                        <select class="nice-select filter-input" name="city" value="{{old('city')}}">
-                                                <option  selected disabled>اختر المدينة </option>
-                                                    @foreach ($Cities as $City)
-                                                    <option class="option">{{$City}}</option>
-                                                    @endforeach
-                                                 
-                                                 
-     
-                                             </select>
-                                             @if( $errors->has( 'city' ) )
-                                             <span class="help-block text-danger">
-                                                 {{ $errors->first( 'city' ) }}
-                                             </span>
-                                             @endif
+                                    <select class="nice-select filter-input" name="city" value="{{old('city')}}">
+                                            <option  selected disabled>اختر المدينة </option>
+                                                @foreach ($Cities as $City)
+                                                <option class="option">{{$City->name}}</option>
+                                                @endforeach
+                                             
+                                             
+ 
+                                         </select>
+                                         @if( $errors->has( 'city' ) )
+                                         <span class="help-block text-danger">
+                                             {{ $errors->first( 'city' ) }}
+                                         </span>
+                                         @endif
                                 </div>
                             </div>
                             <div class="col-md-6">

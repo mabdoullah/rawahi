@@ -1,18 +1,18 @@
-@extends('master.app')
+@extends('front.master.app')
 
 @section('content')
 
     <!--Page Wrapper starts-->
     <div class="page-wrapper fixed-footer">
         <!--Breadcrumb section starts-->
-        <div class="breadcrumb-section" style="background-image: url({{asset('images/breadcrumb/breadcrumb-1.jpg')}})">
+        <div class="breadcrumb-section" style="background-image: url({{asset('front/images/breadcrumb/breadcrumb-1.jpg')}})">
             <div class="overlay op-5"></div>
             <div class="container">
                 <div class="row align-items-center  pad-top-80">
                     <div class="col-md-6 col-12">
                         <div class="breadcrumb-menu text-left sm-left">
                             <ul>
-                                <li class="active"> <a href="{{route('home')}}">الرئيسية</a> </li>
+                                <li class="active"> <a href="{{route('index')}}">الرئيسية</a> </li>
 
                             </ul>
                         </div>
@@ -33,7 +33,7 @@
                     <div class="col-md-12">
                         <ul class="nav nav-tabs list-details-tab">
                             <li class="nav-item active">
-                                <a data-toggle="tab" href="{{route('embssador.register')}}">السفراء</a>
+                                <a data-toggle="tab" href="{{route('embssador.create')}}">السفراء</a>
                             </li>
                         </ul>
                         <div class="tab-content mar-tb-30 add_list_content">
@@ -116,7 +116,7 @@
                                    <div class="col-md-6 ">
                                        <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
                                            <label>  رقم الجوال</label>
-                                           <input required  class="form-control filter-input"placeholder="رقم الجوال" name="phone" value="{{ old('phone')}}">
+                                           <input required dir='ltr' class="form-control filter-input"placeholder="رقم الجوال" name="phone" value="{{ old('phone')}}">
                                            @if( $errors->has( 'phone' ) )
                                                  <span class="help-block text-danger">
                                                      {{ $errors->first( 'phone' ) }}
@@ -124,14 +124,27 @@
                                              @endif
                                        </div>
                                    </div>
-                                   @if(1==2)
+
+
+                                   <div class="col-md-6">
+                                       <div class="form-group {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }}">
+                                           <label> تاريخ الميلاد</label>
+                                           <input required type="date" class="form-control filter-input"placeholder="  تاريخ الميلاد" name="birth_date" value="{{ old('birth_date')}}">
+                                           @if( $errors->has( 'birth_date' ) )
+                                                   <span class="help-block text-danger">
+                                                       {{ $errors->first( 'birth_date' ) }}
+                                                   </span>
+                                           @endif
+                                       </div>
+                                   </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group {{ $errors->has( 'city' ) ? 'has-error' : '' }}">
                                             <label> المدينه </label>
                                             <select class="form-control filter-input"  name="city" id="city">
                                                 <option value="0">اختر المدينة</option>
                                                 @foreach ($cities as $city)
-                                                    <option value="{{$city->id}}">
+                                                    <option @if( old('city') == $city->id) selected @endif value="{{$city->id}}">
                                                     {{$city->name}}
                                                     </option>
                                                 @endforeach
@@ -144,20 +157,10 @@
                                                 @endif
                                         </div>
                                     </div>
-                                    @endif
 
-                                    <div class="col-md-12">
-                                        <div class="form-group {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }}">
-                                            <label> تاريخ الميلاد</label>
-                                            <input required type="date" class="form-control filter-input"placeholder="  تاريخ الميلاد" name="birth_date" value="{{ old('birth_date')}}">
-                                            @if( $errors->has( 'birth_date' ) )
-                                                    <span class="help-block text-danger">
-                                                        {{ $errors->first( 'birth_date' ) }}
-                                                    </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    
+
+
+
                                    <div class="col-md-6">
                                        <div class="form-group {{ $errors->has( 'password' ) ? 'has-error' : '' }}">
                                            <label>  كلمه السر </label>
@@ -181,14 +184,14 @@
                                        </div>
                                    </div>
 
-                                   
+
                                    <div class="col-md-4">
                                        <button type="submit"  class="btn btn-save-embas"> تسجيل سفير جديد </button>
                                    </div>
 
                                </form>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

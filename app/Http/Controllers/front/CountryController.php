@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\front;
+use App\Http\Controllers\Controller;
 use App\Country;
 use Illuminate\Http\Request;
 

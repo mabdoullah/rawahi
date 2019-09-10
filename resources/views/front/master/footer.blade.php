@@ -1,12 +1,12 @@
 <!--Footer Starts-->
   <div class="footer-wrapper no-pad-tb footer-fixed">
-      <div class="footer-top-area section-padding" style="background-image: url({{asset('images/bg/pattern.png')}})">
+      <div class="footer-top-area section-padding" style="background-image: url({{asset('front/images/bg/pattern.png')}})">
           <div class="overlay op-9 green"></div>
           <div class="container">
               <div class="row nav-folderized">
                   <div class="col-lg-3 col-md-12">
                       <div class="footer-logo">
-                          <a href="index.html"> <img src="{{asset('images/logo-white.png')}}" alt="logo"></a>
+                          <a href="index.html"> <img src="{{asset('front/images/logo-white.png')}}" alt="logo"></a>
                           <div class="company-desc">
                               <p>
                                   رواهي منصتك الأولى لاستكشاف العالم من حولك
@@ -87,3 +87,19 @@
       </div>
   </div>
   <!--Footer ends-->
+  <!--Scripts starts-->
+  <!--plugin js-->
+  <script src="{{ asset('front/js/plugin.js') }}"></script>
+  <!--google maps-->
+  <script
+      src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyD_8C7p0Ws2gUu7wo0b6pK9Qu7LuzX2iWY&amp;libraries=places&amp;callback=initAutocomplete') }}"></script>
+  <!--Markercluster js-->
+  <script src="{{ asset('front/js/markerclusterer.js') }}"></script>
+  <!--Maps js-->
+  <script src="{{ asset('front/js/maps.js') }}"></script>
+  <!--Infobox js-->
+  <script src="{{ asset('front/js/infobox.min.js') }}"></script>
+  <!--Main js-->
+  <script src="{{ asset('front/js/main.js') }}"></script>
+  <!--Scripts ends-->
+  @stack('jqueryCode')

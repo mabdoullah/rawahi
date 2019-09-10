@@ -10,13 +10,15 @@ class CreatePartnersTable extends Migration {
 		Schema::create('partners', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('partner_type');
-			$table->string('location');
+			$table->string('map_address');
+			$table->decimal('lat', 10, 7);
+			$table->decimal('lng', 10, 7);
 			$table->string('legal_name');
 			$table->string('representative_name');
 			$table->string('email')->unique();
 			$table->integer('phone')->unique()->nullable();
 			$table->string('phone_key')->nullable();
-			$table->string('logo')->nullable();
+			$table->string('image')->nullable();
 			$table->string('services')->nullable();
 			$table->string('subscription_type')->nullable();
 			$table->integer('embassador_id')->unsigned();
