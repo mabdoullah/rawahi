@@ -1,4 +1,6 @@
 <?php
+
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -18,7 +20,7 @@ return [
     'alpha_dash'           => 'يجب أن لا يحتوي :attribute سوى على حروف، أرقام ومطّات.',
     'alpha_num'            => 'يجب أن يحتوي :attribute على حروفٍ وأرقامٍ فقط.',
     'array'                => 'يجب أن يكون :attribute ًمصفوفة.',
-    'before'               => 'يجب على :attribute أن يكون تاريخًا سابقًا للتاريخ :date.',
+    'before'               => 'يجب على :attribute أن يكون تاريخًا سابقًا للتاريخ ب18 سنة',
     'before_or_equal'      => ':attribute يجب أن يكون تاريخا سابقا أو مطابقا للتاريخ :date.',
     'between'              => [
         'numeric' => 'يجب أن تكون قيمة :attribute بين :min و :max.',
@@ -139,15 +141,14 @@ return [
     |
     */
     'attributes' => [
-      'years'=>'سنة',
         'name'                  => 'الاسم',
         'username'              => 'اسم المُستخدم',
         'email'                 => 'البريد الالكتروني',
         'first_name'            => 'الاسم الأول',
         'last_name'             => 'اسم العائلة',
         'second_name'             => 'اسم الاب',
-        'password'              => 'كلمة المرور',
-        'password_confirmation' => 'تأكيد كلمة المرور',
+        'password'              => 'كلمة السر',
+        'confirm_password'       => 'تأكيد كلمة السر',
         'city'                  => 'المدينة',
         'country'               => 'الدولة',
         'address'               => 'عنوان السكن',
@@ -171,6 +172,5 @@ return [
         'available'             => 'مُتاح',
         'size'                  => 'الحجم',
         'birth_date'            =>'تاريخ الميلاد',
-        'confirm_password'      =>'تأكيد كلمة السر'
     ],
 ];
