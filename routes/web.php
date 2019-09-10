@@ -17,3 +17,12 @@ Route::resource("embssador","front\EmbssadorController");
 // Route::get('/getcities/{id}','front\EmbssadorController@getcities')->name('getcities');
 // mohamed
 Route::resource("partner","front\PartnerController");
+
+// Admin
+// Asmaa
+Route::group(['prefix' => 'admin'], function()
+{
+  Route::resource("home","admin\HomeController");
+  Route::resource("agent","admin\AgentController");
+
+});
