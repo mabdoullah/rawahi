@@ -28,7 +28,7 @@ class EmbssadorController extends Controller
      */
     public function create()
     {
-     $cities = City::where('country_id',1)->get();
+     $cities = City::where('country_id',191)->get();
       return view('front.embassadors.registration-form')->with('cities', $cities);
     }
 
@@ -55,7 +55,7 @@ class EmbssadorController extends Controller
                   return redirect('embssador/create')
                               ->withErrors($validator)
                               ->withInput()
-                              ->with('master_error', 'please fix error in below!');
+                              ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
               }
         $embssador = new Embassador;
         $embssador->first_name = $request->first_name;
@@ -71,7 +71,7 @@ class EmbssadorController extends Controller
 
         $save_embssador=$embssador->save();
         if($save_embssador){
-                return redirect('embssador/create')->with('success', 'registeration successfull');
+                return redirect('embssador/create')->with('success', 'تم التسجيل بنجاح');
             }
         }
     /**
