@@ -15,7 +15,7 @@
             margin: 0;
             height: 100vh;
             display: grid;
-            background-color: rgb(230, 230, 230); 
+            background-color: rgb(255, 255, 255); 
             direction: rtl
         }
 
@@ -23,12 +23,8 @@
             width: 60%;
             margin: auto;
             border: 2px #FFAB0B solid;
-            padding: 15px 15px;
+            padding: 20px 15px;
             box-shadow: 3px 3px 40px yellow;
-        }
-
-        .right {
-            text-align: right;
         }
 
         img {
@@ -38,14 +34,6 @@
 
         .center {
             text-align: center;
-        }
-
-        .f-right {
-            float: right
-        }
-
-        .f-left {
-            float: left
         }
 
         .mr-bt {
@@ -67,13 +55,27 @@
             padding: 10px 10px;
             color: black;
             border-radius: 10px;
+            font-size: 1.5em;
         }
 
-        @media(max-width:480px) {
-            section {
-                width: 80%;
-            }
+        .element{
+            overflow: auto;
+            width: 100%;
+            display: block;
         }
+
+        hr{
+            color: #FFAB0B;           
+        }
+
+        h1{
+            font-size:3em;
+        }
+
+        .lineheight{
+            line-height: 150%;
+        }
+
     </style>
 </head>
 
@@ -83,25 +85,26 @@
         <div class="center">
             <h1 class="mr-bt">مرحبا بك</h1>
         </div>
-        <h3 class="mr-bt-40 right"> قبل أن نتمكن من إكمال طلبك ، نحتاج إلى التحقق من صحة عنوان
+        <h3 class="mr-bt-40 center"> قبل أن نتمكن من إكمال طلبك ، نحتاج إلى التحقق من صحة عنوان
             بريدك الإلكتروني لذا من فضلك انقر الزر في الاسفل </h3>
         <div class="center mr-bt-40 ">
             <a class="verify" href="#">تاكيد البريد الالكتروني</a>
         </div>
         <hr class="center">
-        <p class="right">
-
-            <span class="f-right">  إذا كنت تواجه مشكله في النقر علي زر التحقق من البريد الالكتروني من فضلك قم بلصق هذا العنوان في متصفح الويب الخاص بك : 
-            </span>
-
-            <a class="f-left" href="https://www.google.com/search?source=hp&ei=4lR1Xfq
-        xOYzUUYnTgkg&q=translate&oq=translate&gs_l=psy-ab.3..0i131j0j0i131j0j0i131l2
-        j0j0i131j0l2.36.1766..2156...0.0..0.175.1082.0j8......0....1..gws-wiz.Gu_O_KMKECo
-        &ved=0ahUKEwj6qo-0-cHkAhUMahQKHYmpAAkQ4dUDCAU&uact=5">
-                https://www.google.com/search?source=hp&ei=4lR1XfqxOYzUUYnTgkg&q=tran
-                slate&oq=translate&gs_l=psy-ab.3..0i131j0j0i131j0j0i131l2j0j0i131j0l2.36
-                .1766..2156...0.0..0.175.1082.0j8......0....1..gws-wiz.Gu_O_KMKECo&ved=0ah
-                UKEwj6qo-0-cHkAhUMahQKHYmpAAkQ4dUDCAU&uact=5</a> </p>
+        <div class="lineheight">
+            <div class="center">
+               <span >  إذا كنت تواجه مشكله في النقر علي زر تاكيد البريد الالكتروني من فضلك قم بلصق هذا العنوان في متصفح الويب الخاص بك : 
+               </span>
+            </div>
+            <a class="center element" href="https://www.google.com/search?source=hp&ei=4lR1Xfq
+            xOYzUUYnTgkg&q=translate&oq=translate&gs_l=psy-ab.3..0i131j0j0i131j0j0i131l2
+            j0j0i131j0l2.36.1766..2156...0.0..0.175.1082.0j8......0....1..gws-wiz.Gu_O_KMKECo
+            &ved=0ahUKEwj6qo-0-cHkAhUMahQKHYmpAAkQ4dUDCAU&uact=5">
+            https://www.google.com/search?source=hp&ei=4lR1XfqxOYzUUYnTgkg&q=tran
+            slate&oq=translate&gs_l=psy-ab.3..0i131j0j0i131j0j0i131l2j0j0i131j0l2.36
+            .1766..2156...0.0..0.175.1082.0j8......0....1..gws-wiz.Gu_O_KMKECo&ved=0ah
+            UKEwj6qo-0-cHkAhUMahQKHYmpAAkQ4dUDCAU&uact=5</a> 
+        </div>
     </section>
 </body>
 

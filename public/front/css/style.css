@@ -11,11 +11,11 @@
 /*-----------------------------------------------------------
     1  General Styles
     2  Typography
-    3  Buttons & Links
+    3  Buttons & Links 
     4  Fixed Header
     5  Menu
     6  Hero Area
-    7  Breadcrumb
+    7  Breadcrumb 
     8  Catagory Box
     9  Work Proces
     10 Popular category
@@ -44,12 +44,16 @@
     29 Color Switcher
     30 Preloader
     31 Map marker
-    32 Responsive
+    32 Thank you page
+    33 view page
+    34 Profile
+    35 Responsive
+    
 -------------------------------------------------------------*/
 
 
 /*-----------------------------------------------------------
-            General Styles
+            General Styles 
 -------------------------------------------------------------*/
 
 body {
@@ -700,7 +704,7 @@ section.coupon {
 
 
 /*-----------------------------------------------------------
-                    Typography
+                    Typography 
 -------------------------------------------------------------*/
 
 body {
@@ -1252,7 +1256,8 @@ ul.list-inline li {
 }
 
 .btn.v8:hover,
-.btn.v8.active
+.btn.v8.active,
+a.btn.v1.active
  {
     background: #fff;
     color: #333 !important;
@@ -1378,7 +1383,7 @@ ul.list-inline li {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1002;
+    z-index: 999;
     transition: 0.7s;
 }
 
@@ -2332,9 +2337,9 @@ ul.list-inline li {
 
 }
 
-.breadcrumb-menu ul li::after {
+.breadcrumb-menu ul li:first-child::after {
     position: absolute;
-    content: "/";
+    content: " /";
     left: -3px;
     top: 2px;
     color: #fff;
@@ -2589,7 +2594,7 @@ ul.list-inline li {
 }
 
 /*--------------------------------------------
-            Popular category
+            Popular category 
 ----------------------------------------------*/
 .popular-catagory-content {
     position: relative;
@@ -2681,7 +2686,7 @@ ul.list-inline li {
 }
 
 /*------------------------------------------
-       Discount Coupon
+       Discount Coupon 
 --------------------------------------------*/
 .coupon-wrap .swiper-wrapper {
     padding-bottom: 10px;
@@ -3271,7 +3276,7 @@ ul.list-inline li {
 }
 
 /*----------------------------------------
-            Call to Action
+            Call to Action 
 ----------------------------------------*/
 .call-to-action {
     position: relative;
@@ -3920,7 +3925,7 @@ ul.list-inline li {
 
 
 /*------------------------------------------------
-                     Blog
+                     Blog 
 --------------------------------------------------*/
 
 .single-blog-item.v1 {
@@ -4283,7 +4288,7 @@ ul.icon li::before {
 }
 
 /*-------------------------------------------
-             Filter Listing
+             Filter Listing 
 --------------------------------------------*/
 .range-text {
     line-height: 39px;
@@ -6981,7 +6986,7 @@ input[type="radio"] {
 
 }
 
-/* -----------------------------------------------------------------
+/* ----------------------------------------------------------------- 
                          9. COLOR SWITCHER
 ------------------------------------------------------------------*/
 
@@ -7302,6 +7307,139 @@ span.infobox_rate {
     margin-top: -12px;
 }
 
+/*------------------------------------------
+        Thank you page
+-------------------------------------------*/
+
+
+.thankYou-page {
+    padding: 30px;
+    border: 1px solid #fa8f1b;
+    border-radius: 5px;
+
+}
+
+.thankYou-page .thank-message i {
+    display: inline;
+    font-size: 50px;
+    color: #FA8F1B;
+}
+
+.thankYou-page .thank-message label {
+    display: block
+}
+/*------------------------------------------
+                view page Css
+-------------------------------------------*/
+th,td{
+    text-align: center;
+}
+
+/*------------------------------------------
+                Profile Css
+-------------------------------------------*/
+
+
+.emp-profile{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: 70%;
+    height: 100%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.profile-head h5{
+    color: #333;
+}
+.profile-head h6{
+    color: #0062cc;
+}
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+.proile-rating{
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+.proile-rating span{
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+.profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
+}
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
+}
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+.profile-work ul{
+    list-style: none;
+}
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #0062cc;
+}
+
+.modal-dialog {
+    max-width: 890px !important;
+}
+
+.modal-header .close {
+    margin: -1rem auto -1rem -1rem;
+}
 /*------------------------------------------
                 Responsive Css
 -------------------------------------------*/
@@ -8395,7 +8533,7 @@ span.infobox_rate {
         padding: 0 2px 0 0;
     }
 }
-.btn-save-embas{background-color: #fa8f1b}
+
 /*@media only screen (max-width:767px) and(orientation:landscape){
 
     .hero-title.v2,
@@ -8404,3 +8542,6 @@ span.infobox_rate {
     }
 
 }*/
+
+
+
