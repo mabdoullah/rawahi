@@ -15,7 +15,7 @@ function partnersTypesArray()
 
 
 function unique_validate($field){
-    return "unique:partners,".$field."|unique:embassadors,".$field;
+    return "unique:partners,".$field."|unique:embassadors,".$field."|unique:agents,".$field;
 }
 
 ?>
