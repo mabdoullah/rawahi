@@ -144,7 +144,7 @@
                                             <select class="form-control filter-input"  name="city" id="city">
                                                 <option value="0">اختر المدينة</option>
                                                 @foreach ($cities as $city)
-                                                    <option value="{{$city->id}}">
+                                                    <option @if( old('city') == $city->id) selected @endif value="{{$city->id}}">
                                                     {{$city->name}}
                                                     </option>
                                                 @endforeach

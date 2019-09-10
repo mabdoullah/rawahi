@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Embassador;
 use App\City;
+use App;
 // use App\Country;
 
 class EmbssadorController extends Controller
@@ -27,7 +28,7 @@ class EmbssadorController extends Controller
      */
     public function create()
     {
-     $cities = City::where('countryID',1)->get();
+     $cities = City::where('country_id',1)->get();
       return view('front.embassadors.registration-form')->with('cities', $cities);
     }
 
@@ -39,6 +40,7 @@ class EmbssadorController extends Controller
      */
     public function store(Request $request)
     {
+
       $validator = Validator::make($request->all(), [
                   'first_name' => 'required|max:18',
                   'second_name' => 'required|max:18',
@@ -61,7 +63,7 @@ class EmbssadorController extends Controller
         $embssador->email = $request->email;
         $embssador->phone = $request->phone;
         $embssador->phone_key = '+966';//$request->code;
-        $embssador->country = 1;//id of suadia
+        $embssador->country = 191;//id of suadia
         $embssador->city = $request->city;
         $embssador->birth_date = $request->birth_date;
         $embssador->password = $request->password;
