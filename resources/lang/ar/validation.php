@@ -174,6 +174,6 @@ return [
         'confirm_password'      =>'تأكيد كلمة السر',
         'services'              =>'الفئه',
         'legal_name'            =>'اسم الشريك',
-        'subscription_type'     =>' نوع الاشتراك'
+        'subscription_type'     =>' نوع الاشتراك',
     ],
 ];

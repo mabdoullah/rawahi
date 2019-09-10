@@ -168,7 +168,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    {{-- <div class="col-md-6">
+                                    <div class="col-md-6">
                                         <label>رقم السفير</label>
                                         <input name="embassador_id"  type="number" class="form-control filter-input"
                                             placeholder="رقم السفير " value="{{ old('embassador_id')}}">
@@ -178,7 +178,7 @@
                                                    </span>
                                                @endif
 
-                                    </div> --}}
+                                    </div>
 
                                     <div class="col-md-6">
                                         <label>اسم السفير</label>
