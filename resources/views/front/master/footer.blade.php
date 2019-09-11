@@ -87,6 +87,9 @@
       </div>
   </div>
   <!--Footer ends-->
+  <!-- Scroll to top starts-->
+  <span class="scrolltotop"><i class="ion-arrow-up-c"></i></span>
+  <!-- Scroll to top ends-->
   <!--Scripts starts-->
   <!--plugin js-->
   <script src="{{ asset('front/js/plugin.js') }}"></script>

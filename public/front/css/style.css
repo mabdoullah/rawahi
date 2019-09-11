@@ -11,11 +11,11 @@
 /*-----------------------------------------------------------
     1  General Styles
     2  Typography
-    3  Buttons & Links 
+    3  Buttons & Links
     4  Fixed Header
     5  Menu
     6  Hero Area
-    7  Breadcrumb 
+    7  Breadcrumb
     8  Catagory Box
     9  Work Proces
     10 Popular category
@@ -48,12 +48,12 @@
     33 view page
     34 Profile
     35 Responsive
-    
+
 -------------------------------------------------------------*/
 
 
 /*-----------------------------------------------------------
-            General Styles 
+            General Styles
 -------------------------------------------------------------*/
 
 body {
@@ -704,7 +704,7 @@ section.coupon {
 
 
 /*-----------------------------------------------------------
-                    Typography 
+                    Typography
 -------------------------------------------------------------*/
 
 body {
@@ -1383,7 +1383,7 @@ a.btn.v1.active
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 999;
+    z-index: 1002;
     transition: 0.7s;
 }
 
@@ -2594,7 +2594,7 @@ a.btn.v1.active
 }
 
 /*--------------------------------------------
-            Popular category 
+            Popular category
 ----------------------------------------------*/
 .popular-catagory-content {
     position: relative;
@@ -2686,7 +2686,7 @@ a.btn.v1.active
 }
 
 /*------------------------------------------
-       Discount Coupon 
+       Discount Coupon
 --------------------------------------------*/
 .coupon-wrap .swiper-wrapper {
     padding-bottom: 10px;
@@ -3276,7 +3276,7 @@ a.btn.v1.active
 }
 
 /*----------------------------------------
-            Call to Action 
+            Call to Action
 ----------------------------------------*/
 .call-to-action {
     position: relative;
@@ -3925,7 +3925,7 @@ a.btn.v1.active
 
 
 /*------------------------------------------------
-                     Blog 
+                     Blog
 --------------------------------------------------*/
 
 .single-blog-item.v1 {
@@ -4288,7 +4288,7 @@ ul.icon li::before {
 }
 
 /*-------------------------------------------
-             Filter Listing 
+             Filter Listing
 --------------------------------------------*/
 .range-text {
     line-height: 39px;
@@ -6986,7 +6986,7 @@ input[type="radio"] {
 
 }
 
-/* ----------------------------------------------------------------- 
+/* -----------------------------------------------------------------
                          9. COLOR SWITCHER
 ------------------------------------------------------------------*/
 
@@ -8542,6 +8542,3 @@ th,td{
     }
 
 }*/
-
-
-

@@ -76,14 +76,14 @@
                 {{ session()->get('success') }}
                 </div>
               @endif
-                
-              
+
+
               <div class="tab-content mar-tb-30 add_list_content">
 
                     <div class="tab-pane fade {{ session('activeTab') == ''  ? "show active" : "" }}" id="general_info">
 
                         <h4> <i class="ion-ios-information"></i> بيانات الشريك:</h4>
-                                  
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -99,7 +99,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    
+
                                     <label>الفئة</label>
                                     <div  tabindex="0"><span
                                             class="current"></span>
@@ -273,9 +273,9 @@
                                                 @foreach ($Cities as $City)
                                                 <option class="option">{{$City->name}}</option>
                                                 @endforeach
-                                             
-                                             
- 
+
+
+
                                          </select>
                                          @if( $errors->has( 'city' ) )
                                          <span class="help-block text-danger">
@@ -795,9 +795,6 @@
 </form>
 </div>
 <!--Add Listing ends-->
-<!-- Scroll to top starts-->
-<span class="scrolltotop"><i class="ion-arrow-up-c"></i></span>
-<!-- Scroll to top ends-->
 </div>
 <!--Page Wrapper ends-->
 
