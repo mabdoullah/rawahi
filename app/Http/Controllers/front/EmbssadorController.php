@@ -44,8 +44,8 @@ class EmbssadorController extends Controller
       $validator = Validator::make($request->all(), [
                   'first_name' => 'required|max:18',
                   'second_name' => 'required|max:18',
-                  'email' => 'required|email|unique:embassadors,email',
-                  'phone' => 'required|regex:/(01)[0-9]{9}/|unique:embassadors,phone',
+                  'email' => 'required|email|'.unique_validate('email'),
+                  'phone' => 'required|regex:/(01)[0-9]{9}/|'.unique_validate('phone'),
                   'city' => 'required|exists:cities,id',
                   'birth_date' => 'date|before:-18 years|required',
                   'password' => 'min:8|required_with:confirm_password|same:confirm_password',

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 use App\Partner;
+use App\City;
+
 
 class PartnerController extends Controller
 {
@@ -29,17 +31,18 @@ class PartnerController extends Controller
     public function create()
     {
         $partnersTypesArray= partnersTypesArray();
-        return view('front.partners.registration-form',compact('partnersTypesArray'));
+        $Cities =City::where('country_id',191)->get("name");
+        return view('front.partners.registration-form',compact('partnersTypesArray' ,'Cities'));
     }
 
     public function store(Request $request)
     {
             // first tab
             $validator = Validator::make($request->all(), [
-                'embassador_id' => 'required|unique:partners,embassador_id|max:255',
+                // 'embassador_id' => 'required|unique:partners,embassador_id|max:255',
                 'services' => 'required',
                 'legal_name' => ' required |max:255',
-                'email' => 'required|email|unique:partners,email',
+                'email' => 'required|email|'.unique_validate('email'),
                 'subscription_type' => 'required',
 
             ]);
@@ -67,7 +70,7 @@ class PartnerController extends Controller
 
             // third tab
             $validator = Validator::make($request->all(), [
-                'phone' => 'required|numeric|min:11|unique:partners,phone',
+                'phone' => 'required|regex:/(01)[0-9]{9}/|'.unique_validate('phone'),
 
             ]);
 
@@ -92,7 +95,7 @@ class PartnerController extends Controller
             $file->move($destinationPath, $fileName);
             $partner->image = $fileName;
         }
-
+        // $partnar->embassador_id=1; //stistic embassador_id will change
         $partner->save();
 
         return redirect()->route('partner.create')->with('success', 'تم التسجيل بنجاح');
