@@ -157,7 +157,7 @@
     <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-lg">
         <form>
             <!--begin: Head -->
-<div class="kt-head kt-head--skin-dark kt-head--fit-x kt-head--fit-b">
+<div class="kt-head kt-head--skin-dark kt-head--fit-x kt-head--fit-b" style="background-image: url({{asset('admin/media/misc/bg-1.jpg')}})">
     <h3 class="kt-head__title">
         User Notifications
         &nbsp;
@@ -557,7 +557,7 @@
     <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
         <form>
             <!--begin: Head -->
-<div class="kt-head kt-head--skin-dark" >
+<div class="kt-head kt-head--skin-dark" style="background-image: url({{asset('admin/media/misc/bg-1.jpg')}})">
     <h3 class="kt-head__title">
         User Quick Actions
         <span class="kt-space-15"></span>
@@ -641,7 +641,7 @@
     <form>
         <!-- begin:: Mycart -->
 <div class="kt-mycart">
-        <div class="kt-mycart__head kt-head" >
+        <div class="kt-mycart__head kt-head" style="background-image: url({{asset('admin/media/misc/bg-1.jpg')}});">
         <div class="kt-mycart__info">
             <span class="kt-mycart__icon"><i class="flaticon2-shopping-cart-1 kt-font-success"></i></span>
             <h3 class="kt-mycart__title">My Cart</h3>
