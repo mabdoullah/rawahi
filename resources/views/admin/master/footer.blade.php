@@ -23,23 +23,7 @@
 		<i class="fa fa-arrow-up"></i>
 </div>
 <!-- end::Scrolltop -->
-    <!-- begin::Sticky Toolbar -->
-<ul class="kt-sticky-toolbar" style="margin-top: 30px;">
-	<li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--success" id="kt_demo_panel_toggle" data-toggle="kt-tooltip"  title="Check out more demos" data-placement="right">
-		<a href="#" class=""><i class="flaticon2-drop"></i></a>
-	</li>
-	<li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--brand" data-toggle="kt-tooltip" title="Layout Builder" data-placement="left">
-        		<a href="https://keenthemes.com/metronic/preview/demo1/builder.html" target="_blank"><i class="flaticon2-gear"></i></a>
-	</li>
-	<li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--warning" data-toggle="kt-tooltip" title="Documentation" data-placement="left">
-		<a href="https://keenthemes.com/metronic/?page=docs" target="_blank"><i class="flaticon2-telegram-logo"></i></a>
-	</li>
-
-	<li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--danger" id="kt_sticky_toolbar_chat_toggler" data-toggle="kt-tooltip" title="Chat Example" data-placement="left">
-		<a href="#" data-toggle="modal" data-target="#kt_chat_modal"><i class="flaticon2-chat-1"></i></a>
-	</li>
-</ul>
-<!-- end::Sticky Toolbar -->
+    
 
 <!--Begin:: Chat-->
 <div class="modal fade- modal-sticky-bottom-right" id="kt_chat_modal" role="dialog" data-backdrop="false">
@@ -258,7 +242,6 @@
 <script src="{{asset('admin/vendors/general/popper.js/dist/umd/popper.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/general/bootstrap/dist/js/bootstrap.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/general/moment/min/moment.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/tooltip.js/dist/umd/tooltip.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/general/perfect-scrollbar/dist/perfect-scrollbar.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/general/sticky-js/dist/sticky.min.js')}}" type="text/javascript"></script>
 <!--end:: Global Mandatory Vendors -->
@@ -278,11 +261,6 @@
 <script src="{{asset('admin/vendors/general/bootstrap-switch/dist/js/bootstrap-switch.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/custom/js/vendors/bootstrap-switch.init.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/general/select2/dist/js/select2.full.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/ion-rangeslider/js/ion.rangeSlider.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/handlebars/dist/handlebars.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/inputmask/dist/jquery.inputmask.bundle.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/inputmask/dist/inputmask/inputmask.date.extensions.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/inputmask/dist/inputmask/inputmask.numeric.extensions.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/general/owl.carousel/dist/owl.carousel.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/general/bootstrap-markdown/js/bootstrap-markdown.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/custom/js/vendors/bootstrap-markdown.init.js')}}" type="text/javascript"></script>
@@ -294,11 +272,11 @@
 <script src="{{asset('admin/vendors/general/dual-listbox/dist/dual-listbox.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/general/morris.js/morris.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/custom/vendors/bootstrap-session-timeout/dist/bootstrap-session-timeout.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/custom/vendors/jquery-idletimer/idle-timer.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/waypoints/lib/jquery.waypoints.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/general/jquery.repeater/src/lib.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/general/jquery.repeater/src/jquery.input.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/general/jquery.repeater/src/repeater.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin/vendors/general/ion-rangeslider/js/ion.rangeSlider.js')}}" type="text/javascript"></script>
+
 <!--end:: Global Optional Vendors -->
 
 <!--begin::Global Theme Bundle(used by all pages) -->

@@ -36,9 +36,9 @@
 <link href="{{asset('admin/vendors/general/dual-listbox/dist/dual-listbox.rtl.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('admin/vendors/general/morris.js/morris.rtl.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('admin/vendors/custom/vendors/line-awesome/css/line-awesome.css')}}" rel="stylesheet" type="text/css" />
-<link href="{{asset('admin/vendors/custom/vendors/flaticon/flaticon.css')}}" rel="stylesheet" type="text/css" />
-<link href="{{asset('admin/vendors/custom/vendors/flaticon2/flaticon.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('admin/vendors/general/@fortawesome/fontawesome-free/css/all.min.rtl.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('admin/vendors/general/ion-rangeslider/css/ion.rangeSlider.rtl.css')}}" rel="stylesheet" type="text/css" />
+
 <!--end:: Global Optional Vendors -->
 
 <!--begin::Global Theme Styles(used by all pages) -->
