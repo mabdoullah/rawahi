@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -19,8 +20,8 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        // $partnar = Partner::all();
-        // return view('Partner')->with("partners",$partnar);
+        $partners = DB::table('partners')->paginate(5);
+        return view('front.partners.index',['partners' => $partners]);
     }
 
     /**
@@ -32,7 +33,7 @@ class PartnerController extends Controller
     {
         $partnersTypesArray= partnersTypesArray();
         $Cities =City::where('country_id',191)->get("name");
-        return view('front.partners.registration-form',compact('partnersTypesArray' ,'Cities'));
+        return view('front.partners.create',compact('partnersTypesArray' ,'Cities'));
     }
 
     public function store(Request $request)
