@@ -76,14 +76,14 @@
                 {{ session()->get('success') }}
                 </div>
               @endif
-                
-              
+
+
               <div class="tab-content mar-tb-30 add_list_content">
 
                     <div class="tab-pane fade {{ session('activeTab') == ''  ? "show active" : "" }}" id="general_info">
 
                         <h4> <i class="ion-ios-information"></i> بيانات الشريك:</h4>
-                                  
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -99,7 +99,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    
+
                                     <label>الفئة</label>
                                     <div  tabindex="0"><span
                                             class="current"></span>
@@ -189,8 +189,8 @@
                                             placeholder="this must be auto fill based on the ID">
                                     </div>
                                 </div>
-                                  
-                           
+
+
                                 <div class="col-md-6">
                                     <div class="form-group {{ $errors->has( 'password' ) ? 'has-error' : '' }}">
                                         <label>  كلمه السر </label>
@@ -214,7 +214,7 @@
                                     </div>
                                 </div>
 
-                               
+
                                     <div class="col-md-4">
                                         <a href="javascript:;"  class="btn v7 mar-top-20 next">حفظ ومتابعة</a>
                                     </div>
@@ -254,7 +254,7 @@
                     <div class="tab-pane fade {{ session('activeTab') == 'tab3'  ? "show active" : "" }}" id="location">
                         <h4><i class="ion-ios-location"></i> الموقع وبيانات الاتصال:</h4>
                         <div class="row">
-                            
+
                                 {{-- <div class="form-group">
                                     <label>اختر الدولة</label>
                                     <div  tabindex="0"><span
@@ -284,9 +284,9 @@
                                                 @foreach ($Cities as $City)
                                                 <option class="option">{{$City->name}}</option>
                                                 @endforeach
-                                             
-                                             
- 
+
+
+
                                          </select>
                                          @if( $errors->has( 'city' ) )
                                          <span class="help-block text-danger">
@@ -313,8 +313,8 @@
                                        @endif
                                 </div>
                             </div>
-                           
-                        
+
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>الرمز البريدي</label>
@@ -362,14 +362,14 @@
                                     <input required type="text" class="form-control filter-input">
                                 </div>
                             </div> -->
-                            
+
                             <div class="add-btn">
                                     <a href="javascript:;" class="btn v8 mar-top-20 previous">الخطوه السابقه</a>
                                     <a href="javascript:;" class="btn v8 mar-top-20 next">حفظ ومتابعة</a>
                             </div>
-                       
+
                         </div>
-                    
+
 
                     <div class="tab-pane fade {{ session('activeTab') == 'tab4'  ? "show active" : "" }}" id="open_time">
                         <h4><i class="ion-clock"></i> ساعات العمل:</h4>
@@ -843,12 +843,11 @@
 
 
 <!--Scripts ends-->
-<script
-src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyCYFTtfLWhG7EDk8aoRiwpTek24HLJ38jQ&amp;libraries=places&amp;callback=initAutocomplete') }}"></script>
+
 
     @endsection
 
-    
+
 
     @push('jqueryCode')
 
