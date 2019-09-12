@@ -21,7 +21,7 @@
                                     </li>
                                     <li class="d-lg-none"><a class="btn v1" href="{{route('partner.create')}}">إضافة شريك
                                             <i class="ion-plus-round"></i></a></li>
-                                    <li class="d-lg-none"><a class="btn v1 active" href="{{route('embssador.create')}}"> تسجيل سفير
+                                    <li class="d-lg-none"><a class="btn v1 active" href="{{route('embassador.create')}}"> تسجيل سفير
                                             <i class="ion-plus-round"></i></a></li>
                                 </ul>
                             </div>
@@ -34,7 +34,7 @@
                         <div class="add-list float-left">
                             <a class="btn v8" href="{{route('partner.create')}}">إضافة شريك <i
                                     class="ion-plus-round"></i></a>
-                            <a class="btn v8 active" href="{{route('embssador.create')}}">  تسجيل سفير <i
+                            <a class="btn v8 active" href="{{route('embassador.create')}}">  تسجيل سفير <i
                                     class="ion-plus-round"></i></a>
                         </div>
 

@@ -13,7 +13,7 @@
 
 // Asmaa
 Route::resource("/","front\HomeController");
-Route::resource("embssador","front\EmbssadorController");
+Route::resource("embassador","front\EmbassadorController");
 // Route::get('/getcities/{id}','front\EmbssadorController@getcities')->name('getcities');
 // mohamed
 Route::resource("partner","front\PartnerController");
