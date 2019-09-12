@@ -5,7 +5,6 @@
     <!--Page Wrapper starts-->
 
               <!-- begin:: Content -->
-<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
 <div class='row'>
   @if(session()->has('master_error'))
   <div class="alert alert-danger text-center" role="alert">
@@ -147,7 +146,6 @@
   <!--end::Form-->
 </div>
 <!--end::Portlet-->
-</div>
 </div>
 </div>
 @endsection

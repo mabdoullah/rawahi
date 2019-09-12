@@ -13,7 +13,9 @@
         <!--header starts-->
         @include('admin.master.header')
         <!--Header ends-->
+        <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
         @yield('content')
+        </div>
         <!--Footer Starts-->
         @include('admin.master.footer')
         <!--Footer ends-->
