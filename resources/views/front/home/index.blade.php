@@ -1,22 +1,11 @@
 @extends('front.master.app')
 
 @section('content')
-
-
-<!--Preloader starts-->
-  <div class="preloader js-preloader">
-      <div class="dots">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-      </div>
-  </div>
-  <!--Preloader ends-->
         <!--Hero section starts-->
         <div class="video-area v1">
             <div class="video-container">
                 <div class="overlay op-5"></div>
-                 <div id="video-wrapper" style="background-image: url(front/images/header/video-bg.jpg)"> </div> 
+                 <div id="video-wrapper" style="background-image: url(front/images/header/video-bg.jpg)"> </div>
                <a class="player" data-property="{videoURL:'https://youtu.be/6JBrppVIvi8'}"></a>
                 <div class="container video-content">
                     <div class="row">

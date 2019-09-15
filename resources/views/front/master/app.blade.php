@@ -12,6 +12,7 @@
         <!--Header ends-->
         @yield('content')
         <!--Footer Starts-->
+    </div>
         @include('front.master.footer')
         <!--Footer ends-->
 </body>

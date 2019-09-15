@@ -3,7 +3,7 @@
 @section('content')
 
     <!--Page Wrapper starts-->
-    <div class="page-wrapper fixed-footer">
+
         <!--Breadcrumb section starts-->
         <div class="breadcrumb-section" style="background-image: url({{asset('front/images/breadcrumb/breadcrumb-1.jpg')}})">
             <div class="overlay op-5"></div>
@@ -168,7 +168,7 @@
         </div>
         <!--Add Listing ends-->
 
-    </div>
+    
     <!--Page Wrapper ends-->
 
 @endsection
