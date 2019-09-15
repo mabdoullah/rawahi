@@ -63,12 +63,12 @@
                                            <td>{{$embassador->city_name}}</td>
                                            <td>
                                              <!-- edit -->
-                                             <a class="btn v8 view-buttons" href="{{route('embassador.edit',$embassador->embassador_id)}}"> تعديل <iclass="icofont-edit"></i></a>
+                                             <a class="btn v8 view-buttons" href="{{route('embassador.edit',$embassador->embassador_id)}}"> تعديل <i class="icofont-edit"></i></a>
                                              <!-- show -->
                                              <input type="hidden" id='embassador_id' name='embassador_id' value="{{$embassador->embassador_id}}">
-                                             <a type="button" id ="show_button" class="btn v8 view-buttons"  data-toggle="modal"data-target="#exampleModal"   href="{{route('embassador.show',$embassador->embassador_id)}}"> عرض <iclass="icofont-eye-alt"></i></a>
+                                             <a type="button" id ="show_button" class="btn v8 view-buttons"  data-toggle="modal"data-target="#exampleModal"   href="{{route('embassador.show',$embassador->embassador_id)}}"> عرض <i class="icofont-eye-alt"></i></a>
                                                 <!-- delete -->
-                                                <button  class="v8 btn" data-toggle="modal" data-embassadorid="{{$embassador->embassador_id}}" data-target="#DeleteModal" > حذف<i class="icofont-ui-delete"></i></button>
+                                                <button  class="v8 btn view-buttons" data-toggle="modal" data-embassadorid="{{$embassador->embassador_id}}" data-target="#DeleteModal" > حذف<i class="icofont-ui-delete"></i></button>
                                            </td>
 
                                        </tr>
@@ -80,27 +80,28 @@
 
 
                               <!-- start delete modal -->
-                              <div id="DeleteModal" class="modal fade text-danger" role="dialog">
+                              <div id="DeleteModal" class="modal fade " role="dialog" >
                                  <div class="modal-dialog ">
                                    <!-- Modal content-->
                                    <form action="{{route('embassador.destroy','default')}}" id="deleteForm" method="post">
-                                       <div class="modal-content">
-                                           <div class="modal-header bg-danger">
+                                       <div class="modal-content ">
+                                           <div class="modal-header">
+                                        
+                                               <h5 class="modal-title "> تاكيد الحذف</h5>
                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                               <h4 class="modal-title text-center">DELETE CONFIRMATION</h4>
                                            </div>
                                            <div class="modal-body">
                                                {{ csrf_field() }}
                                                {{ method_field('DELETE') }}
-                                               <p class="text-center">Are You Sure Want To Delete ?</p>
+                                               <p class="text-center">هل انت متاكد ؟</p>
                                                <input type="hidden" id='delete_id' name='delete_id' value="">
 
                                            </div>
                                            <div class="modal-footer">
-                                               <center>
-                                                   <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
-                                                   <button type="submit" name="" class="btn btn-danger" data-dismiss="modal" onclick="formSubmit()">Yes, Delete</button>
-                                               </center>
+                                               <div>
+                                                   <button type="submit" name="" class="btn btn-secondary" data-dismiss="modal" onclick="formSubmit()">نعم</button>
+                                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
+                                               </div>
                                            </div>
                                        </div>
                                    </form>
