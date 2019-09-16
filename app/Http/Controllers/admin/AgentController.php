@@ -43,7 +43,7 @@ class AgentController extends Controller
       $validator = Validator::make($request->all(), [
                   'name' => 'required|max:18',
                   'email' => 'required|email|'.unique_validate('email'),
-                  'phone' => 'required|regex:/(01)[0-9]{9}/|'.unique_validate('phone'),
+                  'phone' => 'required|regex:/^[0-9]{10}$/|'.unique_validate('phone'),
                   'city' => 'required|exists:cities,id',
                   'birth_date' => 'date|before:-18 years|required',
                   'password' => 'min:8|required_with:confirm_password|same:confirm_password',
