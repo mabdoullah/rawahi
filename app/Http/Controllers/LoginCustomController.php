@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\front;
+namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ class LoginCustomController extends Controller
 {
     
 	public function login(){
-		return partnerUser();
+		
 		return view('front.login.login');
 
 	}
