@@ -4,7 +4,7 @@
 
     <!--Page Wrapper starts-->
         <!--Breadcrumb section starts-->
-        <div class="breadcrumb-section" style="background-image: url({{asset('front/images/breadcrumb/breadcrumb-1.jpg')}})">
+        <div class="breadcrumb-section" >
             <div class="overlay op-5"></div>
             <div class="container">
                 <div class="row align-items-center  pad-top-80">
@@ -26,7 +26,7 @@
         </div>
         <!--Breadcrumb section ends-->
         <!--Add Listing starts-->
-        <div class="list-details-section section-padding add_list pad-top-90">
+        <div class="list-details-section section-padding add_list pad-top-50">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

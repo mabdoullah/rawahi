@@ -5,29 +5,25 @@
     <!--Page Wrapper starts-->
 
         <!--Breadcrumb section starts-->
-        <div class="breadcrumb-section" style="background-image: url({{asset('front/images/breadcrumb/breadcrumb-1.jpg')}})">
+        <div class="breadcrumb-section" >
             <div class="overlay op-5"></div>
             <div class="container">
                 <div class="row align-items-center  pad-top-80">
-                    <div class="col-md-6 col-12">
-                        <div class="breadcrumb-menu text-left sm-left">
+                    <div class="col-12">
+                        <div class="breadcrumb-menu text-center">
                             <ul>
                                 <li class="active"> <a href="{{route('index')}}">الرئيسية</a> </li>
+                                <li> <h2 class="page-title ">  بيانات السفير</h2></li>
 
                             </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12">
-                        <div class="breadcrumb-menu">
-                            <h2 class="page-title text-right">تعديل  بيانات السفير</h2>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!--Breadcrumb section ends-->
-        <!--Add Listing starts-->
-        <div class="list-details-section section-padding add_list pad-top-90">
+        <!--Add embassadors starts-->
+        <div class="list-details-section section-padding add_list pad-top-50">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -182,7 +178,7 @@
                                     </div>
 @endif
                                    <div class="col-md-4">
-                                       <button type="submit"  class="btn v7"> حفظ التعديلات </button>
+                                       <button type="submit"  class="btn v7"> حفظ  </button>
                                    </div>
                                </form>
 
@@ -193,7 +189,7 @@
                 </div>
             </div>
         </div>
-        <!--Add Listing ends-->
+        <!--Add embassadors ends-->
 
 
     <!--Page Wrapper ends-->

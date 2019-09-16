@@ -2,7 +2,7 @@
 
 @section('content')
         <!--Breadcrumb section starts-->
-        <div class="breadcrumb-section" style="background-image: url(images/breadcrumb/breadcrumb-1.jpg)">
+        <div class="breadcrumb-section" >
             <div class="overlay op-5"></div>
             <div class="container-fluid">
                 <div class="row align-items-center  pad-top-80">
