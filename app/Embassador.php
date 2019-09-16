@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Embassador extends Authenticatable
 {
     use Notifiable;
+    protected $guard = 'embassador';
 
     /**
      * The attributes that are mass assignable.
