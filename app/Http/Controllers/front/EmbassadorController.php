@@ -78,6 +78,10 @@ class embassadorController extends Controller
         $embassador->agent_id = 1; //get it from auth
         $embassador->remember_token = $request->_token;
         $save_embassador=$embassador->save();
+        $id=$embassador->id;
+        $embassador_id=Embassador::where('id',$id)->select('id','generate_id')->first();
+        $embassador_id->generate_id=$id;
+        $embassador_id->save();
         if($save_embassador){
                 return redirect('embassador')->with('success', 'تم تسجيل سفير بنجاح');
             }
