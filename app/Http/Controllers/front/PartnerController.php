@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -19,8 +20,8 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        // $partnar = Partner::all();
-        // return view('Partner')->with("partners",$partnar);
+        $partners = DB::table('partners')->paginate(5);
+        return view('front.partners.index',['partners' => $partners]);
     }
 
     /**
@@ -32,7 +33,7 @@ class PartnerController extends Controller
     {
         $partnersTypesArray= partnersTypesArray();
         $Cities =City::where('country_id',191)->get("name");
-        return view('front.partners.registration-form',compact('partnersTypesArray' ,'Cities'));
+        return view('front.partners.create',compact('partnersTypesArray' ,'Cities'));
     }
 
     public function store(Request $request)
@@ -42,7 +43,7 @@ class PartnerController extends Controller
                 // 'embassador_id' => 'required|unique:partners,embassador_id|max:255',
                 'services' => 'required',
                 'legal_name' => ' required |max:255',
-                'email' => 'required|email|unique:partners,email',
+                'email' => 'required|email|'.unique_validate('email'),
                 'subscription_type' => 'required',
 
             ]);
@@ -51,7 +52,7 @@ class PartnerController extends Controller
                 return redirect('partner/create')
                     ->withErrors($validator)
                     ->withInput()
-                    ->with('master_error', 'please fix error in below!');
+                    ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
             }
 
 
@@ -65,12 +66,12 @@ class PartnerController extends Controller
                 return redirect('partner/create')
                     ->withErrors($validator)
                     ->withInput()
-                    ->with('master_error', 'please fix error in below!');
+                    ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
             }
 
             // third tab
             $validator = Validator::make($request->all(), [
-                'phone' => 'required|numeric|min:11|unique:partners,phone',
+                'phone' => 'required|regex:/(01)[0-9]{8}/|'.unique_validate('phone'),
 
             ]);
 
@@ -79,10 +80,10 @@ class PartnerController extends Controller
                 return redirect('partner/create')
                     ->withErrors($validator)
                     ->withInput()
-                    ->with('master_error', 'please fix error in below!');
+                    ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
             }
 
-            
+
 
 
         $partner = new Partner($request->all());
@@ -95,10 +96,10 @@ class PartnerController extends Controller
             $file->move($destinationPath, $fileName);
             $partner->image = $fileName;
         }
-        $partnar->embassador_id=1; //stistic embassador_id will change
+        // $partnar->embassador_id=1; //stistic embassador_id will change
         $partner->save();
 
-        return redirect()->route('partner.create')->with('success', 'registeration successfull');
+        return redirect()->route('partner.create')->with('success', 'تم التسجيل بنجاح');
     }
 
     /**

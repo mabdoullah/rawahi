@@ -305,28 +305,28 @@
 
                 let lat = marker.getPosition().lat(),
                     lng = marker.getPosition().lng();
-
                     
                 
                 var latlng = new google.maps.LatLng(lat,lng);
-                geocoder.geocode({'latLng' : latlng},function (result, status) {
+                
+                geocoder.geocode({'latLng' : latlng},function (results, status) {
 
                     console.log( status,google.maps.GeocoderStatus  );
-
+                    
                     if (status == google.maps.GeocoderStatus.OK) {
-                        if (results[1]) {
-                            map.setZoom(11);
-                            marker = new google.maps.Marker({
-                                position: latlng,
-                                map: map
-                            });
-                            infowindow.setContent(results[1].formatted_address);
-                            
-                            infowindow.open(map, marker);
+                        console.log(results[1],lat,lng );
+                        $('#lat').val(lat);
+                        $('#long').val(lng);
+                        $('#address').val(results[1].formatted_address);
+                        var addressC = results[1].address_components,
+                            i;
+                        for ( i =0;i<addressC.length;i++){
+                            if (results[1].address_components[i].types[0] === "postal_code") {
+                                $('#zipCode').val(results[1].address_components[i].long_name);
+                            }
                         }
-                    } else {
-                        alert("Geocoder failed due to: " + status);
-                    }
+                        
+                    } 
                 });
 
 

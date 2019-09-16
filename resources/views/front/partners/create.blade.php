@@ -1,8 +1,8 @@
-@extends('master.app')
+@extends('front.master.app')
 
 @section('content')
   <!--Breadcrumb section starts-->
-  <div class="breadcrumb-section" style="background-image: url(images/breadcrumb/breadcrumb-1.jpg)">
+  <div class="breadcrumb-section" style="background-image: url({{asset('front/images/breadcrumb/breadcrumb-1.jpg')}})">
     <div class="overlay op-5"></div>
     <div class="container">
         <div class="row align-items-center  pad-top-80">
@@ -76,14 +76,14 @@
                 {{ session()->get('success') }}
                 </div>
               @endif
-                
-              
+
+
               <div class="tab-content mar-tb-30 add_list_content">
 
                     <div class="tab-pane fade {{ session('activeTab') == ''  ? "show active" : "" }}" id="general_info">
 
                         <h4> <i class="ion-ios-information"></i> بيانات الشريك:</h4>
-                                  
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -99,7 +99,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    
+
                                     <label>الفئة</label>
                                     <div  tabindex="0"><span
                                             class="current"></span>
@@ -169,6 +169,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
+                                            <div class="form-group">
                                         <label>رقم السفير</label>
                                         <input name="embassador_id"  type="number" class="form-control filter-input"
                                             placeholder="رقم السفير " value="{{ old('embassador_id')}}">
@@ -179,12 +180,41 @@
                                                @endif
 
                                     </div>
+                                </div>
 
                                     <div class="col-md-6">
+                                    <div class="form-group">
                                         <label>اسم السفير</label>
                                         <input  type="text" class="form-control filter-input"
                                             placeholder="this must be auto fill based on the ID">
                                     </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="form-group {{ $errors->has( 'password' ) ? 'has-error' : '' }}">
+                                        <label>  كلمه السر </label>
+                                        <input required type="password" class="form-control filter-input"placeholder="كلمه السر" value="{{ old('password')}}" name="password">
+                                        @if( $errors->has( 'password' ) )
+                                              <span class="help-block text-danger">
+                                                  {{ $errors->first( 'password' ) }}
+                                              </span>
+                                          @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group {{ $errors->has( 'confirm_password' ) ? 'has-error' : '' }}">
+                                        <label> تاكيد كلمه السر </label>
+                                        <input required type="password" class="form-control filter-input"placeholder="تاكيد كلمه السر  " name="confirm_password" value="{{ old('confirm_password')}}">
+                                        @if( $errors->has( 'confirm_password' ) )
+                                              <span class="help-block text-danger">
+                                                  {{ $errors->first( 'confirm_password' ) }}
+                                              </span>
+                                          @endif
+                                    </div>
+                                </div>
+
+
                                     <div class="col-md-4">
                                         <a href="javascript:;"  class="btn v7 mar-top-20 next">حفظ ومتابعة</a>
                                     </div>
@@ -224,8 +254,8 @@
                     <div class="tab-pane fade {{ session('activeTab') == 'tab3'  ? "show active" : "" }}" id="location">
                         <h4><i class="ion-ios-location"></i> الموقع وبيانات الاتصال:</h4>
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
+
+                                {{-- <div class="form-group">
                                     <label>اختر الدولة</label>
                                     <div  tabindex="0"><span
                                             class="current"> </span>
@@ -233,9 +263,9 @@
                                            <option  selected disabled>اختر الدولة</option>
 
                                             <option class="option">السعودية</option>
-                                            <option class="option">الامارات</option>
-                                            <option class="option">الكويت</option>
-                                            <option class="option">مصر</li>
+                                            <option disabled>الامارات</option>
+                                            <option disabled>الكويت</option>
+                                            <option disabled>مصر</li>
 
                                         </select>
                                         @if( $errors->has( 'image' ) )
@@ -245,6 +275,25 @@
                                            @endif
                                     </div>
                                 </div>
+                            </div> --}}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>المدينة</label>
+                                    <select class="nice-select filter-input" name="city" value="{{old('city')}}">
+                                            <option  selected disabled>اختر المدينة </option>
+                                                @foreach ($Cities as $City)
+                                                <option class="option">{{$City->name}}</option>
+                                                @endforeach
+
+
+
+                                         </select>
+                                         @if( $errors->has( 'city' ) )
+                                         <span class="help-block text-danger">
+                                             {{ $errors->first( 'city' ) }}
+                                         </span>
+                                         @endif
+                            </div>
                             </div>
                             <div class="col-md-6">
                                 <div  class="form-group">
@@ -254,31 +303,37 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
+                                <div class="form-group mar-top-15">
+                                    <label>الجوال </label>
+                                    <input name="phone"  type="text" class="form-control filter-input" value="{{old('phone')}}">
+                                    @if( $errors->has( 'phone' ) )
+                                           <span class="help-block text-danger">
+                                               {{ $errors->first( 'phone' ) }}
+                                           </span>
+                                       @endif
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>المدينة</label>
-                                    <input  type="text" class="form-control filter-input"
-                                        placeholder="fdfssdfاختر المدينة">
-                                        <select class="nice-select filter-input" name="city" value="{{old('city')}}">
-                                                <option  selected disabled>اختر المدينة </option>
-                                                    @foreach ($Cities as $City)
-                                                    <option class="option">{{$City}}</option>
-                                                    @endforeach
-                                                 
-                                                 
-     
-                                             </select>
-                                             @if( $errors->has( 'city' ) )
-                                             <span class="help-block text-danger">
-                                                 {{ $errors->first( 'city' ) }}
-                                             </span>
-                                             @endif
+                                    <label>الرمز البريدي</label>
+                                    <input  type="number" id="zipCode" class="form-control filter-input"
+                                        placeholder="ex. 5858">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>الرمز البريدي</label>
-                                    <input  type="number" class="form-control filter-input"
-                                        placeholder="ex. 5858">
+                                    <label>خط الطول </label>
+                                    <input id="lat" required type="text" class="form-control filter-input"
+                                        placeholder="خط الطول ">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>خط العرض </label>
+                                    <input required type="text" id="long" class="form-control filter-input"
+                                        placeholder="خط العرض">
                                 </div>
                             </div>
                             <!-- <div class="col-md-6">
@@ -297,6 +352,7 @@
                                         placeholder="Map Latitude">
                                 </div>
                             </div> -->
+                        </div>
                             <div class="col-md-12 no-padding">
                                 <div id="map"></div>
                             </div>
@@ -306,23 +362,14 @@
                                     <input required type="text" class="form-control filter-input">
                                 </div>
                             </div> -->
-                            <div class="col-md-12">
-                                <div class="form-group mar-top-15">
-                                    <label>الجوال </label>
-                                    <input name="phone"  type="text" class="form-control filter-input" value="{{old('phone')}}">
-                                    @if( $errors->has( 'phone' ) )
-                                           <span class="help-block text-danger">
-                                               {{ $errors->first( 'phone' ) }}
-                                           </span>
-                                       @endif
-                                </div>
-                            </div>
+
                             <div class="add-btn">
                                     <a href="javascript:;" class="btn v8 mar-top-20 previous">الخطوه السابقه</a>
                                     <a href="javascript:;" class="btn v8 mar-top-20 next">حفظ ومتابعة</a>
                             </div>
+
                         </div>
-                    </div>
+
 
                     <div class="tab-pane fade {{ session('activeTab') == 'tab4'  ? "show active" : "" }}" id="open_time">
                         <h4><i class="ion-clock"></i> ساعات العمل:</h4>

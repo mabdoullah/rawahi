@@ -45,7 +45,9 @@
     30 Preloader
     31 Map marker
     32 Thank you page
-    33 Responsive
+    33 view page
+    34 Profile
+    35 Responsive
     
 -------------------------------------------------------------*/
 
@@ -1381,7 +1383,7 @@ a.btn.v1.active
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 999;
+    z-index: 1002;
     transition: 0.7s;
 }
 
@@ -2323,6 +2325,7 @@ a.btn.v1.active
     height: 300px;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    background-image: url(../images/breadcrumb/breadcrumb-1.jpg);
 }
 
 .page-title {
@@ -4986,8 +4989,19 @@ ul.icon li::before {
     margin-left: 5px;
 }
 
-.tab-pane.active {
+.tab-pane.active.show.profile {
     animation: slide-up 0.4s ease-out;
+    border: 1px solid #DDD;
+    padding: 5px 15px;
+}
+
+
+.tab-pane.active.show.profile > .row {
+    padding: 20px 0;
+}
+
+.tab-pane.active.show.profile > .row:not(:last-child) {
+    border-bottom: 1px solid #DDD;
 }
 
 .tab-pane {
@@ -7309,14 +7323,6 @@ span.infobox_rate {
         Thank you page
 -------------------------------------------*/
 
-.thank-page {
-    display: grid;
-    height: 100vh;
-}
-
-.thank-cell {
-    margin: auto
-}
 
 .thankYou-page {
     padding: 30px;
@@ -7325,18 +7331,183 @@ span.infobox_rate {
 
 }
 
-.thankYou-page .than-logo {
-    width: 40%;
-    display: block;
-    margin: 10px auto 50px;
-}
 .thankYou-page .thank-message i {
-    display: inherit;
-    font-size: 27px;
-    color: #01ff15;
+    display: inline;
+    font-size: 50px;
+    color: #FA8F1B;
+}
+
+.thankYou-page .thank-message label {
+    display: block
+}
+/*------------------------------------------
+                view page Css
+-------------------------------------------*/
+th,td{
+    text-align: center;
+}
+.profile-img{
+    max-width: 200px;
+    max-height: 200px;
+    margin: auto;
+}
+tr i{
+    font-size: 1.5em; 
+}
+
+tr button,tr a {
+    padding:3px !important;
+    border-radius: 5px !important;
+}
+
+.close{
+   color: #FA8F1B;
+   font-weight: bold;
+}
+
+.btn-secondary{
+    background-color: #FA8F1B;
+    border-color: #FA8F1B;
+}
+.btn-secondary:hover{
+    background-color: white;
+    color:black;
+    border-color:rgb(231, 231, 231);
+}
+
+.modal-footer{
+    justify-content: center !important;
+}
+.modal-header .modal-title{
+    color: #FA8F1B;
+    font-weight: bold;
+}
+
+.btn.view-buttons {
+    /* width: 40px; */
+    /* height: 40px; */
+    line-height: 32px;
+    text-align: center;
+    font-size: 16px;
+    padding: 0 6px !important;
+    margin :2px;
+}
+
+.btn.view-buttons i {
+    margin-right: 0;
+    font-size: 14px;
+}
+
+.view-page.tab-content  {
+    overflow: auto !important;
 }
 
 
+/*------------------------------------------
+                Profile Css
+-------------------------------------------*/
+
+
+.emp-profile{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: 70%;
+    height: 100%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.profile-head h5{
+    color: #333;
+}
+.profile-head h6{
+    color: #0062cc;
+}
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+.proile-rating{
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+.proile-rating span{
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+.profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
+}
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
+}
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+.profile-work ul{
+    list-style: none;
+}
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 300;
+    color: black;
+}
+
+.modal-dialog {
+    max-width: 850px !important;
+}
+
+.modal-header .close {
+    margin: -1rem auto -1rem -1rem;
+}
 /*------------------------------------------
                 Responsive Css
 -------------------------------------------*/

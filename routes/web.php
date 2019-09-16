@@ -11,23 +11,31 @@
 |
 */
 
-// Asmaa
-
 
 // Route::get('/getcities/{id}','front\EmbssadorController@getcities')->name('getcities');
-// mohamed
 
 Route::namespace('front')->group(function () {
     Route::resource("/","HomeController");
 
     Route::resource("embssador","EmbssadorController");
-    Route::resource("partner" ,"PartnerController");
-    
+    Route::resource("partners" ,"PartnerController");
+
+
+
     Route::get("login","LoginCustomController@login");
     Route::post("login","LoginCustomController@dologin");
     Route::any('logout','LoginCustomController@logout');
-    Route::any('admin/logout','LoginCustomController@logout');
+    
 });
 
+
+
+// Admin
+Route::group(['prefix' => 'admin'], function()
+{
+  Route::resource("home","admin\HomeController");
+  Route::resource("agent","admin\AgentController");
+  Route::any('logout','LoginCustomController@logout');
+});
 
 
