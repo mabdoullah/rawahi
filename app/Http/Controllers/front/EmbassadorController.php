@@ -19,11 +19,13 @@ class embassadorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {$show_embassador='';
+    {   $auth_user=1;
+        $show_embassador='';
         $all_embassdors_cities = DB::table('embassadors')
             ->join('cities', 'embassadors.city', '=', 'cities.id')
             ->select('embassadors.first_name','embassadors.email','embassadors.phone','embassadors.id as embassador_id','cities.name as city_name' )
-            ->orderBy('embassadors.id','desc')->get();
+            ->where('embassadors.agent_id',$auth_user)
+            ->orderBy('embassadors.id','desc')->paginate(10);
             return view('front.embassadors.index')->with('all_embassdors_cities', $all_embassdors_cities)->with('show_embassador',$show_embassador);
     }
 
@@ -35,7 +37,7 @@ class embassadorController extends Controller
     public function create()
     {
      $cities = City::where('country_id',191)->get();
-      return view('front.embassadors.create')->with('cities', $cities);
+      return view('front.embassadors.edit_add')->with('cities', $cities);
     }
 
     /**
@@ -51,7 +53,7 @@ class embassadorController extends Controller
                   'first_name' => 'required|max:18',
                   'second_name' => 'required|max:18',
                   'email' => 'required|email|'.unique_validate('email'),
-                  'phone' => 'required|regex:/(01)[0-9]{9}/|'.unique_validate('phone'),
+                  'phone' => 'required|regex:/(01)[0-9]{8}/|'.unique_validate('phone'),
                   'city' => 'required|exists:cities,id',
                   'birth_date' => 'date|before:-18 years|required',
                   'password' => 'min:8|required_with:confirm_password|same:confirm_password',
@@ -112,7 +114,7 @@ class embassadorController extends Controller
         { $agent_id=$embassador->agent_id;
           $auth_user=1; //come from auth_id
           if($agent_id==$auth_user){
-            return view('front.embassadors.edit')->with('cities', $cities)->with('embassador', $embassador);
+            return view('front.embassadors.edit_add')->with('cities', $cities)->with('embassador', $embassador);
           }
           else{
             return Redirect::back()->with('master_error', 'غير مسموح لك تعديل هذا السفير');
@@ -133,7 +135,7 @@ class embassadorController extends Controller
                   'first_name' => 'required|max:18',
                   'second_name' => 'required|max:18',
                   'email' => 'required|email|'.update_unique_validate('email',$id,'embassadors'),
-                  'phone' => 'required|regex:/(01)[0-9]{9}/|'.update_unique_validate('phone',$id,'embassadors'),
+                  'phone' => 'required|regex:/(01)[0-9]{8}/|'.update_unique_validate('phone',$id,'embassadors'),
                   'city' => 'required|exists:cities,id',
                   'birth_date' => 'date|before:-18 years|required',
                   ]);

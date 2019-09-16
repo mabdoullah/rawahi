@@ -71,7 +71,7 @@ class PartnerController extends Controller
 
             // third tab
             $validator = Validator::make($request->all(), [
-                'phone' => 'required|regex:/(01)[0-9]{9}/|'.unique_validate('phone'),
+                'phone' => 'required|regex:/(01)[0-9]{8}/|'.unique_validate('phone'),
 
             ]);
 

@@ -76,6 +76,7 @@
                                        @endforeach
                                    </tbody>
                                </table>
+                               {{ $all_embassdors_cities->links() }}
                                @endif
 
 
