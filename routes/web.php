@@ -24,7 +24,10 @@ Route::group(['prefix' => 'admin'], function()
 {
   Route::resource("home","admin\HomeController");
   Route::resource("agent","admin\AgentController");
+
   Route::resource("embassador","admin\EmbassadorController");
-  Route::get("search",'AgentController@search');
+  // Route::get("search",'AgentController@search');
+
+
 
 });

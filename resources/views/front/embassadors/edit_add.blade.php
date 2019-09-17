@@ -112,7 +112,7 @@
                                    <div class="col-md-6 ">
                                        <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
                                            <label>  رقم الجوال</label>
-                                           <input required dir='ltr' class="form-control filter-input"placeholder="رقم الجوال" name="phone" value="{{ old('phone') ?? $embassador->phone ?? null }}"  >
+                                           <input required dir='ltr' class="form-control filter-input text-left"placeholder="رقم الجوال" name="phone" value="{{ old('phone') ?? $embassador->phone ?? null }}"  >
                                            @if( $errors->has( 'phone' ) )
                                                  <span class="help-block text-danger">
                                                      {{ $errors->first( 'phone' ) }}
