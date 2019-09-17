@@ -78,17 +78,11 @@ class embassadorController extends Controller
         $embassador->agent_id = $auth_user; //get it from auth
         $embassador->remember_token = $request->_token;
         $save_embassador=$embassador->save();
-        $id=$embassador->id;
-        $embassador_id=Embassador::where('id',$id)->select('id','generate_id')->first();
-        $embassador_id->generate_id=$id;
-        $embassador_id->save();
         if($save_embassador){
 
           // dd($embassador->getGuard());
           // dd($save_embassador);
           // VerifyUserService::createUser($embassador,'embassador');
-
-
 
                 return redirect('embassador')->with('success', 'تم تسجيل سفير بنجاح');
             }
@@ -206,5 +200,12 @@ class embassadorController extends Controller
 
     }
 }
+    public function getcities($id)
+    {
+      // $code_country=Country::where("id",$id)->select('code_country')->first();
+      $cities=City::where("countryID",$id)->get();
+      // return response()->json(['cities'=>$cities,'code_country'=>$code_country]);
+      return response()->json($cities);
 
+    }
 }

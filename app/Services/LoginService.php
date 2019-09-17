@@ -13,10 +13,13 @@ class LoginService{
         
         $guardsAuthArray = config('auth.guards');
         
+        
+
         unset($guardsAuthArray['api']);
     
         $providers = config('auth.providers');
         
+        // dd($guardsAuthArray);
 
 		foreach ($guardsAuthArray as $guard => $value) {
             $model = $providers[$value['provider']]['model'];

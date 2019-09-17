@@ -24,6 +24,7 @@ class LoginCustomController extends Controller
 
 	public function dologin(Request $request , LoginService $LoginService){
 
+
 		
 		$validator = Validator::make($request->all(), 
               ['email'=> 'required|email','password'=>'required'])
