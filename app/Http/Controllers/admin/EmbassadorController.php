@@ -20,17 +20,18 @@ class EmbassadorController extends Controller
     
     public function index()
     {
-        {   $auth_user=1;
+        {   
+            // $auth_user=1;
             $show_embassador='';
             $all_embassdors_cities = DB::table('embassadors')
                 ->join('cities', 'embassadors.city', '=', 'cities.id')
-                ->select('embassadors.birth_date','embassadors.first_name','embassadors.second_name','embassadors.email','embassadors.phone','embassadors.id as embassador_id','cities.name as city_name' )
-                ->where('embassadors.agent_id',$auth_user)
+                ->join('agents', 'embassadors.agent_id', '=', 'agents.id')
+                ->select('agents.name as agent_name','embassadors.birth_date','embassadors.first_name','embassadors.second_name','embassadors.email','embassadors.phone','embassadors.id as embassador_id','cities.name as city_name','embassadors.agent_id as agent_id' )
                 ->orderBy('embassadors.id','desc')->paginate(2);
-
                 return view('admin.embassadors.index')
                 ->with('all_embassdors_cities', $all_embassdors_cities)
                 ->with('show_embassador',$show_embassador);
+                
         }
 
       
@@ -138,6 +139,7 @@ class EmbassadorController extends Controller
             'email' => 'required|email|'.update_unique_validate('email',$id,'embassadors'),
             'phone' => 'required|regex:/(01)[0-9]{8}/|'.update_unique_validate('phone',$id,'embassadors'),
             'city' => 'required|exists:cities,id',
+            // 'agent_name' => 'required|exists:agents,id',
             'birth_date' => 'date|before:-18 years|required',
             ]);
         if ($validator->fails()) {

@@ -39,6 +39,8 @@
           <th>الاميل</th>
           <th>رقم التليفون</th>
           <th> تاريخ الميلاد</th>
+          <th> اسم الشريك</th>
+
           <th colspan="2">العمليات</th>
 
         </tr>
@@ -52,6 +54,9 @@
           <td class="d-none d-lg-block">{{$embassador->email}}</td>
           <td>{{$embassador->phone}}</td>
           <td>{{$embassador->birth_date}}</td>
+          <td>{{$embassador->agent_name}}</td>
+
+
           <td>
             <a href="{{ route('embassador.edit', $embassador->embassador_id)}}" class="btn btn-primary">تعديل</a>
           </td>
@@ -77,7 +82,7 @@
     <div class="col-sm-12 col-md-5">
       <div class="col-sm-12 col-md-7 dataTables_pager">
         <div class="dataTables_length" id="kt_table_1_length">
-        {{ $all_embassdors_cities->onEachSide(1)->links() }}
+        {{ $all_embassdors_cities->onEachSide(50)->links() }}
 
         </div>
         <div class="dataTables_paginate paging_simple_numbers" id="kt_table_1_paginate">
