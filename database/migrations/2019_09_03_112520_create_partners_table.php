@@ -20,7 +20,6 @@ class CreatePartnersTable extends Migration {
 			$table->string('legal_name')->nullable();
 			$table->string('representative_name')->nullable();
 			$table->string('email')->unique();
-			$table->string('password')->nullable();
 			$table->string('phone')->unique()->nullable();
 			$table->string('phone_key')->nullable();
 			$table->string('image')->nullable();
