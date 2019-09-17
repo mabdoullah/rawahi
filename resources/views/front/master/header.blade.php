@@ -14,16 +14,20 @@
                                 <ul class="site-menu js-clone-nav d-none d-lg-block">
                                     <li class="has-children">
                                         <a href="{{route('index')}}">الرئيسية</a>
-
                                     </li>
-                                    <li class="has-children">
-                                        <a href="#">تسجيل الدخول</a>
+                                    <li class="has-children ">
+                                        <a  href="#">تسجيل الدخول</a>   
+                                        <ul class="dropdown">
+                                             <li><a href="#">رابط</a></li>
+                                             <li><a href="#">رابط</a></li>
+                                             <li><a href="#">رابط</a></li>
+                                        </ul>                                                                                                       
                                     </li>
                                     <li class="d-lg-none"><a class="btn v1" href="{{route('partner.create')}}">إضافة شريك
                                             <i class="ion-plus-round"></i></a></li>
                                     <li class="d-lg-none"><a class="btn v1 active" href="{{route('embassador.create')}}"> تسجيل سفير
                                             <i class="ion-plus-round"></i></a></li>
-                                </ul>
+                                </ul>                             
                             </div>
                         </nav>
                         <div class="d-lg-none sm-left">
