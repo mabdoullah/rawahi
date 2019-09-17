@@ -11,6 +11,7 @@
 |
 */
 
+
 // Asmaa
 Route::resource("/","front\HomeController");
 Route::resource("embassador","front\EmbassadorController");
@@ -20,12 +21,12 @@ Route::resource("partner","front\PartnerController");
 
 // Admin
 // Asmaa
-Route::group(['prefix' => 'admin'], function()
+Route::group(['prefix' => 'admin','namespace' =>'admin','as'=>'admin.' ], function()
 {
-  Route::resource("home","admin\HomeController");
-  Route::resource("agent","admin\AgentController");
+  Route::resource("home","HomeController");
+  Route::resource("agent","AgentController");
 
-  Route::resource("embassador","admin\EmbassadorController");
+  Route::resource("embassador","EmbassadorController");
   // Route::get("search",'AgentController@search');
 
 
