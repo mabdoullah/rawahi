@@ -6,9 +6,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Traits\VerifyUserTrait;
+
 class Embassador extends Authenticatable
 {
+    use VerifyUserTrait;
     use Notifiable;
+    protected $guard = 'embassador';
 
     /**
      * The attributes that are mass assignable.
@@ -38,4 +42,6 @@ class Embassador extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    
 }

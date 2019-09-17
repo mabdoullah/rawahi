@@ -42,7 +42,8 @@
             "database/factories"
         ],
         "files":[
-            "app/helpers/global_functions.php"
+            "app/helpers/global_functions.php",
+            "app/helpers/users_types.php"
         ]
 
        

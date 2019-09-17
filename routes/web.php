@@ -11,23 +11,39 @@
 |
 */
 
-// Asmaa
-Route::resource("/","front\HomeController");
-Route::resource("embassador","front\EmbassadorController");
+
 // Route::get('/getcities/{id}','front\EmbssadorController@getcities')->name('getcities');
-// mohamed
-Route::resource("partner","front\PartnerController");
 
 // Admin
-// Asmaa
-Route::group(['prefix' => 'admin'], function()
+Route::group(['prefix' => 'admin' , 'namespace'=>'admin' ,'as'=>'admin.' ], function()
 {
-  Route::resource("home","admin\HomeController");
-  Route::resource("agent","admin\AgentController");
-
-  Route::resource("embassador","admin\EmbassadorController");
-  // Route::get("search",'AgentController@search');
-
-
-
+  Route::resource("home","HomeController");
+  Route::resource("agent","AgentController");  
 });
+
+Route::namespace('front')->group(function () {
+    Route::resource("/","HomeController");
+
+    Route::middleware(['auth:agent'])->group(function () {
+        Route::resource("embassador","EmbassadorController");
+    });
+
+
+    Route::middleware(['auth:embassador'])->group(function () {
+        Route::resource("partner" ,"PartnerController");
+    });
+
+    
+    
+});
+
+
+
+
+
+
+Route::get("login","LoginCustomController@login");
+Route::post("login","LoginCustomController@dologin");
+Route::any('logout','LoginCustomController@logout');
+Route::any('admin/logout','LoginCustomController@logout');
+
