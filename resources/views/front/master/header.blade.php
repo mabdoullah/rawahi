@@ -23,20 +23,27 @@
                                         </a>
                                         <ul class="dropdown">
                                             <li><a href="{{url('logout')}}">تسجيل خروج</a></li>
-                                        </ul>                                                                                                       
+                                        </ul>
                                     </li>
 
                                     @else
                                         <li><a  href="{{url('login')}}">تسجيل الدخول</a></li>
                                     @endif
-                                    
-                                   
 
+
+                                    @if(embassadorUser())
                                     <li class="d-lg-none"><a class="btn v1" href="{{route('partner.create')}}">إضافة شريك
                                             <i class="ion-plus-round"></i></a></li>
+                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partner.index')}}">الشركاء
+                                    </a></li>
+                                    @endif
+                                    @if(agentUser())
                                     <li class="d-lg-none"><a class="btn v1 active" href="{{route('embassador.create')}}"> تسجيل سفير
                                             <i class="ion-plus-round"></i></a></li>
-                                </ul>                             
+                                    <li class="d-lg-none"><a class="btn v1 active" href="{{route('embassador.index')}}">السفراء
+                                              </a></li>
+                                    @endif
+                                </ul>
                             </div>
                         </nav>
                         <div class="d-lg-none sm-left">
@@ -48,12 +55,15 @@
                             @if(embassadorUser())
                                 <a class="btn v8" href="{{route('partner.create')}}">إضافة شريك <i
                                     class="ion-plus-round"></i></a>
+                                    <a class="btn v8" href="{{route('partner.index')}}">الشركاء </a>
                             @endif
                             @if(agentUser())
                                 <a class="btn v8" href="{{route('embassador.create')}}">  تسجيل سفير <i
                                 class="ion-plus-round"></i></a>
+                                <a class="btn v8" href="{{route('embassador.index')}}">  السفراء </a>
                             @endif
-                            
+
+
                         </div>
 
 
