@@ -99,7 +99,7 @@ class PartnerController extends Controller
 
         $partner = new Partner($request->all());
         $partner->image = '/public/images/' . $request->image;
-
+        $partner->password=bcrypt($request->password);
         if ($file = $request->hasFile('image')) {
             $file = $request->file('image');
             $fileName = rand() . '.' . $file->getClientOriginalExtension();
