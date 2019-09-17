@@ -54,7 +54,7 @@ class embassadorController extends Controller
                   'first_name' => 'required|max:18',
                   'second_name' => 'required|max:18',
                   'email' => 'required|email|'.unique_validate('email'),
-                  'phone' => 'required|regex:/(01)[0-9]{8}/|'.unique_validate('phone'),
+                  'phone' => 'required|regex:/^[0-9]{10}$/|'.unique_validate('phone'),
                   'city' => 'required|exists:cities,id',
                   'birth_date' => 'date|before:-18 years|required',
                   'password' => 'min:8|required_with:confirm_password|same:confirm_password',
@@ -79,6 +79,10 @@ class embassadorController extends Controller
         $embassador->agent_id = 1; //get it from auth
         $embassador->remember_token = $request->_token;
         $save_embassador=$embassador->save();
+        $id=$embassador->id;
+        $embassador_id=Embassador::where('id',$id)->select('id','generate_id')->first();
+        $embassador_id->generate_id=$id;
+        $embassador_id->save();
         if($save_embassador){
          
           // dd($embassador->getGuard());
@@ -143,7 +147,7 @@ class embassadorController extends Controller
                   'first_name' => 'required|max:18',
                   'second_name' => 'required|max:18',
                   'email' => 'required|email|'.update_unique_validate('email',$id,'embassadors'),
-                  'phone' => 'required|regex:/(01)[0-9]{8}/|'.update_unique_validate('phone',$id,'embassadors'),
+                  'phone' => 'required|regex:/^[0-9]{10}$/|'.update_unique_validate('phone',$id,'embassadors'),
                   'city' => 'required|exists:cities,id',
                   'birth_date' => 'date|before:-18 years|required',
                   ]);
@@ -191,12 +195,5 @@ class embassadorController extends Controller
 
     }
 }
-    public function getcities($id)
-    {
-      // $code_country=Country::where("id",$id)->select('code_country')->first();
-      $cities=City::where("countryID",$id)->get();
-      // return response()->json(['cities'=>$cities,'code_country'=>$code_country]);
-      return response()->json($cities);
-
-    }
+   
 }

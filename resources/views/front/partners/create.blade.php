@@ -2,22 +2,17 @@
 
 @section('content')
   <!--Breadcrumb section starts-->
-  <div class="breadcrumb-section" style="background-image: url({{asset('front/images/breadcrumb/breadcrumb-1.jpg')}})">
+  <div class="breadcrumb-section" >
     <div class="overlay op-5"></div>
     <div class="container">
         <div class="row align-items-center  pad-top-80">
 
-            <div class="col-md-6 col-12">
-                <div class="breadcrumb-menu text-left sm-right">
+            <div class=" col-12">
+                <div class="breadcrumb-menu text-center">
                     <ul>
                         <li class="active"><a href="#">الرئيسية</a></li>
-                        <li><a href="#">إضافة شريك</a></li>
+                        <li><h2 class="page-title ">إضافة شريك</h2></li>
                     </ul>
-                </div>
-            </div>
-            <div class="col-md-6 col-12">
-                <div class="breadcrumb-menu">
-                    <h2 class="page-title text-right">إضافة شريك</h2>
                 </div>
             </div>
         </div>
@@ -807,7 +802,7 @@
                                         placeholder="رابط التويتر">
                                 </div>
                             </div>
-                            <div class="col-md-6 text-left">
+                            <div class="col-12 ">
                                 <div class="res-box mar-top-10">
                                     <input  type="checkbox" tabindex="3" class="" name="remember"
                                         id="remember">
@@ -815,12 +810,12 @@
                                             والأحكام</a></label>
                                 </div>
                             </div>
-                            <div class="col-md-6 text-right sm-left">
+                            <div class="col-12">
 
-                                <a href="javascript:;" class="btn v8 previous">الخطوه السابقه</a>
+                                <a href="javascript:;" class="btn v8 previous mar-top-10">الخطوه السابقه</a>
 
                                 {{-- <button class="btn v8" type="submit">مراجعة</button> --}}
-                                <button type="submit" class="btn v8" >حفظ وتسجيل</button>
+                                <button type="submit" class="btn v8 mar-top-10" >حفظ وتسجيل</button>
                             </div>
                         </div>
                     </div>

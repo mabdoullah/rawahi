@@ -26,6 +26,7 @@ class CreateEmbassadorsTable extends Migration
           $table->string('password');
           $table->integer('agent_id');
           $table->boolean('verified')->default(false);
+          $table->string('generate_id')->unique()->nullable();
           $table->rememberToken();
           $table->timestamps();
         });
