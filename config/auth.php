@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'user',
         'passwords' => 'users',
     ],
 
@@ -36,7 +36,7 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'user' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
@@ -47,6 +47,10 @@ return [
         'agent' => [
             'driver' => 'session',
             'provider' => 'agents',
+        ],
+        'embassador' => [
+            'driver' => 'session',
+            'provider' => 'embassadors',
         ],
         'partner' => [
             'driver' => 'session',
@@ -89,6 +93,10 @@ return [
         'agents' => [
             'driver' => 'eloquent',
             'model' => App\Agent::class,
+        ],
+        'embassadors' => [
+            'driver' => 'eloquent',
+            'model' => App\Embassador::class,
         ],
         'partners' => [
             'driver' => 'eloquent',

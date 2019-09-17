@@ -46,21 +46,7 @@ class EmbassadorController extends Controller
             ->with('all_embassdors_cities', $all_embassdors_cities,'all_agent',$all_agent)
             ->with('show_embassador',$show_embassador);
             
-    
 
-    {   
-        // $auth_user=1;
-        $show_embassador='';
-        $all_embassdors_cities = DB::table('embassadors')
-            ->join('cities', 'embassadors.city', '=', 'cities.id')
-            ->join('agents', 'embassadors.agent_id', '=', 'agents.id')
-            ->select('agents.name as agent_name','embassadors.birth_date','embassadors.first_name','embassadors.second_name','embassadors.email','embassadors.phone','embassadors.id as embassador_id','cities.name as city_name','embassadors.agent_id as agent_id' )
-            ->orderBy('embassadors.id','desc')->paginate(2);
-            return view('admin.embassadors.index')
-            ->with('all_embassdors_cities', $all_embassdors_cities)
-            ->with('show_embassador',$show_embassador);
-            
-    }
       
 
     }
@@ -83,12 +69,12 @@ class EmbassadorController extends Controller
      */
     public function store(Request $request)
     {
-     
+
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|max:18',
             'second_name' => 'required|max:18',
             'email' => 'required|email|'.unique_validate('email'),
-            'phone' => 'required|regex:/(01)[0-9]{8}/|'.unique_validate('phone'),
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.unique_validate('phone'),
             'city' => 'required|exists:cities,id',
             'birth_date' => 'date|before:-18 years|required',
             'password' => 'min:8|required_with:confirm_password|same:confirm_password',
@@ -129,7 +115,7 @@ class EmbassadorController extends Controller
      */
     public function show()
     {
-     
+
         $show_embassador = DB::table('embassadors')
         ->join('cities', 'embassadors.city', '=', 'cities.id')
         ->select('embassadors.first_name','embassadors.second_name','embassadors.email','embassadors.phone','embassadors.phone_key','embassadors.birth_date','embassadors.id as embassador_id','cities.name as city_name' )
@@ -164,7 +150,7 @@ class EmbassadorController extends Controller
             'first_name' => 'required|max:18',
             'second_name' => 'required|max:18',
             'email' => 'required|email|'.update_unique_validate('email',$id,'embassadors'),
-            'phone' => 'required|regex:/(01)[0-9]{8}/|'.update_unique_validate('phone',$id,'embassadors'),
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.update_unique_validate('phone',$id,'embassadors'),
             'city' => 'required|exists:cities,id',
             'birth_date' => 'date|before:-18 years|required',
             ]);
@@ -185,7 +171,7 @@ class EmbassadorController extends Controller
         if($save_embassador){
             return redirect('admin/embassador')->with('success', 'تم التعديل بنجاح');
             }
-        
+
     }
 
 
@@ -198,13 +184,13 @@ class EmbassadorController extends Controller
         // if($type != null){
         //     if($data !=null){
         //         if($type =='email'){
-        //             $agents  =  Agent::where('email',$data)->get();                  
+        //             $agents  =  Agent::where('email',$data)->get();
         //             if(count($agents)>0){
         //               return response()->json(['agents'=>$agents,'message'=>'حصلت على البانات بنجاح']);
         //             }else{
         //               return response()->json(['agents'=>[],'message'=>'لا توجد بيانات لهذا  التعريفي']);
         //             }
-  
+
         //         }elseif($type=='Number'){
         //             $agents  =  Agent::where('phone',$data)->get();
         //             if(count($agents)>0){
@@ -212,9 +198,9 @@ class EmbassadorController extends Controller
         //             }else{
         //               return response()->json(['agents'=>[],'message'=>'لا يوجد بيانات لهذا الرقم']);
         //             }
-  
+
         //         }elseif($type=='Name'){
-        //           $agents  =  Agent::where('name',$data)->get();                  
+        //           $agents  =  Agent::where('name',$data)->get();
         //           if(count($agents)>0){
         //             return response()->json(['agents'=>$agents,'message'=>'حصلت على البيانات بنجاح']);
         //           }else{
@@ -222,10 +208,10 @@ class EmbassadorController extends Controller
         //           }
 
         //         }else{
-        //           return response()->json(['agents'=>[],'message'=>' Please Enter  valid  Data ']);  
+        //           return response()->json(['agents'=>[],'message'=>' Please Enter  valid  Data ']);
         //         }
         //     }
-        //     return response()->json(['agents'=>[],'message'=>' Please Enter Data of Type Seach ']);      
+        //     return response()->json(['agents'=>[],'message'=>' Please Enter Data of Type Seach ']);
         // }
 
         // return response()->json(['agents'=>[],'message'=>' Please chosse Type ']);
@@ -246,7 +232,7 @@ class EmbassadorController extends Controller
 
         return redirect('admin.embassadors.index')->with('success', 'Contact deleted!');
     }
-   
- 
-    
+
+
+
 }

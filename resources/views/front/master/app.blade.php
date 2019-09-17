@@ -11,9 +11,11 @@
         @include('front.master.header')
         <!--Header ends-->
         @yield('content')
-        <!--Footer Starts-->
-    </div>
-        @include('front.master.footer')
-        <!--Footer ends-->
+
+    </div>   
+    
+    <!--Footer Starts-->
+    @include('front.master.footer')
+    <!--Footer ends-->
 </body>
 </html>

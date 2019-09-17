@@ -75,8 +75,8 @@ data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500"
         <div class="kt-menu__submenu ">
           <span class="kt-menu__arrow"></span>
           <ul class="kt-menu__subnav">
-            <li class="kt-menu__item " aria-haspopup="true" ><a  href="{{route('agent.index')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">عرض الوكلاء</span></a></li>
-            <li class="kt-menu__item " aria-haspopup="true" ><a  href="{{route('agent.create')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">إضافة وكيل جديد</span></a></li>
+            <li class="kt-menu__item " aria-haspopup="true" ><a  href="{{route('admin.agent.index')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">عرض الوكلاء</span></a></li>
+            <li class="kt-menu__item " aria-haspopup="true" ><a  href="{{route('admin.agent.create')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">إضافة وكيل جديد</span></a></li>
           </ul>
         </div>
       </li>
@@ -90,8 +90,8 @@ data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500"
         <div class="kt-menu__submenu ">
           <span class="kt-menu__arrow"></span>
           <ul class="kt-menu__subnav">
-            <li class="kt-menu__item " aria-haspopup="true" ><a  href="{{route('embassador.index')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">عرض السفراء</span></a></li>
-            <li class="kt-menu__item " aria-haspopup="true" ><a  href="{{route('embassador.create')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">إضافة سفير جديد</span></a></li>
+            <li class="kt-menu__item " aria-haspopup="true" ><a  href="{{route('admin.embassador.index')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">عرض السفراء</span></a></li>
+            <li class="kt-menu__item " aria-haspopup="true" ><a  href="{{route('admin.embassador.create')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">إضافة سفير جديد</span></a></li>
           </ul>
         </div>
       </li>

@@ -10,6 +10,7 @@ use App\City;
 use DB;
 use App;
 // use App\Country;
+use App\Services\VerifyUserService;
 
 class embassadorController extends Controller
 {
@@ -53,7 +54,7 @@ class embassadorController extends Controller
                   'first_name' => 'required|max:18',
                   'second_name' => 'required|max:18',
                   'email' => 'required|email|'.unique_validate('email'),
-                  'phone' => 'required|regex:/^[0-9]{10}$/|'.unique_validate('phone'),
+                  'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.unique_validate('phone'),
                   'city' => 'required|exists:cities,id',
                   'birth_date' => 'date|before:-18 years|required',
                   'password' => 'min:8|required_with:confirm_password|same:confirm_password',
@@ -83,6 +84,13 @@ class embassadorController extends Controller
         $embassador_id->generate_id=$id;
         $embassador_id->save();
         if($save_embassador){
+
+          // dd($embassador->getGuard());
+          // dd($save_embassador);
+          // VerifyUserService::createUser($embassador,'embassador');
+
+
+
                 return redirect('embassador')->with('success', 'تم تسجيل سفير بنجاح');
             }
         }
@@ -139,7 +147,7 @@ class embassadorController extends Controller
                   'first_name' => 'required|max:18',
                   'second_name' => 'required|max:18',
                   'email' => 'required|email|'.update_unique_validate('email',$id,'embassadors'),
-                  'phone' => 'required|regex:/^[0-9]{10}$/|'.update_unique_validate('phone',$id,'embassadors'),
+                  'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.update_unique_validate('phone',$id,'embassadors'),
                   'city' => 'required|exists:cities,id',
                   'birth_date' => 'date|before:-18 years|required',
                   ]);
@@ -187,5 +195,5 @@ class embassadorController extends Controller
 
     }
 }
-   
+
 }

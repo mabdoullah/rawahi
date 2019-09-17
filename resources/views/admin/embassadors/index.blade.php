@@ -49,10 +49,10 @@
           <td>{{$embassador->birth_date}}</td>
           <td>{{$embassador->agent_name}}</td>
           <td>
-            <a href="{{ route('embassador.edit', $embassador->embassador_id)}}" class="btn btn-primary">تعديل</a>
+            <a href="{{ route('admin.embassador.edit', $embassador->embassador_id)}}" class="btn btn-primary">تعديل</a>
           </td>
           <td>
-            <form action="{{ route('embassador.destroy', $embassador->embassador_id)}}" method="post">
+            <form action="{{ route('admin.embassador.destroy', $embassador->embassador_id)}}" method="post">
               @csrf
               @method('DELETE')
               <button class="btn btn-danger" type="submit">حذف</button>
