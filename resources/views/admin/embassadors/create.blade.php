@@ -85,6 +85,8 @@
                         </div>
 
 
+
+
                         <div class="col-lg-6">
                             <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
                                 <label> رقم الجوال</label>

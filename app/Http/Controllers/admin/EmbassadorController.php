@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use App\Embassador;
 use App\City;
+use App\Agent;
 use DB;
 
 use Illuminate\Http\Request;
@@ -17,24 +18,36 @@ class EmbassadorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function index()
+    
+    public function index(Request $request)
     {
-        {
-            // $auth_user=1;
-            $show_embassador='';
-            $all_embassdors_cities = DB::table('embassadors')
-                ->join('cities', 'embassadors.city', '=', 'cities.id')
-                ->join('agents', 'embassadors.agent_id', '=', 'agents.id')
-                ->select('agents.name as agent_name','embassadors.birth_date','embassadors.first_name','embassadors.second_name','embassadors.email','embassadors.phone','embassadors.id as embassador_id','cities.name as city_name','embassadors.agent_id as agent_id' )
-                ->orderBy('embassadors.id','desc')->paginate(2);
-                return view('admin.embassadors.index')
-                ->with('all_embassdors_cities', $all_embassdors_cities)
-                ->with('show_embassador',$show_embassador);
+        $all_agent=Agent::all();
+            
+        $agent_name=$request->agent_name;
+        if(!isset($agent_name))
+      {  $show_embassador='';
+        $all_embassdors_cities = DB::table('embassadors')
+            ->join('cities', 'embassadors.city', '=', 'cities.id')
+            ->join('agents', 'embassadors.agent_id', '=', 'agents.id')
+            ->select('agents.name as agent_name','embassadors.birth_date','embassadors.first_name','embassadors.second_name','embassadors.email','embassadors.phone','embassadors.id as embassador_id','cities.name as city_name','embassadors.agent_id as agent_id' )
+            ->orderBy('embassadors.id','desc')->paginate(1);
+      }
+      else{
+        $all_embassdors_cities = DB::table('embassadors')
+        ->join('cities', 'embassadors.city', '=', 'cities.id')
+        ->join('agents', 'embassadors.agent_id', '=', 'agents.id')
+       ->where('embassadors.agent_id',$agent_name)
+        ->select('agents.name as agent_name','embassadors.birth_date','embassadors.first_name','embassadors.second_name','embassadors.email','embassadors.phone','embassadors.id as embassador_id','cities.name as city_name','embassadors.agent_id as agent_id' )
+        ->orderBy('embassadors.id','desc')->paginate(1);
+      }
 
-        }
 
+            return view('admin.embassadors.index')
+            ->with('all_embassdors_cities', $all_embassdors_cities,'all_agent',$all_agent)
+            ->with('show_embassador',$show_embassador);
+            
 
+      
 
     }
     /**
@@ -139,7 +152,6 @@ class EmbassadorController extends Controller
             'email' => 'required|email|'.update_unique_validate('email',$id,'embassadors'),
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.update_unique_validate('phone',$id,'embassadors'),
             'city' => 'required|exists:cities,id',
-            // 'agent_name' => 'required|exists:agents,id',
             'birth_date' => 'date|before:-18 years|required',
             ]);
         if ($validator->fails()) {
