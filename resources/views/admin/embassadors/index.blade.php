@@ -28,7 +28,6 @@
     </div>
 
   </div>
-    {{$all_embassdors_cities}}
   <div class="kt-portlet__body">
     <!--begin: Datatable -->
     <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
@@ -78,6 +77,7 @@
     <div class="col-sm-12 col-md-5">
       <div class="col-sm-12 col-md-7 dataTables_pager">
         <div class="dataTables_length" id="kt_table_1_length">
+        {{ $all_embassdors_cities->onEachSide(1)->links() }}
 
         </div>
         <div class="dataTables_paginate paging_simple_numbers" id="kt_table_1_paginate">

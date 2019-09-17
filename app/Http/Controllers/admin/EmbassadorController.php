@@ -26,7 +26,7 @@ class EmbassadorController extends Controller
                 ->join('cities', 'embassadors.city', '=', 'cities.id')
                 ->select('embassadors.birth_date','embassadors.first_name','embassadors.second_name','embassadors.email','embassadors.phone','embassadors.id as embassador_id','cities.name as city_name' )
                 ->where('embassadors.agent_id',$auth_user)
-                ->orderBy('embassadors.id','desc')->paginate(10);
+                ->orderBy('embassadors.id','desc')->paginate(2);
 
                 return view('admin.embassadors.index')
                 ->with('all_embassdors_cities', $all_embassdors_cities)
