@@ -17,7 +17,7 @@ class AgentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public function index()
     {
 
@@ -31,7 +31,7 @@ class AgentController extends Controller
                 ->join('cities', 'agents.city', '=', 'cities.id')
                 ->select('agents.name','agents.birth_date','agents.email','agents.phone','agents.id as agent_id','cities.name as city_name' )
                 ->orderBy('agents.id','desc')->paginate(2);
-            
+
                 return view('admin.agents.index')->with('all_agents_cities', $all_agents_cities)->with('show_agent',$show_agent);
         }
 
@@ -40,7 +40,7 @@ class AgentController extends Controller
 
         // $agents = Agent::all();
 
-      
+
         // // return view('admin.agents.index', compact('agents'));
         // return view('admin.agents.index')->with('agents',$agents);
 
@@ -67,7 +67,7 @@ class AgentController extends Controller
       $validator = Validator::make($request->all(), [
                   'name' => 'required|max:18',
                   'email' => 'required|email|'.unique_validate('email'),
-                  'phone' => 'required|regex:/^[0-9]{10}$/|'.unique_validate('phone'),
+                  'phone' => 'required|numeric|min:10|'.unique_validate('phone'),
                   'city' => 'required|exists:cities,id',
                   'birth_date' => 'date|before:-18 years|required',
                   'password' => 'min:8|required_with:confirm_password|same:confirm_password',
@@ -102,7 +102,7 @@ class AgentController extends Controller
      */
     public function show()
     {
-     
+
         $all_agents_cities = DB::table('agents')
         ->join('cities', 'agents.city', '=', 'cities.id')
         ->select('agents.name','agents.email','agents.phone','agents.id as agent_id','cities.name as city_name' )
@@ -118,26 +118,26 @@ class AgentController extends Controller
      */
     public function edit($id)
     {
-       
+
         $cities = City::where('country_id',191)->get();
-        
+
         $agent = Agent::find($id);
 
         return view("admin.agents.edit")->with('cities', $cities)->with('agent',$agent);;
 
 
-    
+
         // $edit_agent='';
         // $all_agents_cities = DB::table('agents')
         //     ->join('cities', 'agents.city', '=', 'cities.id')
         //     ->select('agents.name','agents.password','agents.birth_date','agents.email','agents.phone','agents.id as agent_id','cities.name as city_name' )
         //     ->orderBy('agents.id','desc')->first();
         //     return view('admin.agents.edit')->with('all_agents_cities', $all_agents_cities)->with('edit_agent',$edit_agent);
-    
-        
+
+
         //;
         // $agent = Agent::find($id);
-        // return view('admin.agents.edit', compact('agent'));   
+        // return view('admin.agents.edit', compact('agent'));
         // return view('admin.agents.edit')->with('cities', $cities)->with('agent', $agent);
 
     }
@@ -180,7 +180,7 @@ class AgentController extends Controller
         return redirect('admin/agent')->with('success', ' تم التعديل!');
 
 
-        
+
     }
 
 
@@ -193,13 +193,13 @@ class AgentController extends Controller
         if($type != null){
             if($data !=null){
                 if($type =='email'){
-                    $agents  =  Agent::where('email',$data)->get();                  
+                    $agents  =  Agent::where('email',$data)->get();
                     if(count($agents)>0){
                       return response()->json(['agents'=>$agents,'message'=>'حصلت على البانات بنجاح']);
                     }else{
                       return response()->json(['agents'=>[],'message'=>'لا توجد بيانات لهذا  التعريفي']);
                     }
-  
+
                 }elseif($type=='Number'){
                     $agents  =  Agent::where('phone',$data)->get();
                     if(count($agents)>0){
@@ -207,9 +207,9 @@ class AgentController extends Controller
                     }else{
                       return response()->json(['agents'=>[],'message'=>'لا يوجد بيانات لهذا الرقم']);
                     }
-  
+
                 }elseif($type=='Name'){
-                  $agents  =  Agent::where('name',$data)->get();                  
+                  $agents  =  Agent::where('name',$data)->get();
                   if(count($agents)>0){
                     return response()->json(['agents'=>$agents,'message'=>'حصلت على البيانات بنجاح']);
                   }else{
@@ -217,10 +217,10 @@ class AgentController extends Controller
                   }
 
                 }else{
-                  return response()->json(['agents'=>[],'message'=>' Please Enter  valid  Data ']);  
+                  return response()->json(['agents'=>[],'message'=>' Please Enter  valid  Data ']);
                 }
             }
-            return response()->json(['agents'=>[],'message'=>' Please Enter Data of Type Seach ']);      
+            return response()->json(['agents'=>[],'message'=>' Please Enter Data of Type Seach ']);
         }
 
         return response()->json(['agents'=>[],'message'=>' Please chosse Type ']);
@@ -241,7 +241,7 @@ class AgentController extends Controller
 
         // return redirect('admin.agents.index')->with('success', 'Contact deleted!');
     }
-   
- 
-    
+
+
+
 }

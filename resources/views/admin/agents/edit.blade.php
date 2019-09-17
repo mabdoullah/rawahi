@@ -18,7 +18,7 @@
         </div>
       </div>
       <!--begin::Form-->
-      <form class="kt-form kt-form--label-right" action="{{ route('agent.update', $agent->id) }}" method="POST" enctype="multipart/form-data">
+      <form class="kt-form kt-form--label-right" action="{{ route('admin.agent.update', $agent->id) }}" method="POST" enctype="multipart/form-data">
         @method('PATCH')
 
         @csrf
@@ -95,7 +95,7 @@
               @endif
             </div>
           </div>
-          
+
         </div>
         </div>
         <div class="kt-portlet__foot">
