@@ -1808,7 +1808,7 @@ a.btn.v1.active
 }
 
 .site-mobile-menu .site-nav-wrap a:hover {
-    color: #28a745;
+    color: #FA8F1B;
 }
 
 .site-mobile-menu .site-nav-wrap li {
@@ -1817,12 +1817,12 @@ a.btn.v1.active
 }
 
 .site-mobile-menu .site-nav-wrap li.active > a {
-    color: #28a745;
+    color: #FA8F1B;
 }
 
 .site-mobile-menu .site-nav-wrap .arrow-collapse {
     position: absolute;
-    left: 0px;
+    left:50%;
     top: 10px;
     z-index: 20;
     width: 36px;
