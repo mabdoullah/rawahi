@@ -24,4 +24,8 @@ Route::group(['prefix' => 'admin'], function()
 {
   Route::resource("home","admin\HomeController");
   Route::resource("agent","admin\AgentController");
+  Route::get("login","admin\loginController@login");
+  Route::post("dologin","admin\loginController@dologin");
+
+
 });

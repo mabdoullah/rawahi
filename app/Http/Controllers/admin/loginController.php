@@ -8,7 +8,7 @@ class loginController extends Controller
 {
     public function login()
     {
-
+return view('admin.login');
     }
     public function dologin()
     {
