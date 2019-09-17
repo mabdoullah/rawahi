@@ -24,14 +24,14 @@ Route::group(['prefix' => 'admin' , 'namespace'=>'admin' ], function()
 Route::namespace('front')->group(function () {
     Route::resource("/","HomeController");
 
-    // Route::middleware(['auth:agent'])->group(function () {
+    Route::middleware(['auth:agent'])->group(function () {
         Route::resource("embassador","EmbassadorController");
-    // });
+    });
 
 
-    // Route::middleware(['auth:embassador'])->group(function () {
+    Route::middleware(['auth:embassador'])->group(function () {
         Route::resource("partner" ,"PartnerController");
-    // });
+    });
 
     
     

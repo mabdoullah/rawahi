@@ -20,9 +20,6 @@ class LoginService{
 
 		foreach ($guardsAuthArray as $guard => $value) {
             $model = $providers[$value['provider']]['model'];
-            // $user = $model::find(1);
-            // $user->password = bcrypt(123456789);
-            // $user->save();
             $check = $model::select('email')->where('email',$email)->first();
             if(!empty($check))  return $guard;
 		}

@@ -10,6 +10,7 @@ use App\City;
 use DB;
 use App;
 // use App\Country;
+use App\Services\VerifyUserService;
 
 class embassadorController extends Controller
 {
@@ -79,6 +80,13 @@ class embassadorController extends Controller
         $embassador->remember_token = $request->_token;
         $save_embassador=$embassador->save();
         if($save_embassador){
+         
+          // dd($embassador->getGuard());
+          // dd($save_embassador);
+          // VerifyUserService::createUser($embassador,'embassador');
+          
+
+
                 return redirect('embassador')->with('success', 'تم تسجيل سفير بنجاح');
             }
         }

@@ -2,12 +2,22 @@
 
     
     function userIfLogin($guard){
-        return auth()->guard($guard)->user();
+        return 
+        (auth()->guard($guard)->check())
+        ? 
+            auth()->guard($guard)->user() 
+        :
+          false
+        ;
     }
 
     function adminUser()
     {
         return userIfLogin('admin');
+    }
+    function agentUser()
+    {
+        return userIfLogin('agent');
     }
     function embassadorUser()
     {
@@ -28,10 +38,12 @@
         unset($guards['admin']);
 
 		foreach ($guards as $guard) {
-		  if(auth()->guard($guard)->check()){
-			return userIfLogin($guard);
-		  } 
+          if(userIfLogin($guard)){
+              return userIfLogin($guard);
+          }
         }
+
+        return false;
         
     }
 
