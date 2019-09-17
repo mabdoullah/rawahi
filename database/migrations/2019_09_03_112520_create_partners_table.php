@@ -11,15 +11,24 @@ class CreatePartnersTable extends Migration {
 			$table->increments('id');
 			$table->string('partner_type');
 			$table->string('map_address');
-			$table->decimal('lat', 10, 7);
-			$table->decimal('lng', 10, 7);
+			$table->decimal('lat', 10, 7);//خط العرض 
+			$table->decimal('lng', 10, 7);//خط الطول 
 			$table->string('legal_name');
+			$table->string('city');
+			$table->text('about');
+			$table->string('postel_code');
 			$table->string('representative_name');
 			$table->string('email')->unique();
 			$table->integer('phone')->unique()->nullable();
 			$table->string('phone_key')->nullable();
 			$table->string('image')->nullable();
 			$table->string('services')->nullable();
+			$table->string('password')->nullable();
+			$table->string('facebook');
+			$table->string('instagram');
+			$table->string('twitter');
+
+
 			$table->string('subscription_type')->nullable();
 			$table->integer('embassador_id')->unsigned();
 			$table->rememberToken();

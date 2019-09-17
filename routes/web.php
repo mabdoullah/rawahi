@@ -16,7 +16,7 @@ Route::resource("/","front\HomeController");
 Route::resource("embssador","front\EmbssadorController");
 // Route::get('/getcities/{id}','front\EmbssadorController@getcities')->name('getcities');
 // mohamed
-Route::resource("partner","front\PartnerController");
+Route::resource("partners","front\PartnerController");
 
 // Admin
 // Asmaa

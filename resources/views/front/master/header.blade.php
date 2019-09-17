@@ -19,7 +19,7 @@
                                     <li class="has-children">
                                         <a href="#">تسجيل الدخول</a>
                                     </li>
-                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partner.create')}}">إضافة شريك
+                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partners.create')}}">إضافة شريك
                                             <i class="ion-plus-round"></i></a></li>
                                     <li class="d-lg-none"><a class="btn v1 active" href="{{route('embssador.create')}}"> تسجيل سفير
                                             <i class="ion-plus-round"></i></a></li>
@@ -32,7 +32,7 @@
                             </a>
                         </div>
                         <div class="add-list float-left">
-                            <a class="btn v8" href="{{route('partner.create')}}">إضافة شريك <i
+                            <a class="btn v8" href="{{route('partners.create')}}">إضافة شريك <i
                                     class="ion-plus-round"></i></a>
                             <a class="btn v8 active" href="{{route('embssador.create')}}">  تسجيل سفير <i
                                     class="ion-plus-round"></i></a>
