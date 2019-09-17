@@ -95,7 +95,7 @@
   <script src="{{ asset('front/js/plugin.js') }}"></script>
   <!--google maps-->
   <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYFTtfLWhG7EDk8aoRiwpTek24HLJ38jQ&amp;libraries=places&amp;callback=initAutocomplete"></script>
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYFTtfLWhG7EDk8aoRiwpTek24HLJ38jQ&amp;libraries=places&amp;callback=initAutocomplete"></script>
   <!--Markercluster js-->
   <script src="{{ asset('front/js/markerclusterer.js') }}"></script>
   <!--Maps js-->
@@ -106,3 +106,6 @@
   <script src="{{ asset('front/js/main.js') }}"></script>
   <!--Scripts ends-->
   @stack('jqueryCode')
+
+
+  

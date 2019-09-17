@@ -48,6 +48,7 @@
     33 view page
     34 Profile
     35 Responsive
+    36 partner logo
     
 -------------------------------------------------------------*/
 
@@ -831,6 +832,22 @@ ul.list-inline li {
     font-size: 14px;
     font-weight: 400;
 }
+/*===== start pagination ======*/
+.pagination{
+    float: left;
+}
+.page-item.active .page-link
+
+{
+    background-color: #fa8f1b !important;
+    border-color:#fa8f1b 
+}
+ .page-link:hover{
+    background-color: #fa8f1b;
+    border-color:#fa8f1b 
+
+}
+/*==== end pagination*/
 
 .link-hov.style1:before {
     position: absolute;
@@ -8611,7 +8628,11 @@ tr button,tr a {
 
 }*/
 
+/*-----------------------------------------------------------
+            partner logo
+-------------------------------------------------------------*/
 
-
-
-
+#partnerlogo{
+    max-width: 180px;
+    max-height: 180px;
+}

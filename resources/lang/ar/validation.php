@@ -172,7 +172,7 @@ return [
         'available'             => 'مُتاح',
         'size'                  => 'الحجم',
         'birth_date'            =>'تاريخ الميلاد',
-        'services'              =>'الفئه',
+        'partner_type'              =>'الفئه',
         'legal_name'            =>'اسم الشريك',
         'subscription_type'     =>' نوع الاشتراك',
     ],
