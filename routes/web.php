@@ -19,6 +19,7 @@ Route::group(['prefix' => 'admin' , 'namespace'=>'admin' ,'as'=>'admin.' ], func
 {
   Route::resource("home","HomeController");
   Route::resource("agent","AgentController");  
+  Route::resource("embassador","EmbassadorController");
 });
 
 Route::namespace('front')->group(function () {
@@ -33,7 +34,6 @@ Route::namespace('front')->group(function () {
         Route::resource("partner" ,"PartnerController");
     });
 
-    
     
 });
 
