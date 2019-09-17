@@ -10,16 +10,18 @@ class CreatePartnersTable extends Migration {
 		Schema::create('partners', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('partner_type');
-			$table->string('map_address');
-			$table->decimal('lat', 10, 7);//خط العرض 
-			$table->decimal('lng', 10, 7);//خط الطول 
-			$table->string('legal_name');
-			$table->string('city');
+	
+			$table->integer('city');
 			$table->text('about');
 			$table->string('postel_code');
-			$table->string('representative_name');
+			$table->string('map_address')->nullable();
+			$table->decimal('lat', 10, 7)->nullable();
+			$table->decimal('lng', 10, 7)->nullable();
+			$table->string('legal_name')->nullable();
+			$table->string('representative_name')->nullable();
 			$table->string('email')->unique();
-			$table->integer('phone')->unique()->nullable();
+			$table->string('password')->nullable();
+			$table->string('phone')->unique()->nullable();
 			$table->string('phone_key')->nullable();
 			$table->string('image')->nullable();
 			$table->string('services')->nullable();

@@ -8,7 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Partner extends Authenticatable
 {
-    protected $fillable= ['embassador_id'
+   use Notifiable;
+    
+   protected $guard = 'partner';    
+   protected $fillable= ['embassador_id'
                 ,'partner_type'
                 ,'legal_name'
                 ,'email'
@@ -26,7 +29,6 @@ class Partner extends Authenticatable
                 ,'twitter'
 ];
 
-    use Notifiable;
 
     /**
      * The attributes that are mass assignable.

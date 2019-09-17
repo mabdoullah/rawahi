@@ -16,3 +16,12 @@
     <!-- Document Title -->
     <title>listagram - Directory Listing HTML Template</title>
 </head>
+<!--Preloader starts-->
+  <div class="preloader js-preloader">
+      <div class="dots">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+      </div>
+  </div>
+  <!--Preloader ends-->

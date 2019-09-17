@@ -18,13 +18,15 @@ class CreateEmbassadorsTable extends Migration
           $table->string('first_name', 18);
           $table->string('second_name', 18);
           $table->string('email')->unique();
-          $table->integer('phone')->unique()->nullable();
+          $table->string('phone')->unique()->nullable();
           $table->string('phone_key')->nullable();
           $table->integer('country')->nullable();
           $table->integer('city')->nullable();
           $table->date('birth_date')->nullable();
           $table->string('password');
           $table->integer('agent_id');
+          $table->boolean('verified')->default(false);
+          $table->string('generate_id')->unique()->nullable();
           $table->rememberToken();
           $table->timestamps();
         });

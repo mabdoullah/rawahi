@@ -1601,9 +1601,9 @@ a.btn.v1.active
 .site-navbar .site-navigation .site-menu .has-children .dropdown {
     visibility: hidden;
     opacity: 0;
-    top: 122%;
+    top: 100%;
     position: absolute;
-    text-align: left;
+    text-align: right;
     padding: 15px 30px;
     margin-top: 20px;
     margin-right: 0px;
@@ -2342,6 +2342,7 @@ a.btn.v1.active
     height: 300px;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    background-image: url(../images/breadcrumb/breadcrumb-1.jpg);
 }
 
 .page-title {
@@ -7364,6 +7365,7 @@ th,td{
 }
 .profile-img{
     max-width: 200px;
+    max-height: 200px;
     margin: auto;
 }
 tr i{
@@ -7405,11 +7407,16 @@ tr button,tr a {
     text-align: center;
     font-size: 16px;
     padding: 0 6px !important;
+    margin :2px;
 }
 
 .btn.view-buttons i {
     margin-right: 0;
     font-size: 14px;
+}
+
+.view-page.tab-content  {
+    overflow: auto !important;
 }
 
 

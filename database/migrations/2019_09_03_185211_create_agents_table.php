@@ -17,7 +17,7 @@ class CreateAgentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 18);
             $table->string('email')->unique();
-            $table->integer('phone')->unique()->nullable();
+            $table->string('phone')->unique()->nullable();
             $table->string('phone_key')->nullable();
             $table->integer('country')->nullable();
             $table->integer('city')->nullable();

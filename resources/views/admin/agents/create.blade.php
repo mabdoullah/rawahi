@@ -29,7 +29,7 @@
     </div>
   </div>
   <!--begin::Form-->
-  <form class="kt-form kt-form--label-right"  action="{{route('agent.store')}}" method="POST" enctype="multipart/form-data">
+  <form class="kt-form kt-form--label-right"  action="{{route('admin.agent.store')}}" method="POST" enctype="multipart/form-data">
   @csrf
     <div class="kt-portlet__body">
       <div class="form-group row">
@@ -79,7 +79,7 @@
         <div class="col-lg-6">
           <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
               <label>  رقم الجوال</label>
-              <input required  class="form-control "placeholder="رقم الجوال" name="phone" value="{{ old('phone')}}">
+              <input required dir='ltr' class="form-control text-left" placeholder="رقم الجوال" name="phone" value="{{ old('phone')}}">
               @if( $errors->has( 'phone' ) )
                     <span class="help-block text-danger">
                         {{ $errors->first( 'phone' ) }}

@@ -2,7 +2,7 @@
 
 @section('content')
         <!--Breadcrumb section starts-->
-        <div class="breadcrumb-section" style="background-image: url(images/breadcrumb/breadcrumb-1.jpg)">
+        <div class="breadcrumb-section" >
             <div class="overlay op-5"></div>
             <div class="container-fluid">
                 <div class="row align-items-center  pad-top-80">
@@ -77,9 +77,9 @@
                                             <a type="button" id ="show_button" class="btn v8 view-buttons"  data-toggle="modal"data-target="#exampleModal"   href="{{route('partners.show',$partner->id)}}"> عرض <i class="icofont-eye-alt"></i></a>
                                             
                                         {{--  delete --}}
-                                            <button type="button" class="view-buttons btn v8 deleterow" data-partid="{{$partner->id}}" data-toggle="modal" data-target="#delete">حذف
+                                            {{-- <button type="button" class="view-buttons btn v8 deleterow" data-partid="{{$partner->id}}" data-toggle="modal" data-target="#delete">حذف
                                             <i class="icofont-ui-delete"></i>
-                                            </button> 
+                                            </button>  --}}
                                                 
                                             </td>
                                             
@@ -98,11 +98,11 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                             </div>
-                                            <form action="{{route('partners.destroy','test')}}" method="post">
+                                            {{-- <form action="{{route('partners.destroy','test')}}" method="post">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @method('DELETE') --}}
 
-                                            <div class="modal-body">
+                                            {{-- <div class="modal-body">
                                                 <p class="text-center">? Are you sure delete this  </p>
                                                 <input type="hidden" name="partner_id" id="partner_id" value="">
 
@@ -115,7 +115,7 @@
                                         </div>
                                         </div>
                                     </div>
-                                    <!-- end deleteconfirmation Modal -->
+                                    <!-- end deleteconfirmation Modal --> --}}
                                      {!! $partners->links()!!}    
                                 @endif
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"

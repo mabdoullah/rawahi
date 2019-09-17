@@ -2,22 +2,17 @@
 
 @section('content')
   <!--Breadcrumb section starts-->
-  <div class="breadcrumb-section" style="background-image: url({{asset('front/images/breadcrumb/breadcrumb-1.jpg')}})">
+  <div class="breadcrumb-section" >
     <div class="overlay op-5"></div>
     <div class="container">
         <div class="row align-items-center  pad-top-80">
 
-            <div class="col-md-6 col-12">
-                <div class="breadcrumb-menu text-left sm-right">
+            <div class=" col-12">
+                <div class="breadcrumb-menu text-center">
                     <ul>
                         <li class="active"><a href="#">الرئيسية</a></li>
-                        <li><a href="#">إضافة شريك</a></li>
+                        <li><h2 class="page-title ">إضافة شريك</h2></li>
                     </ul>
-                </div>
-            </div>
-            <div class="col-md-6 col-12">
-                <div class="breadcrumb-menu">
-                    <h2 class="page-title text-right">إضافة شريك</h2>
                 </div>
             </div>
         </div>
@@ -77,15 +72,20 @@
 
                 </div>
                  @endif
-           
-                
-              
+
+                @if(session()->has('success'))
+                <div class="alert alert-success text-center" role="alert">
+                {{ session()->get('success') }}
+                </div>
+                @endif
+
+
               <div class="tab-content mar-tb-30 add_list_content">
 
                     <div class="tab-pane fade {{ session('activeTab') == ''  ? "show active" : "" }}" id="general_info">
 
                         <h4> <i class="ion-ios-information"></i> بيانات الشريك:</h4>
-                                  
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -103,7 +103,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    
+
                                     <label>الفئة</label>
                                     <div  tabindex="0"><span
                                             class="current"></span>
@@ -300,7 +300,7 @@
                     <div class="tab-pane fade {{ session('activeTab') == 'tab3'  ? "show active" : "" }}" id="location">
                         <h4><i class="ion-ios-location"></i> الموقع وبيانات الاتصال:</h4>
                         <div class="row">
-                            
+
                                 {{-- <div class="form-group">
                                     <label>اختر الدولة</label>
                                     <div  tabindex="0"><span
@@ -369,8 +369,8 @@
                                        @endif
                                 </div>
                             </div>
-                           
-                        
+
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>الرمز البريدي</label>
@@ -426,14 +426,14 @@
                                     <input required type="text" class="form-control filter-input">
                                 </div>
                             </div> -->
-                            
+
                             <div class="add-btn">
                                     <a href="javascript:;" class="btn v8 mar-top-20 previous">الخطوه السابقه</a>
                                     <a href="javascript:;" class="btn v8 mar-top-20 next">حفظ ومتابعة</a>
                             </div>
-                       
+
                         </div>
-                    
+
 
                     {{-- <div class="tab-pane fade {{ session('activeTab') == 'tab4'  ? "show active" : "" }}" id="open_time">
                         <h4><i class="ion-clock"></i> ساعات العمل:</h4>
@@ -887,7 +887,7 @@
                                         @endif
                                 </div>
                             </div>
-                            <div class="col-md-6 text-left">
+                            <div class="col-12 ">
                                 <div class="res-box mar-top-10">
                                     <input  type="checkbox" tabindex="3" class="" name="remember"
                                         id="remember">
@@ -895,12 +895,12 @@
                                             والأحكام</a></label>
                                 </div>
                             </div>
-                            <div class="col-md-6 text-right sm-left">
+                            <div class="col-12">
 
-                                <a href="javascript:;" class="btn v8 previous">الخطوه السابقه</a>
+                                <a href="javascript:;" class="btn v8 previous mar-top-10">الخطوه السابقه</a>
 
                                 {{-- <button class="btn v8" type="submit">مراجعة</button> --}}
-                                <button type="submit" class="btn v8" >حفظ وتسجيل</button>
+                                <button type="submit" class="btn v8 mar-top-10" >حفظ وتسجيل</button>
                             </div>
                         </div>
                     </div>
@@ -923,12 +923,11 @@
 
 
 <!--Scripts ends-->
-<script
-src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyCYFTtfLWhG7EDk8aoRiwpTek24HLJ38jQ&amp;libraries=places&amp;callback=initAutocomplete') }}"></script>
+
 
     @endsection
 
-    
+
 
     @push('jqueryCode')
 <script>

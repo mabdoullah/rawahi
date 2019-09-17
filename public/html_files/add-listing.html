@@ -90,7 +90,7 @@
         </header>
         <!--Header ends-->
         <!--Breadcrumb section starts-->
-        <div class="breadcrumb-section" style="background-image: url(images/breadcrumb/breadcrumb-1.jpg)">
+        <div class="breadcrumb-section" >
             <div class="overlay op-5"></div>
             <div class="container">
                 <div class="row align-items-center  pad-top-80">
@@ -266,15 +266,29 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>المدينة</label>
-                                            <input required type="text" class="form-control filter-input"
+                                            <input id="city" required type="text" class="form-control filter-input"
                                                 placeholder="اختر المدينة">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>الرمز البريدي</label>
-                                            <input required type="number" class="form-control filter-input"
+                                            <input required type="text" id="zipCode" class="form-control filter-input"
                                                 placeholder="ex. 5858">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>خط الطول </label>
+                                            <input id="lat" required type="text" class="form-control filter-input"
+                                                placeholder="خط الطول ">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>خط العرض </label>
+                                            <input required type="text" id="long" class="form-control filter-input"
+                                                placeholder="خط العرض">
                                         </div>
                                     </div>
                                    
