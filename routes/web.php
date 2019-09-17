@@ -18,7 +18,9 @@
 Route::group(['prefix' => 'admin' , 'namespace'=>'admin' ,'as'=>'admin.' ], function()
 {
   Route::resource("home","HomeController");
-  Route::resource("agent","AgentController");  
+  Route::resource("agent","AgentController");
+  Route::resource("embassador","EmbassadorController");
+  
 });
 
 Route::namespace('front')->group(function () {
@@ -33,8 +35,8 @@ Route::namespace('front')->group(function () {
         Route::resource("partner" ,"PartnerController");
     });
 
-    
-    
+
+
 });
 
 
@@ -46,4 +48,3 @@ Route::get("login","LoginCustomController@login");
 Route::post("login","LoginCustomController@dologin");
 Route::any('logout','LoginCustomController@logout');
 Route::any('admin/logout','LoginCustomController@logout');
-
