@@ -33,9 +33,9 @@
 
 
                                     @if(embassadorUser())
-                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partner.create')}}">إضافة شريك
+                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partners.create')}}">إضافة شريك
                                             <i class="ion-plus-round"></i></a></li>
-                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partner.index')}}">الشركاء
+                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partners.index')}}">الشركاء
                                     </a></li>
                                     @endif
                                     @if(agentUser())
@@ -54,9 +54,9 @@
                         </div>
                         <div class="add-list float-left">
                             @if(embassadorUser())
-                                <a class="btn v8" href="{{route('partner.create')}}">إضافة شريك <i
+                                <a class="btn v8" href="{{route('partners.create')}}">إضافة شريك <i
                                     class="ion-plus-round"></i></a>
-                                    <a class="btn v8" href="{{route('partner.index')}}">الشركاء </a>
+                                    <a class="btn v8" href="{{route('partners.index')}}">الشركاء </a>
                             @endif
                             @if(agentUser())
                                 <a class="btn v8" href="{{route('embassador.create')}}">  تسجيل سفير <i
