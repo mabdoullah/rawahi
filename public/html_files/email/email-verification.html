@@ -16,34 +16,38 @@
             height: 100vh;
             display: grid;
             background-color: rgb(255, 255, 255); 
-            direction: rtl
+            direction: rtl;
         }
 
         section {
             width: 60%;
             margin: auto;
-            border: 2px #FFAB0B solid;
+            border: 1px #FFAB0B solid;
             padding: 20px 15px;
-            box-shadow: 3px 3px 40px yellow;
+            border-radius: 5px;
         }
 
         img {
             max-width: 200px;
-            height: auto;
+            max-height: 200px;
         }
 
         .center {
             text-align: center;
         }
 
-        .mr-bt {
+        .mr-bt-50 {
             margin-bottom: 50px;
         }
 
         .mr-bt-40 {
             margin-bottom: 40px;
         }
-
+    
+        .mr-bt-20{
+            margin-bottom: 20px;
+        }
+        
         .verify:hover {
             color: yellow;
             border: 3px yellow solid;
@@ -65,7 +69,9 @@
         }
 
         hr{
-            color: #FFAB0B;           
+            color: #ddd; 
+            font-size: 1px;
+
         }
 
         h1{
@@ -76,22 +82,33 @@
             line-height: 150%;
         }
 
+        h3{
+            font-weight: 300;
+            font-size: 1.3em;
+        }
+
+        .overflow-hide{
+            overflow-x: hidden;
+        }
+
     </style>
 </head>
 
 <body>
     <section>
-        <div class="center mr-bt"><img src="images/logo-black.png" alt="logo"></div>
-        <div class="center">
-            <h1 class="mr-bt">مرحبا بك</h1>
+        <div class="center mr-bt-20 overflow-hide">
+            <img src="email-logo.png" alt="logo">
         </div>
-        <h3 class="mr-bt-40 center"> قبل أن نتمكن من إكمال طلبك ، نحتاج إلى التحقق من صحة عنوان
-            بريدك الإلكتروني لذا من فضلك انقر الزر في الاسفل </h3>
+        <hr class="center">
+        <div class="center">
+            <h1 class="mr-bt-50">مرحبا بك</h1>
+        </div>
+        <h3 class="mr-bt-40 center"> قبل أن نتمكن من إكمال طلبك ، نحتاج إلى التحقق من صحة عنوان بريدك الإلكتروني لذا من فضلك انقر الزر في الاسفل : </h3>
         <div class="center mr-bt-40 ">
             <a class="verify" href="#">تاكيد البريد الالكتروني</a>
         </div>
-        <hr class="center">
-        <div class="lineheight">
+        
+        <!-- <div class="lineheight">
             <div class="center">
                <span >  إذا كنت تواجه مشكله في النقر علي زر تاكيد البريد الالكتروني من فضلك قم بلصق هذا العنوان في متصفح الويب الخاص بك : 
                </span>
@@ -104,7 +121,7 @@
             slate&oq=translate&gs_l=psy-ab.3..0i131j0j0i131j0j0i131l2j0j0i131j0l2.36
             .1766..2156...0.0..0.175.1082.0j8......0....1..gws-wiz.Gu_O_KMKECo&ved=0ah
             UKEwj6qo-0-cHkAhUMahQKHYmpAAkQ4dUDCAU&uact=5</a> 
-        </div>
+        </div> -->
     </section>
 </body>
 
