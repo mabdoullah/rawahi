@@ -29,7 +29,7 @@
                 </div>
             </div>
             <!--begin::Form-->
-            <form class="kt-form kt-form--label-right" action="{{route('embassador.store')}}" method="POST" enctype="multipart/form-data">
+            <form class="kt-form kt-form--label-right" action="{{route('admin.embassador.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="kt-portlet__body">
                     <div class="form-group row">
@@ -59,7 +59,7 @@
                                     <span class="help-block text-danger">
                                         {{ $errors->first( 'email' ) }}
                                     </span>
-                                    @endif  
+                                    @endif
                                 </div>
                             </div>
                     </div>
@@ -83,6 +83,8 @@
                                 @endif
                             </div>
                         </div>
+
+
 
 
                         <div class="col-lg-6">

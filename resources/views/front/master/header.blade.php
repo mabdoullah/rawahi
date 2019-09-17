@@ -14,30 +14,35 @@
                                 <ul class="site-menu js-clone-nav d-none d-lg-block">
                                     <li class="has-children">
                                         <a href="{{route('index')}}">الرئيسية</a>
+                                    </li>
 
+                                    @if(currentUser())
+                                    <li class="has-children ">
+                                        <a href="javascript:;">
+                                            {{(currentUser()->name)?? (currentUser()->first_name ?? currentUser()->legal_name)}}
+                                        </a>
+                                        <ul class="dropdown">
+                                            <li><a href="{{url('logout')}}">تسجيل خروج</a></li>
+                                        </ul>
                                     </li>
-                                    
-                                        @if(currentUser())
-                                            <li class="has-children">
-                                                <a href="javascript:;">
-                                                    مرحبا, 
-                                                    {{(currentUser()->name)?? (currentUser()->first_name ?? currentUser()->legal_name)}}
-                                                </a>
-                                            </li>    
-                                            <li>
-                                                <a href="{{url('logout')}}">تسجيل خروج</a>
-                                            </li>   
-                                        @else
-                                            <li>
-                                                <a href="{{url('login')}}">تسجيل الدخول</a>
-                                            </li>
-                                        @endif
-                                            
-                                    </li>
+
+                                    @else
+                                        <li><a  href="{{url('login')}}">تسجيل الدخول</a></li>
+                                    @endif
+
+
+                                    @if(embassadorUser())
                                     <li class="d-lg-none"><a class="btn v1" href="{{route('partner.create')}}">إضافة شريك
                                             <i class="ion-plus-round"></i></a></li>
+                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partner.index')}}">الشركاء
+                                    </a></li>
+                                    @endif
+                                    @if(agentUser())
                                     <li class="d-lg-none"><a class="btn v1 active" href="{{route('embassador.create')}}"> تسجيل سفير
                                             <i class="ion-plus-round"></i></a></li>
+                                    <li class="d-lg-none"><a class="btn v1 active" href="{{route('embassador.index')}}">السفراء
+                                              </a></li>
+                                    @endif
                                 </ul>
                             </div>
                         </nav>
@@ -48,14 +53,17 @@
                         </div>
                         <div class="add-list float-left">
                             @if(embassadorUser())
-                                <a class="btn v8 active" href="{{route('partner.create')}}">إضافة شريك <i
+                                <a class="btn v8" href="{{route('partner.create')}}">إضافة شريك <i
                                     class="ion-plus-round"></i></a>
+                                    <a class="btn v8" href="{{route('partner.index')}}">الشركاء </a>
                             @endif
                             @if(agentUser())
-                                <a class="btn v8 active" href="{{route('embassador.create')}}">  تسجيل سفير <i
+                                <a class="btn v8" href="{{route('embassador.create')}}">  تسجيل سفير <i
                                 class="ion-plus-round"></i></a>
+                                <a class="btn v8" href="{{route('embassador.index')}}">  السفراء </a>
                             @endif
-                            
+
+
                         </div>
 
 

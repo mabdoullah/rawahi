@@ -64,10 +64,10 @@
           <td>{{$agent->phone}}</td>
           <td>{{$agent->birth_date}}</td>
           <td>
-            <a href="{{ route('agent.edit', $agent->agent_id)}}" class="btn btn-primary">تعديل</a>
+            <a href="{{ route('admin.agent.edit', $agent->agent_id)}}" class="btn btn-primary">تعديل</a>
           </td>
           <td>
-            <form action="{{ route('agent.destroy', $agent->agent_id)}}" method="post">
+            <form action="{{ route('admin.agent.destroy', $agent->agent_id)}}" method="post">
               @csrf
               @method('DELETE')
               <button class="btn btn-danger" type="submit">حذف</button>
@@ -104,7 +104,7 @@
 
 @endsection
 
-<!-- 
+<!--
 @section('script')
 <script>
   $(document).ready(function() {
@@ -143,7 +143,7 @@
 
 
 
-  
+
                   $('<td>').text(""),
 
                   $('<td ">'),

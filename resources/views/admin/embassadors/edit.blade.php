@@ -18,7 +18,7 @@
         </div>
       </div>
       <!--begin::Form-->
-      <form class="kt-form kt-form--label-right" action="{{ route('embassador.update', $embassador->id) }}" method="POST" enctype="multipart/form-data">
+      <form class="kt-form kt-form--label-right" action="{{ route('admin.embassador.update', $embassador->id) }}" method="POST" enctype="multipart/form-data">
         @method('PATCH')
 
         @csrf
@@ -33,7 +33,7 @@
               </span>
               @endif
             </div>
-         
+
           </div>
           <div class="form-group row">
             <div class="col-lg-6 {{ $errors->has( 'name' ) ? 'has-error' : '' }}">
@@ -72,8 +72,8 @@
                   @endif
                 </div>
               </div>
-            </div>  
-          
+            </div>
+
           <div class="form-group row">
             <div class="col-lg-6">
               <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
@@ -106,8 +106,8 @@
                 @endif
               </div>
               </div>
-              
-          
+
+
             <div class="form-group row">
               <div class="col-lg-6">
                 <div class="form-group {{ $errors->has( 'password' ) ? 'has-error' : '' }}">
