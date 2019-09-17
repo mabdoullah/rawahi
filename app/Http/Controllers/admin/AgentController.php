@@ -87,7 +87,7 @@ class AgentController extends Controller
         $agent->country = 191;//id of suadia
         $agent->city = $request->city;
         $agent->birth_date = $request->birth_date;
-        $agent->password = $request->password;
+        $agent->password = bcrypt($request->password);
         $agent->admin_id = 1; //get it from auth
         $save_agent=$agent->save();
         if($save_agent){
