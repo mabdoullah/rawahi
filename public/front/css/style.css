@@ -1584,9 +1584,9 @@ a.btn.v1.active
 .site-navbar .site-navigation .site-menu .has-children .dropdown {
     visibility: hidden;
     opacity: 0;
-    top: 122%;
+    top: 100%;
     position: absolute;
-    text-align: left;
+    text-align: right;
     padding: 15px 30px;
     margin-top: 20px;
     margin-right: 0px;
@@ -8610,6 +8610,8 @@ tr button,tr a {
     }
 
 }*/
+
+
 
 
 
