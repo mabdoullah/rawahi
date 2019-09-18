@@ -30,7 +30,7 @@ class AgentController extends Controller
             $all_agents_cities = DB::table('agents')
                 ->join('cities', 'agents.city', '=', 'cities.id')
                 ->select('agents.name','agents.birth_date','agents.email','agents.phone','agents.id as agent_id','cities.name as city_name' )
-                ->orderBy('agents.id','desc')->paginate(2);
+                ->orderBy('agents.id','desc')->paginate(10);
 
                 return view('admin.agents.index')->with('all_agents_cities', $all_agents_cities)->with('show_agent',$show_agent);
         }

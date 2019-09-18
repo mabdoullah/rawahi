@@ -40,7 +40,7 @@ class EmbassadorController extends Controller
         }              
 
 
-        $embassadors = $embassadors->orderBy('embassadors.id', 'desc')->paginate(4);
+        $embassadors = $embassadors->orderBy('embassadors.id', 'desc')->paginate(10);
 
 
 
