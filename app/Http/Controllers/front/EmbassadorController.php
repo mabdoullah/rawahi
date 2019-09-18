@@ -155,6 +155,7 @@ class embassadorController extends Controller
     {
 
 
+
       $validator = Validator::make($request->all(), [
                   'first_name' => 'required|max:18',
                   'second_name' => 'required|max:18',
@@ -169,6 +170,7 @@ class embassadorController extends Controller
                               ->withInput()
                               ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
               }
+
               $embassador = Embassador::find($id);
               $embassador->first_name = $request->first_name;
               $embassador->second_name = $request->second_name;
@@ -178,8 +180,13 @@ class embassadorController extends Controller
               $embassador->birth_date = $request->birth_date;
               $save_embassador=$embassador->save();
               if($save_embassador){
-                      return redirect('embassador')->with('success', 'تم التعديل بنجاح');
-                  }
+                if(agentUser()){
+                    return redirect('embassador')->with('success', 'تم التعديل بنجاح');
+                }
+                if(embassadorUser()){
+                    return redirect('embassador/'.$id.'/edit')->with('success', 'تم التعديل بنجاح');
+                }
+             }
 
     }
 

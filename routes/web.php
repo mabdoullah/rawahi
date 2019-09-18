@@ -26,10 +26,10 @@ Route::group(['prefix' => 'admin', 'namespace'=>'admin' ,'as'=>'admin.' ], funct
 Route::namespace('front')->group(function () {
     Route::resource("/","HomeController");
 
-    // Route::middleware(['auth:embassador'])->group(function () {
+    Route::middleware(['auth:agent,embassador'])->group(function () {
       Route::get("embassador/{id}/edit","EmbassadorController@edit")->name('embassador.edit');
       Route::put("embassador/{id}","EmbassadorController@update")->name('embassador.update');
-    // });
+    });
     //
     Route::middleware(['auth:agent'])->group(function () {
       Route::get("embassador/{id}","EmbassadorController@show")->name('embassador.show');
