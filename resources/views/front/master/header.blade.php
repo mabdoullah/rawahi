@@ -54,12 +54,7 @@
                                     <li class="d-lg-none"><a class="btn v1" href="{{route('partners.index')}}">الشركاء
                                     </a></li>
                                     @endif
-                                    @if(embassadorUser())
-                                    <li class="d-lg-none"><a class="btn v1 active" href="{{route('embassador.create')}}"> تسجيل سفير
-                                            <i class="ion-plus-round"></i></a></li>
-                                    <li class="d-lg-none"><a class="btn v1 active" href="{{route('embassador.index')}}">السفراء
-                                              </a></li>
-                                    @endif
+                                 
                                     {{-- ============ partners =============--}}
                                 </ul>
                             </div>
