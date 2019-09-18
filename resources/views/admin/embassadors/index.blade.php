@@ -22,64 +22,91 @@
     </div>
   </div>
   <div class="kt-portlet__body">
+    <div class="form-group row">
+      <div class="col-lg-6">
 
-  
-    <!--begin: Datatable -->
-    <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
-      <thead>
-        <tr>
-          <th>المدينة</th>
-          <th>الاسم الاول</th>
-          <th>الاسم الثانى</th>
-          <th>الاميل</th>
-          <th>رقم التليفون</th>
-          <th> تاريخ الميلاد</th>
-          <th> اسم الشريك</th>
-          <th colspan="2">العمليات</th>
-        </tr>
-      </thead>
-      <tbody id='table-result'>
-        @foreach($all_embassdors_cities as $embassador)
-        <tr>
-          <td>{{$embassador->city_name}}</td>
-          <td>{{$embassador->first_name}}</td>
-          <td>{{$embassador->second_name}}</td>
-          <td class="d-none d-lg-block">{{$embassador->email}}</td>
-          <td>{{$embassador->phone}}</td>
-          <td>{{$embassador->birth_date}}</td>
-          <td>{{$embassador->agent_name}}</td>
-          <td>
-            <a href="{{ route('admin.embassador.edit', $embassador->embassador_id)}}" class="btn btn-primary">تعديل</a>
-          </td>
-          <td>
-            <form action="{{ route('admin.embassador.destroy', $embassador->embassador_id)}}" method="post">
-              @csrf
-              @method('DELETE')
-              <button class="btn btn-danger" type="submit">حذف</button>
-            </form>
-          </td>
-        </tr>
+        <div class="form-group {{ $errors->has( 'agent' ) ? 'has-error' : '' }}">
+          <label> اختار الشريك </label>
+          <form>
+            <select class="form-control " name="agent" id="agentname">
+            <option value="0">اختر الوكيل</option>
 
-        @endforeach
-      </tbody>
+              @foreach ($agents as $agent)
+              <option value="{{$agent->id}}" @if($agent->id == $agent_id) selected="selected" @endif >
+                    {{$agent->name}}
+              @endforeach
+            </select>
 
-    </table>
-    <!--end: Datatable -->
-  </div>
-  <div class="row">
-    <div class="col-sm-12 col-md-5">
-      <div class="col-sm-12 col-md-7 dataTables_pager">
-        <div class="dataTables_length" id="kt_table_1_length">
-          {{ $all_embassdors_cities->onEachSide(50)->links() }}
+            @if( $errors->has( 'agent' ) )
+            <span class="help-block text-danger">
+              {{ $errors->first( 'agent' ) }}
+            </span>
+            @endif
         </div>
-        <div class="dataTables_paginate paging_simple_numbers" id="kt_table_1_paginate">
+        <button type="submit" class="btn btn-brand btn-elevate btn-icon-sm">بحث</button>
+        </form>
+
+
+        <!--begin: Datatable -->
+        <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
+          <thead>
+            <tr>
+              <th>المدينة</th>
+              <th>الاسم الاول</th>
+              <th>الاسم الثانى</th>
+              <th>الاميل</th>
+              <th>رقم التليفون</th>
+              <th> تاريخ الميلاد</th>
+              <th> اسم الشريك</th>
+              <th colspan="2">العمليات</th>
+            </tr>
+          </thead>
+          <tbody id='table-result'>
+            @foreach($embassadors as $embassador)
+            <tr>
+              <td>{{$embassador->city_name}}</td>
+              <td>{{$embassador->first_name}}</td>
+              <td>{{$embassador->second_name}}</td>
+              <td class="d-none d-lg-block">{{$embassador->email}}</td>
+              <td>{{$embassador->phone}}</td>
+              <td>{{$embassador->birth_date}}</td>
+              <td>{{$embassador->agent_name}}</td>
+              <td>
+                <a href="{{ route('admin.embassador.edit', $embassador->embassador_id)}}" class="btn btn-primary">تعديل</a>
+              </td>
+              <td>
+                <form action="{{ route('admin.embassador.destroy', $embassador->embassador_id)}}" method="post">
+                  @csrf
+                  @method('DELETE')
+                  <button class="btn btn-danger" type="submit">حذف</button>
+                </form>
+              </td>
+            </tr>
+
+            @endforeach
+          </tbody>
+
+        </table>
+        <!--end: Datatable -->
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-5">
+          <div class="col-sm-12 col-md-7 dataTables_pager">
+            <div class="dataTables_length" id="kt_table_1_length">
+            </div>
+            <div class="dataTables_paginate paging_simple_numbers" id="kt_table_1_paginate">
+
+            </div>
+
+          </div>
+
         </div>
+
       </div>
     </div>
-  </div>
-</div>
+    {{ $embassadors->onEachSide(50)->links() }}
 
-</div>
+  </div>
 </div>
 
 

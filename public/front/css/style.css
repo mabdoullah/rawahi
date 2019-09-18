@@ -103,6 +103,15 @@ h6 {
     line-height: 1.6;
 }
 
+.white{
+    color: white;
+}
+
+
+.alert-info{
+    background-color: rgb(255, 159, 56);
+}
+
 .form-control {
     border-radius: 0
 }
@@ -1825,7 +1834,7 @@ a.btn.v1.active
 }
 
 .site-mobile-menu .site-nav-wrap a:hover {
-    color: #28a745;
+    color: #FA8F1B;
 }
 
 .site-mobile-menu .site-nav-wrap li {
@@ -1834,12 +1843,12 @@ a.btn.v1.active
 }
 
 .site-mobile-menu .site-nav-wrap li.active > a {
-    color: #28a745;
+    color: #FA8F1B;
 }
 
 .site-mobile-menu .site-nav-wrap .arrow-collapse {
     position: absolute;
-    left: 0px;
+    left:50%;
     top: 10px;
     z-index: 20;
     width: 36px;
@@ -6443,7 +6452,7 @@ label.fix_spacing {
 .add_list_content .filter-input {margin-top: 0 !important;color: #999 !important;font-weight: 300;font-size: 15px;text-align: right !important;}
 
 .add_list_content h4 {
-    margin-bottom: 30px;
+    margin: 20px 0;
 }
 
 .add_list_content h4 i {

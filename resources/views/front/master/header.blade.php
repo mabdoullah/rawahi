@@ -4,7 +4,7 @@
         <div class="container">
             <div class="site-navbar">
                 <div class="row align-items-center">
-                    <div class="col-md-4 col-6">
+                    <div class="col-md-4 col-6 text-center">
                         <a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('front/images/logo-black.png')}}" alt="logo"
                                 class="img-fluid"></a>
                     </div>
@@ -27,7 +27,7 @@
                                     </li>
 
                                     @else
-                                        <li><a  href="{{url('login')}}">تسجيل الدخول</a></li>
+                                        <li class="has-children"><a  href="{{url('login')}}">تسجيل الدخول</a></li>
                                     @endif
 
 
