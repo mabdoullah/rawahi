@@ -78,8 +78,10 @@ class embassadorController extends Controller
         $embassador->agent_id =agentUser()->id ; //get it from auth
         $embassador->remember_token = $request->_token;
         $save_embassador=$embassador->save();
+        // get generate_id from function
+        $generate_id=generate_id($embassador->id);
+        Embassador::where('id', $embassador->id)->update(['generate_id' =>$generate_id]);
         if($save_embassador){
-
           // dd($embassador->getGuard());
           // dd($save_embassador);
           // VerifyUserService::createUser($embassador,'embassador');
