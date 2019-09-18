@@ -258,15 +258,15 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane fade {{ session('activeTab') == 'tab2'  ? "show active" : "" }}" id="gallery">
-                        <h4><i class="ion-image"></i> الشعار :</h4>
+                    <div class="text-center tab-pane fade {{ session('activeTab') == 'tab2'  ? "show active" : "" }}" id="gallery">
+                        <h4><i class="ion-image"></i> الشعار</h4>
                         <div class="form-group">
                             <div class="photo-upload">
 
                                   <div class="form-group {{ $errors->has( 'image' ) ? 'has-error' : '' }}">
                                     <div class="add-listing__input-file-box">
                                             <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <div class="add-listing__input-file-wrap">
                                         <input class="add-listing__input-file" type="file" name="image"
                                             id="file" onchange="readURL(this);"  value="{{ old('image',
@@ -277,16 +277,17 @@
                                             <i class="ion-ios-cloud-upload"></i>
 
                                             <p>إضغط هنا لرفع الشعار</p>
+                                            <img class="input-image-up" src="" alt="image"/>
                                         </div>
                                     </div>
-                                    <div class="col-md-8">
-                                        <div class="text-center">   <img id="partnerlogo" src="http://placehold.it/180" alt="your image" />
+                                    <!-- <div class="col-md-8">
+                                        <div class="text-center"> 
                                             @if( $errors->has( 'image' ) )
                                                    <span class="help-block text-danger">
                                                        {{ $errors->first( 'image' ) }}
                                                    </span>
                                                @endif
-                                            </div></div>
+                                            </div></div> -->
                                     </div>
                                 </div>
                             </div> </div>
