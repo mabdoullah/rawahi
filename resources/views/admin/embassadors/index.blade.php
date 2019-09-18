@@ -23,11 +23,13 @@
   </div>
   <div class="kt-portlet__body">
     <div class="form-group row">
-      <div class="col-lg-6">
+      <div class="col-lg-12">
 
         <div class="form-group {{ $errors->has( 'agent' ) ? 'has-error' : '' }}">
           <label> اختار الشريك </label>
           <form>
+          <div class="row">
+          <div class="col-md-5">
             <select class="form-control " name="agent" id="agentname">
             <option value="0">اختر الوكيل</option>
 
@@ -42,45 +44,51 @@
               {{ $errors->first( 'agent' ) }}
             </span>
             @endif
+            </div>
+        <div class=>
+        <button type="submit" class="btn btn-brand btn-elevate btn-icon-sm">بحث</button></div>
         </div>
-        <button type="submit" class="btn btn-brand btn-elevate btn-icon-sm">بحث</button>
         </form>
-
+        </div>
 
         <!--begin: Datatable -->
         <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
           <thead>
             <tr>
-              <th>المدينة</th>
+              <th >المدينة</th>
               <th>الاسم الاول</th>
               <th>الاسم الثانى</th>
               <th>الاميل</th>
               <th>رقم التليفون</th>
-              <th> تاريخ الميلاد</th>
+              <th > تاريخ الميلاد</th>
               <th> اسم الشريك</th>
-              <th colspan="2">العمليات</th>
+              <th> رمز المستخدم</th>
+              <th>العمليات</th>
             </tr>
           </thead>
           <tbody id='table-result'>
             @foreach($embassadors as $embassador)
             <tr>
-              <td>{{$embassador->city_name}}</td>
+              <td >{{$embassador->city_name}}</td>
               <td>{{$embassador->first_name}}</td>
               <td>{{$embassador->second_name}}</td>
-              <td class="d-none d-lg-block">{{$embassador->email}}</td>
+              <td >{{$embassador->email}}</td>
               <td>{{$embassador->phone}}</td>
-              <td>{{$embassador->birth_date}}</td>
+              <td >{{$embassador->birth_date}}</td>
+
               <td>{{$embassador->agent_name}}</td>
+              <td>{{$embassador->embassador_id}}</td>
+
               <td>
                 <a href="{{ route('admin.embassador.edit', $embassador->embassador_id)}}" class="btn btn-primary">تعديل</a>
               </td>
-              <td>
+              <!-- <td>
                 <form action="{{ route('admin.embassador.destroy', $embassador->embassador_id)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">حذف</button>
                 </form>
-              </td>
+              </td> -->
             </tr>
 
             @endforeach

@@ -50,7 +50,7 @@
           <th>الاميل</th>
           <th>رقم التليفون</th>
           <th> تاريخ الميلاد</th>
-          <th colspan="2">العمليات</th>
+          <th >العمليات</th>
 
         </tr>
       </thead>
@@ -66,13 +66,13 @@
           <td>
             <a href="{{ route('admin.agent.edit', $agent->agent_id)}}" class="btn btn-primary">تعديل</a>
           </td>
-          <td>
+          <!-- <td>
             <form action="{{ route('admin.agent.destroy', $agent->agent_id)}}" method="post">
               @csrf
               @method('DELETE')
               <button class="btn btn-danger" type="submit">حذف</button>
             </form>
-          </td>
+          </td> -->
         </tr>
         @endforeach
       </tbody>
