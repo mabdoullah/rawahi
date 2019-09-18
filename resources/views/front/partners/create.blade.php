@@ -26,7 +26,7 @@
         @method('PATCH')
         @else
         <form  action="{{route('partners.store')}}" method="post" enctype="multipart/form-data">
-       
+
         @endif
         @csrf
     <div class="container">
@@ -48,11 +48,11 @@
                         <a data-toggle="tab" href="#location">الموقع وبيانات الاتصال<span
                                 class="text-grey"></span></a>
                     </li>
-                    <li class="nav-item {{ session('activeTab') == 'tab4'  ? "active" : "" }}">
+                    <!-- <li class="nav-item {{ session('activeTab') == 'tab4'  ? "active" : "" }}">
                         <a data-toggle="tab" href="#open_time">ساعات العمل</a>
-                    </li>
+                    </li> -->
 
-                    <li class="nav-item">
+                    <li class="nav-item {{ session('activeTab') == 'tab4'  ? "active" : "" }}">
                         <a data-toggle="tab" href="#social_network">حسابات التواصل الاجتماعي <span
                                 class="text-grey"></span></a>
                     </li>
@@ -88,12 +88,12 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group {{ $errors->has( 'legal_name' ) ? 'has-error' : '' }}">
                                     <label>إسم الشريك</label>
                                     <input name="legal_name"  type="text" class="form-control filter-input"
-                                        placeholder="الإسم التجاري للشريك" value="{{ old('legal_name', 
+                                        placeholder="الإسم التجاري للشريك" value="{{ old('legal_name',
                                          isset($partner->legal_name) ? $partner->legal_name : '') }}">
-                                        
+
                                         @if( $errors->has( 'legal_name' ) )
                                                <span class="help-block text-danger">
                                                    {{ $errors->first( 'legal_name' ) }}
@@ -102,20 +102,20 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group {{ $errors->has( 'partner_type' ) ? 'has-error' : '' }}">
 
                                     <label>الفئة</label>
                                     <div  tabindex="0"><span
                                             class="current"></span>
-                                            
+
                                         <select  name="partner_type"  id="partner_type" class="nice-select filter-input"    >
-                                            
+
                                             <option selected disabled > اختر الفئة</option>
 
                                             @foreach ($partnersTypesArray as $key => $value)
-                                        <option  
+                                        <option
         {{ (old('partner_type', isset($partner->partner_type) ? $partner->partner_type:'' ) == $key ) ? 'selected':''  }} value="{{$key}}">
-                                       
+
                                      {{$value}}
                                         </option>
                                             @endforeach
@@ -137,12 +137,12 @@
                                 </div>
                             </div> --}}
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                                     <label>البريد الإلكتروني الرسمي</label>
                                     <input name="email"  type="text" class="form-control filter-input"
-                                        placeholder="سيكون البريد الإلكتروني هو اسم المستخدم"  value="{{old('email', 
+                                        placeholder="سيكون البريد الإلكتروني هو اسم المستخدم"  value="{{old('email',
                                         isset($partner->email) ? $partner->email : '') }}">
-                                        
+
                                         @if( $errors->has( 'email' ) )
                                                <span class="help-block text-danger">
                                                    {{ $errors->first( 'email' ) }}
@@ -151,14 +151,14 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group {{ $errors->has( 'subscription_type' ) ? 'has-error' : '' }}">
                                     <label>نوع الاشتراك</label>
                                     <div   class="filter-checkbox">
-                                        <input  type="checkbox"  id="check-a"  name="subscription_type"   value="1"
-                                       
-                                        {{old('subscription_type', 
+                                        <input  type="checkbox"  id="check-a"  name="subscription_type"   value="0"
+
+                                        {{old('subscription_type',
                                         isset($partner->subscription_type) ?  'checked': '') }}>
-                                        
+
                                         <label for="check-a">1 year 3000 USD</label>
                                         <!-- <input required id="check-b" type="checkbox" name="check">
                                         <label for="check-b">2 years 5000 usd</label>
@@ -174,12 +174,12 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                        
-                                    <div class="form-group">
-                                        <label for="list_info" >وصف الشريك</label>
-                                            <textarea name="about" placeholder="أدخل وصف بسيط بخدمات الشريك" class="form-control" id="list_info"  rows="4" 
 
-                                            >{{old('about', 
+                                    <div class="form-group {{ $errors->has( 'about' ) ? 'has-error' : '' }}">
+                                        <label for="list_info" >وصف الشريك</label>
+                                            <textarea name="about" placeholder="أدخل وصف بسيط بخدمات الشريك" class="form-control" id="list_info"  rows="4"
+
+                                            >{{old('about',
                                             isset($partner->about) ? $partner->about : '') }}</textarea>
                                             @if( $errors->has( 'about' ) )
                                             <span class="help-block text-danger">
@@ -189,22 +189,22 @@
 
 
                                     </div>
-                                    
-                                  
-                              
+
+
+
                             </div>
 
                             <div class="col-md-12">
-                               
-                            
+
+
                             <div class="row">
                                         {{-- <div class="col-md-6">
                                             <div class="form-group">
                                         <label>رقم السفير</label>
                                         <input name="embassador_id"  type="number" class="form-control filter-input"
-                                            placeholder="رقم السفير " value="{{ old('embassador_id', 
+                                            placeholder="رقم السفير " value="{{ old('embassador_id',
                                             isset($partner->embassador_id) ? $partner->embassador_id : '') }}">
-                                        
+
                                             @if( $errors->has( 'embassador_id' ) )
                                                    <span class="help-block text-danger">
                                                        {{ $errors->first( 'embassador_id' ) }}
@@ -222,8 +222,8 @@
                                     </div>
                                 </div> --}}
                                 @if (!isset($partner))
-                              
-                                          
+
+
                                 <div class="col-md-6">
                                         <div class="form-group {{ $errors->has( 'password' ) ? 'has-error' : '' }}">
                                             <label>  كلمه السر </label>
@@ -246,10 +246,10 @@
                                               @endif
                                         </div>
                                     </div>
-    
+
                                   @endif
-                       
-                               
+
+
                                     <div class="col-md-4">
                                         <a href="javascript:;"  class="btn v7 mar-top-20 next">حفظ ومتابعة</a>
                                     </div>
@@ -262,20 +262,20 @@
                         <h4><i class="ion-image"></i> الشعار :</h4>
                         <div class="form-group">
                             <div class="photo-upload">
-                                
-                                <div class="form-group">
+
+                                  <div class="form-group {{ $errors->has( 'image' ) ? 'has-error' : '' }}">
                                     <div class="add-listing__input-file-box">
                                             <div class="row">
                                     <div class="col-md-4">
                                         <div class="add-listing__input-file-wrap">
                                         <input class="add-listing__input-file" type="file" name="image"
-                                            id="file" onchange="readURL(this);"  value="{{ old('image', 
+                                            id="file" onchange="readURL(this);"  value="{{ old('image',
                                             isset($partner->image) ? $partner->image : '') }}">
-                                        
 
-                                        
+
+
                                             <i class="ion-ios-cloud-upload"></i>
-                         
+
                                             <p>إضغط هنا لرفع الشعار</p>
                                         </div>
                                     </div>
@@ -343,12 +343,12 @@
                                     </div>
                                 </div>
                             <div class="col-md-6">
-                                <div  class="form-group">
+                                <div  class="form-group {{ $errors->has( 'map_address' ) ? 'has-error' : '' }}">
                                     <label>العنوان</label>
                                     <input name="map_address" id="map_address"  type="text" class="form-control filter-input"
-                                        placeholder="ex. 250, Olayya Street..." value="{{ old('map_address', 
+                                        placeholder="ex. 250, Olayya Street..." value="{{ old('map_address',
                                         isset($partner->map_address) ? $partner->map_address : '') }}">
-                                        
+
                                         @if( $errors->has( 'map_address' ) )
                                         <span class="help-block text-danger">
                                             {{ $errors->first( 'map_address' ) }}
@@ -357,11 +357,11 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
                                     <label>الجوال </label>
-                                    <input name="phone"  type="text" class="form-control filter-input" value="{{ old('phone', 
+                                    <input name="phone"  type="text" class="form-control filter-input" value="{{ old('phone',
                                     isset($partner->phone) ? $partner->phone : '') }}">
-                                 
+
                                     @if( $errors->has( 'phone' ) )
                                            <span class="help-block text-danger">
                                                {{ $errors->first( 'phone' ) }}
@@ -372,12 +372,12 @@
 
 
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group {{ $errors->has( 'postel_code' ) ? 'has-error' : '' }}">
                                     <label>الرمز البريدي</label>
                                     <input  name="postel_code" type="number" id="zipCode" class="form-control filter-input"
-                                        placeholder="ex. 5858"  value="{{ old('postel_code', 
+                                        placeholder="ex. 5858"  value="{{ old('postel_code',
                                         isset($partner->postel_code) ? $partner->postel_code : '') }}">
-                                
+
                                         @if( $errors->has( 'postel_code' ) )
                                         <span class="help-block text-danger">
                                             {{ $errors->first( 'postel_code' ) }}
@@ -385,18 +385,18 @@
                                         @endif
                                 </div>
                             </div>
-                      
+
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group {{ $errors->has( 'lat' ) ? 'has-error' : '' }}">
                                     <input name="lat" type="hidden" id="lat" class="form-control filter-input"
-                                        placeholder="خط العرض"  value="{{ old('lat', 
+                                        placeholder="خط العرض"  value="{{ old('lat',
                                         isset($partner->lat) ? $partner->lat : '') }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group {{ $errors->has( 'lng' ) ? 'has-error' : '' }}">
                                     <input name="lng" type="hidden" id="lng" class="form-control filter-input"
-                                        placeholder="خط العرض" value="{{ old('lng', 
+                                        placeholder="خط العرض" value="{{ old('lng',
                                         isset($partner->lng) ? $partner->lng : '') }}" >
                                 </div>
                             </div>
@@ -851,7 +851,8 @@
                         <h4><i class="icofont-ui-social-link"></i>حسابات مواقع التواصل الإجتماعي</h4>
                         <div class="row">
                             <div class="col-md-4">
-                                <div class="form-group">
+
+                                <div class="form-group {{ $errors->has( 'facebook' ) ? 'has-error' : '' }}">
                                     <label>الفيسبوك - اختياري</label>
                                     <input  type="email" name="facebook" class="form-control filter-input"
                                         placeholder="رابط الفيسبوك" value="{{ old('facebook',  isset($partner->facebook) ? $partner->facebook : '') }}">
@@ -863,7 +864,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="form-group">
+                                <div class="form-group {{ $errors->has( 'instagram' ) ? 'has-error' : '' }}">
                                     <label>الانستغرام - اختياري</label>
                                     <input  type="email" name="instagram" class="form-control filter-input"
                                         placeholder="رابط الانستغرام" value="{{ old('instagram',  isset($partner->instagram) ? $partner->instagram : '') }}">
@@ -876,7 +877,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="form-group">
+                                <div class="form-group {{ $errors->has( 'twitter' ) ? 'has-error' : '' }}">
                                     <label>تويتر - اختياري</label>
                                     <input  type="email" name="twitter" class="form-control filter-input"
                                         placeholder="رابط التويتر" value="{{ old('twitter',  isset($partner->twitter) ? $partner->twitter : '') }}">
