@@ -21,7 +21,7 @@ class CreateEmbassadorsTable extends Migration
           $table->string('phone')->unique()->nullable();
           $table->string('phone_key')->nullable();
           $table->integer('country')->nullable();
-          $table->integer('city')->nullable();
+          $table->integer('city');
           $table->date('birth_date')->nullable();
           $table->string('password');
           $table->integer('agent_id');
@@ -29,6 +29,8 @@ class CreateEmbassadorsTable extends Migration
           $table->string('generate_id')->unique()->nullable();
           $table->rememberToken();
           $table->timestamps();
+
+
         });
     }
 

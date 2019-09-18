@@ -1,5 +1,5 @@
 <!--Footer Starts-->
-  <div class="footer-wrapper no-pad-tb footer-fixed">
+  <div class="footer-wrapper no-pad-tb ">
       <div class="footer-top-area section-padding" style="background-image: url({{asset('front/images/bg/pattern.png')}})">
           <div class="overlay op-9 green"></div>
           <div class="container">

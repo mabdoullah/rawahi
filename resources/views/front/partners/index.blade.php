@@ -73,8 +73,7 @@
                                                 class="icofont-edit"></i>
                                                 </a>
                                         {{--  show --}}
-                                            <input type="hidden" id='partner_id' name='partner_id' value="{{$partner->id}}">
-                                            <a type="button" id ="show_button" class="btn v8 view-buttons"  data-toggle="modal"data-target="#exampleModal"   href="{{route('partners.show',$partner->id)}}"> عرض <i class="icofont-eye-alt"></i></a>
+                                            <a type="button"  class="btn v8 view-buttons show_button"  data-toggle="modal"data-target="#show"   href="{{route('partners.show',$partner->id)}}"> عرض <i class="icofont-eye-alt"></i></a>
                                             
                                         {{--  delete --}}
                                             {{-- <button type="button" class="view-buttons btn v8 deleterow" data-partid="{{$partner->id}}" data-toggle="modal" data-target="#delete">حذف
@@ -89,36 +88,11 @@
                                     </tbody>
                                 </table>
                                 <!-- start deleteconfirmation Modal -->
-                                    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation </h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            </div>
-                                            {{-- <form action="{{route('partners.destroy','test')}}" method="post">
-                                                    @csrf
-                                                    @method('DELETE') --}}
-
-                                            {{-- <div class="modal-body">
-                                                <p class="text-center">? Are you sure delete this  </p>
-                                                <input type="hidden" name="partner_id" id="partner_id" value="">
-
-                                            </div>
-                                            <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No,cancel</button>
-                                            <button type="submit" class="btn btn-primary">yes,Delete</button>
-                                            </div>
-                                            </form>
-                                        </div>
-                                        </div>
-                                    </div>
-                                    <!-- end deleteconfirmation Modal --> --}}
+                                     @include('front.partners.deletepartner')
+                                <!-- end deleteconfirmation Modal --> 
                                      {!! $partners->links()!!}    
                                 @endif
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="show" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -139,7 +113,7 @@
                                             <div class="row">
 
                                                 <div class="col-md-12">
-                                                    <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                                                                 <li class="nav-item">
                                                                     <a class="nav-link active" id="home-tab"
                                                                         data-toggle="tab" href="#home" role="tab"
@@ -147,7 +121,7 @@
                                                                         aria-selected="true">البيانات</a>
                                                                 </li>
 
-                                                            </ul> -->
+                                                            </ul>
                                                     <div class="tab-content profile-tab" id="myTabContent">
                                                         <div class="tab-pane fade profile show active" id="home"
                                                             role="tabpanel" aria-labelledby="home-tab">
@@ -189,13 +163,7 @@
                                                                     </div>
 
                                                                 </div>
-
-
-
                                                             </div>
-
-                                                          
-                                                            
                                                             <div class="row">
                                                                 <div class="col-md-3 col-12">
                                                                     <label>وصف الشريك </label>
@@ -280,11 +248,10 @@
 @push('jqueryCode')
 <script type="text/javascript">
     /* Updated new Item */
-    $("#show_button").click(function(e){
+    $(".show_button").click(function(e){
         e.preventDefault();
-        var show_action = $("#show_button").attr("href");
-        console.log(show_action);
-        var id =  $('#partner_id').val();
+        var show_action = $(this).attr("href");
+        var id =  $(this).val();
         $.ajax({
             dataType: 'json',
             type:'GET',

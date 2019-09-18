@@ -176,167 +176,7 @@
         quality: 'hd720'
     });
 
-    /* -----------------------------------------
-           Google Map
-    -------------------------------------------*/
-    if ($('#map').length > 0) {
-        google.maps.event.addDomListener(window, 'load', init);
 
-        function init() {
-            // Basic options for a simple Google Map
-            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-            var mapOptions = {
-                // How zoomed in you want the map to start at (always required)
-                zoom: 15,
-
-                // The latitude and longitude to center the map (always required)
-                center: new google.maps.LatLng(24.7136, 46.6753), // Riyadh
-
-                scrollwheel: false,
-
-
-                // How you would like to style the map.
-                // This is where you would paste any style found on Snazzy Maps.
-                styles: [
-                    {
-                        "featureType": "administrative",
-                        "elementType": "geometry",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative.land_parcel",
-                        "elementType": "labels",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "poi",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road",
-                        "elementType": "labels.icon",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.local",
-                        "elementType": "labels",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "transit",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    }
-                ]
-            };
-
-            // Get the HTML DOM element that will contain your map
-            // We are using a div with id="map" seen below in the <body>
-            var mapElement = document.getElementById('map');
-
-            // Create the Google Map using our element and options defined above
-            var map = new google.maps.Map(mapElement, mapOptions);
-
-            var image = '../front/images/others/marker.png';
-            // Let's also add a marker while we're at it
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(24.7136, 46.6753),
-                map: map,
-                icon: image,
-                draggable: true,
-                animation: google.maps.Animation.DROP,
-
-            });
-
-
-            // var directionsService = new google.maps.DirectionsService;
-            // var directionsDisplay = new google.maps.DirectionsRenderer({
-            //     draggable: true,
-            //     map: map,
-            //     panel: document.getElementById('right-panel')
-            // });
-            //
-            // console.log(directionsDisplay,directionsService);
-            //
-            // directionsDisplay.addListener('directions_changed', function (e) {
-            //     console.log(e);
-            //     computeTotalDistance(directionsDisplay.getDirections());
-            // });
-            //
-            // displayRoute('Perth, WA', 'Sydney, NSW', directionsService,
-            //     directionsDisplay);
-
-        marker.addListener('click', toggleBounce);
-
-            function toggleBounce() {
-                if (marker.getAnimation() !== null) {
-                    marker.setAnimation(null);
-                } else {
-                    marker.setAnimation(google.maps.Animation.BOUNCE);
-                }
-            }
-            let geocoder;
-            google.maps.event.addListener(marker,'dragend',function (e) {
-                // console.log(marker.getPosition().lat(),e);
-                geocoder = new google.maps.Geocoder();
-
-                let lat = marker.getPosition().lat(),
-                    lng = marker.getPosition().lng();
-                    
-                
-                var latlng = new google.maps.LatLng(lat,lng);
-                
-                geocoder.geocode({'latLng' : latlng},function (results, status) {
-
-                    console.log( status,google.maps.GeocoderStatus  );
-                    
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        console.log(results[1],lat,lng );
-                        $('#lat').val(lat);
-                        $('#lng').val(lng);
-                        $('#map_address').val(results[1].formatted_address);
-                        var addressC = results[1].address_components,
-                            i;
-                        for ( i =0;i<addressC.length;i++){
-                            if (results[1].address_components[i].types[0] === "postal_code") {
-                                $('#zipCode').val(results[1].address_components[i].long_name);
-                            }
-                        }
-                        
-                    } 
-                });
-
-
-
-            })
-        }
-
-    }
-
-    // Intialize Map
 
 
 
@@ -760,6 +600,24 @@
         if (quantity > 0) {
             $(this).parent().siblings("input.input-number").val(quantity - 1);
         }
+    });
+    
+    /*-------------------------------------
+              Add Listing
+     -------------------------------------*/
+     function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $(".input-image-up").attr("src", e.target.result);
+                $('.input-image-up').fadeIn(500);
+                $('.none-up-img').fadeOut(500);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $(".add-listing__input-file").change(function() {
+        readURL(this);
     });
 
 }(jQuery));
