@@ -258,6 +258,31 @@
                         </div>
                     </div>
 
+<<<<<<< HEAD
+                    <div class="text-center tab-pane fade {{ session('activeTab') == 'tab2'  ? "show active" : "" }}" id="gallery">
+                        <h4><i class="ion-image"></i> الشعار</h4>
+                        <div class="form-group">
+                            <div class="photo-upload">
+
+                                  <div class="form-group {{ $errors->has( 'image' ) ? 'has-error' : '' }}">
+                                    <div class="add-listing__input-file-box">
+                                            <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="add-listing__input-file-wrap">
+                                        <input class="add-listing__input-file" type="file" name="image"
+                                            id="file" onchange="readURL(this);"  value="{{ old('image',
+                                            isset($partner->image) ? $partner->image : '') }}">
+
+
+
+                                            <div class="none-up-img">
+                                                <i class=" ion-ios-cloud-upload"></i>
+
+                                                <p>إضغط هنا لرفع الشعار</p>
+                                            </div>
+                                            <img class="input-image-up" src="" alt="image"/>
+                                        </div>
+=======
                   
                                              <!--  Replace this  -->
                             <div class="tab-pane fade text-center {{ session('activeTab') == 'tab2'  ? "show active" : "" }}" id="gallery">
@@ -288,6 +313,7 @@
                                                 </div>
                                             </div>
                                         
+>>>>>>> 07e34cdd5b3d7d1f92fdc30a248d31929779d617
                                     </div>
                                     <div class="add-btn">
                                             <a href="javascript:;" class="btn v8 mar-top-20 previous">الخطوه السابقه</a>
