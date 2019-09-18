@@ -1,16 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\front;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 
-use Illuminate\Http\Request;
-
-use App\Partner;
 use App\City;
+use App\Http\Controllers\Controller;
+use App\Partner;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Image;
-
 
 class PartnerController extends Controller
 {
@@ -21,8 +18,8 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        $partners =Partner::where('embassador_id',embassadorUser()->id)->latest()->orderBy('id')->paginate(10);
-        return view('front.partners.index',['partners' => $partners]);
+        $partners = Partner::where('embassador_id', embassadorUser()->id)->latest()->orderBy('id')->paginate(10);
+        return view('front.partners.index', ['partners' => $partners]);
     }
 
     /**
@@ -32,73 +29,67 @@ class PartnerController extends Controller
      */
     public function create()
     {
-        $partnersTypesArray= partnersTypesArray();
-        $cities =City::where('country_id',191)->get();
+        $partnersTypesArray = partnersTypesArray();
+        $cities = City::where('country_id', 191)->get();
 
-        return view('front.partners.create',compact('partnersTypesArray' ,'cities'));
+        return view('front.partners.create', compact('partnersTypesArray', 'cities'));
     }
 
     public function store(Request $request)
     {
-            // first tab
-            $validator = Validator::make($request->all(), [
-                // 'embassador_id' => 'required|unique:partners,embassador_id|max:255',
-                'partner_type' => 'required',
-                'legal_name' => ' required |max:255',
-                'email' => 'required|email|'.unique_validate('email'),
+        // first tab
+        $validator = Validator::make($request->all(), [
+            // 'embassador_id' => 'required|unique:partners,embassador_id|max:255',
+            'partner_type' => 'required',
+            'legal_name' => ' required |max:255',
+            'email' => 'required|email|' . unique_validate('email'),
 
-                
-                'password' =>'min:8|required_with:confirm_password|same:confirm_password',
+            'password' => 'min:8|required_with:confirm_password|same:confirm_password',
 
+        ]);
+        if ($validator->fails()) {
+            session()->flash('activeTab', '');
+            return redirect('partners/create')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
+        }
 
+        // second tab
+        $validator = Validator::make($request->all(), [
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-            ]);
-            if ($validator->fails()) {
-                session()->flash('activeTab','');
-                return redirect('partners/create')
-                    ->withErrors($validator)
-                    ->withInput()
-                    ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
-            }
+        if ($validator->fails()) {
+            session()->flash('activeTab', 'tab2');
+            return redirect('partners/create')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
+        }
 
+        // third tab
+        $validator = Validator::make($request->all(), [
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|' . unique_validate('phone'),
+            'city' => 'required|exists:cities,id',
+        ]);
 
-            // second tab
-            $validator = Validator::make($request->all(), [
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
+        if ($validator->fails()) {
+            session()->flash('activeTab', 'tab3');
+            return redirect('partners/create')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
+        }
 
-            if ($validator->fails()) {
-                session()->flash('activeTab','tab2');
-                return redirect('partners/create')
-                    ->withErrors($validator)
-                    ->withInput()
-                    ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
-            }
+        $validator = Validator::make($request->all(), [
+            'map_address' => 'required|max:255',
 
-            // third tab
-            $validator = Validator::make($request->all(), [
-                'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.unique_validate('phone'),
-                'city' => 'required|exists:cities,id',
-            ]);
-
-            if ($validator->fails()) {
-                session()->flash('activeTab','tab3');
-                return redirect('partners/create')
-                    ->withErrors($validator)
-                    ->withInput()
-                    ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
-            }
-
-
-            $validator = Validator::make($request->all(), [
-                'map_address' => 'required|max:255',
-
-
-            ]);
+        ]);
 
         $partner = new Partner($request->all());
-        $partner->image = '/public/images/' . $request->image;
-        $partner->password=bcrypt($request->password);
+
+        $partner->password = bcrypt($request->password);
         if ($file = $request->hasFile('image')) {
             $file = $request->file('image');
             $fileName = rand() . '.' . $file->getClientOriginalExtension();
@@ -109,9 +100,8 @@ class PartnerController extends Controller
 
             $partner->image = $fileName;
 
-
         }
-        // $partnar->embassador_id=1; //stistic embassador_id will change
+        $partner->embassador_id = embassadorUser()->id;
         $partner->save();
 
         return redirect()->route('partners.index')->with('success', 'تم التسجيل بنجاح');
@@ -126,10 +116,10 @@ class PartnerController extends Controller
     public function show($id)
     {
         $partner = Partner::findOrFail($id);
-        if(!$partner){
+        if (!$partner) {
             return redirect('/');
         }
-       if($partnar->embassador_id != embassadorUser()->id){
+        if ($partner->embassador_id != embassadorUser()->id) {
             return ' غير مسموح لك بعرض هذا الشريك ';
         }
         return response()->json($partner);
@@ -144,25 +134,19 @@ class PartnerController extends Controller
     public function edit($id)
     {
 
-
-
-        $partnersTypesArray= partnersTypesArray();
-        $cities =City::where('country_id',191)->get(['id',"name"]);
+        $partnersTypesArray = partnersTypesArray();
+        $cities = City::where('country_id', 191)->get(['id', "name"]);
 
         $partner = Partner::find($id);
 
-
-        if(!$partner){
+        if (!$partner) {
             return redirect('/');
         }
-        if($partnar->embassador_id != embassadorUser()->id){
+        if ($partner->embassador_id != embassadorUser()->id) {
             return ' غير مسموح لك بتعديل هذا الشريك ';
         }
 
-        return view('front.partners.create',compact('partner','partnersTypesArray','cities'));
-
-
-
+        return view('front.partners.create', compact('partner', 'partnersTypesArray', 'cities'));
 
     }
 
@@ -175,12 +159,72 @@ class PartnerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // first tab
+        $validator = Validator::make($request->all(), [
+            'partner_type' => 'required',
+            'legal_name' => ' required |max:255',
+            'email' => 'required|email|' . update_unique_validate('email', $id, 'partners'),
+
+        ]);
+        if ($validator->fails()) {
+            session()->flash('activeTab', '');
+            return redirect('partners/create')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
+        }
+
+        // second tab
+        $validator = Validator::make($request->all(), [
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            session()->flash('activeTab', 'tab2');
+            return redirect('partners/create')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
+        }
+
+        // third tab
+        $validator = Validator::make($request->all(), [
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|' . update_unique_validate('phone', $id, 'partners'),
+            'city' => 'required|exists:cities,id',
+        ]);
+
+        if ($validator->fails()) {
+            session()->flash('activeTab', 'tab3');
+            return redirect('partners/create')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
+        }
+
+        $validator = Validator::make($request->all(), [
+            'map_address' => 'required|max:255',
+
+        ]);
+
+        $partner = new Partner($request->all());
+
+        if ($file = $request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = rand() . '.' . $file->getClientOriginalExtension();
+            $destinationPath = public_path() . '/images/partners';
+            Image::make($file->getRealPath())->resize(100, 100)->stream();
+
+            $file->move($destinationPath, $fileName);
+
+            $partner->image = $fileName;
+
+        }
 
         $partner = Partner::find($id)->update($request->all());
-        if(!$partner){
+        if (!$partner) {
             return redirect('/');
         }
-       if($partnar->embassador_id != embassadorUser()->id){
+        if ($partner->embassador_id != embassadorUser()->id) {
             return ' غير مسموح لك بتعديل هذا الشريك ';
         }
         return redirect()->route('partners.index')->with("message", "Updated Success");
@@ -197,9 +241,6 @@ class PartnerController extends Controller
     // public function destroy(Request $request)
     // {
 
-
-
-
     //     $partner = Partner::where('id',$auth_user)->select('id','embassador_id')->first();
 
     //   if(!$partner)
@@ -209,15 +250,8 @@ class PartnerController extends Controller
 
     //     $embassador_id= $auth_user;//$partner->embassador_id;
 
-
-
-
     //       $delete_partner=DB::table('partners')->where('id', $auth_user)->delete();
     //       return redirect('partners')->with('success', 'تم الحذف بنجاح');
-
-
-
-
 
     // }
     // }
