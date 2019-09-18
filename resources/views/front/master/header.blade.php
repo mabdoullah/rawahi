@@ -32,7 +32,7 @@
 
 
                                     @if(embassadorUser())
-                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partners.edit',embassadorUser()->id)}}">تعديل البروفيل                                          </a></li>
+                                    <li class="d-lg-none"><a class="btn v1" href="{{route('embassador.edit',embassadorUser()->id)}}">تعديل البروفيل                                          </a></li>
                                     <li class="d-lg-none"><a class="btn v1" href="{{route('partners.create')}}">إضافة شريك
                                             <i class="ion-plus-round"></i></a></li>
                                     <li class="d-lg-none"><a class="btn v1" href="{{route('partners.index')}}">الشركاء
@@ -44,6 +44,21 @@
                                     <li class="d-lg-none"><a class="btn v1 active" href="{{route('embassador.index')}}">السفراء
                                               </a></li>
                                     @endif
+                                    {{-- ============ partners =============--}}
+                                    @if(partnerUser())
+                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partners.edit',partnerUser()->id)}}">تعديل البروفيل                                          </a></li>
+                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partners.create')}}">إضافة شريك
+                                            <i class="ion-plus-round"></i></a></li>
+                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partners.index')}}">الشركاء
+                                    </a></li>
+                                    @endif
+                                    @if(embassadorUser())
+                                    <li class="d-lg-none"><a class="btn v1 active" href="{{route('embassador.create')}}"> تسجيل سفير
+                                            <i class="ion-plus-round"></i></a></li>
+                                    <li class="d-lg-none"><a class="btn v1 active" href="{{route('embassador.index')}}">السفراء
+                                              </a></li>
+                                    @endif
+                                    {{-- ============ partners =============--}}
                                 </ul>
                             </div>
                         </nav>
@@ -67,13 +82,31 @@
 
 
                         </div>
-
+                        {{-- ============ partners =============--}}
+                        <div class="d-lg-none sm-left">
+                                <a href="#" class="mobile-bar js-menu-toggle">
+                                    <span class="ion-android-menu"></span>
+                                </a>
+                            </div>
+                            <div class="add-list float-left">
+                                
+                                @if(partnerUser())
+                                <a class="btn v8"  href="{{route('partners.edit',partnerUser()->id)}}">تعديل البروفيل </a>
+                                    <a class="btn v8" href="{{route('partners.create')}}">إضافة شريك <i
+                                        class="ion-plus-round"></i></a>
+                                        <a class="btn v8" href="{{route('partners.index')}}">الشركاء </a>
+                                @endif
+                           
+    
+    
+                            </div>
 
 
 
                     </div>
                 </div>
             </div>
+            {{-- ============ partners =============--}}
             <!--mobile-menu starts -->
             <div class="site-mobile-menu">
                 <div class="site-mobile-menu-header">

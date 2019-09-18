@@ -175,5 +175,6 @@ return [
         'partner_type'              =>'الفئه',
         'legal_name'            =>'اسم الشريك',
         'subscription_type'     =>' نوع الاشتراك',
+        'remember'              =>'يجب ان توفق على الشروط'
     ],
 ];

@@ -40,8 +40,19 @@ Route::namespace('front')->group(function () {
 
 
     });
-    Route::middleware(['auth:embassador'])->group(function () {
-        Route::resource("partners" ,"PartnerController");
+
+    Route::middleware(['auth:partners,embassador'])->group(function () {
+      Route::get("partners/{id}/edit","partnersController@edit")->name('partners.edit');
+      Route::put("partners/{id}","partnersController@update")->name('partners.update');
+    });
+
+    Route::middleware(['auth:partners'])->group(function () {
+        Route::get("partners/{id}","partnersController@show")->name('partners.show');
+        Route::get("partners","partnersController@index")->name('partners.index');
+        Route::get("partners/create","partnersController@create")->name('partners.create');
+        Route::POST("partners/store","partnersController@store")->name('partners.store');
+        Route::DELETE("partners/{id}","partnersController@destroy")->name('partners.destroy');
+
     });
 
 
