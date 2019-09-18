@@ -2336,6 +2336,11 @@ a.btn.v1.active
     outline: none;
 }
 
+.option.selected {
+    background-color: #fa8f1bba;
+    color: #DDD 
+}
+
 /*-------------------------------------------
                Breadcrumb
 -----------------------------------------*/

@@ -112,7 +112,7 @@
 
                                             <option selected disabled > اختر الفئة</option>
 
-                                            @foreach ($partnersTypesArray as $key => $value)
+                                            @foreach (partnersTypesArray() as $key => $value)
                                         <option
         {{ (old('partner_type', isset($partner->partner_type) ? $partner->partner_type:'' ) == $key ) ? 'selected':''  }} value="{{$key}}">
 
@@ -567,6 +567,20 @@ function readURL(input) {
       </script>
       {{-- end tabs move --}}
       {{-- start map --}}
+
+
+      <?php 
+
+      if(isset($partner->id)){
+                $lat = $partner->lat;
+                $lng = $partner->lng;
+            }else{
+                $lat = 24.7136;
+                $lng = 46.6753;
+            }
+        ?>
+  
+
 <script>
   
     if ($('#map').length > 0) {
@@ -580,8 +594,8 @@ function readURL(input) {
                 zoom: 15,
 
                 // The latitude and longitude to center the map (always required)
-                center: new google.maps.LatLng(24.7136, 46.6753), // Riyadh
-
+                center: new google.maps.LatLng({{$lat}}, {{$lng}}), // Riyadh
+                
                 scrollwheel: false,
 
 
@@ -650,10 +664,10 @@ function readURL(input) {
             // Create the Google Map using our element and options defined above
             var map = new google.maps.Map(mapElement, mapOptions);
 
-            var image = '../front/images/others/marker.png';
+            var image = "{{asset('front/images/others/marker.png')}}" ;
             // Let's also add a marker while we're at it
             var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(24.7136, 46.6753),
+                position: new google.maps.LatLng({{$lat}}, {{$lng}}),
                 map: map,
                 icon: image,
                 draggable: true,
@@ -675,11 +689,12 @@ function readURL(input) {
             }
             let geocoder;
             google.maps.event.addListener(marker,'dragend',function (e) {
-                // console.log(marker.getPosition().lat(),e);
+                console.log(marker.getPosition());
                 geocoder = new google.maps.Geocoder();
 
                 let lat = marker.getPosition().lat(),
                     lng = marker.getPosition().lng();
+                    
                     
                 
                 var latlng = new google.maps.LatLng(lat,lng);
@@ -690,6 +705,7 @@ function readURL(input) {
                     
                     if (status == google.maps.GeocoderStatus.OK) {
                         console.log(results[1],lat,lng );
+
                         $('#lat').val(lat);
                         $('#lng').val(lng);
                         $('#map_address').val(results[1].formatted_address);

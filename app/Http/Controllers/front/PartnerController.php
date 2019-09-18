@@ -29,10 +29,9 @@ class PartnerController extends Controller
      */
     public function create()
     {
-        $partnersTypesArray = partnersTypesArray();
         $cities = City::where('country_id', 191)->get();
 
-        return view('front.partners.create', compact('partnersTypesArray', 'cities'));
+        return view('front.partners.create', compact('cities'));
     }
 
     public function store(Request $request)
@@ -134,19 +133,19 @@ class PartnerController extends Controller
     public function edit($id)
     {
 
-        $partnersTypesArray = partnersTypesArray();
+        $partner = Partner::find($id);
+        if (!$partner) return redirect('/');
+        
+        if(embassadorUser() && embassadorUser()->id != $partner->embassador_id){
+            return ' غير مسموح لك بتعديل هذا الشريك';
+        }
+        if(partnerUser() && partnerUser()->id != $partner->id){
+            return ' غير مسموح لك بتعديل هذا الشريك';
+        }
+
         $cities = City::where('country_id', 191)->get(['id', "name"]);
 
-        $partner = Partner::find($id);
-
-        if (!$partner) {
-            return redirect('/');
-        }
-        if ($partner->embassador_id != embassadorUser()->id) {
-            return ' غير مسموح لك بتعديل هذا الشريك ';
-        }
-
-        return view('front.partners.create', compact('partner', 'partnersTypesArray', 'cities'));
+        return view('front.partners.create', compact('partner', 'cities'));
 
     }
 
@@ -206,7 +205,21 @@ class PartnerController extends Controller
 
         ]);
 
-        $partner = new Partner($request->all());
+
+
+        $partner = Partner::find($id);
+        if (!$partner) return redirect('/');
+        
+        if(embassadorUser() && embassadorUser()->id != $partner->embassador_id){
+            return ' غير مسموح لك بتعديل هذا الشريك';
+        }
+        if(partnerUser() && partnerUser()->id != $partner->id){
+            return ' غير مسموح لك بتعديل هذا الشريك';
+        }
+
+
+
+        // $partner = new Partner($request->all());
 
         if ($file = $request->hasFile('image')) {
             $file = $request->file('image');
@@ -220,13 +233,8 @@ class PartnerController extends Controller
 
         }
 
-        $partner = Partner::find($id)->update($request->all());
-        if (!$partner) {
-            return redirect('/');
-        }
-        if ($partner->embassador_id != embassadorUser()->id) {
-            return ' غير مسموح لك بتعديل هذا الشريك ';
-        }
+        $partner->update($request->all());
+        
         return redirect()->route('partners.index')->with("message", "Updated Success");
 
         //$obj->where('name',$name)->update($arr);
