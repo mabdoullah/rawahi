@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
@@ -18,37 +19,35 @@ class EmbassadorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public function index(Request $request)
     {
-        $all_agent=Agent::all();
-            
-        $agent_name=$request->agent_name;
-        if(!isset($agent_name))
-      {  $show_embassador='';
-        $all_embassdors_cities = DB::table('embassadors')
-            ->join('cities', 'embassadors.city', '=', 'cities.id')
-            ->join('agents', 'embassadors.agent_id', '=', 'agents.id')
-            ->select('agents.name as agent_name','embassadors.birth_date','embassadors.first_name','embassadors.second_name','embassadors.email','embassadors.phone','embassadors.id as embassador_id','cities.name as city_name','embassadors.agent_id as agent_id' )
-            ->orderBy('embassadors.id','desc')->paginate(1);
-      }
-      else{
-        $all_embassdors_cities = DB::table('embassadors')
-        ->join('cities', 'embassadors.city', '=', 'cities.id')
-        ->join('agents', 'embassadors.agent_id', '=', 'agents.id')
-       ->where('embassadors.agent_id',$agent_name)
-        ->select('agents.name as agent_name','embassadors.birth_date','embassadors.first_name','embassadors.second_name','embassadors.email','embassadors.phone','embassadors.id as embassador_id','cities.name as city_name','embassadors.agent_id as agent_id' )
-        ->orderBy('embassadors.id','desc')->paginate(1);
-      }
+        $agents = Agent::all();
+        // dd($request);
+        $agent_id = $request->agent;
+
+        $embassadors = DB::table('embassadors')
+                    ->join('cities', 'embassadors.city', '=', 'cities.id')
+                    ->join('agents', 'embassadors.agent_id', '=', 'agents.id')
+                    ->select('agents.name as agent_name', 'embassadors.birth_date', 'embassadors.first_name',
+                     'embassadors.second_name', 'embassadors.email', 'embassadors.phone', 
+                     'embassadors.id as embassador_id',
+                      'cities.name as city_name', 'embassadors.agent_id as agent_id');
+        if($agent_id){
+            // dd($agent_id);
+
+            $embassadors = $embassadors->where('embassadors.agent_id', $agent_id);
+        }              
 
 
-            return view('admin.embassadors.index')
-            ->with('all_embassdors_cities', $all_embassdors_cities,'all_agent',$all_agent)
-            ->with('show_embassador',$show_embassador);
-            
+        $embassadors = $embassadors->orderBy('embassadors.id', 'desc')->paginate(4);
 
-      
 
+
+        return view('admin.embassadors.index',compact('agent_id','embassadors','agents'));
+            //->with('embassadors', $embassadors)
+            //->with('agents', $agents);
+        // ->with('show_embassador', $show_embassador);
     }
     /**
      * Show the form for creating a new resource.
@@ -57,8 +56,9 @@ class EmbassadorController extends Controller
      */
     public function create()
     {
-      $cities = City::where('country_id',191)->get();
-      return view('admin.embassadors.create')->with('cities', $cities);
+        $agents = Agent::all();
+        $cities = City::where('country_id', 191)->get();
+        return view('admin.embassadors.create')->with('cities', $cities)->with('agents',$agents);
     }
 
     /**
@@ -73,39 +73,39 @@ class EmbassadorController extends Controller
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|max:18',
             'second_name' => 'required|max:18',
-            'email' => 'required|email|'.unique_validate('email'),
-            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.unique_validate('phone'),
+            'email' => 'required|email|' . unique_validate('email'),
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|' . unique_validate('phone'),
             'city' => 'required|exists:cities,id',
             'birth_date' => 'date|before:-18 years|required',
             'password' => 'min:8|required_with:confirm_password|same:confirm_password',
-            // 'confirm_password' => 'min:8'
+            'agent_id' => 'required|exists:agents,id'
         ]);
         if ($validator->fails()) {
             return redirect('admin/embassador/create')
-                        ->withErrors($validator)
-                        ->withInput()
-                        ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
+                ->withErrors($validator)
+                ->withInput()
+                ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
         }
-  $embassador = new Embassador;
-  $embassador->first_name = $request->first_name;
-  $embassador->second_name = $request->second_name;
-  $embassador->email = $request->email;
-  $embassador->phone = $request->phone;
-  $embassador->phone_key = '+966';//$request->code;
-  $embassador->country = 191;//id of suadia
-  $embassador->city = $request->city;
-  $embassador->birth_date = $request->birth_date;
-  $embassador->password = $request->password;
-  $embassador->agent_id = 1; //get it from auth
-  $embassador->remember_token = $request->_token;
-  $save_embassador=$embassador->save();
-  $id=$embassador->id;
-  $embassador_id=Embassador::where('id',$id)->select('id','generate_id')->first();
-  $embassador_id->generate_id=$id;
-  $embassador_id->save();
-  if($save_embassador){
-    return Redirect::back()->with('success', 'تم التسجيل بنجاح');
-}
+        $embassador = new Embassador;
+        $embassador->first_name = $request->first_name;
+        $embassador->second_name = $request->second_name;
+        $embassador->email = $request->email;
+        $embassador->phone = $request->phone;
+        $embassador->phone_key = '+966'; //$request->code;
+        $embassador->country = 191; //id of suadia
+        $embassador->city = $request->city;
+        $embassador->birth_date = $request->birth_date;
+        $embassador->password = $request->password;
+        $embassador->agent_id =$request->agent_id; 
+        $embassador->remember_token = $request->_token;
+        $save_embassador = $embassador->save();
+        $id = $embassador->id;
+        $embassador_id = Embassador::where('id', $id)->select('id', 'generate_id')->first();
+        $embassador_id->generate_id = $id;
+        $embassador_id->save();
+        if ($save_embassador) {
+            return Redirect::back()->with('success', 'تم التسجيل بنجاح');
+        }
     }
     /**
      * Display the specified resource.
@@ -117,11 +117,11 @@ class EmbassadorController extends Controller
     {
 
         $show_embassador = DB::table('embassadors')
-        ->join('cities', 'embassadors.city', '=', 'cities.id')
-        ->select('embassadors.first_name','embassadors.second_name','embassadors.email','embassadors.phone','embassadors.phone_key','embassadors.birth_date','embassadors.id as embassador_id','cities.name as city_name' )
-        ->where('embassadors.id',$id)->first();
-    // $show_embassador = Embassadors::find($id);
-    return response()->json($show_embassador);
+            ->join('cities', 'embassadors.city', '=', 'cities.id')
+            ->select('embassadors.first_name', 'embassadors.second_name', 'embassadors.email', 'embassadors.phone', 'embassadors.phone_key', 'embassadors.birth_date', 'embassadors.id as embassador_id', 'cities.name as city_name')
+            ->where('embassadors.id', $id)->first();
+        // $show_embassador = Embassadors::find($id);
+        return response()->json($show_embassador);
     }
 
     /**
@@ -130,11 +130,17 @@ class EmbassadorController extends Controller
      * @param  \App\Agent  $Agent
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request ,$id)
+    
     {
-        $cities = City::where('country_id',191)->get();
+        $agent_id = $request->agent;
+
+        $agents = Agent::all();
+        $cities = City::where('country_id', 191)->get();
         $embassador = Embassador::find($id);
-        return view("admin.embassadors.edit")->with('cities', $cities)->with('embassador',$embassador);;
+            // return view("admin.embassadors.edit")->with('cities', $cities)->with('embassador', $embassador)->with('agents',$agents);
+        return view('admin.embassadors.edit',compact('agent_id','embassador','agents','cities'));
+
     }
 
     /**
@@ -145,20 +151,22 @@ class EmbassadorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|max:18',
             'second_name' => 'required|max:18',
-            'email' => 'required|email|'.update_unique_validate('email',$id,'embassadors'),
-            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.update_unique_validate('phone',$id,'embassadors'),
+            'email' => 'required|email|' . update_unique_validate('email', $id, 'embassadors'),
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|' . update_unique_validate('phone', $id, 'embassadors'),
             'city' => 'required|exists:cities,id',
             'birth_date' => 'date|before:-18 years|required',
-            ]);
+            'agent_id' => 'required|exists:agents,id'
+
+        ]);
         if ($validator->fails()) {
-            return redirect('admin/embassador/'.$id.'/edit')
-                        ->withErrors($validator)
-                        ->withInput()
-                        ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
+            return redirect('admin/embassador/' . $id . '/edit')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
         }
         $embassador = Embassador::find($id);
         $embassador->first_name = $request->first_name;
@@ -167,11 +175,12 @@ class EmbassadorController extends Controller
         $embassador->phone = $request->phone;
         $embassador->city = $request->city;
         $embassador->birth_date = $request->birth_date;
-        $save_embassador=$embassador->save();
-        if($save_embassador){
-            return redirect('admin/embassador')->with('success', 'تم التعديل بنجاح');
-            }
+        $embassador->agent_id =$request->agent_id; 
 
+        $save_embassador = $embassador->save();
+        if ($save_embassador) {
+            return redirect('admin/embassador')->with('success', 'تم التعديل بنجاح');
+        }
     }
 
 
@@ -223,7 +232,7 @@ class EmbassadorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-     {
+    {
         $embassador = Embassador::find($id);
         $embassador->delete();
 
@@ -232,7 +241,4 @@ class EmbassadorController extends Controller
 
         return redirect('admin.embassadors.index')->with('success', 'Contact deleted!');
     }
-
-
-
 }
