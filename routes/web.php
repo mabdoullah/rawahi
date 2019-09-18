@@ -15,7 +15,7 @@
 // Route::get('/getcities/{id}','front\EmbssadorController@getcities')->name('getcities');
 
 // Admin
-Route::group(['prefix' => 'admin' , 'namespace'=>'admin' ,'as'=>'admin.' ], function()
+Route::group(['prefix' => 'admin', 'namespace'=>'admin' ,'as'=>'admin.' ], function()
 {
   Route::resource("home","HomeController");
   Route::resource("agent","AgentController");

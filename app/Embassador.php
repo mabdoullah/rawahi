@@ -22,8 +22,8 @@ class Embassador extends Authenticatable
     protected $table = 'embassadors';
     protected $fillable = [
         'first_name', 'second_name', 'email','phone','phone_key',
-        'country','city','birth_date','password','confirm_password',
-    ];  
+        'country','city','birth_date','password','generate_id','agent_id',
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -43,5 +43,13 @@ class Embassador extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    
+    public function agent()
+      {
+          return $this->belongsTo('App\Agent');
+      }
+      public function city()
+      {
+          return $this->belongsTo('App\City');
+      }
+
 }

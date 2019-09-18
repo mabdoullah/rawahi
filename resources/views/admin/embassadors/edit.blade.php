@@ -107,34 +107,26 @@
               </div>
               </div>
 
+           
 
-            <div class="form-group row">
-              <div class="col-lg-6">
-                <div class="form-group {{ $errors->has( 'password' ) ? 'has-error' : '' }}">
-                  <label> كلمه السر </label>
-                  <input required type="password" class="form-control " placeholder="كلمه السر" name="password" value={{ $embassador->password }}>
-                  @if( $errors->has( 'password' ) )
-                  <span class="help-block text-danger">
-                    {{ $errors->first( 'password' ) }}
-                  </span>
-                  @endif
-                </div>
-              </div>
-              </div>
-              <div class="form-group row">
 
-                <div class="col-lg-6">
-                  <div class="form-group {{ $errors->has( 'confirm_password' ) ? 'has-error' : '' }}">
-                    <label> تاكيد كلمه السر </label>
-                    <input required type="password" class="form-control " placeholder="تاكيد كلمه السر  " name="confirm_password" value={{ $embassador->password }}>
-                    @if( $errors->has( 'confirm_password' ) )
-                    <span class="help-block text-danger">
-                      {{ $errors->first( 'confirm_password' ) }}
-                    </span>
-                    @endif
-                  </div>
-                </div>
-              </div>
+              <div class="form-group {{ $errors->has( 'agent' ) ? 'has-error' : '' }}">
+          <label> اختار الشريك </label>
+            <select class="form-control " name="agent_id" id="agentname">
+              @foreach ($agents as $agent)
+              <option value="{{$agent->id}}" @if($agent->id == $embassador->agent_id) selected="selected" @endif >
+                    {{$agent->name}}
+              @endforeach
+            </select>
+
+            @if( $errors->has( 'agent' ) )
+            <span class="help-block text-danger">
+              {{ $errors->first( 'agent' ) }}
+            </span>
+            @endif
+        </div>
+
+
             </div>
               <div class="kt-portlet__foot">
             <div class="kt-form__actions">
