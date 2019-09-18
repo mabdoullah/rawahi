@@ -40,7 +40,7 @@ class EmbassadorController extends Controller
         }              
 
 
-        $embassadors = $embassadors->orderBy('embassadors.id', 'desc')->paginate(4);
+        $embassadors = $embassadors->orderBy('embassadors.id', 'desc')->paginate(10);
 
 
 
@@ -97,11 +97,11 @@ class EmbassadorController extends Controller
         $embassador->birth_date = $request->birth_date;
         $embassador->password = bcrypt($request->password);
         $embassador->agent_id =$request->agent_id; 
-        $embassador->remember_token = $request->_token;
+        // $embassador->remember_token = $request->_token;
         $save_embassador = $embassador->save();
-        $id = $embassador->id;
-        $embassador_id = Embassador::where('id', $id)->select('id', 'generate_id')->first();
-        $embassador_id->generate_id = $id;
+        // dd($embassador);
+        $embassador_id = Embassador::where('id', $embassador->id)->select('id', 'generate_id')->first();
+        $embassador_id->generate_id = $embassador_id->id;
         $embassador_id->save();
         if ($save_embassador) {
             return Redirect::back()->with('success', 'تم التسجيل بنجاح');
