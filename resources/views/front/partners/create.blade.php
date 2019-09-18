@@ -258,6 +258,7 @@
                         </div>
                     </div>
 
+<<<<<<< HEAD
                     <div class="text-center tab-pane fade {{ session('activeTab') == 'tab2'  ? "show active" : "" }}" id="gallery">
                         <h4><i class="ion-image"></i> الشعار</h4>
                         <div class="form-group">
@@ -281,25 +282,46 @@
                                             </div>
                                             <img class="input-image-up" src="" alt="image"/>
                                         </div>
+=======
+                  
+                                             <!--  Replace this  -->
+                            <div class="tab-pane fade text-center {{ session('activeTab') == 'tab2'  ? "show active" : "" }}" id="gallery">
+                                    <h4><i class="ion-image"></i> الشعار </h4>
+                                    <div class="form-group">
+                                        <form class="photo-upload">
+                                           <div class="form-group {{ $errors->has( 'image' ) ? 'has-error' : '' }}">
+                                                <div class="add-listing__input-file-box">
+                                                
+                                                        <input class="add-listing__input-file" type="file" name="image"
+                                                        id="file" onchange="readURL(this);"  value="{{ old('image',
+                                                        isset($partner->image) ? $partner->image : '') }}">
+
+                                                    <div class="add-listing__input-file-wrap">
+                                                        <i class="ion-ios-cloud-upload"></i>
+                                                        <p>إضغط هنا لرفع الشعار</p>
+                                                        <img class="input-image-up" src="" alt="image"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <div class="text-center">  
+                                                            @if( $errors->has( 'image' ) )
+                                                                   <span class="help-block text-danger">
+                                                                       {{ $errors->first( 'image' ) }}
+                                                                   </span>
+                                                               @endif
+                                                            </div>
+                                                </div>
+                                            </div>
+                                        
+>>>>>>> 07e34cdd5b3d7d1f92fdc30a248d31929779d617
                                     </div>
-                                    <!-- <div class="col-md-8">
-                                        <div class="text-center"> 
-                                            @if( $errors->has( 'image' ) )
-                                                   <span class="help-block text-danger">
-                                                       {{ $errors->first( 'image' ) }}
-                                                   </span>
-                                               @endif
-                                            </div></div> -->
+                                    <div class="add-btn">
+                                            <a href="javascript:;" class="btn v8 mar-top-20 previous">الخطوه السابقه</a>
+                                            <a href="javascript:;" class="btn v8 mar-top-20 next">حفظ ومتابعة</a>
                                     </div>
                                 </div>
-                            </div> </div>
-                        </div>
+                                <!-- End replace -->
 
-                        <div class="add-btn">
-                            <a href="javascript:;" class="btn v8 mar-top-20 previous">الخطوه السابقه</a>
-                            <a href="javascript:;" class="btn v8 mar-top-20 next">حفظ ومتابعة</a>
-                        </div>
-                    </div>
                     <div class="tab-pane fade {{ session('activeTab') == 'tab3'  ? "show active" : "" }}" id="location">
                         <h4><i class="ion-ios-location"></i> الموقع وبيانات الاتصال:</h4>
                         <div class="row">
@@ -392,14 +414,14 @@
                             <div class="col-md-6">
                                 <div class="form-group {{ $errors->has( 'lat' ) ? 'has-error' : '' }}">
                                     <input name="lat" type="hidden" id="lat" class="form-control filter-input"
-                                        placeholder="خط العرض"  value="{{ old('lat',
+                                         value="{{ old('lat',
                                         isset($partner->lat) ? $partner->lat : '') }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group {{ $errors->has( 'lng' ) ? 'has-error' : '' }}">
                                     <input name="lng" type="hidden" id="lng" class="form-control filter-input"
-                                        placeholder="خط العرض" value="{{ old('lng',
+                                         value="{{ old('lng',
                                         isset($partner->lng) ? $partner->lng : '') }}" >
                                 </div>
                             </div>
@@ -438,418 +460,6 @@
                         </div>
 
 
-                    {{-- <div class="tab-pane fade {{ session('activeTab') == 'tab4'  ? "show active" : "" }}" id="open_time">
-                        <h4><i class="ion-clock"></i> ساعات العمل:</h4>
-                        <div class="row mar-bot-30">
-                            <div class="col-md-2">
-                                <label class="fix_spacing">الأحد</label>
-                            </div>
-                            <div class="col-md-5">
-                                <div  tabindex="0"><span
-                                        class="current">من</span>
-                                    <select class="nice-select filter-input"  >
-                                        <option  selected focus">7.00 am</option>
-                                        <option class="option">8.00 am</option>
-                                        <option class="option">9.00 am</option>
-                                        <option class="option">10.00 am</option>
-                                        <option class="option">11.00 am</option>
-                                        <option class="option">12.00 am</option>
-                                        <option class="option">1.00 pm</option>
-                                        <option class="option">2.00 pm</option>
-                                        <option class="option">3.00 pm</option>
-                                        <option class="option">4.00 pm</option>
-                                        <option class="option">5.00 pm</option>
-                                        <option class="option">6.00 pm</option>
-                                        <option class="option">7.00 pm</option>
-                                        <option class="option">8.00 pm</option>
-                                        <option class="option">9.00 pm</option>
-                                        <option class="option">10.00 pm</option>
-                                        <option class="option">11.00 pm</option>
-                                        <option class="option">12.00 pm</option>
-                                        <option class="option">00.00 am</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div  tabindex="0"><span
-                                        class="current">إلى</span>
-                                        <select class="nice-select filter-input" >
-                                             <option class="option selected focus">7.00 am</option>
-                                             <option class="option">8.00 am</option>
-                                              <option class="option">9.00 am</option>
-                                               <option class="option">10.00 am</option>
-                                                <option class="option">11.00 am</option>
-                                                <option class="option">12.00 am</option>
-                                                <option class="option">1.00 pm</option>
-                                                <option class="option">2.00 pm</option>
-                                                <option class="option">3.00 pm</option>
-                                                <option class="option">4.00 pm</option>
-                                                <option class="option">5.00 pm</option>
-                                                <option class="option">6.00 pm</option>
-                                                <option class="option">7.00 pm</option>
-                                                <option class="option">8.00 pm</option>
-                                                <option class="option">9.00 pm</option>
-                                                <option class="option">10.00 pm</option>
-                                                <option class="option">11.00 pm</option>
-                                                <option class="option">12.00 pm</option>
-                                                <option class="option">00.00 am</option>
-                                         </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mar-bot-30">
-                            <div class="col-md-2">
-                                <label class="fix_spacing">الإثنين</label>
-                            </div>
-                            <div class="col-md-5">
-                                <div tabindex="0"><span
-                                        class="current">من</span>
-                                        <select class="nice-select filter-input">
-                                                <option class="option selected focus">7.00 am</option>
-                                                <option class="option">8.00 am</option>
-                                                 <option class="option">9.00 am</option>
-                                                  <option class="option">10.00 am</option>
-                                                   <option class="option">11.00 am</option>
-                                                   <option class="option">12.00 am</option>
-                                                   <option class="option">1.00 pm</option>
-                                                   <option class="option">2.00 pm</option>
-                                                   <option class="option">3.00 pm</option>
-                                                   <option class="option">4.00 pm</option>
-                                                   <option class="option">5.00 pm</option>
-                                                   <option class="option">6.00 pm</option>
-                                                   <option class="option">7.00 pm</option>
-                                                   <option class="option">8.00 pm</option>
-                                                   <option class="option">9.00 pm</option>
-                                                   <option class="option">10.00 pm</option>
-                                                   <option class="option">11.00 pm</option>
-                                                   <option class="option">12.00 pm</option>
-                                                   <option class="option">00.00 am</option>
-                                        </select>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div tabindex="0"><span
-                                        class="current">إلى</span>
-                                        <select class="nice-select filter-input">
-                                                <option class="option selected focus">7.00 am</option>
-                                                <option class="option">8.00 am</option>
-                                                 <option class="option">9.00 am</option>
-                                                  <option class="option">10.00 am</option>
-                                                   <option class="option">11.00 am</option>
-                                                   <option class="option">12.00 am</option>
-                                                   <option class="option">1.00 pm</option>
-                                                   <option class="option">2.00 pm</option>
-                                                   <option class="option">3.00 pm</option>
-                                                   <option class="option">4.00 pm</option>
-                                                   <option class="option">5.00 pm</option>
-                                                   <option class="option">6.00 pm</option>
-                                                   <option class="option">7.00 pm</option>
-                                                   <option class="option">8.00 pm</option>
-                                                   <option class="option">9.00 pm</option>
-                                                   <option class="option">10.00 pm</option>
-                                                   <option class="option">11.00 pm</option>
-                                                   <option class="option">12.00 pm</option>
-                                                   <option class="option">00.00 am</option>
-                                        </select>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row mar-bot-30">
-                            <div class="col-md-2">
-                                <label class="fix_spacing">الثلاثاء</label>
-                            </div>
-                            <div class="col-md-5">
-                                <div  tabindex="0"><span
-                                        class="current">من</span>
-                                        <select class="nice-select filter-input">
-                                                <option class="option selected focus">7.00 am</option>
-                                                <option class="option">8.00 am</option>
-                                                 <option class="option">9.00 am</option>
-                                                  <option class="option">10.00 am</option>
-                                                   <option class="option">11.00 am</option>
-                                                   <option class="option">12.00 am</option>
-                                                   <option class="option">1.00 pm</option>
-                                                   <option class="option">2.00 pm</option>
-                                                   <option class="option">3.00 pm</option>
-                                                   <option class="option">4.00 pm</option>
-                                                   <option class="option">5.00 pm</option>
-                                                   <option class="option">6.00 pm</option>
-                                                   <option class="option">7.00 pm</option>
-                                                   <option class="option">8.00 pm</option>
-                                                   <option class="option">9.00 pm</option>
-                                                   <option class="option">10.00 pm</option>
-                                                   <option class="option">11.00 pm</option>
-                                                   <option class="option">12.00 pm</option>
-                                                   <option class="option">00.00 am</option>
-                                         </select>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div  tabindex="0"><span
-                                        class="current">إلى</span>
-                                        <select class="nice-select filter-input">
-                                                <option class="option selected focus">7.00 am</option>
-                                                <option class="option">8.00 am</option>
-                                                 <option class="option">9.00 am</option>
-                                                  <option class="option">10.00 am</option>
-                                                   <option class="option">11.00 am</option>
-                                                   <option class="option">12.00 am</option>
-                                                   <option class="option">1.00 pm</option>
-                                                   <option class="option">2.00 pm</option>
-                                                   <option class="option">3.00 pm</option>
-                                                   <option class="option">4.00 pm</option>
-                                                   <option class="option">5.00 pm</option>
-                                                   <option class="option">6.00 pm</option>
-                                                   <option class="option">7.00 pm</option>
-                                                   <option class="option">8.00 pm</option>
-                                                   <option class="option">9.00 pm</option>
-                                                   <option class="option">10.00 pm</option>
-                                                   <option class="option">11.00 pm</option>
-                                                   <option class="option">12.00 pm</option>
-                                                   <option class="option">00.00 am</option>
-                                            </select>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row mar-bot-30">
-                            <div class="col-md-2">
-                                <label class="fix_spacing">الأربعاء</label>
-                            </div>
-                            <div class="col-md-5">
-                                <div tabindex="0"><span
-                                        class="current">من</span>
-                                        <select class="nice-select filter-input">
-                                                <option class="option selected focus">7.00 am</option>
-                                                 <option class="option">8.00 am</option>
-                                                 <option class="option">9.00 am</option>
-                                                  <option class="option">10.00 am</option>
-                                                   <option class="option">11.00 am</option>
-                                                   <option class="option">12.00 am</option>
-                                                   <option class="option">1.00 pm</option>
-                                                   <option class="option">2.00 pm</option>
-                                                   <option class="option">3.00 pm</option>
-                                                   <option class="option">4.00 pm</option>
-                                                   <option class="option">5.00 pm</option>
-                                                   <option class="option">6.00 pm</option>
-                                                   <option class="option">7.00 pm</option>
-                                                   <option class="option">8.00 pm</option>
-                                                   <option class="option">9.00 pm</option>
-                                                   <option class="option">10.00 pm</option>
-                                                   <option class="option">11.00 pm</option>
-                                                   <option class="option">12.00 pm</option>
-                                                   <option class="option">00.00 am</option>
-                                            </select>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div  tabindex="0"><span
-                                        class="current">إلى</span>
-                                        <select class="nice-select filter-input">
-                                                <option class="option selected focus">7.00 am</option>
-                                                <option class="option">8.00 am</option>
-                                                 <option class="option">9.00 am</option>
-                                                  <option class="option">10.00 am</option>
-                                                   <option class="option">11.00 am</option>
-                                                   <option class="option">12.00 am</option>
-                                                   <option class="option">1.00 pm</option>
-                                                   <option class="option">2.00 pm</option>
-                                                   <option class="option">3.00 pm</option>
-                                                   <option class="option">4.00 pm</option>
-                                                   <option class="option">5.00 pm</option>
-                                                   <option class="option">6.00 pm</option>
-                                                   <option class="option">7.00 pm</option>
-                                                   <option class="option">8.00 pm</option>
-                                                   <option class="option">9.00 pm</option>
-                                                   <option class="option">10.00 pm</option>
-                                                   <option class="option">11.00 pm</option>
-                                                   <option class="option">12.00 pm</option>
-                                                   <option class="option">00.00 am</option>
-                                            </select>
-                                </div>
-                            </div>
-
-                        </div> --}}
-                        {{-- <div class="row mar-bot-30">
-                            <div class="col-md-2">
-                                <label class="fix_spacing">الخميس</label>
-                            </div>
-                            <div class="col-md-5">
-                                <div  tabindex="0"><span
-                                        class="current">من</span>
-                                        <select class="nice-select filter-input">
-                                                <option class="option selected focus">7.00 am</option>
-                                                <option class="option">8.00 am</option>
-                                                 <option class="option">9.00 am</option>
-                                                  <option class="option">10.00 am</option>
-                                                   <option class="option">11.00 am</option>
-                                                   <option class="option">12.00 am</option>
-                                                   <option class="option">1.00 pm</option>
-                                                   <option class="option">2.00 pm</option>
-                                                   <option class="option">3.00 pm</option>
-                                                   <option class="option">4.00 pm</option>
-                                                   <option class="option">5.00 pm</option>
-                                                   <option class="option">6.00 pm</option>
-                                                   <option class="option">7.00 pm</option>
-                                                   <option class="option">8.00 pm</option>
-                                                   <option class="option">9.00 pm</option>
-                                                   <option class="option">10.00 pm</option>
-                                                   <option class="option">11.00 pm</option>
-                                                   <option class="option">12.00 pm</option>
-                                                   <option class="option">00.00 am</option>
-                                            </select>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div  tabindex="0"><span
-                                        class="current">إلى</span>
-                                        <select class="nice-select filter-input">
-                                                <option class="option selected focus">7.00 am</option>
-                                                <option class="option">8.00 am</option>
-                                                 <option class="option">9.00 am</option>
-                                                  <option class="option">10.00 am</option>
-                                                   <option class="option">11.00 am</option>
-                                                   <option class="option">12.00 am</option>
-                                                   <option class="option">1.00 pm</option>
-                                                   <option class="option">2.00 pm</option>
-                                                   <option class="option">3.00 pm</option>
-                                                   <option class="option">4.00 pm</option>
-                                                   <option class="option">5.00 pm</option>
-                                                   <option class="option">6.00 pm</option>
-                                                   <option class="option">7.00 pm</option>
-                                                   <option class="option">8.00 pm</option>
-                                                   <option class="option">9.00 pm</option>
-                                                   <option class="option">10.00 pm</option>
-                                                   <option class="option">11.00 pm</option>
-                                                   <option class="option">12.00 pm</option>
-                                                   <option class="option">00.00 am</option>
-                                            </select>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row mar-bot-30">
-                            <div class="col-md-2">
-                                <label class="fix_spacing">الجمعة</label>
-                            </div>
-                            <div class="col-md-5">
-                                <div  tabindex="0"><span
-                                        class="current">من</span>
-                                        <select class="nice-select filter-input">
-                                                <option class="option selected focus">7.00 am</option>
-                                                <option class="option">8.00 am</option>
-                                                 <option class="option">9.00 am</option>
-                                                  <option class="option">10.00 am</option>
-                                                   <option class="option">11.00 am</option>
-                                                   <option class="option">12.00 am</option>
-                                                   <option class="option">1.00 pm</option>
-                                                   <option class="option">2.00 pm</option>
-                                                   <option class="option">3.00 pm</option>
-                                                   <option class="option">4.00 pm</option>
-                                                   <option class="option">5.00 pm</option>
-                                                   <option class="option">6.00 pm</option>
-                                                   <option class="option">7.00 pm</option>
-                                                   <option class="option">8.00 pm</option>
-                                                   <option class="option">9.00 pm</option>
-                                                   <option class="option">10.00 pm</option>
-                                                   <option class="option">11.00 pm</option>
-                                                   <option class="option">12.00 pm</option>
-                                                   <option class="option">00.00 am</option>
-                                            </select>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div  tabindex="0"><span
-                                        class="current">إلى</span>
-                                        <select class="nice-select filter-input">
-                                                <option class="option selected focus">7.00 am</option>
-                                                <option class="option">8.00 am</option>
-                                                 <option class="option">9.00 am</option>
-                                                  <option class="option">10.00 am</option>
-                                                   <option class="option">11.00 am</option>
-                                                   <option class="option">12.00 am</option>
-                                                   <option class="option">1.00 pm</option>
-                                                   <option class="option">2.00 pm</option>
-                                                   <option class="option">3.00 pm</option>
-                                                   <option class="option">4.00 pm</option>
-                                                   <option class="option">5.00 pm</option>
-                                                   <option class="option">6.00 pm</option>
-                                                   <option class="option">7.00 pm</option>
-                                                   <option class="option">8.00 pm</option>
-                                                   <option class="option">9.00 pm</option>
-                                                   <option class="option">10.00 pm</option>
-                                                   <option class="option">11.00 pm</option>
-                                                   <option class="option">12.00 pm</option>
-                                                   <option class="option">00.00 am</option>
-                                            </select>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row mar-bot-30">
-                            <div class="col-md-2">
-                                <label class="fix_spacing">السبت</label>
-                            </div>
-                            <div class="col-md-5">
-                                <div tabindex="0"><span
-                                        class="current">من</span>
-                                        <select class="nice-select filter-input">
-                                                <option class="option selected focus">7.00 am</option>
-                                                <option class="option">8.00 am</option>
-                                                 <option class="option">9.00 am</option>
-                                                  <option class="option">10.00 am</option>
-                                                   <option class="option">11.00 am</option>
-                                                   <option class="option">12.00 am</option>
-                                                   <option class="option">1.00 pm</option>
-                                                   <option class="option">2.00 pm</option>
-                                                   <option class="option">3.00 pm</option>
-                                                   <option class="option">4.00 pm</option>
-                                                   <option class="option">5.00 pm</option>
-                                                   <option class="option">6.00 pm</option>
-                                                   <option class="option">7.00 pm</option>
-                                                   <option class="option">8.00 pm</option>
-                                                   <option class="option">9.00 pm</option>
-                                                   <option class="option">10.00 pm</option>
-                                                   <option class="option">11.00 pm</option>
-                                                   <option class="option">12.00 pm</option>
-                                                   <option class="option">00.00 am</option>
-                                            </select>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div tabindex="0"><span
-                                        class="current">إلى</span>
-                                        <select class="nice-select filter-input">
-                                                <option class="option selected focus">7.00 am</option>
-                                                <option class="option">8.00 am</option>
-                                                 <option class="option">9.00 am</option>
-                                                  <option class="option">10.00 am</option>
-                                                   <option class="option">11.00 am</option>
-                                                   <option class="option">12.00 am</option>
-                                                   <option class="option">1.00 pm</option>
-                                                   <option class="option">2.00 pm</option>
-                                                   <option class="option">3.00 pm</option>
-                                                   <option class="option">4.00 pm</option>
-                                                   <option class="option">5.00 pm</option>
-                                                   <option class="option">6.00 pm</option>
-                                                   <option class="option">7.00 pm</option>
-                                                   <option class="option">8.00 pm</option>
-                                                   <option class="option">9.00 pm</option>
-                                                   <option class="option">10.00 pm</option>
-                                                   <option class="option">11.00 pm</option>
-                                                   <option class="option">12.00 pm</option>
-                                                   <option class="option">00.00 am</option>
-                                            </select>
-                                </div>
-                            </div>
-                            <div class="add-btn">
-                                    <a href="javascript:;" class="btn v8 mar-top-20 previous">الخطوه السابقه</a>
-                                    <a href="javascript:;" class="btn v8 mar-top-20 next">حفظ ومتابعة</a>
-                            </div>
-                        </div>
-
-                    </div> --}}
                     <div class="tab-pane fade {{ session('activeTab') == 'tab4'  ? "show active" : "" }}" id="social_network">
                         <h4><i class="icofont-ui-social-link"></i>حسابات مواقع التواصل الإجتماعي</h4>
                         <div class="row">
@@ -934,23 +544,26 @@
 
 
     @push('jqueryCode')
+    {{-- image show  --}}
 <script>
-
-
 function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#partnerlogo')
-                        .attr('src', e.target.result);
-                };
-
-                reader.readAsDataURL(input.files[0]);
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $(".input-image-up").attr("src", e.target.result);
+                $('.input-image-up').fadeIn(500);
             }
+            reader.readAsDataURL(input.files[0]);
         }
+    }
+    $(".add-listing__input-file").change(function() {
+        readURL(this);
+    });
+
 
 </script>
+{{-- end image show  --}}
+{{-- start tabs move --}}
     <script>
         $('.next').click(function () {
           $('html, body').animate({
@@ -970,5 +583,159 @@ function readURL(input) {
             return false;
         });
       </script>
+      {{-- end tabs move --}}
+      {{-- start map --}}
+<script>
+  
+    if ($('#map').length > 0) {
+        google.maps.event.addDomListener(window, 'load', init);
+
+        function init() {
+            // Basic options for a simple Google Map
+            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+            var mapOptions = {
+                // How zoomed in you want the map to start at (always required)
+                zoom: 15,
+
+                // The latitude and longitude to center the map (always required)
+                center: new google.maps.LatLng(24.7136, 46.6753), // Riyadh
+
+                scrollwheel: false,
+
+
+                // How you would like to style the map.
+                // This is where you would paste any style found on Snazzy Maps.
+                styles: [
+                    {
+                        "featureType": "administrative",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.land_parcel",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            // Get the HTML DOM element that will contain your map
+            // We are using a div with id="map" seen below in the <body>
+            var mapElement = document.getElementById('map');
+
+            // Create the Google Map using our element and options defined above
+            var map = new google.maps.Map(mapElement, mapOptions);
+
+            var image = '../front/images/others/marker.png';
+            // Let's also add a marker while we're at it
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(24.7136, 46.6753),
+                map: map,
+                icon: image,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+
+            });
+
+
+        
+
+        marker.addListener('click', toggleBounce);
+
+            function toggleBounce() {
+                if (marker.getAnimation() !== null) {
+                    marker.setAnimation(null);
+                } else {
+                    marker.setAnimation(google.maps.Animation.BOUNCE);
+                }
+            }
+            let geocoder;
+            google.maps.event.addListener(marker,'dragend',function (e) {
+                // console.log(marker.getPosition().lat(),e);
+                geocoder = new google.maps.Geocoder();
+
+                let lat = marker.getPosition().lat(),
+                    lng = marker.getPosition().lng();
+                    
+                
+                var latlng = new google.maps.LatLng(lat,lng);
+                
+                geocoder.geocode({'latLng' : latlng},function (results, status) {
+
+                    console.log( status,google.maps.GeocoderStatus  );
+                    
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        console.log(results[1],lat,lng );
+                        $('#lat').val(lat);
+                        $('#lng').val(lng);
+                        $('#map_address').val(results[1].formatted_address);
+                        var addressC = results[1].address_components,
+                            i;
+                        for ( i =0;i<addressC.length;i++){
+                            if (results[1].address_components[i].types[0] === "postal_code") {
+                                $('#zipCode').val(results[1].address_components[i].long_name);
+                            }
+                        }
+                        
+                    } 
+                });
+
+
+
+            })
+        }
+
+    }
+
+    // Intialize Map
+
+
+
+
+
+</script>
+      {{-- end map --}}
 
     @endpush

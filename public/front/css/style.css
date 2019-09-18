@@ -1,11 +1,6 @@
+
 /*-----------------------------------------------------------
-    Theme Name: listagram
-    Theme URI: http://demo.lion-coders.com/listagram/
-    Description: Directory Listing HTML Template
-    Author: LionCoders
-    Author URI: https://themeforest.net/user/lioncoders
-    Version: 1.0
--------------------------------------------------------------*/
+ 
 
 
 /*-----------------------------------------------------------
@@ -6232,9 +6227,7 @@ a.rate-review:hover i {
 /*-----------Contact map------------*/
 
 /*.contact-map {
-
     margin-top: 70px;
-
 }*/
 
 .leaflet-popup-content-wrapper,
@@ -8636,12 +8629,10 @@ tr button,tr a {
 }
 
 /*@media only screen (max-width:767px) and(orientation:landscape){
-
     .hero-title.v2,
     .hero-desc.v2{
         display: none;
     }
-
 }*/
 
 /*-----------------------------------------------------------
@@ -8652,3 +8643,4 @@ tr button,tr a {
     max-width: 180px;
     max-height: 180px;
 }
+

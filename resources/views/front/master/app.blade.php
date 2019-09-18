@@ -6,7 +6,7 @@
 <!--Head ends-->
 <body>
     <!--Page Wrapper starts-->
-    <div class="page-wrapper fixed-footer">
+    <div class="page-wrapper ">
         <!--header starts-->
         @include('front.master.header')
         <!--Header ends-->
