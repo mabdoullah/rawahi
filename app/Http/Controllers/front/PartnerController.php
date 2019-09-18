@@ -103,7 +103,7 @@ class PartnerController extends Controller
         $partner->embassador_id = embassadorUser()->id;
         $partner->save();
 
-        return redirect()->route('partners.index')->with('success', 'تم التسجيل بنجاح');
+        return redirect()->route('partners.index')->with('success', 'تم التسجيل الشريك بنجاح');
     }
 
     /**
