@@ -36,6 +36,8 @@ Route::namespace('front')->group(function () {
       Route::get("embassador","EmbassadorController@index")->name('embassador.index');
       Route::get("embassador/create","EmbassadorController@create")->name('embassador.create');
       Route::POST("embassador/store","EmbassadorController@store")->name('embassador.store');
+      Route::DELETE("embassador/{id}","EmbassadorController@destroy")->name('embassador.destroy');
+
 
     });
     Route::middleware(['auth:embassador'])->group(function () {
