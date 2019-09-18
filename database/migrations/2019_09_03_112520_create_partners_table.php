@@ -9,7 +9,7 @@ class CreatePartnersTable extends Migration {
 	{
 		Schema::create('partners', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('partner_type');
+			$table->string('partner_type')->nullable();
 	
 			$table->integer('city');
 			$table->text('about');
@@ -25,9 +25,9 @@ class CreatePartnersTable extends Migration {
 			$table->string('image')->nullable();
 			$table->string('services')->nullable();
 			$table->string('password')->nullable();
-			$table->string('facebook');
-			$table->string('instagram');
-			$table->string('twitter');
+			$table->string('facebook')->nullable();
+			$table->string('instagram')->nullable();
+			$table->string('twitter')->nullable();
 
 
 			$table->string('subscription_type')->nullable();
