@@ -88,33 +88,8 @@
                                     </tbody>
                                 </table>
                                 <!-- start deleteconfirmation Modal -->
-                                    {{-- <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation </h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            </div> --}}
-                                            {{-- <form action="{{route('partners.destroy','test')}}" method="post">
-                                                    @csrf
-                                                    @method('DELETE') --}}
-
-                                            {{-- <div class="modal-body">
-                                                <p class="text-center">? Are you sure delete this  </p>
-                                                <input type="hidden" name="partner_id" id="partner_id" value="">
-
-                                            </div>
-                                            <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No,cancel</button>
-                                            <button type="submit" class="btn btn-primary">yes,Delete</button>
-                                            </div>
-                                            </form>
-                                        </div>
-                                        </div>
-                                    </div>
-                                    <!-- end deleteconfirmation Modal --> --}}
+                                     @include('front.partners.deletepartner')
+                                <!-- end deleteconfirmation Modal --> 
                                      {!! $partners->links()!!}    
                                 @endif
                                 <div class="modal fade" id="show" tabindex="-1" role="dialog"
