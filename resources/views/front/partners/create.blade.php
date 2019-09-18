@@ -260,10 +260,10 @@
 
                     <div class="tab-pane fade {{ session('activeTab') == 'tab2'  ? "show active" : "" }}" id="gallery">
                         <h4><i class="ion-image"></i> الشعار :</h4>
-                        <div class="form-group {{ $errors->has( 'image' ) ? 'has-error' : '' }}">
+                        <div class="form-group">
                             <div class="photo-upload">
 
-                                <div class="form-group">
+                                  <div class="form-group {{ $errors->has( 'image' ) ? 'has-error' : '' }}">
                                     <div class="add-listing__input-file-box">
                                             <div class="row">
                                     <div class="col-md-4">

@@ -47,7 +47,7 @@ class PartnerController extends Controller
                 'legal_name' => ' required |max:255',
                 'email' => 'required|email|'.unique_validate('email'),
 
-                'subscription_type' => 'required',
+                
                 'password' =>'min:8|required_with:confirm_password|same:confirm_password',
 
 
@@ -78,7 +78,7 @@ class PartnerController extends Controller
             // third tab
             $validator = Validator::make($request->all(), [
                 'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.unique_validate('phone'),
-
+                'city' => 'required|exists:cities,id',
             ]);
 
             if ($validator->fails()) {
