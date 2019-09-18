@@ -18,7 +18,8 @@ class Agent extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email','phone','phone_key',
+          'country','city','birth_date','password','admin_id',
     ];
 
     /**
@@ -38,4 +39,9 @@ class Agent extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function embassadors()
+    {
+        return $this->hasMany('App\Embassador','agent_id');
+    }
 }

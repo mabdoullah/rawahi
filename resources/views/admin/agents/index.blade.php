@@ -88,10 +88,8 @@
       <div class="col-sm-12 col-md-7 dataTables_pager">
         <div class="dataTables_length" id="kt_table_1_length">
         {{ $all_agents_cities->onEachSide(1)->links() }}
-
         </div>
         <div class="dataTables_paginate paging_simple_numbers" id="kt_table_1_paginate">
-
         </div>
       </div>
     </div>
