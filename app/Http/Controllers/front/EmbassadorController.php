@@ -75,7 +75,7 @@ class embassadorController extends Controller
         $embassador->city = $request->city;
         $embassador->birth_date = $request->birth_date;
         $embassador->password =bcrypt($request->password);
-        $embassador->agent_id = $auth_user; //get it from auth
+        $embassador->agent_id =agentUser()->id ; //get it from auth
         $embassador->remember_token = $request->_token;
         $save_embassador=$embassador->save();
         if($save_embassador){
