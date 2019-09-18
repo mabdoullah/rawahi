@@ -274,9 +274,11 @@
 
 
 
-                                            <i class="ion-ios-cloud-upload"></i>
+                                            <div class="none-up-img">
+                                                <i class=" ion-ios-cloud-upload"></i>
 
-                                            <p>إضغط هنا لرفع الشعار</p>
+                                                <p>إضغط هنا لرفع الشعار</p>
+                                            </div>
                                             <img class="input-image-up" src="" alt="image"/>
                                         </div>
                                     </div>

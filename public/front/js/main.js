@@ -771,6 +771,7 @@
             reader.onload = function(e) {
                 $(".input-image-up").attr("src", e.target.result);
                 $('.input-image-up').fadeIn(500);
+                $('.none-up-img').fadeOut(500);
             }
             reader.readAsDataURL(input.files[0]);
         }
