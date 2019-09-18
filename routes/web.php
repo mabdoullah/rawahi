@@ -46,7 +46,7 @@ Route::namespace('front')->group(function () {
 
     Route::middleware(['auth:partner,embassador'])->group(function () {
       Route::get("partners/{id}/edit","PartnerController@edit")->name('partners.edit');
-      Route::put("partners/{id}","partnersController@update")->name('partners.update');
+      Route::put("partners/{id}","PartnerController@update")->name('partners.update');
     });
 
     Route::middleware(['auth:partner'])->group(function () {
