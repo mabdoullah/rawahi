@@ -20,17 +20,26 @@ Route::group(['prefix' => 'admin', 'namespace'=>'admin' ,'as'=>'admin.' ], funct
   Route::resource("home","HomeController");
   Route::resource("agent","AgentController");
   Route::resource("embassador","EmbassadorController");
-  
+
 });
 
 Route::namespace('front')->group(function () {
     Route::resource("/","HomeController");
 
-    Route::middleware(['auth:agent'])->group(function () {
-        Route::resource("embassador","EmbassadorController");
+    Route::middleware(['auth:agent,embassador'])->group(function () {
+      Route::get("embassador/{id}/edit","EmbassadorController@edit")->name('embassador.edit');
+      Route::put("embassador/{id}","EmbassadorController@update")->name('embassador.update');
     });
+    //
+    Route::middleware(['auth:agent'])->group(function () {
+      Route::get("embassador/{id}","EmbassadorController@show")->name('embassador.show');
+      Route::get("embassador","EmbassadorController@index")->name('embassador.index');
+      Route::get("embassador/create","EmbassadorController@create")->name('embassador.create');
+      Route::POST("embassador/store","EmbassadorController@store")->name('embassador.store');
+      Route::DELETE("embassador/{id}","EmbassadorController@destroy")->name('embassador.destroy');
 
 
+    });
     Route::middleware(['auth:embassador'])->group(function () {
         Route::resource("partners" ,"PartnerController");
     });

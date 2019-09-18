@@ -6,6 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Illuminate\Database\Eloquent\Model;
+
 use App\Traits\VerifyUserTrait;
 
 class Embassador extends Authenticatable
@@ -44,12 +46,13 @@ class Embassador extends Authenticatable
     ];
 
     public function agent()
-      {
-          return $this->belongsTo('App\Agent');
-      }
-      public function city()
-      {
-          return $this->belongsTo('App\City');
-      }
+    {
+        return $this->belongsTo('App\Agent');
+    }
+
+    // public function citydata()
+    // {
+    //     return $this->hasOne('App\City','city','id');
+    // }
 
 }

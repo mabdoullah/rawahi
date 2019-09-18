@@ -79,7 +79,7 @@ class embassadorController extends Controller
         $embassador->remember_token = $request->_token;
         $save_embassador=$embassador->save();
         // get generate_id from function
-        $generate_id=generate_id($embassador->id);
+        $generate_id=generate_embassador_number($embassador->id);
         Embassador::where('id', $embassador->id)->update(['generate_id' =>$generate_id]);
         if($save_embassador){
           // dd($embassador->getGuard());
@@ -123,19 +123,25 @@ class embassadorController extends Controller
      */
     public function edit($id)
     {
-        $cities = City::where('country_id', 191)->get();
-        $embassador = Embassador::where('id', $id)->select('id', 'first_name', 'second_name', 'email', 'phone', 'city', 'birth_date', 'agent_id')->first();
-        if (!$embassador) {
-            return redirect('embassador');
-
-        } else {
-
-            if ($embassador->agent_id == agentUser()->id) {
-                return view('front.embassadors.edit_add')->with('cities', $cities)->with('embassador', $embassador);
-            } else {
-                return redirect('embassador')->with('master_error', 'غير مسموح لك تعديل هذا السفير');
-            }
+        $cities = City::where('country_id',191)->get();
+        $embassador=Embassador::where('id',$id)->select('id','first_name','second_name','email','phone','city','birth_date','agent_id')->first();
+        if(!$embassador)
+        {
+          return redirect('embassador');
         }
+      else{
+
+            if((agentUser())&&(($embassador->agent_id == agentUser()->id)))
+              {
+                return view('front.embassadors.edit_add')->with('cities', $cities)->with('embassador', $embassador);
+              }
+            if((embassadorUser())&&($embassador->id == embassadorUser()->id))
+              {
+                return view('front.embassadors.edit_add')->with('cities', $cities)->with('embassador', $embassador);
+              }
+               return redirect('embassador')->with('master_error', 'غير مسموح لك تعديل هذا السفير');
+
+          }
     }
 
     /**
@@ -147,31 +153,41 @@ class embassadorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'first_name' => 'required|max:18',
-            'second_name' => 'required|max:18',
-            'email' => 'required|email|' . update_unique_validate('email', $id, 'embassadors'),
-            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|' . update_unique_validate('phone', $id, 'embassadors'),
-            'city' => 'required|exists:cities,id',
-            'birth_date' => 'date|before:-18 years|required',
-        ]);
-        if ($validator->fails()) {
-            return redirect('embassador/' . $id . '/edit')
-                ->withErrors($validator)
-                ->withInput()
-                ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
-        }
-        $embassador = Embassador::find($id);
-        $embassador->first_name = $request->first_name;
-        $embassador->second_name = $request->second_name;
-        $embassador->email = $request->email;
-        $embassador->phone = $request->phone;
-        $embassador->city = $request->city;
-        $embassador->birth_date = $request->birth_date;
-        $save_embassador = $embassador->save();
-        if ($save_embassador) {
-            return redirect('embassador')->with('success', 'تم التعديل بنجاح');
-        }
+
+
+
+      $validator = Validator::make($request->all(), [
+                  'first_name' => 'required|max:18',
+                  'second_name' => 'required|max:18',
+                  'email' => 'required|email|'.update_unique_validate('email',$id,'embassadors'),
+                  'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.update_unique_validate('phone',$id,'embassadors'),
+                  'city' => 'required|exists:cities,id',
+                  'birth_date' => 'date|before:-18 years|required',
+                  ]);
+              if ($validator->fails()) {
+                  return redirect('embassador/'.$id.'/edit')
+                              ->withErrors($validator)
+                              ->withInput()
+                              ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
+              }
+
+              $embassador = Embassador::find($id);
+              $embassador->first_name = $request->first_name;
+              $embassador->second_name = $request->second_name;
+              $embassador->email = $request->email;
+              $embassador->phone = $request->phone;
+              $embassador->city = $request->city;
+              $embassador->birth_date = $request->birth_date;
+              $save_embassador=$embassador->save();
+              if($save_embassador){
+                if(agentUser()){
+                    return redirect('embassador')->with('success', 'تم التعديل بنجاح');
+                }
+                if(embassadorUser()){
+                    return redirect('embassador/'.$id.'/edit')->with('success', 'تم التعديل بنجاح');
+                }
+             }
+
     }
 
     /**
@@ -182,18 +198,22 @@ class embassadorController extends Controller
      */
     public function destroy(Request $request)
     {
-        $id = $request->delete_id;
-        $embassador = Embassador::where('id', $id)->select('id', 'agent_id')->first();
-        if (!$embassador) {return Redirect::back();} else { $agent_id = $embassador->agent_id;
-            if ($agent_id == agentUser()->id) {
-                $delete_embassador = DB::table('embassadors')->where('id', $id)->delete();
-                return redirect('embassador')->with('success', 'تم الحذف بنجاح');
-            } else {
-                return redirect('embassador')->with('master_error', 'غير مسموح بحذف هذا السفير');
-            }
+
+      $id=$request->delete_id;
+      $embassador=Embassador::where('id',$id)->select('id','agent_id')->first();
+      if(!$embassador)
+      {  return redirect('embassador');}
+      else
+      { $agent_id=$embassador->agent_id;
+        if($agent_id==agentUser()->id){
+          $delete_embassador=DB::table('embassadors')->where('id', $id)->delete();
+          return redirect('embassador')->with('success', 'تم الحذف بنجاح');
+        }
+        else{
+          return redirect('embassador')->with('master_error', 'غير مسموح بحذف هذا السفير');
+        }
+
 
         }
     }
 }
-
-

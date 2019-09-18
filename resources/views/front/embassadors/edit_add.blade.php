@@ -41,8 +41,8 @@
                                 </div>
                                 @endif
                                 @if(isset($embassador))
-                                <form class="row" action="{{route('embassador.update',$embassador->id)}}" method="POST" enctype="multipart/form-data">
-                                  @method('PATCH')
+                                <form class="row" action="{{route('embassador.update',$embassador->id)}}" method="post" enctype="multipart/form-data">
+                                  @method('PUT')
                                   @else
                                   <form class="row" action="{{route('embassador.store')}}" method="POST" enctype="multipart/form-data">
                                     @endif
