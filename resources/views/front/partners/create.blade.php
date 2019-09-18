@@ -258,7 +258,6 @@
                         </div>
                     </div>
 
-<<<<<<< HEAD
                     <div class="text-center tab-pane fade {{ session('activeTab') == 'tab2'  ? "show active" : "" }}" id="gallery">
                         <h4><i class="ion-image"></i> الشعار</h4>
                         <div class="form-group">
@@ -282,38 +281,6 @@
                                             </div>
                                             <img class="input-image-up" src="" alt="image"/>
                                         </div>
-=======
-                  
-                                             <!--  Replace this  -->
-                            <div class="tab-pane fade text-center {{ session('activeTab') == 'tab2'  ? "show active" : "" }}" id="gallery">
-                                    <h4><i class="ion-image"></i> الشعار </h4>
-                                    <div class="form-group">
-                                        <form class="photo-upload">
-                                           <div class="form-group {{ $errors->has( 'image' ) ? 'has-error' : '' }}">
-                                                <div class="add-listing__input-file-box">
-                                                
-                                                        <input class="add-listing__input-file" type="file" name="image"
-                                                        id="file" onchange="readURL(this);"  value="{{ old('image',
-                                                        isset($partner->image) ? $partner->image : '') }}">
-
-                                                    <div class="add-listing__input-file-wrap">
-                                                        <i class="ion-ios-cloud-upload"></i>
-                                                        <p>إضغط هنا لرفع الشعار</p>
-                                                        <img class="input-image-up" src="" alt="image"/>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-8">
-                                                        <div class="text-center">  
-                                                            @if( $errors->has( 'image' ) )
-                                                                   <span class="help-block text-danger">
-                                                                       {{ $errors->first( 'image' ) }}
-                                                                   </span>
-                                                               @endif
-                                                            </div>
-                                                </div>
-                                            </div>
-                                        
->>>>>>> 07e34cdd5b3d7d1f92fdc30a248d31929779d617
                                     </div>
                                     <div class="add-btn">
                                             <a href="javascript:;" class="btn v8 mar-top-20 previous">الخطوه السابقه</a>
