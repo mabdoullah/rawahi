@@ -761,5 +761,22 @@
             $(this).parent().siblings("input.input-number").val(quantity - 1);
         }
     });
+    
+    /*-------------------------------------
+              Add Listing
+     -------------------------------------*/
+     function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $(".input-image-up").attr("src", e.target.result);
+                $('.input-image-up').fadeIn(500);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $(".add-listing__input-file").change(function() {
+        readURL(this);
+    });
 
 }(jQuery));
