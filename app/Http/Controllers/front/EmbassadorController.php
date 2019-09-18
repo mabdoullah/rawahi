@@ -200,12 +200,5 @@ class embassadorController extends Controller
 
     }
 }
-    public function getcities($id)
-    {
-      // $code_country=Country::where("id",$id)->select('code_country')->first();
-      $cities=City::where("countryID",$id)->get();
-      // return response()->json(['cities'=>$cities,'code_country'=>$code_country]);
-      return response()->json($cities);
 
-    }
 }
