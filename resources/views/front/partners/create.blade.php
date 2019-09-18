@@ -441,7 +441,7 @@
 
                                 <div class="form-group {{ $errors->has( 'facebook' ) ? 'has-error' : '' }}">
                                     <label>الفيسبوك - اختياري</label>
-                                    <input  type="email" name="facebook" class="form-control filter-input"
+                                    <input  type="text" name="facebook" class="form-control filter-input"
                                         placeholder="رابط الفيسبوك" value="{{ old('facebook',  isset($partner->facebook) ? $partner->facebook : '') }}">
                                         @if( $errors->has( 'facebook' ) )
                                         <span class="help-block text-danger">
@@ -453,7 +453,7 @@
                             <div class="col-md-4">
                                 <div class="form-group {{ $errors->has( 'instagram' ) ? 'has-error' : '' }}">
                                     <label>الانستغرام - اختياري</label>
-                                    <input  type="email" name="instagram" class="form-control filter-input"
+                                    <input  type="text" name="instagram" class="form-control filter-input"
                                         placeholder="رابط الانستغرام" value="{{ old('instagram',  isset($partner->instagram) ? $partner->instagram : '') }}">
                                         @if( $errors->has( 'instagram' ) )
                                         <span class="help-block text-danger">
@@ -466,7 +466,7 @@
                             <div class="col-md-4">
                                 <div class="form-group {{ $errors->has( 'twitter' ) ? 'has-error' : '' }}">
                                     <label>تويتر - اختياري</label>
-                                    <input  type="email" name="twitter" class="form-control filter-input"
+                                    <input  type="text" name="twitter" class="form-control filter-input"
                                         placeholder="رابط التويتر" value="{{ old('twitter',  isset($partner->twitter) ? $partner->twitter : '') }}">
                                         @if( $errors->has( 'twitter' ) )
                                         <span class="help-block text-danger">
@@ -476,11 +476,19 @@
                                 </div>
                             </div>
                             <div class="col-12 ">
+                                    <div class="form-group {{ $errors->has( 'remember' ) ? 'has-error' : '' }}">
+
                                 <div class="res-box mar-top-10">
-                                    <input  type="checkbox" tabindex="3" class="" name="remember"
+                                    <input required type="checkbox" tabindex="3" class="" name="remember"
                                         id="remember">
                                     <label for="remember">أوافق على <a href="terms.html">الشروط
                                             والأحكام</a></label>
+                                            @if( $errors->has( 'remember' ) )
+                                            <span class="help-block text-danger">
+                                                {{ $errors->first( 'remember' ) }}
+                                            </span>
+                                            @endif  
+                                    </div>  
                                 </div>
                             </div>
                             <div class="col-12">
