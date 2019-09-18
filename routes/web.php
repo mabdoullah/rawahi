@@ -32,7 +32,7 @@ Route::namespace('front')->group(function () {
 
 
     Route::middleware(['auth:embassador'])->group(function () {
-        Route::resource("partner" ,"PartnerController");
+        Route::resource("partners" ,"PartnerController");
     });
 
 

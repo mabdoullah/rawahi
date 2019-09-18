@@ -20,12 +20,12 @@ class embassadorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $auth_user=1;
+    {
         $show_embassador='';
         $all_embassdors_cities = DB::table('embassadors')
             ->join('cities', 'embassadors.city', '=', 'cities.id')
             ->select('embassadors.first_name','embassadors.email','embassadors.phone','embassadors.id as embassador_id','cities.name as city_name' )
-            ->where('embassadors.agent_id',$auth_user)
+            ->where('embassadors.agent_id',agentUser()->id)
             ->orderBy('embassadors.id','desc')->paginate(10);
             return view('front.embassadors.index')->with('all_embassdors_cities', $all_embassdors_cities)->with('show_embassador',$show_embassador);
     }
@@ -49,7 +49,6 @@ class embassadorController extends Controller
      */
     public function store(Request $request)
     {
-
       $validator = Validator::make($request->all(), [
                   'first_name' => 'required|max:18',
                   'second_name' => 'required|max:18',
@@ -75,21 +74,15 @@ class embassadorController extends Controller
         $embassador->country = 191;//id of suadia
         $embassador->city = $request->city;
         $embassador->birth_date = $request->birth_date;
-        $embassador->password = $request->password;
-        $embassador->agent_id = 1; //get it from auth
+        $embassador->password =bcrypt($request->password);
+        $embassador->agent_id =agentUser()->id ; //get it from auth
         $embassador->remember_token = $request->_token;
         $save_embassador=$embassador->save();
-        $id=$embassador->id;
-        $embassador_id=Embassador::where('id',$id)->select('id','generate_id')->first();
-        $embassador_id->generate_id=$id;
-        $embassador_id->save();
         if($save_embassador){
 
           // dd($embassador->getGuard());
           // dd($save_embassador);
           // VerifyUserService::createUser($embassador,'embassador');
-
-
 
                 return redirect('embassador')->with('success', 'تم تسجيل سفير بنجاح');
             }
@@ -104,10 +97,22 @@ class embassadorController extends Controller
     {
       $show_embassador = DB::table('embassadors')
           ->join('cities', 'embassadors.city', '=', 'cities.id')
-          ->select('embassadors.first_name','embassadors.second_name','embassadors.email','embassadors.phone','embassadors.phone_key','embassadors.birth_date','embassadors.id as embassador_id','cities.name as city_name' )
+          ->select('embassadors.agent_id','embassadors.first_name','embassadors.second_name','embassadors.email','embassadors.phone','embassadors.phone_key','embassadors.birth_date','embassadors.id as embassador_id','cities.name as city_name' )
           ->where('embassadors.id',$id)->first();
+          if(!$show_embassador)
+          {
+            return redirect('embassador');
+
+          }else{
+
+            if($show_embassador->agent_id == agentUser()->id){
+              return response()->json($show_embassador);
+            }
+            else{
+                return redirect('embassador')->with('master_error', 'غير مسموح بعرض هذا السفير');
+            }
+          }
       // $show_embassador = Embassadors::find($id);
-      return response()->json($show_embassador);
     }
 
     /**
@@ -121,15 +126,16 @@ class embassadorController extends Controller
         $cities = City::where('country_id',191)->get();
         $embassador=Embassador::where('id',$id)->select('id','first_name','second_name','email','phone','city','birth_date','agent_id')->first();
         if(!$embassador)
-        {return Redirect::back();}
-        else
-        { $agent_id=$embassador->agent_id;
-          $auth_user=1; //come from auth_id
-          if($agent_id==$auth_user){
+        {
+          return redirect('embassador');
+
+        }else{
+
+          if($embassador->agent_id == agentUser()->id){
             return view('front.embassadors.edit_add')->with('cities', $cities)->with('embassador', $embassador);
           }
           else{
-            return Redirect::back()->with('master_error', 'غير مسموح لك تعديل هذا السفير');
+            return redirect('embassador')->with('master_error', 'غير مسموح لك تعديل هذا السفير');
           }
         }
     }
@@ -184,16 +190,22 @@ class embassadorController extends Controller
       {return Redirect::back();}
       else
       { $agent_id=$embassador->agent_id;
-        $auth_user=1; //come from auth_id
-        if($agent_id==$auth_user){
+        if($agent_id==agentUser()->id){
           $delete_embassador=DB::table('embassadors')->where('id', $id)->delete();
           return redirect('embassador')->with('success', 'تم الحذف بنجاح');
         }
         else{
-          return Redirect::back()->with('master_error', 'غير مسموح لك بحذف هذا السفير');
+          return redirect('embassador')->with('master_error', 'غير مسموح بحذف هذا السفير');
         }
 
     }
 }
+    public function getcities($id)
+    {
+      // $code_country=Country::where("id",$id)->select('code_country')->first();
+      $cities=City::where("countryID",$id)->get();
+      // return response()->json(['cities'=>$cities,'code_country'=>$code_country]);
+      return response()->json($cities);
 
+    }
 }

@@ -29,6 +29,18 @@
 
                             <div class="tab-pane fade show active" id="general_info">
                                 <h4 class="text-center"> <i class="ion-ios-information"></i> الشركاء</h4>
+                                
+
+                             @if(!count($partners))
+                              <div class="alert alert-info text-center" role="alert">
+                                <h4>عفوا لا يوجد شركاء لعرضها</h4>
+                              </div>
+                              @else
+                              @if(!asset(session()->has('success')))
+                              <div class="alert alert-success text-center" role="alert">
+                              {{ session()->get('success') }}
+                              </div>
+                             @endif
                                 <table class="table">
                                     <thead class="thead-dark">
                                         <tr>
@@ -42,37 +54,76 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                            @foreach ($partners as $partner)
                                         <tr>
-                                          @foreach ($partners as $partner)
+                              
 
 
-                                            <th scope="row">{{$partner->legal_name}}</th>
+                                            <td>{{$partner->legal_name}}</td>
                                             <td>{{$partner->email}}</td>
 
                                             <td>{{$partner->phone}}</td>
                                             
-                                            @endforeach
-                                            <td><a class="btn v8 view-buttons" href="add-listing.html"> تعديل <i
-                                                        class="icofont-edit"></i>
+                                        
+                                            <td>
+                                     
+                                        </form>      
+                                        {{--  edit --}}
+                                               <a class="btn v8 view-buttons" href="{{route('partners.edit',$partner->id)}}"> تعديل <i
+                                                class="icofont-edit"></i>
                                                 </a>
-                                                <button type="button" class="btn v8 view-buttons" data-toggle="modal"
-                                                    data-target="#exampleModal"> عرض <i
-                                                        class="icofont-eye-alt"></i></button>
-                                                <button type="button" class="view-buttons btn v8 deleterow">حذف
-                                                    <i class="icofont-ui-delete"></i> </button>
+                                        {{--  show --}}
+                                            <input type="hidden" id='partner_id' name='partner_id' value="{{$partner->id}}">
+                                            <a type="button" id ="show_button" class="btn v8 view-buttons"  data-toggle="modal"data-target="#exampleModal"   href="{{route('partners.show',$partner->id)}}"> عرض <i class="icofont-eye-alt"></i></a>
+                                            
+                                        {{--  delete --}}
+                                            {{-- <button type="button" class="view-buttons btn v8 deleterow" data-partid="{{$partner->id}}" data-toggle="modal" data-target="#delete">حذف
+                                            <i class="icofont-ui-delete"></i>
+                                            </button>  --}}
+                                                
                                             </td>
-
+                                            
                                         </tr>
-
+                                        @endforeach
 
                                     </tbody>
                                 </table>
+                                <!-- start deleteconfirmation Modal -->
+                                    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            {{-- <form action="{{route('partners.destroy','test')}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE') --}}
+
+                                            {{-- <div class="modal-body">
+                                                <p class="text-center">? Are you sure delete this  </p>
+                                                <input type="hidden" name="partner_id" id="partner_id" value="">
+
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No,cancel</button>
+                                            <button type="submit" class="btn btn-primary">yes,Delete</button>
+                                            </div>
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <!-- end deleteconfirmation Modal --> --}}
+                                     {!! $partners->links()!!}    
+                                @endif
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header ">
-                                                <h5 class="modal-title " id="exampleModalLabel"> بيانات السفير</h5>
+                                                <h5 class="modal-title " id="exampleModalLabel"> بيانات الشريك</h5>
                                                 <button type="button" class="sm-left close" data-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -102,44 +153,39 @@
                                                             role="tabpanel" aria-labelledby="home-tab">
                                                             <div class="row data-right-top">
                                                                 <div class="col-md-4">
-                                                                    <div class="profile-img ">
-                                                                        <img src="{{asset('front/images/profile.png')}}" alt="" />
+                                                                    <div class="profile-img" >
+                                                                        <img src="" alt="" srcset="" id="show-image">
 
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-8">
                                                                     <div class="row">
                                                                         <div class="col-md-6">
-                                                                            <label> الاسم الاول</label>
+                                                                            <label > الاسم الشريك</label>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <p>سيبيسسيبيس </p>
+                                                                            <p id="show-name"> </p>
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             <label>البريد الالكتروني</label>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <p>kshitighelani@gmail.com</p>
+                                                                            <p id="show-email"></p>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <label> الدوله </label>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <p>بيلبسسيب </p>
-                                                                        </div>
-                                                                        <div class="col-md-6 col-12">
+                                                                        <label>العنوان</label>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <p id="show-address"></p>
+                                                                    </div>
+                                                                    <div class="col-md-6">
                                                                             <label>رقم الجوال</label>
                                                                         </div>
-                                                                        <div class="col-md-6 col-12">
-                                                                            <p> يسبسيبيسبيسب</p>
+                                                                        <div class="col-md-6">
+                                                                            <p id="show-phone"></p>
                                                                         </div>
+                                                                     
 
-                                                                        <div class="col-md-6 col-12">
-                                                                            <label>رقم الجوال</label>
-                                                                        </div>
-                                                                        <div class="col-md-6 col-12">
-                                                                            <p> يسبسيبيسبيسب</p>
-                                                                        </div>
                                                                     </div>
 
                                                                 </div>
@@ -148,75 +194,16 @@
 
                                                             </div>
 
+                                                          
+                                                            
                                                             <div class="row">
                                                                 <div class="col-md-3 col-12">
-                                                                    <label>الدوله</label>
+                                                                    <label>وصف الشريك </label>
                                                                 </div>
                                                                 <div class="col-md-3 col-12">
-                                                                    <p> بيلبسسيب</p>
+                                                                    <p id="show-about"></p>
                                                                 </div>
-                                                                <div class="col-md-3 col-12">
-                                                                    <label>رقم الجوال</label>
-                                                                </div>
-                                                                <div class="col-md-3 col-12">
-                                                                    <p> يسبسيبيسبيسب</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-3 col-12">
-                                                                    <label>رقم الجوال</label>
-                                                                </div>
-                                                                <div class="col-md-3 col-12">
-                                                                    <p> يسبسيبيسبيسب</p>
-                                                                </div>
-                                                                <div class="col-md-3 col-12">
-                                                                    <label>رقم الجوال</label>
-                                                                </div>
-                                                                <div class="col-md-3 col-12">
-                                                                    <p> يسبسيبيسبيسب</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-3 col-12">
-                                                                    <label>المدينه </label>
-                                                                </div>
-                                                                <div class="col-md-3 col-12">
-                                                                    <p> يسبسيبسبيسبب</p>
-                                                                </div>
-                                                                <div class="col-md-3 col-12">
-                                                                    <label>رقم الجوال</label>
-                                                                </div>
-                                                                <div class="col-md-3 col-12">
-                                                                    <p> يسبسيبيسبيسب</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-3 col-12">
-                                                                    <label>كلمه السر</label>
-                                                                </div>
-                                                                <div class="col-md-3 col-12">
-                                                                    <p> بيليبل</p>
-                                                                </div>
-                                                                <div class="col-md-3 col-12">
-                                                                    <label>رقم الجوال</label>
-                                                                </div>
-                                                                <div class="col-md-3 col-12">
-                                                                    <p> يسبسيبيسبيسب</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-3 col-12">
-                                                                    <label>تاريخ الميلاد </label>
-                                                                </div>
-                                                                <div class="col-md-3 col-12">
-                                                                    <p> اىللياي</p>
-                                                                </div>
-                                                                <div class="col-md-3 col-12">
-                                                                    <label>رقم الجوال</label>
-                                                                </div>
-                                                                <div class="col-md-3 col-12">
-                                                                    <p> يسبسيبيسبيسب</p>
-                                                                </div>
+                                                               
                                                             </div>
                                                         </div>
                                                         <!-- <div class="tab-pane fade" id="profile" role="tabpanel"
@@ -290,3 +277,46 @@
     <!--view page ends-->
 
     @endsection
+@push('jqueryCode')
+<script type="text/javascript">
+    /* Updated new Item */
+    $("#show_button").click(function(e){
+        e.preventDefault();
+        var show_action = $("#show_button").attr("href");
+        console.log(show_action);
+        var id =  $('#partner_id').val();
+        $.ajax({
+            dataType: 'json',
+            type:'GET',
+            url: show_action,
+            data:{id:id},
+            success: function(response){
+          // Add response in Modal body
+          var img=response['image'];
+          var image="./images/partners/"+img;
+          $('#myTabContent').find('p').empty();
+          $('#show-image').attr('src',image);
+          $('#show-name').append(response['legal_name']);
+          $('#show-email').append(response['email']);
+          $('#show-address').append(response['map_address']);
+          $('#show-phone').append(response['phone']);
+          $('#show-about').append(response['about']);
+
+          
+     
+      }
+      });
+    });
+    </script>
+<script>
+        $('#delete').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) ;
+            var partner_id = button.data('partid') ;
+            var modal = $(this);
+            modal.find('.modal-body #partner_id').val(partner_id);
+      })
+      
+        
+</script>
+      
+@endpush

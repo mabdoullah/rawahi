@@ -41,7 +41,7 @@
                                @endif
                                @if(!count($all_embassdors_cities))
                                <div class="alert alert-info text-center" role="alert">
-                                 <h4>عفوا لا يوجد سفراء لعرضها</h4>
+                                 <h4 class="white">عفوا لا يوجد سفراء لعرضها</h4>
                                 </div>
                                @else
                                <table class="table">
@@ -68,8 +68,7 @@
                                              <input type="hidden" id='embassador_id' name='embassador_id' value="{{$embassador->embassador_id}}">
                                              <a type="button" id ="show_button" class="btn v8 view-buttons"  data-toggle="modal"data-target="#exampleModal"   href="{{route('embassador.show',$embassador->embassador_id)}}"> عرض <i class="icofont-eye-alt"></i></a>
                                                 <!-- delete -->
-                                                <button  class="v8 btn view-buttons" data-toggle="modal" data-embassadorid="{{$embassador->embassador_id}}" data-target="#DeleteModal" > حذف<i class="icofont-ui-delete"></i></button>
-                                           </td>
+                                              {{--<button  class="v8 btn view-buttons" data-toggle="modal" data-embassadorid="{{$embassador->embassador_id}}" data-target="#DeleteModal" > حذف<i class="icofont-ui-delete"></i></button>--}}                                           </td>
 
                                        </tr>
 
@@ -87,7 +86,7 @@
                                    <form action="{{route('embassador.destroy','default')}}" id="deleteForm" method="post">
                                        <div class="modal-content ">
                                            <div class="modal-header">
-                                        
+
                                                <h5 class="modal-title "> تاكيد الحذف</h5>
                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
                                            </div>

@@ -316,8 +316,8 @@
                     if (status == google.maps.GeocoderStatus.OK) {
                         console.log(results[1],lat,lng );
                         $('#lat').val(lat);
-                        $('#long').val(lng);
-                        $('#address').val(results[1].formatted_address);
+                        $('#lng').val(lng);
+                        $('#map_address').val(results[1].formatted_address);
                         var addressC = results[1].address_components,
                             i;
                         for ( i =0;i<addressC.length;i++){

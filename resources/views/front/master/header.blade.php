@@ -4,7 +4,7 @@
         <div class="container">
             <div class="site-navbar">
                 <div class="row align-items-center">
-                    <div class="col-md-4 col-6">
+                    <div class="col-md-4 col-6 text-center">
                         <a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('front/images/logo-black.png')}}" alt="logo"
                                 class="img-fluid"></a>
                     </div>
@@ -23,20 +23,27 @@
                                         </a>
                                         <ul class="dropdown">
                                             <li><a href="{{url('logout')}}">تسجيل خروج</a></li>
-                                        </ul>                                                                                                       
+                                        </ul>
                                     </li>
 
                                     @else
-                                        <li><a  href="{{url('login')}}">تسجيل الدخول</a></li>
+                                        <li class="has-children"><a  href="{{url('login')}}">تسجيل الدخول</a></li>
                                     @endif
-                                    
-                                   
 
-                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partner.create')}}">إضافة شريك
+
+                                    @if(embassadorUser())
+                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partners.create')}}">إضافة شريك
                                             <i class="ion-plus-round"></i></a></li>
+                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partners.index')}}">الشركاء
+                                    </a></li>
+                                    @endif
+                                    @if(agentUser())
                                     <li class="d-lg-none"><a class="btn v1 active" href="{{route('embassador.create')}}"> تسجيل سفير
                                             <i class="ion-plus-round"></i></a></li>
-                                </ul>                             
+                                    <li class="d-lg-none"><a class="btn v1 active" href="{{route('embassador.index')}}">السفراء
+                                              </a></li>
+                                    @endif
+                                </ul>
                             </div>
                         </nav>
                         <div class="d-lg-none sm-left">
@@ -46,14 +53,17 @@
                         </div>
                         <div class="add-list float-left">
                             @if(embassadorUser())
-                                <a class="btn v8" href="{{route('partner.create')}}">إضافة شريك <i
+                                <a class="btn v8" href="{{route('partners.create')}}">إضافة شريك <i
                                     class="ion-plus-round"></i></a>
+                                    <a class="btn v8" href="{{route('partners.index')}}">الشركاء </a>
                             @endif
                             @if(agentUser())
                                 <a class="btn v8" href="{{route('embassador.create')}}">  تسجيل سفير <i
                                 class="ion-plus-round"></i></a>
+                                <a class="btn v8" href="{{route('embassador.index')}}">  السفراء </a>
                             @endif
-                            
+
+
                         </div>
 
 
