@@ -33,7 +33,7 @@ function update_unique_validate($field,$id,$table){
     return @implode('|',$array);
 }
 
-function generate_id($id){
-return $id;
+function generate_embassador_number($id){
+  return $id;
 }
 ?>

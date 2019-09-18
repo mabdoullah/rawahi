@@ -79,7 +79,7 @@ class embassadorController extends Controller
         $embassador->remember_token = $request->_token;
         $save_embassador=$embassador->save();
         // get generate_id from function
-        $generate_id=generate_id($embassador->id);
+        $generate_id=generate_embassador_number($embassador->id);
         Embassador::where('id', $embassador->id)->update(['generate_id' =>$generate_id]);
         if($save_embassador){
           // dd($embassador->getGuard());
@@ -130,16 +130,20 @@ class embassadorController extends Controller
         if(!$embassador)
         {
           return redirect('embassador');
-
-        }else{
-
-          if($embassador->agent_id == agentUser()->id){
-            return view('front.embassadors.edit_add')->with('cities', $cities)->with('embassador', $embassador);
-          }
-          else{
-            return redirect('embassador')->with('master_error', 'غير مسموح لك تعديل هذا السفير');
-          }
         }
+      else{
+
+            if((agentUser())&&(($embassador->agent_id == agentUser()->id)))
+              {
+                return view('front.embassadors.edit_add')->with('cities', $cities)->with('embassador', $embassador);
+              }
+            if((embassadorUser())&&($embassador->id == embassadorUser()->id))
+              {
+                return view('front.embassadors.edit_add')->with('cities', $cities)->with('embassador', $embassador);
+              }
+               return redirect('embassador')->with('master_error', 'غير مسموح لك تعديل هذا السفير');
+
+          }
     }
 
     /**
@@ -151,6 +155,8 @@ class embassadorController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+      dd('asdfasd');
       $validator = Validator::make($request->all(), [
                   'first_name' => 'required|max:18',
                   'second_name' => 'required|max:18',
@@ -189,7 +195,7 @@ class embassadorController extends Controller
       $id=$request->delete_id;
       $embassador=Embassador::where('id',$id)->select('id','agent_id')->first();
       if(!$embassador)
-      {return Redirect::back();}
+      {  return redirect('embassador');}
       else
       { $agent_id=$embassador->agent_id;
         if($agent_id==agentUser()->id){

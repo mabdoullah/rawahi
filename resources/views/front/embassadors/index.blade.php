@@ -77,7 +77,7 @@
                                </table>
                                {{ $all_embassdors_cities->links() }}
                                @endif
-                              @include('front.global.delete_modal')
+                              @include('front.embassadors.delete_modal')
                               @include('front.embassadors.show_modal')
                            </div>
                        </div>
