@@ -25,7 +25,6 @@
                                             <li><a href="{{url('logout')}}">تسجيل خروج</a></li>
                                         </ul>
                                     </li>
-                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partners.create')}}">إضافة شريك
 
                                     @else
                                         <li><a  href="{{url('login')}}">تسجيل الدخول</a></li>

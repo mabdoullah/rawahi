@@ -46,7 +46,7 @@ class PartnerController extends Controller
                 'partner_type' => 'required',
                 'legal_name' => ' required |max:255',
                 'email' => 'required|email|'.unique_validate('email'),
-     
+
                 'subscription_type' => 'required',
                 'password' =>'min:8|required_with:confirm_password|same:confirm_password',
 
@@ -92,7 +92,7 @@ class PartnerController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'map_address' => 'required|max:255',
-               
+
 
             ]);
 
@@ -106,10 +106,10 @@ class PartnerController extends Controller
             Image::make($file->getRealPath())->resize(100, 100)->stream();
 
             $file->move($destinationPath, $fileName);
-            
+
             $partner->image = $fileName;
 
-          
+
         }
         // $partnar->embassador_id=1; //stistic embassador_id will change
         $partner->save();
@@ -151,7 +151,7 @@ class PartnerController extends Controller
 
         $partner = Partner::find($id);
 
-        
+
         if(!$partner){
             return redirect('/');
         }
@@ -160,9 +160,9 @@ class PartnerController extends Controller
         }
 
         return view('front.partners.create',compact('partner','partnersTypesArray','cities'));
-        
 
-        
+
+
 
     }
 
@@ -199,7 +199,7 @@ class PartnerController extends Controller
 
 
 
-        
+
     //     $partner = Partner::where('id',$auth_user)->select('id','embassador_id')->first();
 
     //   if(!$partner)
@@ -208,17 +208,17 @@ class PartnerController extends Controller
     // }else{
 
     //     $embassador_id= $auth_user;//$partner->embassador_id;
-        
-        
-       
+
+
+
 
     //       $delete_partner=DB::table('partners')->where('id', $auth_user)->delete();
     //       return redirect('partners')->with('success', 'تم الحذف بنجاح');
 
-        
-        
 
-    
+
+
+
     // }
     // }
 }
