@@ -43,10 +43,22 @@ Route::namespace('front')->group(function () {
       Route::get("agent/{id}/edit","AgentController@edit")->name('agent.edit');
       Route::put("agent/{id}","AgentController@update")->name('agent.update');
     });
-    Route::middleware(['auth:embassador'])->group(function () {
-        Route::resource("partners" ,"PartnerController");
+     //============================= pratner route =============================== //
+    Route::middleware(['auth:partner,embassador'])->group(function () {
+      Route::get("partners/{id}/edit","PartnerController@edit")->name('partners.edit');
+      Route::put("partners/{id}","PartnerController@update")->name('partners.update');
     });
 
+     Route::middleware(['auth:embassador'])->group(function () {
+        Route::get("partners/create","PartnerController@create")->name('partners.create');
+        Route::get("partners/{id}","PartnerController@show")->name('partners.show');
+        Route::get("partners","PartnerController@index")->name('partners.index');
+        Route::POST("partners/store","PartnerController@store")->name('partners.store');
+        Route::DELETE("partners/{id}","PartnerController@destroy")->name('partners.destroy');
+
+     });
+
+      //=============================End pratner route =============================== //
 });
 
 

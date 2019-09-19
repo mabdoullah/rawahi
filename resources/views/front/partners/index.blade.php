@@ -29,18 +29,21 @@
 
                             <div class="tab-pane fade show active" id="general_info">
                                 <h4 class="text-center"> <i class="ion-ios-information"></i> الشركاء</h4>
-                                
-
+                                @if(session()->has('master_error'))
+                                <div class="alert alert-danger text-center" role="alert">
+                                  {{ session()->get('master_error') }}
+                                </div>
+                                @endif
+                                @if(session()->has('success'))
+                                <div class="alert alert-success text-center" role="alert">
+                                {{ session()->get('success') }}
+                                </div>
+                                @endif
                              @if(!count($partners))
                               <div class="alert alert-info text-center" role="alert">
                                 <h4>عفوا لا يوجد شركاء لعرضها</h4>
                               </div>
                               @else
-                              @if(!asset(session()->has('success')))
-                              <div class="alert alert-success text-center" role="alert">
-                              {{ session()->get('success') }}
-                              </div>
-                             @endif
                                 <table class="table">
                                     <thead class="thead-dark">
                                         <tr>
