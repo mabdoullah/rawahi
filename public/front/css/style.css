@@ -2291,9 +2291,7 @@ a.btn.v1.active
     width: 100%;
 }
 
-.nice-select .list:hover .option:not(:hover) {
-    background-color: transparent !important;
-}
+
 
 .nice-select .option {
     cursor: pointer;
@@ -2310,8 +2308,9 @@ a.btn.v1.active
 }
 
 .nice-select .option:hover {
-    background-color: #FFAB0B;
-    color: #fff;
+   
+    color: black !important;
+    background: #ffdfbcba !important;
 }
 
 .nice-select .option.disabled {
@@ -2329,10 +2328,12 @@ a.btn.v1.active
     outline: none;
 }
 
-.option.selected {
-    background-color: #fa8f1bba;
-    color: #DDD 
-}
+ .option.selected,.nice-select .list:hover .option.selected {
+    background-color:  #FA8F1B !important;
+    color:black !important; 
+} 
+
+
 
 /*-------------------------------------------
                Breadcrumb
