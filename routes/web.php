@@ -20,6 +20,8 @@ Route::group(['prefix' => 'admin', 'namespace'=>'admin' ,'as'=>'admin.' ], funct
   Route::resource("home","HomeController");
   Route::resource("agent","AgentController");
   Route::resource("embassador","EmbassadorController");
+  Route::resource("partners","PartnerController");
+
 
 });
 
