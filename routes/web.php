@@ -59,6 +59,10 @@ Route::namespace('front')->group(function () {
      });
 
       //=============================End pratner route =============================== //
+      Route::middleware(['auth:agent,embassador,partner,user'])->group(function () {
+        Route::GET("changepassword/index","ChangePasswordController@index")->name('password.index');
+        Route::POST("changepassword/update","ChangePasswordController@update")->name('password.update');
+      });
 });
 
 

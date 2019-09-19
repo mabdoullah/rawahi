@@ -35,7 +35,8 @@
                                             <li><a class="button-view"  href="{{route('partners.edit',partnerUser()->id)}}">تعديل البروفيل </a>
                                           @endif
                                           <!-- edit edit profile -->
-                                            <li><a href="{{url('logout')}}">تسجيل خروج</a></li>
+{{--                                            <li><a href="{{route('password.index')}}">تغير كلمة السر</a></li>
+--}}                                            <li><a href="{{url('logout')}}">تسجيل خروج</a></li>
 
                                         </ul>
                                     </li>
