@@ -29,7 +29,6 @@ class embassadorController extends Controller
             ->orderBy('embassadors.id', 'desc')->paginate(10);
         return view('front.embassadors.index')->with('all_embassdors_cities', $all_embassdors_cities)->with('show_embassador', $show_embassador);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -37,6 +36,7 @@ class embassadorController extends Controller
      */
     public function create()
     {
+      // dd('8i87989');
         $cities = City::where('country_id', 191)->get();
         return view('front.embassadors.edit_add')->with('cities', $cities);
     }
@@ -49,6 +49,7 @@ class embassadorController extends Controller
      */
     public function store(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|max:18',
             'second_name' => 'required|max:18',

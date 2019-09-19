@@ -34,9 +34,9 @@ Route::namespace('front')->group(function () {
     //
     Route::middleware(['auth:agent'])->group(function () {
       // agent permission for embassadors
+      Route::get("embassador/create","EmbassadorController@create")->name('embassador.create');
       Route::get("embassador/{id}","EmbassadorController@show")->name('embassador.show');
       Route::get("embassador","EmbassadorController@index")->name('embassador.index');
-      Route::get("embassador/create","EmbassadorController@create")->name('embassador.create');
       Route::POST("embassador/store","EmbassadorController@store")->name('embassador.store');
       Route::DELETE("embassador/{id}","EmbassadorController@destroy")->name('embassador.destroy');
       // agent can update his Data
