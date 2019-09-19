@@ -34,9 +34,9 @@
                                   {{ session()->get('master_error') }}
                                 </div>
                                 @endif
-                                @if(session()->has('success'))
+                                @if(session()->has('message'))
                                 <div class="alert alert-success text-center" role="alert">
-                                {{ session()->get('success') }}
+                                {{ session()->get('message') }}
                                 </div>
                                 @endif
                              @if(!count($partners))
@@ -59,32 +59,32 @@
                                     <tbody>
                                             @foreach ($partners as $partner)
                                         <tr>
-                              
+
 
 
                                             <td>{{$partner->legal_name}}</td>
                                             <td>{{$partner->email}}</td>
 
                                             <td>{{$partner->phone}}</td>
-                                            
-                                        
+
+
                                             <td>
-                                     
-                                        </form>      
+
+                                        </form>
                                         {{--  edit --}}
                                                <a class="btn v8 view-buttons" href="{{route('partners.edit',$partner->id)}}"> تعديل <i
                                                 class="icofont-edit"></i>
                                                 </a>
                                         {{--  show --}}
                                             <a type="button"  class="btn v8 view-buttons show_button"  data-toggle="modal"data-target="#show"   href="{{route('partners.show',$partner->id)}}"> عرض <i class="icofont-eye-alt"></i></a>
-                                            
+
                                         {{--  delete --}}
                                             {{-- <button type="button" class="view-buttons btn v8 deleterow" data-partid="{{$partner->id}}" data-toggle="modal" data-target="#delete">حذف
                                             <i class="icofont-ui-delete"></i>
                                             </button>  --}}
-                                                
+
                                             </td>
-                                            
+
                                         </tr>
                                         @endforeach
 
@@ -92,8 +92,8 @@
                                 </table>
                                 <!-- start deleteconfirmation Modal -->
                                      @include('front.partners.deletepartner')
-                                <!-- end deleteconfirmation Modal --> 
-                                     {!! $partners->links()!!}    
+                                <!-- end deleteconfirmation Modal -->
+                                     {!! $partners->links()!!}
                                 @endif
                                 <div class="modal fade" id="show" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -161,7 +161,7 @@
                                                                         <div class="col-md-6">
                                                                             <p id="show-phone"></p>
                                                                         </div>
-                                                                     
+
 
                                                                     </div>
 
@@ -174,7 +174,7 @@
                                                                 <div class="col-md-3 col-12">
                                                                     <p id="show-about"></p>
                                                                 </div>
-                                                               
+
                                                             </div>
                                                         </div>
                                                         <!-- <div class="tab-pane fade" id="profile" role="tabpanel"
@@ -272,8 +272,8 @@
           $('#show-phone').append(response['phone']);
           $('#show-about').append(response['about']);
 
-          
-     
+
+
       }
       });
     });
@@ -285,8 +285,8 @@
             var modal = $(this);
             modal.find('.modal-body #partner_id').val(partner_id);
       })
-      
-        
+
+
 </script>
-      
+
 @endpush

@@ -31,8 +31,8 @@ class PartnerController extends Controller
     {
 
 
-    
-        
+
+
         $cities = City::where('country_id', 191)->get();
 
         return view('front.partners.create', compact('cities'));
@@ -107,7 +107,7 @@ class PartnerController extends Controller
         $partner->embassador_id = embassadorUser()->id;
         $partner->save();
 
-        return redirect()->route('partners.index')->with('success', 'تم التسجيل الشريك بنجاح');
+        return redirect()->route('partners.index')->with('message', 'تم التسجيل الشريك بنجاح');
     }
 
     /**
@@ -139,7 +139,7 @@ class PartnerController extends Controller
 
         $partner = Partner::find($id);
         if (!$partner) return redirect('/');
-        
+
         if(embassadorUser() && embassadorUser()->id != $partner->embassador_id){
             return ' غير مسموح لك بتعديل هذا الشريك';
         }
@@ -213,7 +213,7 @@ class PartnerController extends Controller
 
         $partner = Partner::find($id);
         if (!$partner) return redirect('/');
-        
+
         if(embassadorUser() && embassadorUser()->id != $partner->embassador_id){
             return ' غير مسموح لك بتعديل هذا الشريك';
         }
@@ -238,8 +238,13 @@ class PartnerController extends Controller
         }
 
         $partner->update($request->all());
-        
-         return redirect('/')->with("message", "Updated Success");
+        if (embassadorUser()) {
+            return redirect()->route('partners.index')->with("message", "تم التعديل بنجاح");
+        }elseif(partnerUser()){
+            return redirect()->route('partners.edit',$id)->with("message", "تم التعديل بنجاح");
+
+        }
+
 
         //$obj->where('name',$name)->update($arr);
     }
@@ -263,7 +268,7 @@ class PartnerController extends Controller
     //     $embassador_id= $auth_user;//$partner->embassador_id;
 
     //       $delete_partner=DB::table('partners')->where('id', $auth_user)->delete();
-    //       return redirect('partners')->with('success', 'تم الحذف بنجاح');
+    //       return redirect('partners')->with('message', 'تم الحذف بنجاح');
 
     // }
     // }

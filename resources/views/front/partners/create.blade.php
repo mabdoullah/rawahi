@@ -73,9 +73,9 @@
                 </div>
                  @endif
 
-                @if(session()->has('success'))
+                @if(session()->has('message'))
                 <div class="alert alert-success text-center" role="alert">
-                {{ session()->get('success') }}
+                {{ session()->get('message') }}
                 </div>
                 @endif
 
@@ -258,7 +258,7 @@
                         </div>
                     </div>
 
-                  
+
                                              <!--  Replace this  -->
                             <div class="tab-pane fade text-center {{ session('activeTab') == 'tab2'  ? "show active" : "" }}" id="gallery">
                                     <h4><i class="ion-image"></i> الشعار </h4>
@@ -266,7 +266,7 @@
                                         <form class="photo-upload">
                                            <div class="form-group {{ $errors->has( 'image' ) ? 'has-error' : '' }}">
                                                 <div class="add-listing__input-file-box">
-                                                
+
                                                         <input class="add-listing__input-file" type="file" name="image"
                                                         id="file" onchange="readURL(this);"  value="{{ old('image',
                                                         isset($partner->image) ? $partner->image : '') }}">
@@ -278,7 +278,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">
-                                                        <div class="text-center">  
+                                                        <div class="text-center">
                                                             @if( $errors->has( 'image' ) )
                                                                    <span class="help-block text-danger">
                                                                        {{ $errors->first( 'image' ) }}
@@ -287,7 +287,7 @@
                                                             </div>
                                                 </div>
                                             </div>
-                                        
+
                                     </div>
                                     <div class="add-btn">
                                             <a href="javascript:;" class="btn v8 mar-top-20 previous">الخطوه السابقه</a>
@@ -487,8 +487,8 @@
                                             <span class="help-block text-danger">
                                                 {{ $errors->first( 'remember' ) }}
                                             </span>
-                                            @endif  
-                                    </div>  
+                                            @endif
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -569,7 +569,7 @@ function readURL(input) {
       {{-- start map --}}
 
 
-      <?php 
+      <?php
 
       if(isset($partner->id)){
                 $lat = $partner->lat;
@@ -579,10 +579,10 @@ function readURL(input) {
                 $lng = 46.6753;
             }
         ?>
-  
+
 
 <script>
-  
+
     if ($('#map').length > 0) {
         google.maps.event.addDomListener(window, 'load', init);
 
@@ -595,7 +595,7 @@ function readURL(input) {
 
                 // The latitude and longitude to center the map (always required)
                 center: new google.maps.LatLng({{$lat}}, {{$lng}}), // Riyadh
-                
+
                 scrollwheel: false,
 
 
@@ -676,7 +676,7 @@ function readURL(input) {
             });
 
 
-        
+
 
         marker.addListener('click', toggleBounce);
 
@@ -694,15 +694,15 @@ function readURL(input) {
 
                 let lat = marker.getPosition().lat(),
                     lng = marker.getPosition().lng();
-                    
-                    
-                
+
+
+
                 var latlng = new google.maps.LatLng(lat,lng);
-                
+
                 geocoder.geocode({'latLng' : latlng},function (results, status) {
 
                     console.log( status,google.maps.GeocoderStatus  );
-                    
+
                     if (status == google.maps.GeocoderStatus.OK) {
                         console.log(results[1],lat,lng );
 
@@ -716,8 +716,8 @@ function readURL(input) {
                                 $('#zipCode').val(results[1].address_components[i].long_name);
                             }
                         }
-                        
-                    } 
+
+                    }
                 });
 
 
