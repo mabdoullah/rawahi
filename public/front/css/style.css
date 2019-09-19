@@ -2308,8 +2308,9 @@ a.btn.v1.active
 }
 
 .nice-select .option:hover {
-    background-color: #FFAB0B;
-    color: #fff;
+   
+    color: black !important;
+    background: #ffdfbcba !important;
 }
 
 .nice-select .option.disabled {
@@ -2328,7 +2329,7 @@ a.btn.v1.active
 }
 
  .option.selected,.nice-select .list:hover .option.selected {
-    background-color: #fa8f1bba !important;
+    background-color:  #FA8F1B !important;
     color:black !important; 
 } 
 
