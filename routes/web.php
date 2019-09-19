@@ -17,6 +17,13 @@
 // Admin
 Route::group(['prefix' => 'admin', 'namespace'=>'admin' ,'as'=>'admin.' ], function()
 {
+  Route::get("settings/info","SettingController@edit")->name('settings.info' );
+  Route::put("settings/info/update","SettingController@update")->name('settings.info.update');
+  // Route::resource("settings","SettingController");
+
+
+
+
   Route::resource("home","HomeController");
   Route::resource("agent","AgentController");
   Route::resource("embassador","EmbassadorController");

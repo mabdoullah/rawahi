@@ -13,7 +13,7 @@
       <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
           <h3 class="kt-portlet__head-title">
-            تسجيل بيانات الوكيل:-
+            تعديل بيانات الوكيل:-
           </h3>
         </div>
       </div>
