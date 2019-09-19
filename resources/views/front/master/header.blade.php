@@ -32,13 +32,15 @@
 
 
                                     @if(embassadorUser())
-                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partners.edit',embassadorUser()->id)}}">تعديل البروفيل                                          </a></li>
+                                    <li class="d-lg-none"><a class="btn v1" href="{{route('embassador.edit',embassadorUser()->id)}}">تعديل البروفيل                                          </a></li>
                                     <li class="d-lg-none"><a class="btn v1" href="{{route('partners.create')}}">إضافة شريك
                                             <i class="ion-plus-round"></i></a></li>
                                     <li class="d-lg-none"><a class="btn v1" href="{{route('partners.index')}}">الشركاء
                                     </a></li>
                                     @endif
                                     @if(agentUser())
+                                    <li class="d-lg-none"><a class="btn v1 active" href="{{route('agent.edit',agentUser()->id)}}">تعديل البرفيل
+                                            </a></li>
                                     <li class="d-lg-none"><a class="btn v1 active" href="{{route('embassador.create')}}"> تسجيل سفير
                                             <i class="ion-plus-round"></i></a></li>
                                     <li class="d-lg-none"><a class="btn v1 active" href="{{route('embassador.index')}}">السفراء
@@ -60,6 +62,7 @@
                                     <a class="btn v8" href="{{route('partners.index')}}">الشركاء </a>
                             @endif
                             @if(agentUser())
+                            <a class="btn v8" href="{{route('agent.edit',agentUser()->id)}}">تعديل البرفيل </a>
                                 <a class="btn v8" href="{{route('embassador.create')}}">  تسجيل سفير <i
                                 class="ion-plus-round"></i></a>
                                 <a class="btn v8" href="{{route('embassador.index')}}">  السفراء </a>
