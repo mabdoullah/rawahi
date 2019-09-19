@@ -239,7 +239,7 @@ class PartnerController extends Controller
 
         $partner->update($request->all());
         
-        return redirect()->route('partners.index')->with("message", "Updated Success");
+         return redirect('/')->with("message", "Updated Success");
 
         //$obj->where('name',$name)->update($arr);
     }

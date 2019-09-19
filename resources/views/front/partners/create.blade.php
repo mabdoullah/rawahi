@@ -23,7 +23,7 @@
 <div class="list-details-section section-padding add_list pad-top-90" id="tabsContainer">
         @if( isset($partner) )
         <form  action="{{route('partners.update',$partner->id)}}" method="post" enctype="multipart/form-data">
-        @method('PATCH')
+        @method('PUT')
         @else
         <form  action="{{route('partners.store')}}" method="post" enctype="multipart/form-data">
 
