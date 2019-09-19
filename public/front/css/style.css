@@ -44,6 +44,7 @@
     34 Profile
     35 Responsive
     36 partner logo
+    37 show profile page
     
 -------------------------------------------------------------*/
 
@@ -98,14 +99,6 @@ h6 {
     line-height: 1.6;
 }
 
-.white{
-    color: white;
-}
-
-
-.alert-info{
-    background-color: rgb(255, 159, 56);
-}
 
 .form-control {
     border-radius: 0
@@ -8649,3 +8642,51 @@ tr button,tr a {
     max-height: 180px;
 }
 
+/*-----------------------------------------------------------
+            show profile page
+-------------------------------------------------------------*/
+
+
+.prof-details {
+    padding: 18px
+}
+
+.prof-row:not(:last-child) {
+    border-bottom: 1px solid orange
+}
+
+.prof-image img.rounded-circle.img-fluid.mar-auto {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+@media (max-width: 767px) { 
+    .prof-row:not(:last-child) {
+        border-bottom: none
+    }
+    .prof-image img.rounded-circle.img-fluid.mar-auto {
+        margin: auto;
+    }
+    .prof-row:not(:last-child) > div,
+    .prof-row > div:not(:last-child) {
+        border-bottom: 1px solid orange
+    }
+
+    .prof-row > div {
+        text-align: center
+    }
+}
+
+.grid{
+    display: grid;
+    height: auto;
+}
+
+.mar-auto{
+    margin:auto 0;
+}
+
+.profile-title-info{
+    font-weight: 500;
+    color: black;
+}
