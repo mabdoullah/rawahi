@@ -39,11 +39,11 @@
                                     </a></li>
                                     @endif
                                     @if(agentUser())
-                                    <li class="d-lg-none"><a class="button-view btn v1 active" href="{{route('agent.edit',agentUser()->id)}}">تعديل بروفيل
+                                    <li class="d-lg-none"><a class="button-view btn v1 " href="{{route('agent.edit',agentUser()->id)}}">تعديل بروفيل
                                             </a></li>
-                                    <li class="d-lg-none"><a class="button-view btn v1 active" href="{{route('embassador.create')}}"> تسجيل سفير
+                                    <li class="d-lg-none"><a class="button-view btn v1 " href="{{route('embassador.create')}}"> تسجيل سفير
                                             <i class="ion-plus-round"></i></a></li>
-                                    <li class="d-lg-none"><a class="button-view btn v1 active" href="{{route('embassador.index')}}">السفراء
+                                    <li class="d-lg-none"><a class="button-view btn v1 " href="{{route('embassador.index')}}">السفراء
                                               </a></li>
                                     @endif
                                     {{-- ============ partners =============--}}
