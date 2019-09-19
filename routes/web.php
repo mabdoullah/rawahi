@@ -43,7 +43,7 @@ Route::namespace('front')->group(function () {
       Route::get("agent/{id}/edit","AgentController@edit")->name('agent.edit');
       Route::put("agent/{id}","AgentController@update")->name('agent.update');
     });
-
+     //============================= pratner route =============================== //
     Route::middleware(['auth:partner,embassador'])->group(function () {
       Route::get("partners/{id}/edit","PartnerController@edit")->name('partners.edit');
       Route::put("partners/{id}","PartnerController@update")->name('partners.update');
@@ -58,7 +58,7 @@ Route::namespace('front')->group(function () {
 
      });
 
-
+      //=============================End pratner route =============================== //
 });
 
 
