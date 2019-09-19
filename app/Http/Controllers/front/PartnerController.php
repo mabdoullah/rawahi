@@ -238,8 +238,13 @@ class PartnerController extends Controller
         }
 
         $partner->update($request->all());
-        
-         return redirect('/')->with("message", "Updated Success");
+        if (embassadorUser()) {
+            return redirect()->route('partners.index')->with("message", "Updated Success");
+        }elseif(partnerUser()){
+            return redirect()->route('partners.edit')->with("message", "Updated Success");
+
+        }
+         
 
         //$obj->where('name',$name)->update($arr);
     }
