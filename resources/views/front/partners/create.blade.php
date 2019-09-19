@@ -341,6 +341,20 @@
                                             @endif
                                     </div>
                                 </div>
+                    
+                            <div class="col-md-6">
+                                <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
+                                    <label>الجوال </label>
+                                    <input name="phone"  type="text" class="form-control filter-input" value="{{ old('phone',
+                                    isset($partner->phone) ? $partner->phone : '') }}">
+
+                                    @if( $errors->has( 'phone' ) )
+                                           <span class="help-block text-danger">
+                                               {{ $errors->first( 'phone' ) }}
+                                           </span>
+                                       @endif
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div  class="form-group {{ $errors->has( 'map_address' ) ? 'has-error' : '' }}">
                                     <label>العنوان</label>
@@ -355,20 +369,6 @@
                                         @endif
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
-                                    <label>الجوال </label>
-                                    <input name="phone"  type="text" class="form-control filter-input" value="{{ old('phone',
-                                    isset($partner->phone) ? $partner->phone : '') }}">
-
-                                    @if( $errors->has( 'phone' ) )
-                                           <span class="help-block text-danger">
-                                               {{ $errors->first( 'phone' ) }}
-                                           </span>
-                                       @endif
-                                </div>
-                            </div>
-
 
                             <div class="col-md-6">
                                 <div class="form-group {{ $errors->has( 'postel_code' ) ? 'has-error' : '' }}">
