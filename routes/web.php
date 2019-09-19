@@ -49,14 +49,15 @@ Route::namespace('front')->group(function () {
       Route::put("partners/{id}","PartnerController@update")->name('partners.update');
     });
 
-    Route::middleware(['auth:partner'])->group(function () {
+     Route::middleware(['auth:embassador'])->group(function () {
+        Route::get("partners/create","PartnerController@create")->name('partners.create');
         Route::get("partners/{id}","PartnerController@show")->name('partners.show');
         Route::get("partners","PartnerController@index")->name('partners.index');
-        Route::get("partners/create","PartnerController@create")->name('partners.create');
         Route::POST("partners/store","PartnerController@store")->name('partners.store');
         Route::DELETE("partners/{id}","PartnerController@destroy")->name('partners.destroy');
 
-    });
+     });
+
 
 });
 

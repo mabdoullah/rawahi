@@ -49,13 +49,10 @@
                                     {{-- ============ partners =============--}}
                                     @if(partnerUser())
                                     <li class="d-lg-none"><a class="btn v1" href="{{route('partners.edit',partnerUser()->id)}}">تعديل البروفيل                                          </a></li>
-                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partners.create')}}">إضافة شريك
-                                            <i class="ion-plus-round"></i></a></li>
-                                    <li class="d-lg-none"><a class="btn v1" href="{{route('partners.index')}}">الشركاء
-                                    </a></li>
+       
                                     @endif
                                  
-                                    {{-- ============ partners =============--}}
+                                    {{-- ============ End partners =============--}}
                                 </ul>
                             </div>
                         </nav>
@@ -90,9 +87,7 @@
                                 
                                 @if(partnerUser())
                                 <a class="btn v8"  href="{{route('partners.edit',partnerUser()->id)}}">تعديل البروفيل </a>
-                                    <a class="btn v8" href="{{route('partners.create')}}">إضافة شريك <i
-                                        class="ion-plus-round"></i></a>
-                                        <a class="btn v8" href="{{route('partners.index')}}">الشركاء </a>
+                                   
                                 @endif
                            
     

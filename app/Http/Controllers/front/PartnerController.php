@@ -19,7 +19,7 @@ class PartnerController extends Controller
     public function index()
     {
         $partners = Partner::where('embassador_id', embassadorUser()->id)->latest()->orderBy('id')->paginate(10);
-        return view('front.partners.index', ['partners' => $partners]);
+        return view('front.partners.index', compact('partners'));
     }
 
     /**
@@ -29,6 +29,10 @@ class PartnerController extends Controller
      */
     public function create()
     {
+
+
+    
+        
         $cities = City::where('country_id', 191)->get();
 
         return view('front.partners.create', compact('cities'));
