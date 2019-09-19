@@ -49,9 +49,9 @@
                                     {{-- ============ partners =============--}}
                                     @if(partnerUser())
                                     <li class="d-lg-none"><a class="btn v1" href="{{route('partners.edit',partnerUser()->id)}}">تعديل البروفيل                                          </a></li>
-       
+
                                     @endif
-                                 
+
                                     {{-- ============ End partners =============--}}
                                 </ul>
                             </div>
@@ -77,21 +77,16 @@
 
 
                         </div>
-                        {{-- ============ partners =============--}}
-                        <div class="d-lg-none sm-left">
-                                <a href="#" class="mobile-bar js-menu-toggle">
-                                    <span class="ion-android-menu"></span>
-                                </a>
-                            </div>
+                        {{-- ============ partners =============--}}                        
                             <div class="add-list float-left">
-                                
+
                                 @if(partnerUser())
                                 <a class="btn v8"  href="{{route('partners.edit',partnerUser()->id)}}">تعديل البروفيل </a>
-                                   
+
                                 @endif
-                           
-    
-    
+
+
+
                             </div>
 
 
