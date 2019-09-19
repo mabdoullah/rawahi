@@ -1,4 +1,4 @@
-@extends('front.master.app')
+@extends('front.master.app',['loadMap' => true])
 
 @section('content')
         <!--Hero section starts-->
