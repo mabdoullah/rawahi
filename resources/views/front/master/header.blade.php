@@ -21,8 +21,22 @@
                                         <a href="javascript:;">
                                             {{(currentUser()->name)?? (currentUser()->first_name ?? currentUser()->legal_name)}}
                                         </a>
+
+
                                         <ul class="dropdown">
+                                          <!-- start edit profile -->
+                                          @if(embassadorUser())
+                                             <li ><a class="button-view"  href="{{route('embassador.edit',embassadorUser()->id)}}">تعديل البروفيل </a></li>
+                                          @endif
+                                          @if(agentUser())
+                                             <li><a class="button-view" href="{{route('agent.edit',agentUser()->id)}}">تعديل  البروفيل </a></li>
+                                          @endif
+                                          @if(partnerUser())
+                                            <li><a class="button-view"  href="{{route('partners.edit',partnerUser()->id)}}">تعديل البروفيل </a>
+                                          @endif
+                                          <!-- edit edit profile -->
                                             <li><a href="{{url('logout')}}">تسجيل خروج</a></li>
+
                                         </ul>
                                     </li>
 
@@ -32,25 +46,13 @@
 
                                     <!-- start buttons on phone -->
                                     @if(embassadorUser())
-                                    <li class="d-lg-none"><a class="button-view btn v1" href="{{route('embassador.edit',embassadorUser()->id)}}">تعديل البروفيل                                          </a></li>
-                                    <li class="d-lg-none"><a class=" button-view btn v1" href="{{route('partners.create')}}">إضافة شريك
-                                            <i class="ion-plus-round"></i></a></li>
-                                    <li class="d-lg-none"><a class="button-view btn v1" href="{{route('partners.index')}}">الشركاء
-                                    </a></li>
+                                    <li class="d-lg-none"><a class="button-view btn v1" href="{{route('partners.create')}}">إضافة شريك<i class="ion-plus-round"></i></a></li>
+                                    <li class="d-lg-none"><a class="button-view btn v1" href="{{route('partners.index')}}">الشركاء  </a></li>
                                     @endif
                                     @if(agentUser())
-                                    <li class="d-lg-none"><a class="button-view btn v1 " href="{{route('agent.edit',agentUser()->id)}}">تعديل بروفيل
-                                            </a></li>
-                                    <li class="d-lg-none"><a class="button-view btn v1 " href="{{route('embassador.create')}}"> تسجيل سفير
-                                            <i class="ion-plus-round"></i></a></li>
-                                    <li class="d-lg-none"><a class="button-view btn v1 " href="{{route('embassador.index')}}">السفراء
-                                              </a></li>
+                                    <li class="d-lg-none"><a class="button-view btn v1" href="{{route('embassador.create')}}"> تسجيل سفير<i class="ion-plus-round"></i></a></li>
+                                    <li class="d-lg-none"><a class="button-view btn v1" href="{{route('embassador.index')}}">السفراء</a></li>
                                     @endif
-                                    {{-- ============ partners =============--}}
-                                    @if(partnerUser())
-                                    <li class="d-lg-none"><a class="button-view btn v1" href="{{route('partners.edit',partnerUser()->id)}}">تعديل البروفيل </a></li>
-                                    @endif
-                                    {{-- ============ End partners =============--}}
                                     <!-- end buttons on phone -->
                                 </ul>
                             </div>
@@ -64,23 +66,16 @@
                         <div class="add-list float-left">
                           <!-- buttons allowed only for embassador -->
                             @if(embassadorUser())
-                            <a class="button-view btn v8"  href="{{route('embassador.edit',embassadorUser()->id)}}">تعديل البروفيل </a>
                                 <a class="button-view btn v8" href="{{route('partners.create')}}">إضافة شريك <i
                                     class="ion-plus-round"></i></a>
-                                    <a class="button-view btn v8" href="{{route('partners.index')}}">الشركاء </a>
+                                <a class="button-view btn v8" href="{{route('partners.index')}}">الشركاء </a>
                             @endif
                             <!-- buttons allowed only for agent -->
                             @if(agentUser())
-                            <a class=" button-view btn v8" href="{{route('agent.edit',agentUser()->id)}}">تعديل  البروفيل </a>
                                 <a class="button-view btn v8" href="{{route('embassador.create')}}">  تسجيل سفير <i
                                 class="ion-plus-round"></i></a>
                                 <a class="button-view btn v8" href="{{route('embassador.index')}}">  السفراء </a>
                             @endif
-                            <!-- buttons allowed only for partners -->
-                            @if(partnerUser())
-                            <a class="button-view btn v8"  href="{{route('partners.edit',partnerUser()->id)}}">تعديل البروفيل </a>
-                            @endif
-
                         </div>
                         <!-- end buttons in web -->
                     </div>
