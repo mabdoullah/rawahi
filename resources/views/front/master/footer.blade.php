@@ -104,8 +104,21 @@
   <script src="{{ asset('front/js/infobox.min.js') }}"></script>
   <!--Main js-->
   <script src="{{ asset('front/js/main.js') }}"></script>
+  <!-- start active button -->
+  <script>
+  $('.button-view').click(function(e) {
+    $('a').removeClass('active');
+    $(this).addClass('active');
+    });
+  $(function(){
+    var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
+     $('.button-view').each(function() {
+      if (this.href === path) {
+       $(this).addClass('active');
+      }
+    });
+  })
+  </script>
+  <!-- end active button -->
   <!--Scripts ends-->
   @stack('jqueryCode')
-
-
-  
