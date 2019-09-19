@@ -5,29 +5,24 @@
     <!--Page Wrapper starts-->
 
         <!--Breadcrumb section starts-->
-        <div class="breadcrumb-section" style="background-image: url({{asset('front/images/breadcrumb/breadcrumb-1.jpg')}})">
+        <div class="breadcrumb-section" >
             <div class="overlay op-5"></div>
             <div class="container">
                 <div class="row align-items-center  pad-top-80">
-                    <div class="col-md-6 col-12">
-                        <div class="breadcrumb-menu text-left sm-left">
+                    <div class=" col-12">
+                        <div class="breadcrumb-menu text-center">
                             <ul>
                                 <li class="active"> <a href="{{route('index')}}">الرئيسية</a> </li>
-
+                                <li> <h2 class="page-title">تعديل بيانات الوكيل</h2></li>
                             </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12">
-                        <div class="breadcrumb-menu">
-                            <h2 class="page-title text-right">تعديل بيانات الوكيل</h2>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!--Breadcrumb section ends-->
-        <!--Add Listing starts-->
-        <div class="list-details-section section-padding add_list pad-top-90">
+        <!--agent edit starts-->
+        <div class="list-details-section section-padding add_list pad-top-50">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -97,7 +92,7 @@
                                        </div>
                                    </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 offset-md-6">
                                         <div class="form-group {{ $errors->has( 'city' ) ? 'has-error' : '' }}">
                                             <label> المدينه </label>
                                             <select class="form-control filter-input"  name="city" id="city">
@@ -128,7 +123,7 @@
                 </div>
             </div>
         </div>
-        <!--Add Listing ends-->
+        <!--agent edit ends-->
 
 
     <!--Page Wrapper ends-->

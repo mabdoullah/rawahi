@@ -8613,3 +8613,51 @@ tr button,tr a {
 
 
 
+/*-----------------------------------------------------------
+            show profile page
+-------------------------------------------------------------*/
+
+
+.prof-details {
+    padding: 18px
+}
+
+.prof-row:not(:last-child) {
+    border-bottom: 1px solid orange
+}
+
+.prof-image img.rounded-circle.img-fluid.mar-auto {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+@media (max-width: 767px) { 
+    .prof-row:not(:last-child) {
+        border-bottom: none
+    }
+    .prof-image img.rounded-circle.img-fluid.mar-auto {
+        margin: auto;
+    }
+    .prof-row:not(:last-child) > div,
+    .prof-row > div:not(:last-child) {
+        border-bottom: 1px solid orange
+    }
+
+    .prof-row > div {
+        text-align: center
+    }
+}
+
+.grid{
+    display: grid;
+    height: auto;
+}
+
+.mar-auto{
+    margin:auto 0;
+}
+
+.profile-title-info{
+    font-weight: 500;
+    color: black;
+}
