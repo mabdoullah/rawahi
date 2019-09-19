@@ -25,7 +25,7 @@
            <div class="container-fluid">
                <div class="row">
                    <div class="col-md-12">
-                       <div class="tab-content mar-tb-30 add_list_content">
+                       <div class="view-page tab-content mar-tb-30 add_list_content">
 
                            <div class="tab-pane fade show active" >
                                <h4 class="text-center"> <i class="ion-ios-information"></i> السفراء</h4>
@@ -41,7 +41,7 @@
                                @endif
                                @if(!count($all_embassdors_cities))
                                <div class="alert alert-info text-center" role="alert">
-                                 <h4 class="white">عفوا لا يوجد سفراء لعرضها</h4>
+                                 <h4 >عفوا لا يوجد سفراء لعرضها</h4>
                                 </div>
                                @else
                                <table class="table">

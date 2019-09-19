@@ -14,7 +14,7 @@
     <!--color switcher css-->
     <link rel="stylesheet" href="{{ URL::asset('front/css/switcher/skin-aqua.css')}}" media="screen" id="style-colors" />
     <!-- Document Title -->
-    <title>listagram - Directory Listing HTML Template</title>
+    <title>رواهى - فريقك المفضل</title>
 </head>
 <!--Preloader starts-->
   <div class="preloader js-preloader">

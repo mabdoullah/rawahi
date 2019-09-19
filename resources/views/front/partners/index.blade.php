@@ -25,7 +25,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="tab-content mar-tb-30 add_list_content">
+                        <div class="view-page tab-content mar-tb-30 add_list_content">
 
                             <div class="tab-pane fade show active" id="general_info">
                                 <h4 class="text-center"> <i class="ion-ios-information"></i> الشركاء</h4>

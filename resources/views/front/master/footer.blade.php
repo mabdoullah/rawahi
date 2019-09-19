@@ -93,19 +93,35 @@
   <!--Scripts starts-->
   <!--plugin js-->
   <script src="{{ asset('front/js/plugin.js') }}"></script>
+
+  @if(!empty($loadMap))
   <!--google maps-->
   <script
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYFTtfLWhG7EDk8aoRiwpTek24HLJ38jQ&amp;libraries=places&amp;callback=initAutocomplete"></script>
   <!--Markercluster js-->
   <script src="{{ asset('front/js/markerclusterer.js') }}"></script>
-  <!--Maps js-->
-  <script src="{{ asset('front/js/maps.js') }}"></script>
   <!--Infobox js-->
   <script src="{{ asset('front/js/infobox.min.js') }}"></script>
-  <!--Main js-->
-  <script src="{{ asset('front/js/main.js') }}"></script>
-  <!--Scripts ends-->
-  @stack('jqueryCode')
-
+  @endif
 
   
+  <!--Main js-->
+  <script src="{{ asset('front/js/main.js') }}"></script>
+  <!-- start active button -->
+  <script>
+  $('.button-view').click(function(e) {
+    $('a').removeClass('active');
+    $(this).addClass('active');
+    });
+  $(function(){
+    var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
+     $('.button-view').each(function() {
+      if (this.href === path) {
+       $(this).addClass('active');
+      }
+    });
+  })
+  </script>
+  <!-- end active button -->
+  <!--Scripts ends-->
+  @stack('jqueryCode')
