@@ -1,3 +1,4 @@
+<script>
 	(function(A) {
 
 	if (!Array.prototype.forEach)
@@ -19,7 +20,7 @@
 				name: 'Ocean Paradise',
 				location_latitude: 24.6951, 
 				location_longitude: 46.6805,
-				map_image_url: 'images/single-listing/gallery-6.jpg',
+				map_image_url: "{{asset('front/images/single-listing/gallery-6.jpg')}}",
 				rate: '4.5',
 				name_point: 'Ocean Paradise',
 				url_point: '#',
@@ -30,7 +31,7 @@
 				name: 'Hukair Theme Park',
 				location_latitude: 24.695539,
 				location_longitude: 46.685021,
-				map_image_url: 'images/category/places/place-5.jpg',
+				map_image_url: "{{asset('front/images/category/places/place-5.jpg')}}",
 				rate: '4',
 				name_point: 'Lagon Theme Park',
 				url_point: '#',
@@ -41,7 +42,7 @@
 				name: 'Genji Restaurent',
 				location_latitude: 24.7136, 
 				location_longitude: 46.6753,
-				map_image_url: 'images/category/places/place-9.jpg',
+				map_image_url: "{{asset('front/images/category/places/place-9.jpg')}}",
 				rate: '5',
 				name_point: 'Genji Restaurent',
 				url_point: '#',
@@ -52,7 +53,7 @@
 				name: 'صحارى مول',
 				location_latitude: 24.6961,
 				location_longitude: 46.6810,
-				map_image_url: 'images/category/places/place-5.jpg',
+				map_image_url: "{{asset('front/images/category/places/place-5.jpg')}}",
 				rate: '3.5',
 				name_point: 'صحارى مول',
 				url_point: '#',
@@ -63,7 +64,7 @@
 				name: 'Cafe Intermezzo',
 				location_latitude: 24.6951, 
 				location_longitude: 46.6805,
-				map_image_url: 'images/category/places/cafe.jpg',
+				map_image_url: "{{asset('front/images/category/places/cafe.jpg')}}",
 				rate: '4.5',
 				name_point: 'Cafe Intermezzo',
 				url_point: '#',
@@ -74,7 +75,7 @@
 				name: 'Four Seasons Resort',
 				location_latitude: 24.713552,
 				location_longitude: 46.675296,
-				map_image_url: 'images/category/places/place-1.jpg',
+				map_image_url: "{{asset('front/images/category/places/place-1.jpg')}}",
 				rate: '5',
 				name_point: 'Four Seasons Resort',
 				url_point: '#',
@@ -85,7 +86,7 @@
 				name: 'Blue Men Show',
 				location_latitude: 21.4858, 
 				location_longitude: 39.1925,
-				map_image_url: 'images/category/event/muay.jpg',
+				map_image_url: "{{asset('front/images/category/event/muay.jpg')}}",
 				rate: '4',
 				name_point: 'Blue Men Show',
 				url_point: '#',
@@ -185,7 +186,7 @@
 					marker = new google.maps.Marker({
 						position: new google.maps.LatLng(item.location_latitude, item.location_longitude),
 						map: mapObject,
-						icon: '../front/images/others/marker.png',
+						icon: "{{asset('front/images/others/marker.png')}}",
 					});
 
 					if ('undefined' === typeof markers[key])
@@ -230,16 +231,16 @@
 				maxWidth: 0,
 				pixelOffset: new google.maps.Size(10, 92),
 				closeBoxMargin: '',
-				closeBoxURL: "../front/images/others/close_infobox.png",
+				closeBoxURL: "{{asset('front/images/others/close_infobox.png')}}",
 				isHidden: false,
 				alignBottom: true,
 				pane: 'floatPane',
 				enableEventPropagation: true
 			});
 		};
-function onHtmlClick(location_type, key){
-     google.maps.event.trigger(markers[location_type][key], "click");
-}
 
+	function onHtmlClick(location_type, key){
+		google.maps.event.trigger(markers[location_type][key], "click");
+	}
 
-
+</script>

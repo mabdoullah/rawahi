@@ -1,12 +1,12 @@
-@extends('front.master.app')
+@extends('front.master.app',['loadMap' => true])
 
 @section('content')
         <!--Hero section starts-->
         <div class="video-area v1">
             <div class="video-container">
                 <div class="overlay op-5"></div>
-                 <div id="video-wrapper" style="background-image: url(front/images/header/video-bg.jpg)"> </div>
-               <a class="player" data-property="{videoURL:'https://youtu.be/6JBrppVIvi8'}"></a>
+                 <div id="video-wrapper" style="background-image: url({{asset('front/images/header/video-bg.jpg')}})"> </div>
+               <a class="player" data-property="{videoURL:'https://youtu.be/Cw0eq-7w8xQ'}"></a>
                 <div class="container video-content">
                     <div class="row">
                         <div class="col-md-12 text-center">
@@ -820,3 +820,8 @@
 
 
     @endsection
+
+
+    @push('jqueryCode')
+        @include('front.home.mapJsCode')
+    @endpush
