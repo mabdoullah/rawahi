@@ -30,19 +30,9 @@
     </div>
   </form> -->
   
-  <div class="kt-portlet__head kt-portlet__head--lg">
-    <div class="kt-portlet__head-label">
-      <span class="kt-portlet__head-icon">
-        <i class="kt-font-brand flaticon2-line-chart"></i>
-      </span>
-      <h3 class="kt-portlet__head-title">
-        بيانات الوكلاء </h3>
-    </div>
-
-
-    <form class="kt-margin-l-20" id="kt_subheader_search_form" action="{{route('admin.agent.index') }}">
+  <form class="kt-margin-l-20" id="kt_subheader_search_form" action="{{route('admin.agent.index') }}">
       <div class="kt-input-icon kt-input-icon--right kt-subheader__search">
-        <input type="text" class="form-control" name='search' placeholder="Search..." id="generalSearch">
+        <input type="text" class="form-control" name='search' placeholder="بحث بالاسم..." id="generalSearch">
         <span class="kt-input-icon__icon kt-input-icon__icon--right">
           <span>
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
@@ -57,6 +47,17 @@
         </span>
       </div>
     </form>
+
+  <div class="kt-portlet__head kt-portlet__head--lg">
+    <div class="kt-portlet__head-label">
+      <span class="kt-portlet__head-icon">
+        <i class="kt-font-brand flaticon2-line-chart"></i>
+      </span>
+      <h3 class="kt-portlet__head-title">
+        بيانات الوكلاء </h3>
+    </div>
+
+
 
 
     <div class="kt-portlet__head-toolbar">
