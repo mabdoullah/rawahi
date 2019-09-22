@@ -125,7 +125,7 @@
                                 <div class="kt-chat__message kt-chat__message--success">
                                     <div class="kt-chat__user">
                                         <span class="kt-media kt-media--circle kt-media--sm">
-                                            <img src="{{asset('admin/media/users/100_12.jpg')}}" alt="image">
+                                            <img src="{{asset('admin_design/media/users/100_12.jpg')}}" alt="image">
                                         </span>
                                         <a href="#" class="kt-chat__username">Jason Muller</span></a>
                                         <span class="kt-chat__datetime">2 Hours</span>
@@ -139,7 +139,7 @@
                                         <span class="kt-chat__datetime">30 Seconds</span>
                                         <a href="#" class="kt-chat__username">You</span></a>
                                         <span class="kt-media kt-media--circle kt-media--sm">
-                                            <img src="{{asset('admin/media/users/300_21.jpg')}}" alt="image">
+                                            <img src="{{asset('admin_design/media/users/300_21.jpg')}}" alt="image">
                                         </span>
                                     </div>
                                     <div class="kt-chat__text">
@@ -149,7 +149,7 @@
                                 <div class="kt-chat__message kt-chat__message--success">
                                     <div class="kt-chat__user">
                                         <span class="kt-media kt-media--circle kt-media--sm">
-                                            <img src="{{asset('admin/media/users/100_12.jpg')}}" alt="image">
+                                            <img src="{{asset('admin_design/media/users/100_12.jpg')}}" alt="image">
                                         </span>
                                         <a href="#" class="kt-chat__username">Jason Muller</span></a>
                                         <span class="kt-chat__datetime">30 Seconds</span>
@@ -163,7 +163,7 @@
                                         <span class="kt-chat__datetime">Just Now</span>
                                         <a href="#" class="kt-chat__username">You</span></a>
                                         <span class="kt-media kt-media--circle kt-media--sm">
-                                            <img src="{{asset('admin/media/users/300_21.jpg')}}" alt="image">
+                                            <img src="{{asset('admin_design/media/users/300_21.jpg')}}" alt="image">
                                         </span>
                                     </div>
                                     <div class="kt-chat__text">
@@ -173,7 +173,7 @@
                                 <div class="kt-chat__message kt-chat__message--success">
                                     <div class="kt-chat__user">
                                         <span class="kt-media kt-media--circle kt-media--sm">
-                                            <img src="{{asset('admin/media/users/100_12.jpg')}}" alt="image">
+                                            <img src="{{asset('admin_design/media/users/100_12.jpg')}}" alt="image">
                                         </span>
                                         <a href="#" class="kt-chat__username">Jason Muller</span></a>
                                         <span class="kt-chat__datetime">2 Hours</span>
@@ -187,7 +187,7 @@
                                         <span class="kt-chat__datetime">30 Seconds</span>
                                         <a href="#" class="kt-chat__username">You</span></a>
                                         <span class="kt-media kt-media--circle kt-media--sm">
-                                            <img src="{{asset('admin/media/users/300_21.jpg')}}" alt="image">
+                                            <img src="{{asset('admin_design/media/users/300_21.jpg')}}" alt="image">
                                         </span>
                                     </div>
 
@@ -198,7 +198,7 @@
                                 <div class="kt-chat__message kt-chat__message--success">
                                     <div class="kt-chat__user">
                                         <span class="kt-media kt-media--circle kt-media--sm">
-                                            <img src="{{asset('admin/media/users/100_12.jpg')}}" alt="image">
+                                            <img src="{{asset('admin_design/media/users/100_12.jpg')}}" alt="image">
                                         </span>
                                         <a href="#" class="kt-chat__username">Jason Muller</span></a>
                                         <span class="kt-chat__datetime">30 Seconds</span>
@@ -212,7 +212,7 @@
                                         <span class="kt-chat__datetime">Just Now</span>
                                         <a href="#" class="kt-chat__username">You</span></a>
                                         <span class="kt-media kt-media--circle kt-media--sm">
-                                            <img src="{{asset('admin/media/users/300_21.jpg')}}" alt="image">
+                                            <img src="{{asset('admin_design/media/users/300_21.jpg')}}" alt="image">
                                         </span>
                                     </div>
                                     <div class="kt-chat__text">
@@ -254,78 +254,78 @@
       <!-- end::Global Config -->
 
     <!--begin:: Global Mandatory Vendors -->
-<script src="{{asset('admin/vendors/general/jquery/dist/jquery.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/popper.js/dist/umd/popper.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/bootstrap/dist/js/bootstrap.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/js-cookie/src/js.cookie.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/moment/min/moment.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/tooltip.js/dist/umd/tooltip.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/perfect-scrollbar/dist/perfect-scrollbar.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/sticky-js/dist/sticky.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/wnumb/wNumb.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/jquery/dist/jquery.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/popper.js/dist/umd/popper.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/bootstrap/dist/js/bootstrap.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/js-cookie/src/js.cookie.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/moment/min/moment.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/tooltip.js/dist/umd/tooltip.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/perfect-scrollbar/dist/perfect-scrollbar.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/sticky-js/dist/sticky.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/wnumb/wNumb.js')}}" type="text/javascript"></script>
 <!--end:: Global Mandatory Vendors -->
 
 <!--begin:: Global Optional Vendors -->
-<script src="{{asset('admin/vendors/general/jquery-form/dist/jquery.form.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/block-ui/jquery.blockUI.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/custom/js/vendors/bootstrap-datepicker.init.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/bootstrap-datetime-picker/js/bootstrap-datetimepicker.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/bootstrap-timepicker/js/bootstrap-timepicker.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/custom/js/vendors/bootstrap-timepicker.init.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/bootstrap-daterangepicker/daterangepicker.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/bootstrap-maxlength/src/bootstrap-maxlength.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/custom/vendors/bootstrap-multiselectsplitter/bootstrap-multiselectsplitter.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/bootstrap-select/dist/js/bootstrap-select.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/bootstrap-switch/dist/js/bootstrap-switch.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/custom/js/vendors/bootstrap-switch.init.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/select2/dist/js/select2.full.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/ion-rangeslider/js/ion.rangeSlider.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/typeahead.js/dist/typeahead.bundle.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/handlebars/dist/handlebars.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/inputmask/dist/jquery.inputmask.bundle.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/inputmask/dist/inputmask/inputmask.date.extensions.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/inputmask/dist/inputmask/inputmask.numeric.extensions.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/nouislider/distribute/nouislider.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/owl.carousel/dist/owl.carousel.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/autosize/dist/autosize.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/clipboard/dist/clipboard.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/dropzone/dist/dropzone.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/custom/js/vendors/dropzone.init.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/quill/dist/quill.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/@yaireo/tagify/dist/tagify.polyfills.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/@yaireo/tagify/dist/tagify.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/summernote/dist/summernote.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/markdown/lib/markdown.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/bootstrap-markdown/js/bootstrap-markdown.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/custom/js/vendors/bootstrap-markdown.init.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/bootstrap-notify/bootstrap-notify.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/custom/js/vendors/bootstrap-notify.init.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/jquery-validation/dist/jquery.validate.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/jquery-validation/dist/additional-methods.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/custom/js/vendors/jquery-validation.init.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/toastr/build/toastr.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/dual-listbox/dist/dual-listbox.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/raphael/raphael.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/morris.js/morris.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/chart.js/dist/Chart.bundle.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/custom/vendors/bootstrap-session-timeout/dist/bootstrap-session-timeout.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/custom/vendors/jquery-idletimer/idle-timer.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/waypoints/lib/jquery.waypoints.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/counterup/jquery.counterup.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/es6-promise-polyfill/promise.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/sweetalert2/dist/sweetalert2.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/custom/js/vendors/sweetalert2.init.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/jquery.repeater/src/lib.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/jquery.repeater/src/jquery.input.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/jquery.repeater/src/repeater.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/general/dompurify/dist/purify.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/jquery-form/dist/jquery.form.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/block-ui/jquery.blockUI.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/custom/js/vendors/bootstrap-datepicker.init.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/bootstrap-datetime-picker/js/bootstrap-datetimepicker.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/bootstrap-timepicker/js/bootstrap-timepicker.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/custom/js/vendors/bootstrap-timepicker.init.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/bootstrap-daterangepicker/daterangepicker.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/bootstrap-maxlength/src/bootstrap-maxlength.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/custom/vendors/bootstrap-multiselectsplitter/bootstrap-multiselectsplitter.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/bootstrap-select/dist/js/bootstrap-select.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/bootstrap-switch/dist/js/bootstrap-switch.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/custom/js/vendors/bootstrap-switch.init.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/select2/dist/js/select2.full.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/ion-rangeslider/js/ion.rangeSlider.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/typeahead.js/dist/typeahead.bundle.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/handlebars/dist/handlebars.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/inputmask/dist/jquery.inputmask.bundle.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/inputmask/dist/inputmask/inputmask.date.extensions.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/inputmask/dist/inputmask/inputmask.numeric.extensions.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/nouislider/distribute/nouislider.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/owl.carousel/dist/owl.carousel.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/autosize/dist/autosize.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/clipboard/dist/clipboard.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/dropzone/dist/dropzone.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/custom/js/vendors/dropzone.init.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/quill/dist/quill.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/@yaireo/tagify/dist/tagify.polyfills.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/@yaireo/tagify/dist/tagify.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/summernote/dist/summernote.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/markdown/lib/markdown.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/bootstrap-markdown/js/bootstrap-markdown.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/custom/js/vendors/bootstrap-markdown.init.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/bootstrap-notify/bootstrap-notify.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/custom/js/vendors/bootstrap-notify.init.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/jquery-validation/dist/jquery.validate.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/jquery-validation/dist/additional-methods.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/custom/js/vendors/jquery-validation.init.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/toastr/build/toastr.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/dual-listbox/dist/dual-listbox.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/raphael/raphael.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/morris.js/morris.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/chart.js/dist/Chart.bundle.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/custom/vendors/bootstrap-session-timeout/dist/bootstrap-session-timeout.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/custom/vendors/jquery-idletimer/idle-timer.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/waypoints/lib/jquery.waypoints.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/counterup/jquery.counterup.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/es6-promise-polyfill/promise.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/sweetalert2/dist/sweetalert2.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/custom/js/vendors/sweetalert2.init.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/jquery.repeater/src/lib.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/jquery.repeater/src/jquery.input.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/jquery.repeater/src/repeater.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/vendors/general/dompurify/dist/purify.js')}}" type="text/javascript"></script>
 <!--end:: Global Optional Vendors -->
 
 <!--begin::Global Theme Bundle(used by all pages) -->
 
-           <script src="{{asset('admin/js/scripts.bundle.js')}}" type="text/javascript"></script>
+           <script src="{{asset('admin_design/js/scripts.bundle.js')}}" type="text/javascript"></script>
       <!--end::Global Theme Bundle -->
 
                   <!--begin::Page Vendors(used by this page) -->
@@ -333,12 +333,12 @@
                   <script
                   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYFTtfLWhG7EDk8aoRiwpTek24HLJ38jQ&amp;libraries=places&amp;callback=initAutocomplete"></script>
                   
-                          <script src="{{asset('admin/vendors/custom/fullcalendar/fullcalendar.bundle.js')}}" type="text/javascript"></script>
+                          <script src="{{asset('admin_design/vendors/custom/fullcalendar/fullcalendar.bundle.js')}}" type="text/javascript"></script>
                           
         
 
                   <!--begin::Page Scripts(used by this page) -->
-                          <script src="{{asset('admin/js/pages/dashboard.js')}}" type="text/javascript"></script>
+                          <script src="{{asset('admin_design/js/pages/dashboard.js')}}" type="text/javascript"></script>
                       <!--end::Page Scripts -->
                    
                       @stack('jqueryCode')

@@ -10,10 +10,10 @@
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
         <!--end::Fonts -->
         <!--begin::Page Custom Styles(used by this page) -->
-          <link href="{{asset('admin/css/pages/login/login-4.rtl.css')}}" rel="stylesheet" type="text/css" />
+          <link href="{{asset('admin_design/css/pages/login/login-4.rtl.css')}}" rel="stylesheet" type="text/css" />
         <!--end::Page Custom Styles -->
         <!--begin::Global Theme Styles(used by all pages) -->
-          <link href="{{asset('admin/css/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
+          <link href="{{asset('admin_design/css/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
         <!--end::Global Theme Styles -->
     </head>
     <!-- end::Head -->
@@ -22,12 +22,12 @@
     	<!-- begin:: Page -->
       	<div class="kt-grid kt-grid--ver kt-grid--root">
       		<div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v4 kt-login--signin" id="kt_login">
-      	<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" style="background-image: url({{asset('admin/media/bg/bg-2.jpg')}});">
+      	<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" style="background-image: url({{asset('admin_design/media/bg/bg-2.jpg')}});">
       		<div class="kt-grid__item kt-grid__item--fluid kt-login__wrapper">
       			<div class="kt-login__container">
       				<div class="kt-login__logo">
       					<a href="#">
-      						<!-- <img src="{{asset('admin/media/logos/logo-5.png')}}"> -->
+      						<!-- <img src="{{asset('admin_design/media/logos/logo-5.png')}}"> -->
                   <img src="{{asset('front/images/logo-black.png')}}" alt="logo"
                           class="img-fluid" width="70px">
       					</a>
@@ -86,10 +86,10 @@
   </script>
  <!-- end::Global Config -->
 <!--begin::Global Theme Bundle(used by all pages) -->
-<script src="{{asset('admin/js/scripts.bundle.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/js/scripts.bundle.js')}}" type="text/javascript"></script>
 <!--end::Global Theme Bundle -->
 <!--begin::Page Scripts(used by this page) -->
-<script src="{{asset('admin/js/pages/login/login-general.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin_design/js/pages/login/login-general.js')}}" type="text/javascript"></script>
 <!--end::Page Scripts -->
 </body>
   <!-- end::Body -->
