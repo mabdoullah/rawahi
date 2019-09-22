@@ -17,7 +17,7 @@
     </div>
     @endif
 
-    <div class="row">
+    
         <div class="col-lg-12">
             <!--begin::Portlet-->
             <div class="kt-portlet">
@@ -171,7 +171,7 @@
                 <!--end::Form-->
             </div>
         </div>
-    </div>
+    
     <!--end::Portlet-->
 </div>
 

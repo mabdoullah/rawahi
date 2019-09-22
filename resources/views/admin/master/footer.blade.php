@@ -329,11 +329,16 @@
       <!--end::Global Theme Bundle -->
 
                   <!--begin::Page Vendors(used by this page) -->
+               
+                  <script
+                  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYFTtfLWhG7EDk8aoRiwpTek24HLJ38jQ&amp;libraries=places&amp;callback=initAutocomplete"></script>
+                  
                           <script src="{{asset('admin/vendors/custom/fullcalendar/fullcalendar.bundle.js')}}" type="text/javascript"></script>
-                          <script src="//maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM" type="text/javascript"></script>
-                          <script src="{{asset('admin/vendors/custom/gmaps/gmaps.js')}}" type="text/javascript"></script>
-                      <!--end::Page Vendors -->
+                          
+        
 
                   <!--begin::Page Scripts(used by this page) -->
                           <script src="{{asset('admin/js/pages/dashboard.js')}}" type="text/javascript"></script>
                       <!--end::Page Scripts -->
+                   
+                      @stack('jqueryCode')
