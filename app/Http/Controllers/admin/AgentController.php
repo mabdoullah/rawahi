@@ -27,7 +27,7 @@ class AgentController extends Controller
         // return view('admin.agents.index')->with('agents',$agents);
 
             $searchByName = trim(request('search'));
-        
+
             $show_agent='';
             $agents = DB::table('agents')
                 ->join('cities', 'agents.city', '=', 'cities.id')
@@ -35,22 +35,22 @@ class AgentController extends Controller
                 'cities.name as city_name' )
                 ->orderBy('agents.id','desc');
 
-                
+
 
                 if(request()->has('search') && request()->get('search')!= '' ){
-                   
+
                    $agents->where('agents.name','like',"%".$searchByName."%");
-                   
+
                 }
 
                 $agents = $agents->paginate(10);
 
 
                 return view('admin.agents.index')->with('agents', $agents)->with('show_agent',$show_agent);
-        
+
 
         // {$show_agent='';
-            
+
         //     $all_agents_cities = DB::table('agents')
         //         ->join('cities', 'agents.city', '=', 'cities.id')
         //         ->select('agents.name','agents.birth_date','agents.email','agents.phone','agents.id as agent_id','cities.name as city_name' )
@@ -65,7 +65,7 @@ class AgentController extends Controller
         //         return view('admin.agents.index')->with('all_agents_cities', $all_agents_cities)->with('show_agent',$show_agent);
         // }
 
- 
+
 
 
 

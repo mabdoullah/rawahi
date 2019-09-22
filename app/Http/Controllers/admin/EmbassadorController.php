@@ -22,31 +22,77 @@ class EmbassadorController extends Controller
 
     public function index(Request $request)
     {
-        $agents = Agent::all();
-        // dd($request);
+        // $agents = Agent::all();
+        // // dd($request);
+        // $agent_id = $request->agent;
+
+        // $embassadors = DB::table('embassadors')
+        //     ->join('cities', 'embassadors.city', '=', 'cities.id')
+        //     ->join('agents', 'embassadors.agent_id', '=', 'agents.id')
+        //     ->select(
+        //         'agents.name as agent_name',
+        //         'embassadors.birth_date',
+        //         'embassadors.first_name',
+        //         'embassadors.second_name',
+        //         'embassadors.email',
+        //         'embassadors.phone',
+        //         'embassadors.id as embassador_id',
+        //         'cities.name as city_name',
+        //         'embassadors.agent_id as agent_id'
+        //     );
+        // if ($agent_id) 
+        // {
+
+        //     $embassadors = $embassadors->where('embassadors.agent_id', $agent_id);
+        // }
+        //  $embassadors = $embassadors->orderBy('embassadors.id', 'desc')->paginate(10);
+        // return view('admin.embassadors.index', compact('agent_id', 'embassadors', 'agents'));
+
+
+
+
+        
+        $searchByName = trim(request('search'));
+        $agents = Agent::all(); 
         $agent_id = $request->agent;
 
+
+        $show_embassador='';
         $embassadors = DB::table('embassadors')
-                    ->join('cities', 'embassadors.city', '=', 'cities.id')
-                    ->join('agents', 'embassadors.agent_id', '=', 'agents.id')
-                    ->select('agents.name as agent_name', 'embassadors.birth_date', 'embassadors.first_name',
-                     'embassadors.second_name', 'embassadors.email', 'embassadors.phone', 
-                     'embassadors.id as embassador_id',
-                      'cities.name as city_name', 'embassadors.agent_id as agent_id');
-        if($agent_id){
-            // dd($agent_id);
-
-            $embassadors = $embassadors->where('embassadors.agent_id', $agent_id);
-        }              
-
-
-        $embassadors = $embassadors->orderBy('embassadors.id', 'desc')->paginate(10);
+        ->join('cities', 'embassadors.city', '=', 'cities.id')
+        ->join('agents', 'embassadors.agent_id', '=', 'agents.id')
+        ->select('agents.name as agent_name', 'embassadors.birth_date', 'embassadors.first_name',
+         'embassadors.second_name', 'embassadors.email', 'embassadors.phone', 
+         'embassadors.id as embassador_id',
+          'cities.name as city_name', 'embassadors.agent_id as agent_id')->orderBy('embassador_id','desc');
 
 
 
-        return view('admin.embassadors.index',compact('agent_id','embassadors','agents'));
-            //->with('embassadors', $embassadors)
-            //->with('agents', $agents);
+            if(request()->has('search') && request()->get('search')!= '' ){
+
+               $embassadors->where('embassadors.first_name','like',"%".$searchByName."%");
+
+            }
+            if($agent_id){
+
+                $embassadors = $embassadors->where('embassadors.agent_id', $agent_id);
+            }              
+    
+
+            $embassadors = $embassadors->paginate(10);
+
+
+            return view('admin.embassadors.index')->with('agents', $agents)->with('show_embassador',$show_embassador)->with('embassadors',$embassadors)->with('agent_id',$agent_id);
+
+
+
+
+
+        // }
+
+
+        //->with('embassadors', $embassadors)
+        //->with('agents', $agents);
         // ->with('show_embassador', $show_embassador);
     }
     /**
@@ -58,7 +104,7 @@ class EmbassadorController extends Controller
     {
         $agents = Agent::all();
         $cities = City::where('country_id', 191)->get();
-        return view('admin.embassadors.create')->with('cities', $cities)->with('agents',$agents);
+        return view('admin.embassadors.create')->with('cities', $cities)->with('agents', $agents);
     }
 
     /**
@@ -96,7 +142,7 @@ class EmbassadorController extends Controller
         $embassador->city = $request->city;
         $embassador->birth_date = $request->birth_date;
         $embassador->password = bcrypt($request->password);
-        $embassador->agent_id =$request->agent_id; 
+        $embassador->agent_id = $request->agent_id;
         // $embassador->remember_token = $request->_token;
         $save_embassador = $embassador->save();
         // dd($embassador);
@@ -130,17 +176,16 @@ class EmbassadorController extends Controller
      * @param  \App\Agent  $Agent
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request ,$id)
-    
+    public function edit(Request $request, $id)
+
     {
         $agent_id = $request->agent;
 
         $agents = Agent::all();
         $cities = City::where('country_id', 191)->get();
         $embassador = Embassador::find($id);
-            // return view("admin.embassadors.edit")->with('cities', $cities)->with('embassador', $embassador)->with('agents',$agents);
-        return view('admin.embassadors.edit',compact('agent_id','embassador','agents','cities'));
-
+        // return view("admin.embassadors.edit")->with('cities', $cities)->with('embassador', $embassador)->with('agents',$agents);
+        return view('admin.embassadors.edit', compact('agent_id', 'embassador', 'agents', 'cities'));
     }
 
     /**
@@ -151,7 +196,7 @@ class EmbassadorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {   
+    {
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|max:18',
             'second_name' => 'required|max:18',
@@ -175,7 +220,7 @@ class EmbassadorController extends Controller
         $embassador->phone = $request->phone;
         $embassador->city = $request->city;
         $embassador->birth_date = $request->birth_date;
-        $embassador->agent_id =$request->agent_id; 
+        $embassador->agent_id = $request->agent_id;
 
         $save_embassador = $embassador->save();
         if ($save_embassador) {
