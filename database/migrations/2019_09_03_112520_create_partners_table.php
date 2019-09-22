@@ -11,9 +11,9 @@ class CreatePartnersTable extends Migration {
 			$table->increments('id');
 			$table->string('partner_type')->nullable();
 	
-			$table->integer('city');
-			$table->text('about');
-			$table->string('postel_code');
+			$table->integer('city')->nullable();
+			$table->text('about')->nullable();
+			$table->string('postel_code')->nullable();
 			$table->string('map_address')->nullable();
 			$table->decimal('lat', 10, 7)->nullable();
 			$table->decimal('lng', 10, 7)->nullable();

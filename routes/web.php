@@ -22,7 +22,8 @@ Route::group(['prefix' => 'admin', 'namespace'=>'admin' ,'as'=>'admin.' ], funct
   Route::resource("embassador","EmbassadorController");
   Route::resource("partners","PartnerController");
 
-
+  Route::get('get-embassador-list','PartnerController@getembassadorList');
+  Route::get('get-partner-list','PartnerController@getpartnerList');
 });
 
 Route::namespace('front')->group(function () {

@@ -45,14 +45,16 @@ class Embassador extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function agent()
-    {
-        return $this->belongsTo('App\Agent');
-    }
 
     // public function citydata()
     // {
     //     return $this->hasOne('App\City','city','id');
     // }
+
+    public function agent()
+    {
+        return $this->belongsTo('App\Agent');
+    }
+
 
 }
