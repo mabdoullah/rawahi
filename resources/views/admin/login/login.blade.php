@@ -41,13 +41,16 @@
       						<div class="input-group">
 								  
 								<input dir="rtl" class="form-control" type="text" placeholder="البريد الإلكتروني" name="email" autocomplete="off"
-								  value="{{old('email')}}"
-								 @if( $errors->has( 'email' ) ) is-invalid @endif >
+								  value="{{old('email')}}" aria-describedby="email-error">
+								  @if( $errors->has( 'email' ) )
+									<div id="email-error" class="error invalid-feedback">{{ $errors->first( 'email' ) }}</div>
+								  @endif
       						</div>
       						<div class="input-group">
-								  <input dir="rtl" class="form-control" type="password" placeholder="كلمة السر" name="password"
-								  @if( $errors->has( 'password' ) ) is-invalid @endif 
-								  >
+								  <input dir="rtl" class="form-control" type="password" placeholder="كلمة السر" name="password">
+								  @if( $errors->has( 'password' ) )
+								  <div class="error invalid-feedback">{{ $errors->first( 'password' ) }}</div>
+								  @endif
       						</div>
       						<div class="row kt-login__extra">
       							<div class="col">
