@@ -21,10 +21,7 @@ Route::group(['prefix' => 'admin', 'namespace'=>'admin' ,'as'=>'admin.' ], funct
   Route::put("settings/info/update","SettingController@update")->name('settings.info.update');
   // Route::resource("settings","SettingController");
 
-
-
-
-  Route::resource("home","HomeController");
+  Route::resource("/","HomeController");
   Route::resource("agent","AgentController");
   Route::resource("embassador","EmbassadorController");
   Route::resource("partners","PartnerController");
@@ -33,7 +30,6 @@ Route::group(['prefix' => 'admin', 'namespace'=>'admin' ,'as'=>'admin.' ], funct
   Route::get("login","AdminLoginCustomController@login");
   Route::post("login","AdminLoginCustomController@dologin");
   Route::any('logout','AdminLoginCustomController@logout');
-
 
 });
 
@@ -77,6 +73,11 @@ Route::namespace('front')->group(function () {
         Route::GET("changepassword/index","ChangePasswordController@index")->name('password.index');
         Route::POST("changepassword/update","ChangePasswordController@update")->name('password.update');
       });
+
+      //============================= Login =============================== //
+      Route::get("login","LoginCustomController@login");
+      Route::post("login","LoginCustomController@dologin");
+      Route::any('logout','LoginCustomController@logout');
 });
 
 
@@ -84,9 +85,7 @@ Route::namespace('front')->group(function () {
 
 
 
-Route::get("login","LoginCustomController@login");
-Route::post("login","LoginCustomController@dologin");
-Route::any('logout','LoginCustomController@logout');
+
 
 
 Route::get('user/verify/{token}', 'LoginCustomController@verifyUser');

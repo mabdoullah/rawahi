@@ -1,5 +1,12 @@
 <?php
 
+    function guardsWithoutAdmin(){
+        $guards = array_keys(config('auth.guards'));
+		unset($guards['admin']);
+        unset($guards['api']);
+        return $guards;
+    }
+
     
     function userIfLogin($guard){
         return 
@@ -33,9 +40,7 @@
     }
 
     function currentUser(){
-        $guards = array_keys(config('auth.guards'));
-        unset($guards['api']);
-        unset($guards['admin']);
+        $guards = guardsWithoutAdmin();
 
 		foreach ($guards as $guard) {
           if(userIfLogin($guard)){

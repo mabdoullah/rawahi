@@ -1,7 +1,6 @@
 /node_modules
 /public/hot
 /public/admin
-/public/admin_design
 /public/images/partners/*
 /public/storage
 /storage/*.key

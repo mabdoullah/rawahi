@@ -11,11 +11,7 @@ class LoginService{
     public function getGuard($email){
 
         
-        $guardsAuthArray = config('auth.guards');
-        
-        unset($guardsAuthArray['api']);
-        unset($guardsAuthArray['admin']);
-    
+        $guardsAuthArray = guardsWithoutAdmin();
         $providers = config('auth.providers');
         
         // dd($guardsAuthArray);
