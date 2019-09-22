@@ -36,36 +36,42 @@
       					<div class="kt-login__head">
       						<h3 class="kt-login__title">تسجيل الدخول</h3>
       					</div>
-      					<form class="kt-form" action="">
+						<form class="kt-form" action="{{url('admin/login')}}" method="post">
+								@csrf
       						<div class="input-group">
-      							<input dir="rtl" class="form-control" type="text" placeholder="البريد الإلكتروني" name="email" autocomplete="off">
+								  
+								<input dir="rtl" class="form-control" type="text" placeholder="البريد الإلكتروني" name="email" autocomplete="off"
+								  value="{{old('email')}}"
+								 @if( $errors->has( 'email' ) ) is-invalid @endif >
       						</div>
       						<div class="input-group">
-      							<input dir="rtl" class="form-control" type="password" placeholder="كلمة السر" name="password">
+								  <input dir="rtl" class="form-control" type="password" placeholder="كلمة السر" name="password"
+								  @if( $errors->has( 'password' ) ) is-invalid @endif 
+								  >
       						</div>
       						<div class="row kt-login__extra">
       							<div class="col">
       								<label class="kt-checkbox">
-      									<input type="checkbox" name="remember"> تذكرني
+      									<input type="checkbox" name="rememberme" value="1"> تذكرني
       									<span></span>
       								</label>
       							</div>
-      							<div class="col kt-align-right">
+      							{{-- <div class="col kt-align-right">
       								<a href="javascript:;" id="kt_login_forgot" class="kt-login__link">نسيت كلمة السر؟</a>
-      							</div>
+      							</div> --}}
       						</div>
       						<div class="kt-login__actions">
       							<button id="kt_login_signin_submit" class="btn btn-brand btn-pill kt-login__btn-primary">تسجيل الدخول</button>
       						</div>
       					</form>
       				</div>
-      				<div class="kt-login__account">
+      				{{-- <div class="kt-login__account">
       					<span class="kt-login__account-msg">
       						لا تملك حسابا حتى الآن ؟
       					</span>
       					&nbsp;&nbsp;
       					<a href="javascript:;" id="kt_login_signup" class="kt-login__account-link">انشئ حساب جديد</a>
-      				</div>
+      				</div> --}}
       			</div>
       		</div>
       	</div>

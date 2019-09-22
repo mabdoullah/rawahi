@@ -13,9 +13,8 @@ class LoginService{
         
         $guardsAuthArray = config('auth.guards');
         
-        
-
         unset($guardsAuthArray['api']);
+        unset($guardsAuthArray['admin']);
     
         $providers = config('auth.providers');
         

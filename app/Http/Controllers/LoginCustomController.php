@@ -53,16 +53,17 @@ class LoginCustomController extends Controller
 
 	}
 
-	public function logout(){
+	public function doLogout(){
 		$guards = array_keys(config('auth.guards'));
 		foreach ($guards as $guard) {
 		  if(Auth::guard($guard)->check()){
 				Auth::guard($guard)->logout();
 		  } 
 		}
+	}
 
-		
-
+	public function logout(){
+		$this->doLogout();
 		return (request()->segment(1) == 'admin') ? redirect('admin/login') : redirect('/');
 		
 	}

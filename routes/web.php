@@ -23,6 +23,11 @@ Route::group(['prefix' => 'admin', 'namespace'=>'admin' ,'as'=>'admin.' ], funct
   Route::resource("partners","PartnerController");
 
 
+  Route::get("login","AdminLoginCustomController@login");
+  Route::post("login","AdminLoginCustomController@dologin");
+  Route::any('logout','AdminLoginCustomController@logout');
+
+
 });
 
 Route::namespace('front')->group(function () {
@@ -75,6 +80,6 @@ Route::namespace('front')->group(function () {
 Route::get("login","LoginCustomController@login");
 Route::post("login","LoginCustomController@dologin");
 Route::any('logout','LoginCustomController@logout');
-Route::any('admin/logout','LoginCustomController@logout');
+
 
 Route::get('user/verify/{token}', 'LoginCustomController@verifyUser');
