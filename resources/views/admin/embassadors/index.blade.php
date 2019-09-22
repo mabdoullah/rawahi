@@ -13,8 +13,7 @@
       </span>
       <h3 class="kt-portlet__head-title">
         بيانات السفراء </h3>
-    </div>
-    <form class="kt-margin-l-20" id="kt_subheader_search_form" action="{{route('admin.embassador.index') }}">
+        <form class="kt-margin-l-20" id="kt_subheader_search_form" action="{{route('admin.embassador.index') }}">
       <div class="kt-input-icon kt-input-icon--right kt-subheader__search">
         <input type="text" class="form-control" name='search' placeholder="بحث بالاسم..." id="generalSearch">
         <span class="kt-input-icon__icon kt-input-icon__icon--right">
@@ -31,6 +30,8 @@
         </span>
       </div>
     </form>
+    </div>
+    
 
     <div class="kt-portlet__head-toolbar">
       <div class="kt-portlet__head-wrapper">

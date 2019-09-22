@@ -30,7 +30,16 @@
     </div>
   </form> -->
   
-  <form class="kt-margin-l-20" id="kt_subheader_search_form" action="{{route('admin.agent.index') }}">
+  
+
+  <div class="kt-portlet__head kt-portlet__head--lg">
+    <div class="kt-portlet__head-label">
+      <span class="kt-portlet__head-icon">
+        <i class="kt-font-brand flaticon2-line-chart"></i>
+      </span>
+      <h3 class="kt-portlet__head-title">
+        بيانات الوكلاء </h3>
+        <form class="kt-margin-l-20" id="kt_subheader_search_form" action="{{route('admin.agent.index') }}">
       <div class="kt-input-icon kt-input-icon--right kt-subheader__search">
         <input type="text" class="form-control" name='search' placeholder="بحث بالاسم..." id="generalSearch">
         <span class="kt-input-icon__icon kt-input-icon__icon--right">
@@ -47,14 +56,6 @@
         </span>
       </div>
     </form>
-
-  <div class="kt-portlet__head kt-portlet__head--lg">
-    <div class="kt-portlet__head-label">
-      <span class="kt-portlet__head-icon">
-        <i class="kt-font-brand flaticon2-line-chart"></i>
-      </span>
-      <h3 class="kt-portlet__head-title">
-        بيانات الوكلاء </h3>
     </div>
 
 
