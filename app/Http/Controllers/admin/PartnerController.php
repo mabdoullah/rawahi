@@ -6,6 +6,7 @@ use App\City;
 use App\Http\Controllers\Controller;
 use App\Partner;
 use App\Embassador;
+use App\Agent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Image;
@@ -17,21 +18,29 @@ class PartnerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-       
 
-      
+            public function index()
+            {
+                $agents = DB::table("agents")->pluck("name","id");
+                return view('admin.partners.index',compact('agents'));
+            }
 
-        $partners = Partner::all();
-        return view('admin.partners.index', compact('partners','embassadors'));
-    }
+            public function getembassadorList(Request $request)
+            {
+                $embassadors = DB::table("embassadors")
+                ->where("agent_id",$request->agent_id)
+                ->pluck("first_name","id");
+                return response()->json($embassadors);
+            }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+            public function getpartnerList(Request $request)
+            {
+                $partners = DB::table("partners")
+                ->where("embassador_id",$request->embassador_id)
+                ->pluck("legel_name","id");
+                return response()->json($partners);
+            }
+
     public function create()
     {
         $embassadors = Embassador::all();
@@ -110,7 +119,6 @@ class PartnerController extends Controller
             $partner->image = $fileName;
 
         }
-        $partner->embassador_id = embassadorUser()->id;
 
         $partner->save();
 
@@ -130,12 +138,7 @@ class PartnerController extends Controller
     //     return response()->json($partner);
     // }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function edit($id)
     {
 
@@ -148,13 +151,7 @@ class PartnerController extends Controller
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         // first tab
@@ -235,12 +232,7 @@ class PartnerController extends Controller
         //$obj->where('name',$name)->update($arr);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ 
     // public function destroy(Request $request)
     // {
 

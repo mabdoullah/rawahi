@@ -30,6 +30,8 @@ Route::group(['prefix' => 'admin', 'namespace'=>'admin' ,'as'=>'admin.' ], funct
 
   });
 
+  Route::get('get-embassador-list','PartnerController@getembassadorList');
+  Route::get('get-partner-list','PartnerController@getpartnerList');
 
   Route::get("login","AdminLoginCustomController@login");
   Route::post("login","AdminLoginCustomController@dologin");
