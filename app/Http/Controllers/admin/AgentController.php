@@ -18,7 +18,7 @@ class AgentController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(Request $request)
     {
 
 
@@ -26,15 +26,46 @@ class AgentController extends Controller
 
         // return view('admin.agents.index')->with('agents',$agents);
 
-        {$show_agent='';
-            $all_agents_cities = DB::table('agents')
+            $searchByName = trim(request('search'));
+        
+            $show_agent='';
+            $agents = DB::table('agents')
                 ->join('cities', 'agents.city', '=', 'cities.id')
-                ->select('agents.name','agents.birth_date','agents.email','agents.phone','agents.id as agent_id','cities.name as city_name' )
-                ->orderBy('agents.id','desc')->paginate(10);
+                ->select('agents.name','agents.birth_date','agents.email','agents.phone','agents.id as agent_id',
+                'cities.name as city_name' )
+                ->orderBy('agents.id','desc');
 
-                return view('admin.agents.index')->with('all_agents_cities', $all_agents_cities)->with('show_agent',$show_agent);
-        }
+                
 
+                if(request()->has('search') && request()->get('search')!= '' ){
+                   
+                   $agents->where('agents.name','like',"%".$searchByName."%");
+                   
+                }
+
+                $agents = $agents->paginate(10);
+
+
+                return view('admin.agents.index')->with('agents', $agents)->with('show_agent',$show_agent);
+        
+
+        // {$show_agent='';
+            
+        //     $all_agents_cities = DB::table('agents')
+        //         ->join('cities', 'agents.city', '=', 'cities.id')
+        //         ->select('agents.name','agents.birth_date','agents.email','agents.phone','agents.id as agent_id','cities.name as city_name' )
+        //         ->orderBy('agents.id','desc')->get();
+        //         //  dd($all_agents_cities);
+        //         if(request()->has('search')&& request()->get('search')!= '' )
+        //         {
+        //             $all_agents_citie=$all_agents_citie->where('agent.name','like',"%".reguest()->get('search')."% ");
+        //         // dd(all_agents_citie);
+        //         }
+        //         // $all_agents_cities=$all_agents_cities->get();
+        //         return view('admin.agents.index')->with('all_agents_cities', $all_agents_cities)->with('show_agent',$show_agent);
+        // }
+
+ 
 
 
 

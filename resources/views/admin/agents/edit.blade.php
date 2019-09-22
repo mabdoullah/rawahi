@@ -5,7 +5,18 @@
 <!--Page Wrapper starts-->
 
 <!-- begin:: Content -->
-
+<div class='row'>
+  @if(session()->has('master_error'))
+  <div class="alert alert-danger text-center" role="alert">
+    {{ session()->get('master_error') }}
+  </div>
+  @endif
+  @if(session()->has('success'))
+  <div class="alert alert-success text-center" role="alert">
+  {{ session()->get('success') }}
+  </div>
+  @endif
+</div>
 <div class="row">
   <div class="col-lg-12">
     <!--begin::Portlet-->
