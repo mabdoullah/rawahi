@@ -17,7 +17,7 @@ class VerifyUsers extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->string('token');
-            $table->string('user_type');
+            $table->string('guard');
             $table->timestamps();
         });
     }
