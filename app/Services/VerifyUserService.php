@@ -3,27 +3,38 @@ namespace App\Services;
 
 use App\VerifyUser;
 use App\Mail\VerifyMail;
-
+use Mail;
 class VerifyUserService{
     
     public function __construct(){
         
     }
 
-    public static function createUser($user,$user_type){
+    public static function verify($user){
        
-        $verifyUser = VerifyUser::create([
+        //dd($user);
+
+        VerifyUser::where('user_id',$user->id)->where('guard',$user->getGuard())->delete();
+
+         $verifyUser = VerifyUser::create([
             'user_id' => $user->id,
             'token' => sha1(time()),
-            'user_type' => $user_type
+            'guard' => $user->getGuard()
           ]);
+        // dd($user->verifyUser);
 
 
-        dd($user->verifyUser->token);
+         Mail::to($user->email)->send(new VerifyMail($user));
+    }
 
 
-          //\Mail::to($user->email)->send(new VerifyMail($user));
+
+    public function getUserByToken($token){
+        $VerifyUser = VerifyUser::where('token',$token)->first();
+        return !empty($VerifyUser) ? $VerifyUser : false;
 
 
     }
+
+
 }

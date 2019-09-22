@@ -17,12 +17,24 @@
 // Admin
 Route::group(['prefix' => 'admin', 'namespace'=>'admin' ,'as'=>'admin.' ], function()
 {
+  Route::get("settings/info","SettingController@edit")->name('settings.info' );
+  Route::put("settings/info/update","SettingController@update")->name('settings.info.update');
+  // Route::resource("settings","SettingController");
+
+
+
+
   Route::resource("home","HomeController");
   Route::resource("agent","AgentController");
   Route::resource("embassador","EmbassadorController");
   Route::resource("partners","PartnerController");
   Route::get("login","LoginController@login");
 
+
+
+  Route::get("login","AdminLoginCustomController@login");
+  Route::post("login","AdminLoginCustomController@dologin");
+  Route::any('logout','AdminLoginCustomController@logout');
 
 
 });
@@ -77,4 +89,6 @@ Route::namespace('front')->group(function () {
 Route::get("login","LoginCustomController@login");
 Route::post("login","LoginCustomController@dologin");
 Route::any('logout','LoginCustomController@logout');
-Route::any('admin/logout','LoginCustomController@logout');
+
+
+Route::get('user/verify/{token}', 'LoginCustomController@verifyUser');

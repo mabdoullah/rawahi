@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
+use App\Admin;
+
 
 class HomeController extends Controller
 {
@@ -13,6 +16,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        
       return view('admin.home.index');
 
     }
@@ -44,7 +48,7 @@ class HomeController extends Controller
      * @param  \App\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function show(City $city)
+    public function show( )
     {
         //
     }
@@ -55,9 +59,9 @@ class HomeController extends Controller
      * @param  \App\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function edit(City $city)
+    public function edit( $id)
     {
-        //
+   
     }
 
     /**
@@ -67,9 +71,11 @@ class HomeController extends Controller
      * @param  \App\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, City $city)
+    public function update(Request $request, $id)
     {
-        //
+       
+
+
     }
 
     /**
