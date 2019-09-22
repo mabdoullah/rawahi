@@ -70,3 +70,5 @@ Route::get("login","LoginCustomController@login");
 Route::post("login","LoginCustomController@dologin");
 Route::any('logout','LoginCustomController@logout');
 Route::any('admin/logout','LoginCustomController@logout');
+
+Route::get('user/verify/{token}', 'LoginCustomController@verifyUser');

@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Redirect;
 // use App\Country;
 use Illuminate\Support\Facades\Validator;
 
+use App\Services\VerifyUserService;
+
 class embassadorController extends Controller
 {
     /**
@@ -36,7 +38,11 @@ class embassadorController extends Controller
      */
     public function create()
     {
-      // dd('8i87989');
+      // $embassador = Embassador::find(1);
+        
+      // //  VerifyUserService::verify($embassador);
+
+      // //  dd('ok');
         $cities = City::where('country_id', 191)->get();
         return view('front.embassadors.edit_add')->with('cities', $cities);
     }
@@ -48,8 +54,7 @@ class embassadorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-
+    { 
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|max:18',
             'second_name' => 'required|max:18',
@@ -57,7 +62,7 @@ class embassadorController extends Controller
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|' . unique_validate('phone'),
             'city' => 'required|exists:cities,id',
             'birth_date' => 'date|before:-18 years|required',
-            'password' => 'min:8|required_with:confirm_password|same:confirm_password',
+            'password' => 'min:8|required_with:confirm_password|same:confirm_password'
             // 'confirm_password' => 'min:8'
         ]);
         if ($validator->fails()) {
@@ -82,10 +87,7 @@ class embassadorController extends Controller
         $generate_id=generate_embassador_number($embassador->id);
         Embassador::where('id', $embassador->id)->update(['generate_id' =>$generate_id]);
         if($save_embassador){
-          // dd($embassador->getGuard());
-          // dd($save_embassador);
-          // VerifyUserService::createUser($embassador,'embassador');
-
+          
             return redirect('embassador')->with('success', 'تم تسجيل سفير بنجاح');
         }
     }

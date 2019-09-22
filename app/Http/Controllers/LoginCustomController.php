@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 // use Mail;
 use Validator;
 use App\Services\LoginService;
+use App\Services\VerifyUserService;
+
 use Auth;
 class LoginCustomController extends Controller
 {
@@ -63,6 +65,12 @@ class LoginCustomController extends Controller
 
 		return (request()->segment(1) == 'admin') ? redirect('admin/login') : redirect('/');
 		
+	}
+
+	public function verifyuser(VerifyUserService $VerifyUserService, $token){
+		$verifyUser = $VerifyUserService->getUserByToken($token);
+		if(empty($verifyUser)) return 'error in code';
+		$verifyUser ? $verifyUser : 'no'; 
 	}
 
 	
