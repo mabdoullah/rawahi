@@ -12,6 +12,6 @@ class City extends Model
   ];
   public function embassadors()
   {
-      return $this->hasMany('App\Embassador','city');
+      return $this->hasMany('App\Embassador','city','id');
   }
 }

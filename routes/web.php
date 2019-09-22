@@ -21,6 +21,8 @@ Route::group(['prefix' => 'admin', 'namespace'=>'admin' ,'as'=>'admin.' ], funct
   Route::resource("agent","AgentController");
   Route::resource("embassador","EmbassadorController");
   Route::resource("partners","PartnerController");
+  Route::get("login","LoginController@login");
+
 
 
 });
@@ -62,8 +64,8 @@ Route::namespace('front')->group(function () {
 
       //=============================End pratner route =============================== //
       Route::middleware(['auth:agent,embassador,partner,user'])->group(function () {
-        Route::GET("changepassword/index","ChangePasswordController@index")->name('password.index');
-        Route::POST("changepassword/update","ChangePasswordController@update")->name('password.update');
+        Route::GET("password/change","ChangePasswordController@change")->name('password.change');
+        Route::POST("password/update","ChangePasswordController@update")->name('password.update');
       });
 });
 

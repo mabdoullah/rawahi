@@ -21,6 +21,13 @@ class embassadorController extends Controller
      */
     public function index()
     {
+
+    $r=Embassador::find(1)->citydata()->get();
+    $rss=City::find(1)->embassadors()->get();
+
+    $ra=Embassador::with('citydata')->get();
+
+    dd($rss);
         $show_embassador = '';
         $all_embassdors_cities = DB::table('embassadors')
             ->join('cities', 'embassadors.city', '=', 'cities.id')

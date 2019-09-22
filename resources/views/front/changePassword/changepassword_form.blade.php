@@ -1,8 +1,5 @@
 @extends('front.master.app')
-
 @section('content')
-
-
 <!--changepassword starts-->
 <div class="list-details-section section-padding add_list pad-top-100">
     <div class="container">
@@ -65,21 +62,11 @@
                                 <button type="submit" class="btn v7 mar-top-20">حفظ</button>
                             </div>
                           </div>
-
                     </div>
-
                   </form>
-
                 </div>
-
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-
-
 @endsection
