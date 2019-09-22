@@ -155,8 +155,11 @@ class embassadorController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-
+      $embassador = Embassador::find($id);
+      if(!$embassador)
+      {
+        return redirect('embassador');
+      }
 
       $validator = Validator::make($request->all(), [
                   'first_name' => 'required|max:18',
@@ -172,23 +175,21 @@ class embassadorController extends Controller
                               ->withInput()
                               ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
               }
-
-              $embassador = Embassador::find($id);
-              $embassador->first_name = $request->first_name;
-              $embassador->second_name = $request->second_name;
-              $embassador->email = $request->email;
-              $embassador->phone = $request->phone;
-              $embassador->city = $request->city;
-              $embassador->birth_date = $request->birth_date;
-              $save_embassador=$embassador->save();
-              if($save_embassador){
-                if(agentUser()){
-                    return redirect('embassador')->with('success', 'تم التعديل بنجاح');
-                }
-                if(embassadorUser()){
-                    return redirect('embassador/'.$id.'/edit')->with('success', 'تم التعديل بنجاح');
-                }
-             }
+      $embassador->first_name = $request->first_name;
+      $embassador->second_name = $request->second_name;
+      $embassador->email = $request->email;
+      $embassador->phone = $request->phone;
+      $embassador->city = $request->city;
+      $embassador->birth_date = $request->birth_date;
+      $save_embassador=$embassador->save();
+      if($save_embassador){
+        if(agentUser()){
+            return redirect('embassador')->with('success', 'تم التعديل بنجاح');
+        }
+        if(embassadorUser()){
+            return redirect('embassador/'.$id.'/edit')->with('success', 'تم التعديل بنجاح');
+        }
+     }
 
     }
 
@@ -200,7 +201,6 @@ class embassadorController extends Controller
      */
     public function destroy(Request $request)
     {
-
       $id=$request->delete_id;
       $embassador=Embassador::where('id',$id)->select('id','agent_id')->first();
       if(!$embassador)
