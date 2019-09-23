@@ -11,12 +11,17 @@ class LoginService{
     public function getGuard($email){
 
         
-        $guardsAuthArray = guardsWithoutAdmin();
+        $guardsAuthArray = config('auth.guards');
+        unset($guardsAuthArray['admin']);
+        unset($guardsAuthArray['api']);
+
         $providers = config('auth.providers');
         
         // dd($guardsAuthArray);
+        // dd($providers);
 
 		foreach ($guardsAuthArray as $guard => $value) {
+            
             $model = $providers[$value['provider']]['model'];
             $check = $model::select('email')->where('email',$email)->first();
             if(!empty($check))  return $guard;

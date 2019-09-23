@@ -10,13 +10,12 @@ use DB;
 
 class ChangePasswordController extends Controller
 {
-  public function index()
+  public function change()
   {
     return view('front.ChangePassword.index');
   }
   public function update(Request $request)
   {
-
     $validator = Validator::make($request->all(), [
         'old_password' => 'min:8|required',
         'new_password' => 'min:8|required_with:confirm_password|same:confirm_password',
@@ -41,6 +40,5 @@ class ChangePasswordController extends Controller
     else{
       return redirect('changepassword/index')->with('master_error', 'كلمة السر القديمة غير صحيحة')->withInput();
     }
-
 }
   }
