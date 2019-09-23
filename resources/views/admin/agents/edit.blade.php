@@ -5,15 +5,25 @@
 <!--Page Wrapper starts-->
 
 <!-- begin:: Content -->
+
 <div class='row'>
   @if(session()->has('master_error'))
-  <div class="alert alert-danger text-center" role="alert">
-    {{ session()->get('master_error') }}
+  <div class="col-12">
+    <div class="alert alert-success text-center" style="display:inline-block; width: 100% " role="alert">
+      <div class="alert-text">
+      </div>
+      {{ session()->get('master_error') }}
+    </div>
   </div>
   @endif
+
   @if(session()->has('success'))
-  <div class="alert alert-success text-center" role="alert">
-  {{ session()->get('success') }}
+  <div class="col-12">
+    <div class="alert alert-success text-center" style="display:inline-block; width: 100% " role="alert">
+      <div class="alert-text"></div>
+
+      {{ session()->get('success') }}
+    </div>
   </div>
   @endif
 </div>
@@ -37,7 +47,7 @@
           <div class="form-group row">
             <div class="col-lg-6 {{ $errors->has( 'name' ) ? 'has-error' : '' }}">
               <label> الاسم</label>
-              <input required type="text" class="form-control " placeholder="الاسم" name="name" value={{ $agent->name }}>
+              <input  type="text" class="form-control " placeholder="الاسم" name="name" value={{ $agent->name }}>
               @if( $errors->has( 'name' ) )
               <span class="help-block text-danger">
                 {{ $errors->first( 'name' ) }}
@@ -50,7 +60,7 @@
             <div class="col-lg-6">
               <div class="form-group {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }}">
                 <label> تاريخ الميلاد</label>
-                <input required type="date" class="form-control text-left " placeholder="  تاريخ الميلاد"  dir='ltr' name="birth_date" value={{$agent->birth_date}}>
+                <input  type="date" class="form-control text-left " placeholder="  تاريخ الميلاد"  dir='ltr' name="birth_date" value={{$agent->birth_date}}>
                 @if( $errors->has( 'birth_date' ) )
                 <span class="help-block text-danger">
                   {{ $errors->first( 'birth_date' ) }}
@@ -63,7 +73,7 @@
             <div class="col-lg-6">
               <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
                 <label> رقم الجوال</label>
-                <input required class="form-control text-left" placeholder="رقم الجوال" dir='ltr' name="phone" value={{ $agent->phone }}>
+                <input  class="form-control text-left" placeholder="رقم الجوال" dir='ltr' name="phone" value={{ $agent->phone }}>
                 @if( $errors->has( 'phone' ) )
                 <span class="help-block text-danger">
                   {{ $errors->first( 'phone' ) }}
@@ -77,7 +87,7 @@
             <div class="col-lg-6">
               <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                 <label> البريد الالكتروني</label>
-                <input required type="email" class="form-control " placeholder="البريد الالكتروني " name="email" value={{ $agent->email }}>
+                <input  type="email" class="form-control " placeholder="البريد الالكتروني " name="email" value={{ $agent->email }}>
                 @if( $errors->has( 'email' ) )
                 <span class="help-block text-danger">
                   {{ $errors->first( 'email' ) }}
@@ -119,7 +129,6 @@
 
             </div>
           </div>
-        </div>
 
     </div>
 
