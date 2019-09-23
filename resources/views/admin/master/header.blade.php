@@ -39,7 +39,7 @@
 <div class="kt-grid-nav__row">
 </div>
 </div>
-<!--end: Grid Nav --> 
+<!--end: Grid Nav -->
     </div>
 </div>
 <!--end: Quick Actions -->
@@ -53,7 +53,7 @@
     <form>
         <!-- begin:: Mycart -->
 <div class="kt-mycart">
-        <div class="kt-mycart__head kt-head" style="background-image: url({{asset('admin/media/misc/bg-1.jpg')}});">
+        <div class="kt-mycart__head kt-head" style="background-image: url({{asset('admin_design/media/misc/bg-1.jpg')}});">
         <div class="kt-mycart__info">
             <span class="kt-mycart__icon"><i class="flaticon2-shopping-cart-1 kt-font-success"></i></span>
             <h3 class="kt-mycart__title">My Cart</h3>
@@ -64,12 +64,12 @@
     </div>
 
 <div class="kt-mycart__body kt-scroll" data-scroll="true" data-height="245" data-mobile-height="200">
-    
-    
+
+
 </div>
 
 <div class="kt-mycart__footer">
-    
+
 </div>
 </div>
 <!-- end:: Mycart -->        </form>
@@ -85,8 +85,8 @@
         <div class="kt-header__topbar-user">
         <span class="kt-header__topbar-welcome kt-hidden-mobile">مرحبا,</span>
         <span class="kt-header__topbar-username kt-hidden-mobile">{{adminUser()->name}}</span>
-        <img class="kt-hidden" alt="Pic" src="{{asset('admin/media/users/300_25.jpg')}}" />
-        
+        <img class="kt-hidden" alt="Pic" src="{{asset('admin_design/media/users/300_25.jpg')}}" />
+
     </div>
 </div>
 <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround">
