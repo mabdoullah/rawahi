@@ -46,10 +46,10 @@ class Embassador extends Authenticatable
     ];
 
 
-    // public function citydata()
-    // {
-    //     return $this->hasOne('App\City','city','id');
-    // }
+    public function citydata()
+    {
+        return $this->belongsTo('App\City','city','id');
+    }
 
     public function agent()
     {

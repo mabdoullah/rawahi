@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Redirect;
 // use App\Country;
 use Illuminate\Support\Facades\Validator;
 
-use App\Services\VerifyUserService;
-
 class embassadorController extends Controller
 {
     /**
@@ -21,15 +19,33 @@ class embassadorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $show_embassador = '';
-        $all_embassdors_cities = DB::table('embassadors')
-            ->join('cities', 'embassadors.city', '=', 'cities.id')
-            ->select('embassadors.first_name', 'embassadors.email', 'embassadors.phone', 'embassadors.id as embassador_id', 'cities.name as city_name')
-            ->where('embassadors.agent_id', agentUser()->id)
-            ->orderBy('embassadors.id', 'desc')->paginate(10);
-        return view('front.embassadors.index')->with('all_embassdors_cities', $all_embassdors_cities)->with('show_embassador', $show_embassador);
+      $searchByName=$request->search_name;
+      $searchByEmail=$request->search_email;
+      $searchByCity=$request->search_city;
+      $show_embassador = '';
+      $cities = City::where('country_id', 191)->get();
+      $embassdors = Embassador::with(
+              ['citydata' => function ($query) use ($searchByCity){
+              $query->select('id', 'name')->where('id','like',"%".$searchByCity."%");
+              }])->select('first_name', 'email', 'phone', 'id','city')
+                 ->where('agent_id', agentUser()->id);
+
+
+     if(request()->has('search_name') && request()->get('search_name')!= '' ){
+        $embassdors->where(function ($q) use ($searchByName) {
+        $q->where('first_name','like',"%".$searchByName."%")
+          ->orWhere('second_name','like',"%".$searchByName."%");});
+     }
+
+     if(request()->has('search_email') && request()->get('search_email')!= '' ){
+       $embassdors->where(function ($q) use ($searchByEmail) {
+       $q->where('email','like',"%".$searchByEmail."%");});
+     }
+
+     $embassdors = $embassdors->orderBy('embassadors.id', 'desc')->paginate(10);
+    return view('front.embassadors.index')->with('cities', $cities)->with('embassdors', $embassdors)->with('show_embassador', $show_embassador);
     }
     /**
      * Show the form for creating a new resource.
@@ -38,11 +54,7 @@ class embassadorController extends Controller
      */
     public function create()
     {
-      // $embassador = Embassador::find(1);
-        
-      // //  VerifyUserService::verify($embassador);
-
-      // //  dd('ok');
+      // dd('8i87989');
         $cities = City::where('country_id', 191)->get();
         return view('front.embassadors.edit_add')->with('cities', $cities);
     }
@@ -54,7 +66,8 @@ class embassadorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
+    {
+
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|max:18',
             'second_name' => 'required|max:18',
@@ -62,7 +75,7 @@ class embassadorController extends Controller
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|' . unique_validate('phone'),
             'city' => 'required|exists:cities,id',
             'birth_date' => 'date|before:-18 years|required',
-            'password' => 'min:8|required_with:confirm_password|same:confirm_password'
+            'password' => 'min:8|required_with:confirm_password|same:confirm_password',
             // 'confirm_password' => 'min:8'
         ]);
         if ($validator->fails()) {
@@ -87,7 +100,10 @@ class embassadorController extends Controller
         $generate_id=generate_embassador_number($embassador->id);
         Embassador::where('id', $embassador->id)->update(['generate_id' =>$generate_id]);
         if($save_embassador){
-          
+          // dd($embassador->getGuard());
+          // dd($save_embassador);
+          // VerifyUserService::createUser($embassador,'embassador');
+
             return redirect('embassador')->with('success', 'تم تسجيل سفير بنجاح');
         }
     }

@@ -23,15 +23,20 @@ class AgentController extends Controller
         //  $agents = Agent::orderBy('created_at', 'desc')->paginate(3);
         // return view('admin.agents.index')->with('agents',$agents);
             $searchByName = trim(request('search'));
+            $searchByPhone = trim(request('search_byphone'));
+
             $show_agent='';
             $agents = DB::table('agents')
                 ->join('cities', 'agents.city', '=', 'cities.id')
                 ->select('agents.name','agents.birth_date','agents.email','agents.phone','agents.id as agent_id',
                 'cities.name as city_name' )
                 ->orderBy('agents.id','desc');
-                if(request()->has('search') && request()->get('search')!= '' ){
-                   $agents->where('agents.name','like',"%".$searchByName."%");
-                }
+                    if(request()->has('search') && request()->get('search')!= '' ){
+                       $agents->where('agents.name','like',"%".$searchByName."%");
+                    }
+                if(request()->has('search_byphone') && request()->get('search_byphone')!= '' ){
+                    $agents->where('agents.phone','like',"%".$searchByPhone."%");
+                 }
                 $agents = $agents->paginate(10);
                 return view('admin.agents.index')->with('agents', $agents)->with('show_agent',$show_agent);
 
@@ -82,8 +87,8 @@ class AgentController extends Controller
         $agent->admin_id = adminUser()->id;
         $save_agent=$agent->save();
         if($save_agent){
-              return Redirect::back()->with('success', 'تم التسجيل بنجاح');
-            }
+            return redirect('admin/agent')->with('success', ' تم التعديل!');
+        }
     }
     /**
      * Display the specified resource.

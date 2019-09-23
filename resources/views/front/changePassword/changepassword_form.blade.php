@@ -1,8 +1,5 @@
 @extends('front.master.app')
-
 @section('content')
-
-
 <!--changepassword starts-->
 <div class="list-details-section section-padding add_list pad-top-100">
     <div class="container">
@@ -27,7 +24,7 @@
                             <div class="col-md-6">
                                 <div class="form-group {{$errors->has('old_password') ? 'has-error' : '' }}">
                                     <label> كلمة السر القديمة</label>
-                                    <input required name="old_password" type="password"class="form-control filter-input"placeholder="كلمة السر القديمة"value="{{ old('old_password')}}">
+                                    <input  name="old_password" type="password"class="form-control filter-input"placeholder="كلمة السر القديمة"value="{{ old('old_password')}}">
                                         @if( $errors->has( 'old_password' ) )
                                         <span class="help-block text-danger">
                                             {{ $errors->first( 'old_password' ) }}
@@ -38,7 +35,7 @@
                             <div class="col-md-6">
                                 <div class="form-group {{$errors->has('new_password') ? 'has-error' : '' }}">
                                     <label> كلمة السر الجديدة</label>
-                                    <input required name="new_password" type="password"
+                                    <input  name="new_password" type="password"
                                     class="form-control filter-input "
                                                 placeholder="كلمة السر الجديدة" value="{{ old('new_password')}}">
                                         @if( $errors->has( 'new_password' ) )
@@ -52,7 +49,7 @@
                             <div class="col-md-6">
                                 <div class="form-group {{ $errors->has( 'confirm_password' ) ? 'has-error' : '' }}">
                                     <label> تاكيد كلمه السر </label>
-                                    <input required type="password" class="form-control filter-input"placeholder="تاكيد كلمه السر  " name="confirm_password" value="{{ old('confirm_password')}}">
+                                    <input  type="password" class="form-control filter-input"placeholder="تاكيد كلمه السر  " name="confirm_password" value="{{ old('confirm_password')}}">
                                     @if( $errors->has( 'confirm_password' ) )
                                           <span class="help-block text-danger">
                                               {{ $errors->first( 'confirm_password' ) }}
@@ -65,21 +62,11 @@
                                 <button type="submit" class="btn v7 mar-top-20">حفظ</button>
                             </div>
                           </div>
-
                     </div>
-
                   </form>
-
                 </div>
-
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-
-
 @endsection

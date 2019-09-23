@@ -150,7 +150,7 @@ class EmbassadorController extends Controller
         $embassador_id->generate_id = $embassador_id->id;
         $embassador_id->save();
         if ($save_embassador) {
-            return Redirect::back()->with('success', 'تم التسجيل بنجاح');
+            return redirect('admin/embassador')->with('success', 'تم التعديل بنجاح');
         }
     }
     /**
