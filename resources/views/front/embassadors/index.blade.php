@@ -61,6 +61,7 @@
                                <table class="table">
                                    <thead class="thead-dark">
                                        <tr>
+                                          <th scope="col">رقم السفير</th>
                                            <th scope="col">إسم السفير</th>
                                            <th scope="col">البريد الالكتروني </th>
                                            <th scope="col">الجوال </th>
@@ -75,6 +76,7 @@
                                      @if($embassador->citydata)
                                     @php   $count=$count+1; @endphp
                                        <tr>
+                                           <td>{{$embassador->generate_id}}</td>
                                            <td>{{$embassador->first_name}}</td>
                                            <td>{{$embassador->email}}</td>
                                            <td>{{$embassador->phone}}</td>
@@ -129,14 +131,15 @@ $(".show_button").click(function(e){
         data:{id:id},
         success: function(response){
       // Add response in Modal body
+      console.log(response);
       $('#myTabContent').find('p').empty();
       $('#show_first_name').append(response['first_name']);
       $('#show_second_name').append(response['second_name']);
       $('#show_email').append(response['email']);
       $('#show_phone').append(response['phone']);
       $('#show_phone_key').append(response['phone_key']);
-      $('#show_city').append(response['city_name']);
-      $('#show_country').append('السعودية العربية');
+      $('#show_city').append(response['citydata']['name']);
+      $('#generate_id').append(response['generate_id']);
       $('#show_birth_date').append(response['birth_date']);
   }
   });

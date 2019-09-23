@@ -29,20 +29,23 @@ class embassadorController extends Controller
       $embassdors = Embassador::with(
               ['citydata' => function ($query) use ($searchByCity){
               $query->select('id', 'name')->where('id','like',"%".$searchByCity."%");
-              }])->select('first_name', 'email', 'phone', 'id','city')
-                 ->where('agent_id', agentUser()->id);
-
-
-     if(request()->has('search_name') && request()->get('search_name')!= '' ){
-        $embassdors->where(function ($q) use ($searchByName) {
-        $q->where('first_name','like',"%".$searchByName."%")
-          ->orWhere('second_name','like',"%".$searchByName."%");});
-     }
-
-     if(request()->has('search_email') && request()->get('search_email')!= '' ){
-       $embassdors->where(function ($q) use ($searchByEmail) {
-       $q->where('email','like',"%".$searchByEmail."%");});
-     }
+              }])->select('generate_id','first_name', 'email', 'phone', 'id','city')
+                 ->where('agent_id', agentUser()->id)
+                 ->where(function ($q1) use ($searchByName) {
+                 $q1->where('first_name','like',"%".$searchByName."%")
+                    ->orWhere('second_name','like',"%".$searchByName."%");})
+                ->where(function ($q2) use ($searchByEmail) {
+                $q2->where('email','like',"%".$searchByEmail."%");});
+     // if(request()->has('search_name') && request()->get('search_name')!= '' ){
+     //    $embassdors->where(function ($q) use ($searchByName) {
+     //    $q->where('first_name','like',"%".$searchByName."%")
+     //      ->orWhere('second_name','like',"%".$searchByName."%");});
+     // }
+     //
+     // if(request()->has('search_email') && request()->get('search_email')!= '' ){
+     //   $embassdors->where(function ($q) use ($searchByEmail) {
+     //   $q->where('email','like',"%".$searchByEmail."%");});
+     // }
 
      $embassdors = $embassdors->orderBy('embassadors.id', 'desc')->paginate(10);
     return view('front.embassadors.index')->with('cities', $cities)->with('embassdors', $embassdors)->with('show_embassador', $show_embassador);
@@ -54,7 +57,6 @@ class embassadorController extends Controller
      */
     public function create()
     {
-      // dd('8i87989');
         $cities = City::where('country_id', 191)->get();
         return view('front.embassadors.edit_add')->with('cities', $cities);
     }
@@ -67,7 +69,6 @@ class embassadorController extends Controller
      */
     public function store(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|max:18',
             'second_name' => 'required|max:18',
@@ -115,22 +116,19 @@ class embassadorController extends Controller
      */
     public function show($id)
     {
-        $show_embassador = DB::table('embassadors')
-            ->join('cities', 'embassadors.city', '=', 'cities.id')
-            ->select('embassadors.agent_id', 'embassadors.first_name', 'embassadors.second_name', 'embassadors.email', 'embassadors.phone', 'embassadors.phone_key', 'embassadors.birth_date', 'embassadors.id as embassador_id', 'cities.name as city_name')
-            ->where('embassadors.id', $id)->first();
-        if (!$show_embassador) {
-            return redirect('embassador');
+      $show_embassador = Embassador::with(['citydata' => function ($query){$query->select('id', 'name');}])
+                      ->select('agent_id','generate_id','first_name','second_name', 'email', 'phone', 'id','city','birth_date')
+                      ->where('id', $id)->first();
 
-        } else {
-
-            if ($show_embassador->agent_id == agentUser()->id) {
-                return response()->json($show_embassador);
-            } else {
-                return redirect('embassador')->with('master_error', 'غير مسموح بعرض هذا السفير');
-            }
-        }
-        // $show_embassador = Embassadors::find($id);
+      if(!$show_embassador) {
+        return redirect('embassador');
+      }else{
+          if ($show_embassador->agent_id == agentUser()->id) {
+              return response()->json($show_embassador);
+          } else {
+              return redirect('embassador')->with('master_error', 'غير مسموح بعرض هذا السفير');
+          }
+      }
     }
 
     /**

@@ -13,12 +13,9 @@
             <div class="modal-body">
                 <form method="post">
                     <div class="row">
-
-
                     </div>
             </div>
             <div class="row">
-
                 <div class="col-md-12">
                     <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
@@ -41,24 +38,30 @@
                                 </div> -->
                                 <div class="col-md-12">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                      <div class="col-md-2">
+                                          <label>رقم السفير</label>
+                                      </div>
+                                      <div class="col-md-10">
+                                          <p id="generate_id"> </p>
+                                      </div>
+                                        <div class="col-md-2">
                                             <label> الاسم الاول</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-10">
                                             <p id="show_first_name"> </p>
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-2">
                                             <label>الأسم الأخير</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-10">
                                             <p id="show_second_name"></p>
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-2">
                                             <label>البريد الالكتروني</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-10">
                                             <p id="show_email"></p>
                                         </div>
 
@@ -67,39 +70,26 @@
                             </div>
 
                             <div class="row">
-                              <div class="col-md-3 col-12">
-                                  <label>كود الدولة</label>
+                              <div class="col-md-2 col-12">
+                                  <label>المدينة</label>
                               </div>
                               <div class="col-md-3 col-12">
-                                  <p id ="show_phone_key"></p>
+                                  <p id ="show_city"></p>
                               </div>
-                                <div class="col-md-3 col-12">
+                                <div class="col-md-2 col-12">
                                     <label>رقم الجوال</label>
                                 </div>
                                 <div class="col-md-3 col-12">
                                     <p id="show_phone"> </p>
                                 </div>
                             </div>
-                            <div class="row">
-                              <div class="col-md-3 col-12">
-                                  <label>الدوله</label>
-                              </div>
-                              <div class="col-md-3 col-12">
-                                  <p id="show_country"> </p>
-                              </div>
-                                <div class="col-md-3 col-12">
-                                    <label>المدينة</label>
-                                </div>
-                                <div class="col-md-3 col-12">
-                                    <p id ="show_city"></p>
-                                </div>
-                            </div>
+
 
                             <div class="row">
-                                <div class="col-md-3 col-12">
+                                <div class="col-md-2 col-12">
                                     <label>تاريخ الميلاد</label>
                                 </div>
-                                <div class="col-md-3 col-12">
+                                <div class="col-md-10 col-12">
                                     <p id ="show_birth_date"></p>
                                 </div>
                             </div>
