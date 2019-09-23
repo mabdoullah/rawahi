@@ -109,22 +109,23 @@
 
            
 
+              <div class="col-lg-6">
+                <div class="form-group {{ $errors->has( 'agent' ) ? 'has-error' : '' }}">
+                  <label> اختار الشريك </label>
+                  <select class="form-control " name="agent_id" id="agentname">
+                    @foreach ($agents as $agent)
+                    <option value="{{$agent->id}}" @if($agent->id == $embassador->agent_id) selected="selected" @endif >
+                          {{$agent->name}}
+                    @endforeach
+                  </select>
 
-              <div class="form-group {{ $errors->has( 'agent' ) ? 'has-error' : '' }}">
-          <label> اختار الشريك </label>
-            <select class="form-control " name="agent_id" id="agentname">
-              @foreach ($agents as $agent)
-              <option value="{{$agent->id}}" @if($agent->id == $embassador->agent_id) selected="selected" @endif >
-                    {{$agent->name}}
-              @endforeach
-            </select>
-
-            @if( $errors->has( 'agent' ) )
-            <span class="help-block text-danger">
-              {{ $errors->first( 'agent' ) }}
-            </span>
-            @endif
-        </div>
+                  @if( $errors->has( 'agent' ) )
+                  <span class="help-block text-danger">
+                    {{ $errors->first( 'agent' ) }}
+                  </span>
+                  @endif
+                </div>
+              </div>
 
 
             </div>
