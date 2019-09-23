@@ -2386,6 +2386,11 @@ a.btn.v1.active
     padding-left: 0;
 }
 
+.small-breadcrumb {
+    height: 160px;
+    padding-top: 25px;
+}
+
 /*-----------------------------------------
         Catagory Box
 ------------------------------------------*/
