@@ -7423,10 +7423,9 @@ tr button,tr a {
     font-size: 14px;
 }
 
-.view-page.tab-content  {
-    overflow: auto !important;
+.over-flo{
+    overflow: auto;
 }
-
 
 /*------------------------------------------
                 Profile Css
