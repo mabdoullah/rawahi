@@ -79,7 +79,7 @@ class AgentController extends Controller
         $agent->city = $request->city;
         $agent->birth_date = $request->birth_date;
         $agent->password = bcrypt($request->password);
-        $agent->admin_id = 1; //get it from auth
+        $agent->admin_id = adminUser()->id;
         $save_agent=$agent->save();
         if($save_agent){
               return Redirect::back()->with('success', 'تم التسجيل بنجاح');
