@@ -14,3 +14,9 @@ body {
     font-weight: 700;
     color: #feac01;
 }
+
+@media (min-width: 1025px){
+    .kt-header--fixed.kt-subheader--fixed.kt-subheader--enabled .kt-wrapper {
+        padding-top: 90px;
+    }
+}

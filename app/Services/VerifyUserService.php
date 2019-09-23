@@ -12,7 +12,7 @@ class VerifyUserService{
 
     public static function verify($user){
        
-        //dd($user);
+        // dd($user);
 
         VerifyUser::where('user_id',$user->id)->where('guard',$user->getGuard())->delete();
 
@@ -29,12 +29,28 @@ class VerifyUserService{
 
 
 
-    public function getUserByToken($token){
+    public function checkToken($token){
         $VerifyUser = VerifyUser::where('token',$token)->first();
         return !empty($VerifyUser) ? $VerifyUser : false;
-
-
     }
 
+
+    public function verifySuccess($verifyUser){        
+        
+        $gaurdItem =  config('auth.guards')[$verifyUser->guard];
+        // dd($gaurdItem['provider']);
+        $providers = config('auth.providers');
+        // dd($providers);
+        $model = $providers[$gaurdItem['provider']]['model'];
+
+
+        $update = $model::find($verifyUser->user_id);
+        $update->verified = 1 ;
+        $update->save();
+
+
+        VerifyUser::where('token',$verifyUser->token)->delete();
+
+    }
 
 }
