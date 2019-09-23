@@ -1,0 +1,17 @@
+:root{
+    --font-family-sans-serif:"Cairo" ;
+}
+
+html,
+body {
+
+    font-size: 15px ;
+    font-family: 'Cairo', sans-serif ;
+    direction: rtl ;
+}
+
+.kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-login__head .kt-login__title {
+    font-weight: 700;
+    color: white;
+    font-size: 2rem;
+}

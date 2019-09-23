@@ -1,11 +1,13 @@
 <?php
 
+    
     function guardsWithoutAdmin(){
-        $guards = array_keys(config('auth.guards'));
-		unset($guards['admin']);
+        $guards = config('auth.guards');
+        unset($guards['admin']);
         unset($guards['api']);
-        return $guards;
+        return array_keys($guards);
     }
+
 
     
     function userIfLogin($guard){

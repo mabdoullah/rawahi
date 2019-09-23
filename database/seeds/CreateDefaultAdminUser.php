@@ -19,12 +19,12 @@ class CreateDefaultAdminUser extends Seeder
         DB::table('admins')->insert($arr);
 
 
-        DB::table('agents')->truncate();
-	    $arr = array(
-            array('name' => 'agentuser' ,'email' => "agent@rawahi.com",'password' => bcrypt(123456789)
-            ,'admin_id'=>1)
-        );
-        DB::table('agents')->insert($arr);
+        // DB::table('agents')->truncate();
+	    // $arr = array(
+        //     array('name' => 'agentuser' ,'email' => "agent@rawahi.com",'password' => bcrypt(123456789)
+        //     ,'admin_id'=>1)
+        // );
+        // DB::table('agents')->insert($arr);
 
 
         // DB::table('embassadors')->truncate();

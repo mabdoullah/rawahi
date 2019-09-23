@@ -71,9 +71,14 @@ class LoginCustomController extends Controller
 	}
 
 	public function verifyuser(VerifyUserService $VerifyUserService, $token){
+		
 		$verifyUser = $VerifyUserService->getUserByToken($token);
-		if(empty($verifyUser)) return 'error in code';
-		$verifyUser ? $verifyUser : 'no'; 
+		// if(empty($verifyUser)) return 'error in code';
+		return $verifyUser ? $verifyUser : 'no code'; 
+
+		
+
+
 	}
 
 	

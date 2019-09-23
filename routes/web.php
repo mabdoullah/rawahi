@@ -41,7 +41,7 @@ Route::group(['prefix' => 'admin', 'namespace'=>'admin' ,'as'=>'admin.' ], funct
 });
 
 
-  
+
 
 
 Route::namespace('front')->group(function () {
@@ -81,14 +81,18 @@ Route::namespace('front')->group(function () {
 
       //=============================End pratner route =============================== //
       Route::middleware(['auth:agent,embassador,partner,user'])->group(function () {
-        Route::GET("changepassword/index","ChangePasswordController@index")->name('password.index');
-        Route::POST("changepassword/update","ChangePasswordController@update")->name('password.update');
+        Route::GET("password/change","ChangePasswordController@change")->name('password.change');
+        Route::POST("password/update","ChangePasswordController@update")->name('password.update');
       });
 
       //============================= Login =============================== //
       Route::get("login","LoginCustomController@login");
       Route::post("login","LoginCustomController@dologin");
       Route::any('logout','LoginCustomController@logout');
+
+
+      Route::get('user/verify/{token}', 'LoginCustomController@verifyUser');
+      
 });
 
 
@@ -99,4 +103,4 @@ Route::namespace('front')->group(function () {
 
 
 
-Route::get('user/verify/{token}', 'LoginCustomController@verifyUser');
+

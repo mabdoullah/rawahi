@@ -7,7 +7,7 @@
         <meta name="description" content="admin login">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--begin::Fonts -->
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700|Cairo:300,400:500,600,700">
         <!--end::Fonts -->
         <!--begin::Page Custom Styles(used by this page) -->
           <link href="{{asset('admin_design/css/pages/login/login-4.rtl.css')}}" rel="stylesheet" type="text/css" />
@@ -15,6 +15,9 @@
         <!--begin::Global Theme Styles(used by all pages) -->
           <link href="{{asset('admin_design/css/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
         <!--end::Global Theme Styles -->
+		<!--begin::Custom Theme Styles -->
+		<link href="{{asset('admincustom.css')}}" rel="stylesheet" type="text/css" />
+        <!--end::Custom Theme Styles -->
     </head>
     <!-- end::Head -->
     <!-- begin::Body -->
@@ -28,8 +31,8 @@
       				<div class="kt-login__logo">
       					<a href="#">
       						<!-- <img src="{{asset('admin_design/media/logos/logo-5.png')}}"> -->
-                  <img src="{{asset('front/images/logo-black.png')}}" alt="logo"
-                          class="img-fluid" width="70px">
+                  <img src="{{asset('front/images/logo-admin.png')}}" alt="logo"
+                          class="img-fluid" width="200px">
       					</a>
       				</div>
       				<div class="kt-login__signin">
@@ -40,16 +43,16 @@
 								@csrf
       						<div class="input-group">
 								  
-								<input dir="rtl" class="form-control" type="text" placeholder="البريد الإلكتروني" name="email" autocomplete="off"
+								<input dir="rtl" class="form-control is-invalid" type="text" placeholder="البريد الإلكتروني" name="email" autocomplete="off"
 								  value="{{old('email')}}" aria-describedby="email-error">
 								  @if( $errors->has( 'email' ) )
 									<div id="email-error" class="error invalid-feedback">{{ $errors->first( 'email' ) }}</div>
 								  @endif
       						</div>
       						<div class="input-group">
-								  <input dir="rtl" class="form-control" type="password" placeholder="كلمة السر" name="password">
+								  <input dir="rtl" class="form-control is-invalid" type="password" placeholder="كلمة السر" name="password">
 								  @if( $errors->has( 'password' ) )
-								  <div class="error invalid-feedback">{{ $errors->first( 'password' ) }}</div>
+								  <div id="password-error" class="error invalid-feedback">{{ $errors->first( 'password' ) }}</div>
 								  @endif
       						</div>
       						<div class="row kt-login__extra">
