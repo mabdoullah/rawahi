@@ -66,6 +66,8 @@
                                             <td>{{$partner->email}}</td>
 
                                             <td>{{$partner->phone}}</td>
+                                            <td><img src="{{$partner->image}}" alt="" srcset=""></td>
+
 
 
                                             <td>

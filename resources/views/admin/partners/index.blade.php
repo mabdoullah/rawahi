@@ -30,15 +30,16 @@
           
           <div class="row">
               <label for="search">اسم الشريك </label>
-
+              
               <div class="col-md-12 form-group">
-            
-                <input type="search" name="" id="" >
-                  @if( $errors->has( 'agent' ) )
+                <form action="{{route('admin.searchpartners')}} ">
+                <input type="search" name="search" id="searchpartner"  >
+                  @if( $errors->has( 'search' ) )
                   <span class="help-block text-danger">
-                    {{ $errors->first( 'agent' ) }}
+                    {{ $errors->first( 'search' ) }}
                   </span>
                   @endif
+                </form>
                   </div> <br><br>
            <div class="col-md-5">
             
@@ -86,7 +87,8 @@
             </tr>
           </thead>
           <tbody id='table-result'>
-              {{-- @foreach ($partners as $partner) 
+        
+               @foreach ($partners as $partner) 
               <tr>
 
 
@@ -97,11 +99,11 @@
                   <td>{{$partner->phone}}</td>
 
 
-                  <td>
+                  <td>{{$partner->map_address}}</td>
 
-              </form>
-              {{--  edit --}}
-                     {{-- <a class="btn v8 view-buttons" href="{{route('partners.edit',$partner->id)}}"> تعديل <i
+              <td>
+               {{-- edit  --}}
+                      {{-- <a class="btn v8 view-buttons" href="{{route('partners.edit',$partner->id)}}"> تعديل <i
                       class="icofont-edit"></i>
                       </a> --}}
               {{--  show --}}
@@ -115,7 +117,7 @@
                   </td>
 
               </tr>
-              {{-- @endforeach --}}
+              @endforeach
 
   
           </tbody>
