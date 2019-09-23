@@ -44,65 +44,84 @@
                                  <h4 >عفوا لا يوجد سفراء لعرضها</h4>
                                 </div>
                                @else
+                               <div class="filter-wrapper style1 v2 ">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 pad-top-30 pad-bot-30">
+                                                <form action="{{route('embassador.index')}}" id="searchForm" method="get" class="hero__form v2 filter">
+                                                     <div class="row">
+                                                         <div class="col-lg-4 col-md-12">
+                                                             <input type="text" id='search_name' name='search_name'placeholder="بحث بالأسم" value="" class="hero__form-input custom-select">
+                                                         </div>
+                                                         <div class="col-lg-3 col-md-12">
+                                                             <input type="text" id='search_email' name='search_email'placeholder="بحث بالأميل" value="" class="hero__form-input custom-select">
+                                                         </div>
+                                                         <div class="col-lg-3 col-md-12">
+                                                             <select class=" nice-select hero__form-input custom-select"  name="search_city" id="search_city">
+                                                                  <option value="">اختر المدينة</option>
+                                                                         @foreach ($cities as $city)
+                                                                          <option  value="{{$city->id}}">
+                                                                         {{$city->name}}
+                                                                          </option>
+                                                                            @endforeach
+                                                             </select>
+                                                         </div>
+                                                         <div class="col-lg-2 col-md-12 text-center">
+                                                             <button type="submit" name="" class="btn  v3" >بحث</button>
+                                                         </div>
+                                                      </div>
+                                                </form>
+                                             </div>
+                                        </div>
+                                     </div>
+                               </div>
+                               <div class="over-flo">
+                                        <table class="table">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col">إسم السفير</th>
+                                                    <th scope="col">البريد الالكتروني </th>
+                                                    <th scope="col">الجوال </th>
+                                                    <th scope="col"> المدينة</th>
+                                                    <th scope="col">تعديل بروفايل السفير</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if($embassdors)
+                                                @php $count=0;@endphp
+                                                @foreach($embassdors as $embassador)
+                                                @if($embassador->citydata)
+                                                @php   $count=$count+1; @endphp
+                                                <tr>
+                                                    <td>{{$embassador->first_name}}</td>
+                                                    <td>{{$embassador->email}}</td>
+                                                    <td>{{$embassador->phone}}</td>
+                                                    <td>{{$embassador->citydata->name}}</td>
+                                                    <td>
+                                                        <!-- edit -->
+                                                        <a class="btn v8 view-buttons"  href="{{route('embassador.edit',$embassador->id)}}"> تعديل <i class="icofont-edit"></i></a>
+                                                        <!-- show -->
+                                                        <a type="button"  data-showembassid ="{{$embassador->id}}" class="btn v8 view-buttons show_button"  data-toggle="modal"data-target="#exampleModal"   href="{{route('embassador.show',$embassador->id)}}"> عرض <i class="icofont-eye-alt"></i></a>
+                                                            <!-- delete -->
+                                                        {{--<button  class="v8 btn view-buttons" data-toggle="modal" data-embassadorid="{{$embassador->id}}" data-target="#DeleteModal" > حذف<i class="icofont-ui-delete"></i></button>--}}
+                                                    </td>
 
-                               <form action="{{route('embassador.index')}}" id="searchForm" method="get">
-                                   <input type="text" id='search_name' name='search_name'placeholder="بحث بالأسم" value="">
-                                   <input type="text" id='search_email' name='search_email'placeholder="بحث بالأميل" value="">
-                                   <select class="form-control filter-input"  name="search_city" id="search_city">
-                                       <option value="">اختر المدينة</option>
-                                       @foreach ($cities as $city)
-                                           <option  value="{{$city->id}}">
-                                           {{$city->name}}
-                                           </option>
-                                       @endforeach
-                                   </select>
-                                   <button type="submit" name="" class="btn btn-secondary" >بحث</button>
-                               </form>
-                               <table class="table">
-                                   <thead class="thead-dark">
-                                       <tr>
-                                           <th scope="col">إسم السفير</th>
-                                           <th scope="col">البريد الالكتروني </th>
-                                           <th scope="col">الجوال </th>
-                                           <th scope="col"> المدينة</th>
-                                           <th scope="col">تعديل بروفايل السفير</th>
-                                       </tr>
-                                   </thead>
-                                   <tbody>
-                                     @if($embassdors)
-                                     @php $count=0;@endphp
-                                     @foreach($embassdors as $embassador)
-                                     @if($embassador->citydata)
-                                    @php   $count=$count+1; @endphp
-                                       <tr>
-                                           <td>{{$embassador->first_name}}</td>
-                                           <td>{{$embassador->email}}</td>
-                                           <td>{{$embassador->phone}}</td>
-                                           <td>{{$embassador->citydata->name}}</td>
-                                           <td>
-                                             <!-- edit -->
-                                             <a class="btn v8 view-buttons"  href="{{route('embassador.edit',$embassador->id)}}"> تعديل <i class="icofont-edit"></i></a>
-                                             <!-- show -->
-                                             <a type="button"  data-showembassid ="{{$embassador->id}}" class="btn v8 view-buttons show_button"  data-toggle="modal"data-target="#exampleModal"   href="{{route('embassador.show',$embassador->id)}}"> عرض <i class="icofont-eye-alt"></i></a>
-                                                <!-- delete -->
-                                              {{--<button  class="v8 btn view-buttons" data-toggle="modal" data-embassadorid="{{$embassador->id}}" data-target="#DeleteModal" > حذف<i class="icofont-ui-delete"></i></button>--}}
-                                          </td>
-
-                                       </tr>
-                                       @endif
-                                       @endforeach
-                                       @endif
-                                       @if($count==0)
-                                       <tr>
-                                           <td colspan="5">
-                                             <div class="alert alert-info text-center" role="alert">
-                                             <h4 >عفوا لايوجدنتائج لعرضها</h4>
-                                            </div>
-                                          </td>
-                                      </tr>
-                                       @endif
-                                   </tbody>
-                               </table>
+                                                </tr>
+                                                @endif
+                                                @endforeach
+                                                @endif
+                                                @if($count==0)
+                                                <tr>
+                                                    <td colspan="5">
+                                                        <div class="alert alert-info text-center" role="alert">
+                                                        <h4 >عفوا لايوجدنتائج لعرضها</h4>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                </div>        
                                {{ $embassdors->links() }}
                                @endif
                               @include('front.embassadors.delete_modal')
@@ -129,14 +148,15 @@ $(".show_button").click(function(e){
         data:{id:id},
         success: function(response){
       // Add response in Modal body
+      console.log(response);
       $('#myTabContent').find('p').empty();
       $('#show_first_name').append(response['first_name']);
       $('#show_second_name').append(response['second_name']);
       $('#show_email').append(response['email']);
       $('#show_phone').append(response['phone']);
       $('#show_phone_key').append(response['phone_key']);
-      $('#show_city').append(response['city_name']);
-      $('#show_country').append('السعودية العربية');
+      $('#show_city').append(response['citydata']['name']);
+      $('#generate_id').append(response['generate_id']);
       $('#show_birth_date').append(response['birth_date']);
   }
   });
