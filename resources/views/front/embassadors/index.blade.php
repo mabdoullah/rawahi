@@ -39,11 +39,25 @@
                                {{ session()->get('success') }}
                                </div>
                                @endif
-                               @if(!count($all_embassdors_cities))
+                               @if(!count($embassdors))
                                <div class="alert alert-info text-center" role="alert">
                                  <h4 >عفوا لا يوجد سفراء لعرضها</h4>
                                 </div>
                                @else
+
+                               <form action="{{route('embassador.index')}}" id="searchForm" method="get">
+                                   <input type="text" id='search_name' name='search_name'placeholder="بحث بالأسم" value="">
+                                   <input type="text" id='search_email' name='search_email'placeholder="بحث بالأميل" value="">
+                                   <select class="form-control filter-input"  name="search_city" id="search_city">
+                                       <option value="">اختر المدينة</option>
+                                       @foreach ($cities as $city)
+                                           <option  value="{{$city->id}}">
+                                           {{$city->name}}
+                                           </option>
+                                       @endforeach
+                                   </select>
+                                   <button type="submit" name="" class="btn btn-secondary" >بحث</button>
+                               </form>
                                <table class="table">
                                    <thead class="thead-dark">
                                        <tr>
@@ -55,27 +69,41 @@
                                        </tr>
                                    </thead>
                                    <tbody>
-                                     @foreach($all_embassdors_cities as $embassador)
+                                     @if($embassdors)
+                                     @php $count=0;@endphp
+                                     @foreach($embassdors as $embassador)
+                                     @if($embassador->citydata)
+                                    @php   $count=$count+1; @endphp
                                        <tr>
                                            <td>{{$embassador->first_name}}</td>
                                            <td>{{$embassador->email}}</td>
                                            <td>{{$embassador->phone}}</td>
-                                           <td>{{$embassador->city_name}}</td>
+                                           <td>{{$embassador->citydata->name}}</td>
                                            <td>
                                              <!-- edit -->
-                                             <a class="btn v8 view-buttons"  href="{{route('embassador.edit',$embassador->embassador_id)}}"> تعديل <i class="icofont-edit"></i></a>
+                                             <a class="btn v8 view-buttons"  href="{{route('embassador.edit',$embassador->id)}}"> تعديل <i class="icofont-edit"></i></a>
                                              <!-- show -->
-                                             <a type="button"  data-showembassid ="{{$embassador->embassador_id}}" class="btn v8 view-buttons show_button"  data-toggle="modal"data-target="#exampleModal"   href="{{route('embassador.show',$embassador->embassador_id)}}"> عرض <i class="icofont-eye-alt"></i></a>
+                                             <a type="button"  data-showembassid ="{{$embassador->id}}" class="btn v8 view-buttons show_button"  data-toggle="modal"data-target="#exampleModal"   href="{{route('embassador.show',$embassador->id)}}"> عرض <i class="icofont-eye-alt"></i></a>
                                                 <!-- delete -->
-                                              {{--<button  class="v8 btn view-buttons" data-toggle="modal" data-embassadorid="{{$embassador->embassador_id}}" data-target="#DeleteModal" > حذف<i class="icofont-ui-delete"></i></button>--}}
+                                              {{--<button  class="v8 btn view-buttons" data-toggle="modal" data-embassadorid="{{$embassador->id}}" data-target="#DeleteModal" > حذف<i class="icofont-ui-delete"></i></button>--}}
                                           </td>
 
                                        </tr>
-
+                                       @endif
                                        @endforeach
+                                       @endif
+                                       @if($count==0)
+                                       <tr>
+                                           <td colspan="5">
+                                             <div class="alert alert-info text-center" role="alert">
+                                             <h4 >عفوا لايوجدنتائج لعرضها</h4>
+                                            </div>
+                                          </td>
+                                      </tr>
+                                       @endif
                                    </tbody>
                                </table>
-                               {{ $all_embassdors_cities->links() }}
+                               {{ $embassdors->links() }}
                                @endif
                               @include('front.embassadors.delete_modal')
                               @include('front.embassadors.show_modal')

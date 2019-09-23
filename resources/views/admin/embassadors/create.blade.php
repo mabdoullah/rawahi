@@ -6,17 +6,26 @@
 
 <!-- begin:: Content -->
 <div class='row'>
-    @if(session()->has('master_error'))
-    <div class="alert alert-danger text-center" role="alert">
-        {{ session()->get('master_error') }}
+  @if(session()->has('master_error'))
+  <div class="col-12">
+    <div class="alert alert-success text-center" style="display:inline-block; width: 100% " role="alert">
+      <div class="alert-text">
+      </div>
+      {{ session()->get('master_error') }}
     </div>
-    @endif
-    @if(session()->has('success'))
-    <div class="alert alert-success text-center" role="alert">
-        {{ session()->get('success') }}
-    </div>
-    @endif
+  </div>
+  @endif
 
+  @if(session()->has('success'))
+  <div class="col-12">
+    <div class="alert alert-success text-center" style="display:inline-block; width: 100% " role="alert">
+      <div class="alert-text"></div>
+
+      {{ session()->get('success') }}
+    </div>
+  </div>
+  @endif
+</div>
     
         <div class="col-lg-12">
             <!--begin::Portlet-->
@@ -35,7 +44,7 @@
                         <div class="form-group row">
                             <div class="col-lg-6 {{ $errors->has( 'name' ) ? 'has-error' : '' }}">
                                 <label> الاسم الاول</label>
-                                <input required type="text" class="form-control " placeholder="الاسم الاول" name="first_name" value="{{ old('first_name')}}">
+                                <input  class="form-control " placeholder="الاسم الاول" name="first_name" value="{{ old('first_name')}}">
                                 @if( $errors->has( 'first_name' ) )
                                 <span class="help-block text-danger">
                                     {{ $errors->first( 'first_name' ) }}
@@ -44,7 +53,7 @@
                             </div>
                             <div class="col-lg-6 {{ $errors->has( 'second_name' ) ? 'has-error' : '' }}">
                                 <label> الاسم الاخير</label>
-                                <input required type="text" class="form-control " placeholder="الاسم الاخير" name="second_name" value="{{ old('second_name')}}">
+                                <input  class="form-control " placeholder="الاسم الاخير" name="second_name" value="{{ old('second_name')}}">
                                 @if( $errors->has( 'second_name' ) )
                                 <span class="help-block text-danger">
                                     {{ $errors->first( 'second_name' ) }}
@@ -54,7 +63,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                                     <label> البريد الالكتروني</label>
-                                    <input required type="email" class="form-control " placeholder="البريد الالكتروني " name="email" value="{{ old('email')}}">
+                                    <input  class="form-control " placeholder="البريد الالكتروني " name="email" value="{{ old('email')}}">
                                     @if( $errors->has( 'email' ) )
                                     <span class="help-block text-danger">
                                         {{ $errors->first( 'email' ) }}
@@ -105,7 +114,7 @@
                         <div class="col-lg-6">
                             <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
                                 <label> رقم الجوال</label>
-                                <input required class="form-control " placeholder="رقم الجوال" name="phone" value="{{ old('phone')}}">
+                                <input class="form-control " placeholder="رقم الجوال" name="phone" value="{{ old('phone')}}">
                                 @if( $errors->has( 'phone' ) )
                                 <span class="help-block text-danger">
                                     {{ $errors->first( 'phone' ) }}
@@ -118,7 +127,7 @@
                         <div class="col-lg-6">
                             <div class="form-group {{ $errors->has( 'password' ) ? 'has-error' : '' }}">
                                 <label> كلمه السر </label>
-                                <input required type="password" class="form-control " placeholder="كلمه السر" value="{{ old('password')}}" name="password">
+                                <input  type="password" class="form-control " placeholder="كلمه السر" value="{{ old('password')}}" name="password">
                                 @if( $errors->has( 'password' ) )
                                 <span class="help-block text-danger">
                                     {{ $errors->first( 'password' ) }}
@@ -130,7 +139,7 @@
                         <div class="col-lg-6">
                             <div class="form-group {{ $errors->has( 'confirm_password' ) ? 'has-error' : '' }}">
                                 <label> تاكيد كلمه السر </label>
-                                <input required type="password" class="form-control " placeholder="تاكيد كلمه السر  " name="confirm_password" value="{{ old('confirm_password')}}">
+                                <input  type="password" class="form-control " placeholder="تاكيد كلمه السر  " name="confirm_password" value="{{ old('confirm_password')}}">
                                 @if( $errors->has( 'confirm_password' ) )
                                 <span class="help-block text-danger">
                                     {{ $errors->first( 'confirm_password' ) }}
@@ -144,7 +153,7 @@
                         <div class="col-lg-6">
                             <div class="form-group {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }}">
                                 <label> تاريخ الميلاد</label>
-                                <input required type="date" class="form-control " placeholder="  تاريخ الميلاد" name="birth_date" value="{{ old('birth_date')}}">
+                                <input  type="date" class="form-control " placeholder="  تاريخ الميلاد" name="birth_date" value="{{ old('birth_date')}}">
                                 @if( $errors->has( 'birth_date' ) )
                                 <span class="help-block text-danger">
                                     {{ $errors->first( 'birth_date' ) }}
