@@ -31,7 +31,7 @@
       				<div class="kt-login__logo">
       					<a href="#">
       						<!-- <img src="{{asset('admin_design/media/logos/logo-5.png')}}"> -->
-                  <img src="{{asset('front/images/logo-white.png')}}" alt="logo"
+                  <img src="{{asset('front/images/logo-admin.png')}}" alt="logo"
                           class="img-fluid" width="200px">
       					</a>
       				</div>
