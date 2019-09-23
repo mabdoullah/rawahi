@@ -61,6 +61,7 @@
                                <table class="table">
                                    <thead class="thead-dark">
                                        <tr>
+                                          <th scope="col">رقم السفير</th>
                                            <th scope="col">إسم السفير</th>
                                            <th scope="col">البريد الالكتروني </th>
                                            <th scope="col">الجوال </th>
@@ -75,6 +76,7 @@
                                      @if($embassador->citydata)
                                     @php   $count=$count+1; @endphp
                                        <tr>
+                                           <td>{{$embassador->generate_id}}</td>
                                            <td>{{$embassador->first_name}}</td>
                                            <td>{{$embassador->email}}</td>
                                            <td>{{$embassador->phone}}</td>
