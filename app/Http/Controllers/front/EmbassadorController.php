@@ -116,23 +116,19 @@ class embassadorController extends Controller
      */
     public function show($id)
     {
-
       $show_embassador = Embassador::with(['citydata' => function ($query){$query->select('id', 'name');}])
-                                  ->select('generate_id','first_name','second_name', 'email', 'phone', 'id','city')
-                                  ->where('id', $id)->where('agent_id',agentUser()->id)->first();
-                                  dd($show_embassador);
-        if (!$show_embassador) {
-            return redirect('embassador');
+                      ->select('agent_id','generate_id','first_name','second_name', 'email', 'phone', 'id','city','birth_date')
+                      ->where('id', $id)->first();
 
-        } else {
-
-            if ($show_embassador->agent_id == agentUser()->id) {
-                return response()->json($show_embassador);
-            } else {
-                return redirect('embassador')->with('master_error', 'غير مسموح بعرض هذا السفير');
-            }
-        }
-        // $show_embassador = Embassadors::find($id);
+      if(!$show_embassador) {
+        return redirect('embassador');
+      }else{
+          if ($show_embassador->agent_id == agentUser()->id) {
+              return response()->json($show_embassador);
+          } else {
+              return redirect('embassador')->with('master_error', 'غير مسموح بعرض هذا السفير');
+          }
+      }
     }
 
     /**
