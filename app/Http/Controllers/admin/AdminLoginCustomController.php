@@ -9,6 +9,7 @@ use Validator;
 use App\Services\VerifyUserService;
 
 use Auth;
+use App\Admin;
 
 class AdminLoginCustomController extends Controller
 {
@@ -44,8 +45,7 @@ class AdminLoginCustomController extends Controller
 
 	public function logout(){
 		Auth::guard('admin')->logout();
-		return (request()->segment(1) == 'admin') ? redirect('admin/login') : redirect('/');
-		
+		return redirect('admin/login');
 	}
 
 

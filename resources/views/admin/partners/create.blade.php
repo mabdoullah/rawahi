@@ -7,9 +7,9 @@
             {{ session()->get('master_error') }}
         </div>
         @endif
-        @if(session()->has('success'))
+        @if(session()->has('message'))
         <div class="alert alert-success text-center" role="alert">
-            {{ session()->get('success') }}
+            {{ session()->get('message') }}
         </div>
         @endif
         <div class="col-md-12">
@@ -76,7 +76,7 @@
                                     <div class="col-md-6">
                                             <div class="form-group {{ $errors->has( 'embassdor' ) ? 'has-error' : '' }}">
                                                     <label> السفير </label>
-                                                    <select class="form-control filter-input"  name="embassdor" id="embassdor">
+                                                    <select class="form-control filter-input"  name="embassador_id" id="embassador_id">
                                                         <option value="0">اختر السفير</option>
                                                         @foreach ($embassadors as $embassdor)
                 

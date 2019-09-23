@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -32,7 +32,8 @@ class LoginCustomController extends Controller
               ['email'=> 'required|email','password'=>'required'])
 			  ->validate();
 			  
-		
+		$this->doLogout();
+
 		$guard = $LoginService->getGuard($request->email);
 		
 		if(empty($guard)){
@@ -54,7 +55,8 @@ class LoginCustomController extends Controller
 	}
 
 	public function doLogout(){
-		$guards = array_keys(config('auth.guards'));
+		$guards = guardsWithoutAdmin();
+
 		foreach ($guards as $guard) {
 		  if(Auth::guard($guard)->check()){
 				Auth::guard($guard)->logout();

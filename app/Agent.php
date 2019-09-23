@@ -44,4 +44,5 @@ class Agent extends Authenticatable
     {
         return $this->hasMany('App\Embassador','agent_id');
     }
+    
 }
