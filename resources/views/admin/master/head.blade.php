@@ -62,6 +62,10 @@
 <link href="{{asset('admin_design/css/skins/brand/dark.rtl.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('admin_design/css/skins/aside/dark.rtl.css')}}" rel="stylesheet" type="text/css" />        <!--end::Layout Skins -->
 
-       <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico" />
-   </head>
+<link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}" />
+
+<link href="{{asset('admincustom.css')}}" rel="stylesheet" type="text/css" />
+
+
+</head>
    <!-- end::Head -->

@@ -2389,6 +2389,11 @@ a.btn.v1.active
     padding-left: 0;
 }
 
+.small-breadcrumb {
+    height: 160px;
+    padding-top: 25px;
+}
+
 /*-----------------------------------------
         Catagory Box
 ------------------------------------------*/
@@ -7426,10 +7431,9 @@ tr button,tr a {
     font-size: 14px;
 }
 
-.view-page.tab-content  {
-    overflow: auto !important;
+.over-flo{
+    overflow: auto;
 }
-
 
 /*------------------------------------------
                 Profile Css

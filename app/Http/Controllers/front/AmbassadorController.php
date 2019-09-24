@@ -36,7 +36,7 @@ class AmbassadorController extends Controller
                               ->where(function ($q2) use ($searchByEmail) {
                                 $q2->where('email','like',"%".$searchByEmail."%");});
 
-     $embassdors = $embassdors->orderBy('embassadors.id', 'desc')->paginate(1);
+     $embassdors = $embassdors->orderBy('embassadors.id', 'desc')->paginate(10);
     return view('front.ambassadors.index')->with('cities', $cities)->with('embassdors', $embassdors)->with('show_embassador', $show_embassador);
     }
     /**

@@ -8,7 +8,7 @@
         return array_keys($guards);
     }
 
-
+    
     
     function userIfLogin($guard){
         return 
