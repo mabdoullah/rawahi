@@ -71,7 +71,7 @@
 
                                             <td>{{$partner->phone}}</td>
                                             <td>{{$partner->citydata->name}}</td>
-                                            <td><img src="images/partners/{{$partner->image}}" alt="partnerimg" class="imgpartner"></td>
+                                            <td><img src="images/partners/{{$partner->image}}" alt="partnerimg" class="imgpartner img-fluid"></td>
 
 
 
@@ -309,79 +309,85 @@
             data:{id:id},
             success: function(response){
           // Add response in Modal body
-          
-          var img=response['image'];
+          var img=response['partner']['image'];
           var image="./images/partners/"+img;
           $('#myTabContent').find('p').empty();
          
-          if (response['image']) {
+          if (response['partner']['image']) {
             $('#show-image').attr('src',image);
           }else{
             document.getElementById("img").style.display = "none";
 
           }
 
-          if (response['legal_name']) {
-            $('#show-name').append(response['legal_name']);
+          if (response['partner']['legal_name']) {
+            $('#show-name').append(response['partner']['legal_name']);
           }else{
             document.getElementById("namep").style.display = "none";
 
           }
-          if (response['email']) {
-            $('#show-email').append(response['email']);
+          if (response['partner']['email']) {
+            $('#show-email').append(response['partner']['email']);
           }else{
             document.getElementById("email").style.display = "none";
 
           }
-          if (response['map_address']) {
-            $('#show-address').append(response['map_address']);
+          if (response['partner']['map_address']) {
+            $('#show-address').append(response['partner']['map_address']);
           }else{
             document.getElementById("address").style.display = "none";
 
           }
-          if (response['phone']) {
+          if (response['partner']['phone']) {
      
-            $('#show-phone').append(response['phone']);
+            $('#show-phone').append(response['partner']['phone']);
           }else{
             document.getElementById("phone").style.display = "none";
 
           }
         
-          if (response['about']) {
+          if (response['partner']['about']) {
 
-          $('#show-about').append(response['about']);
+          $('#show-about').append(response['partner']['about']);
 
         }else{
           document.getElementById("about").style.display = "none";
           }
-        if (response['partner_type']) {
-        $('#show-part-type').append(response['partner_type']);
+        if (response['partner']['partner_type']) {
 
+            $.each(response['types'], function( index, value ) {
+                
+                if (response['partner']['partner_type']==index) {
+                    $('#show-part-type').append(value);
+
+                }
+});
+      
         }else{
         document.getElementById("part-type").style.display = "none";
         } 
-        if (response['citydata']['name']) {
-        $('#show-city').append(response['citydata']['name']);
+        if (response['partner']['citydata']['name']) {
+        $('#show-city').append(response['partner']['citydata']['name']);
 
         }else{
         document.getElementById("citydata").style.display = "none";
         }  
 
-        if (response['facebook']) {
-        $('#show-facebook').append(response['facebook']);
+        if (response['partner']['facebook']) {
+        $('#show-facebook').append(response['partner']['facebook']);
 
         }else{
         document.getElementById("facebook").style.display = "none";
         }  
 
-        if (response['instagram']) {
-        $('#show-insatgram').append(response['instagram']);
+        if (response['partner']['instagram']) {
+        $('#show-insatgram').append(response['partner']['instagram']);
 
         }else{
         document.getElementById("instagram").style.display = "none";
         }   
-        if (response['twitter']) {
-        $('#show-twitter').append(response['twitter']);
+        if (response['partner']['twitter']) {
+        $('#show-twitter').append(response['partner']['twitter']);
 
         }else{
         document.getElementById("twitter").style.display = "none";

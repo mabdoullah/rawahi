@@ -20,6 +20,31 @@ class PartnerController extends Controller
     {
         $agents = DB::table("agents")->pluck("name", "id");
         $partners = Partner::orderBy('id', 'DESC')->get();
+        foreach($partners as $partner){
+            $partner->agent;
+            $partner->created_at;
+            $agents = $partner->post_os;
+            $embassadors = $partner->embassadors;
+            $agents = $partner->agents;
+
+            foreach($embassadors as $embassador){
+                $embassador = Embassador::where('id', $embassador->embassador_id)->first();
+                $embassador['first_name'] = $embassador['first_name'];
+            }
+
+            foreach($agents as $agent){
+                $agent = Agent::where('id', $agent->agent_id)->first();
+                $agent['name'] = $agent['name'];
+            }
+
+         
+        }
+
+        
+
+
+
+        
 
         return view('admin.partners.index', compact('agents', 'partners'));
     }

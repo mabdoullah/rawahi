@@ -18,6 +18,8 @@ class PartnerController extends Controller
      */
     public function index()
     {
+         
+        
         $partners = Partner::with('citydata')->
         where('embassador_id', embassadorUser()->id)->latest()->orderBy('id')->paginate(10);
         
@@ -120,6 +122,7 @@ class PartnerController extends Controller
      */
     public function show($id)
     {
+        $types=partnersTypesArray();
         $partner = Partner::with('citydata')->
         findOrFail($id);
         if (!$partner) {
@@ -128,7 +131,7 @@ class PartnerController extends Controller
         if ($partner->embassador_id != embassadorUser()->id) {
             return ' غير مسموح لك بعرض هذا الشريك ';
         }
-        return response()->json($partner);
+        return response()->json(['partner'=>$partner,'types'=>$types]);
     }
 
     /**
