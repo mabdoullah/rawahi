@@ -45,7 +45,7 @@
                                 </div>
                                @else
 
-                               <form action="{{route('embassador.index')}}" id="searchForm" method="get">
+                               <form action="{{route('ambassadors.index')}}" id="searchForm" method="get">
                                    <input type="text" id='search_name' name='search_name'placeholder="بحث بالأسم" value="">
                                    <input type="text" id='search_email' name='search_email'placeholder="بحث بالأميل" value="">
                                    <select class="form-control filter-input"  name="search_city" id="search_city">
@@ -83,11 +83,11 @@
                                            <td>{{$embassador->citydata->name}}</td>
                                            <td>
                                              <!-- edit -->
-                                             <a class="btn v8 view-buttons"  href="{{route('embassador.edit',$embassador->id)}}"> تعديل <i class="icofont-edit"></i></a>
+                                             <a class="btn v8 view-buttons"  href="{{route('ambassadors.edit',$embassador->id)}}"> تعديل <i class="icofont-edit"></i></a>
                                              <!-- show -->
-                                             <a type="button"  data-showembassid ="{{$embassador->id}}" class="btn v8 view-buttons show_button"  data-toggle="modal"data-target="#exampleModal"   href="{{route('embassador.show',$embassador->id)}}"> عرض <i class="icofont-eye-alt"></i></a>
+                                             <a type="button"  data-showembassid ="{{$embassador->id}}" class="btn v8 view-buttons show_button"  data-toggle="modal"data-target="#exampleModal"   href="{{route('ambassadors.show',$embassador->id)}}"> عرض <i class="icofont-eye-alt"></i></a>
                                                 <!-- delete -->
-                                              {{--<button  class="v8 btn view-buttons" data-toggle="modal" data-embassadorid="{{$embassador->id}}" data-target="#DeleteModal" > حذف<i class="icofont-ui-delete"></i></button>--}}
+                                              {{--<button  class="v8 btn view-buttons" data-toggle="modal" data-embassadorid="{{ambassadors->id}}" data-target="#DeleteModal" > حذف<i class="icofont-ui-delete"></i></button>--}}
                                           </td>
 
                                        </tr>
@@ -105,10 +105,12 @@
                                        @endif
                                    </tbody>
                                </table>
+                               <div class="text-center">
                                {{ $embassdors->links() }}
+                             </div>
                                @endif
-                              @include('front.embassadors.delete_modal')
-                              @include('front.embassadors.show_modal')
+                              @include('front.ambassadors.delete_modal')
+                              @include('front.ambassadors.show_modal')
                            </div>
                        </div>
                    </div>
