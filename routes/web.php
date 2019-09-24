@@ -91,8 +91,8 @@ Route::namespace('front')->group(function () {
       Route::any('logout','LoginCustomController@logout');
 
 
-      Route::get('user/verify/{token}', 'LoginCustomController@verifyUser');
-      
+      Route::get('user/verify/{token}', 'VerifyCustomController@verifyUser');
+
 });
 
 

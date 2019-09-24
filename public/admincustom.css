@@ -12,6 +12,13 @@ body {
 
 .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-login__head .kt-login__title {
     font-weight: 700;
+
     color: white;
     font-size: 2rem;
+}
+
+@media (min-width: 1025px){
+    .kt-header--fixed.kt-subheader--fixed.kt-subheader--enabled .kt-wrapper {
+        padding-top: 90px;
+    }
 }

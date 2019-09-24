@@ -19,7 +19,8 @@ class LoginCustomController extends Controller
 {
     
 	public function login(){
-		
+		// $embassador = \App\Embassador::find(1);
+		// VerifyUserService::verify($embassador);
 		return view('front.login.login');
 
 	}
@@ -68,17 +69,6 @@ class LoginCustomController extends Controller
 		$this->doLogout();
 		return (request()->segment(1) == 'admin') ? redirect('admin/login') : redirect('/');
 		
-	}
-
-	public function verifyuser(VerifyUserService $VerifyUserService, $token){
-		
-		$verifyUser = $VerifyUserService->getUserByToken($token);
-		// if(empty($verifyUser)) return 'error in code';
-		return $verifyUser ? $verifyUser : 'no code'; 
-
-		
-
-
 	}
 
 	
