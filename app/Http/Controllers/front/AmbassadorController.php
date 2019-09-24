@@ -37,7 +37,13 @@ class AmbassadorController extends Controller
                                 $q2->where('email','like',"%".$searchByEmail."%");});
 
      $embassdors = $embassdors->orderBy('embassadors.id', 'desc')->paginate(10);
-    return view('front.ambassadors.index')->with('cities', $cities)->with('embassdors', $embassdors)->with('show_embassador', $show_embassador);
+    return view('front.ambassadors.index')
+    ->with('searchByName', $searchByName)
+    ->with('searchByEmail', $searchByEmail)
+    ->with('searchByCity', $searchByCity)
+    ->with('cities', $cities)
+    ->with('embassdors', $embassdors)
+    ->with('show_embassador', $show_embassador);
     }
     /**
      * Show the form for creating a new resource.

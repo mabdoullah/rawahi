@@ -39,11 +39,11 @@
                                {{ session()->get('success') }}
                                </div>
                                @endif
-                               @if(!count($embassdors))
+                            {{--   @if(!count($embassdors))
                                <div class="alert alert-info text-center" role="alert">
                                  <h4 >عفوا لا يوجد سفراء لعرضها</h4>
                                 </div>
-                               @else
+                               @else--}}
                                <div class="filter-wrapper style1 v2 ">
                                     <div class="container">
                                         <div class="row">
@@ -51,16 +51,16 @@
                                                 <form action="{{route('ambassadors.index')}}" id="searchForm" method="get" class="hero__form v2 filter">
                                                      <div class="row">
                                                          <div class="col-lg-4 col-md-12">
-                                                             <input type="text" id='search_name' name='search_name'placeholder="بحث بالأسم" value="" class="hero__form-input custom-select">
+                                                             <input type="text" id='search_name' name='search_name'placeholder="بحث بالأسم" value="{{ old('search_name') ?? $searchByName ?? null }}" class="hero__form-input custom-select">
                                                          </div>
                                                          <div class="col-lg-3 col-md-12">
-                                                             <input type="text" id='search_email' name='search_email'placeholder="بحث بالأميل" value="" class="hero__form-input custom-select">
+                                                             <input type="text" id='search_email' name='search_email'placeholder="بحث بالأميل" value="{{ old('search_email') ?? $searchByEmail ?? null }}" class="hero__form-input custom-select">
                                                          </div>
                                                          <div class="col-lg-3 col-md-12">
                                                              <select class=" nice-select hero__form-input custom-select"  name="search_city" id="search_city">
                                                                   <option value="">اختر المدينة</option>
                                                                          @foreach ($cities as $city)
-                                                                          <option  value="{{$city->id}}">
+                                                                          <option {{ (old('search_city', isset($searchByCity) ? $searchByCity:'' ) == $city->id) ? 'selected':''  }}  value="{{$city->id}}">
                                                                          {{$city->name}}
                                                                           </option>
                                                                             @endforeach
@@ -110,7 +110,7 @@
                                                 @endif
                                                 @endforeach
                                                 @endif
-                                                @if($count==0)
+                                                @if(($count==0)||(!$embassdors))
                                                 <tr>
                                                     <td colspan="5">
                                                         <div class="alert alert-info text-center" role="alert">
@@ -124,7 +124,7 @@
                                 </div>
                                {{ $embassdors->links() }}
                              </div>
-                               @endif
+                            {{--   @endif--}}
                               @include('front.ambassadors.delete_modal')
                               @include('front.ambassadors.show_modal')
                            </div>
