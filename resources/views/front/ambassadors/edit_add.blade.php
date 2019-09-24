@@ -139,15 +139,21 @@
 
 
                                    <div class="col-md-6">
-                                       <div class="form-group {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }}">
+                                       <!-- <div id="datepicker" class="input-group date form-group {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }}" data-date-format="mm-dd-yyyy">
                                            <label> تاريخ الميلاد</label>
                                            <input  type="date" class="form-control filter-input"placeholder="  تاريخ الميلاد" name="birth_date" value="{{ old('birth_date') ?? $embassador->birth_date ?? null }}" >
                                            @if( $errors->has( 'birth_date' ) )
-                                                   <span class="help-block text-danger">
+                                                   <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i>
                                                        {{ $errors->first( 'birth_date' ) }}
                                                    </span>
                                            @endif
-                                       </div>
+                                       </div> -->
+                                    <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                                        <label> تاريخ الميلاد</label>
+                                        <input  class="form-control filter-input"
+                                        placeholder="  تاريخ الميلاد" type="text" readonly />
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
                                    </div>
                                     <div class="col-md-6">
                                         <div class="form-group {{ $errors->has( 'city' ) ? 'has-error' : '' }}">

@@ -21,6 +21,13 @@
         todayHighlight: true
     });
 
+    $(function () {
+        $("#datepicker").datepicker({ 
+              autoclose: true, 
+              todayHighlight: true
+        }).datepicker('update', new Date());
+      });
+
     /*----------------------------------------
           Scroll to top
   ----------------------------------------*/
@@ -619,5 +626,4 @@
     $(".add-listing__input-file").change(function() {
         readURL(this);
     });
-
 }(jQuery));

@@ -6456,7 +6456,7 @@ label.fix_spacing {
     font-weight: 400 !important;
 }
 
-.add_list_content .filter-input {margin-top: 0 !important;color: #999 !important;font-weight: 300;font-size: 15px;text-align: right !important;}
+.add_list_content .filter-input {width: 100%;margin-top: 0 !important;color: #999 !important;font-weight: 300;font-size: 15px;text-align: right !important;}
 
 .add_list_content h4 {
     margin: 20px 0;
