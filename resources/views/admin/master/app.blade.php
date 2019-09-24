@@ -12,18 +12,19 @@
   		<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
             @include('admin.master.sidebar')
 
-            <!--header starts-->
-            @include('admin.master.header')
-            <!--Header ends-->
-            <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+
+              <!--header starts-->
+              @include('admin.master.header')
+              <!--Header ends-->
+              <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
               @yield('content')
-            </div>
-          
-            <!--Footer Starts-->
-            @include('admin.master.footer')
-            <!--Footer ends-->
-      </div>  
-  </div>      
+              </div>
+  
+        <!--Footer Starts-->
+        @include('admin.master.footer')
+        <!--Footer ends-->
+
+      
 
 </body>
 </html>

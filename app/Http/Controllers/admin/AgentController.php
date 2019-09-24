@@ -24,7 +24,7 @@ class AgentController extends Controller
         // return view('admin.agents.index')->with('agents',$agents);
             $searchByName = trim(request('search'));
             $searchByPhone = trim(request('search_byphone'));
-
+            $searchByEmail =trim(request('search_byemail'));
             $show_agent='';
             $agents = DB::table('agents')
                 ->join('cities', 'agents.city', '=', 'cities.id')
@@ -32,10 +32,19 @@ class AgentController extends Controller
                 'cities.name as city_name' )
                 ->orderBy('agents.id','desc');
                     if(request()->has('search') && request()->get('search')!= '' ){
-                       $agents->where('agents.name','like',"%".$searchByName."%");
+                        $agents->where(function ($q) use ($searchByName) {
+                       $q->where('agents.name','like',"%".$searchByName."%");});
                     }
                 if(request()->has('search_byphone') && request()->get('search_byphone')!= '' ){
-                    $agents->where('agents.phone','like',"%".$searchByPhone."%");
+                    $agents->where(function ($q) use ($searchByPhone) {
+
+                    $q->where('agents.phone','like',"%".$searchByPhone."%");});
+                 }
+
+                 if(request()->has('search_byemail') && request()->get('search_byemail')!= '' ){
+                    $agents->where(function ($q) use ($searchByEmail) {
+
+                    $q->where('agents.email','like',"%".$searchByEmail."%");});
                  }
                 $agents = $agents->paginate(10);
                 return view('admin.agents.index')->with('agents', $agents)->with('show_agent',$show_agent);
