@@ -1,16 +1,16 @@
 
 /*-----------------------------------------------------------
- 
+
 
 
 /*-----------------------------------------------------------
     1  General Styles
     2  Typography
-    3  Buttons & Links 
+    3  Buttons & Links
     4  Fixed Header
     5  Menu
     6  Hero Area
-    7  Breadcrumb 
+    7  Breadcrumb
     8  Catagory Box
     9  Work Proces
     10 Popular category
@@ -45,12 +45,12 @@
     35 Responsive
     36 partner logo
     37 show profile page
-    
+
 -------------------------------------------------------------*/
 
 
 /*-----------------------------------------------------------
-            General Styles 
+            General Styles
 -------------------------------------------------------------*/
 
 body {
@@ -702,7 +702,7 @@ section.coupon {
 
 
 /*-----------------------------------------------------------
-                    Typography 
+                    Typography
 -------------------------------------------------------------*/
 
 body {
@@ -839,18 +839,21 @@ ul.list-inline li {
     font-weight: 400;
 }
 /*===== start pagination ======*/
-.pagination{
-    float: left;
+.pagination,
+.pagination > li{
+    display: inline-block;
+}{
+    display: inline-block;
 }
 .page-item.active .page-link
 
 {
     background-color: #fa8f1b !important;
-    border-color:#fa8f1b 
+    border-color:#fa8f1b
 }
  .page-link:hover{
     background-color: #fa8f1b;
-    border-color:#fa8f1b 
+    border-color:#fa8f1b
 
 }
 /*==== end pagination*/
@@ -2317,7 +2320,7 @@ a.btn.v1.active
 }
 
 .nice-select .option:hover {
-   
+
     color: black !important;
     background: #ffdfbcba !important;
 }
@@ -2339,8 +2342,8 @@ a.btn.v1.active
 
  .option.selected,.nice-select .list:hover .option.selected {
     background-color:  #FA8F1B !important;
-    color:black !important; 
-} 
+    color:black !important;
+}
 
 
 
@@ -2629,7 +2632,7 @@ a.btn.v1.active
 }
 
 /*--------------------------------------------
-            Popular category 
+            Popular category
 ----------------------------------------------*/
 .popular-catagory-content {
     position: relative;
@@ -2721,7 +2724,7 @@ a.btn.v1.active
 }
 
 /*------------------------------------------
-       Discount Coupon 
+       Discount Coupon
 --------------------------------------------*/
 .coupon-wrap .swiper-wrapper {
     padding-bottom: 10px;
@@ -3311,7 +3314,7 @@ a.btn.v1.active
 }
 
 /*----------------------------------------
-            Call to Action 
+            Call to Action
 ----------------------------------------*/
 .call-to-action {
     position: relative;
@@ -3960,7 +3963,7 @@ a.btn.v1.active
 
 
 /*------------------------------------------------
-                     Blog 
+                     Blog
 --------------------------------------------------*/
 
 .single-blog-item.v1 {
@@ -4323,7 +4326,7 @@ ul.icon li::before {
 }
 
 /*-------------------------------------------
-             Filter Listing 
+             Filter Listing
 --------------------------------------------*/
 .range-text {
     line-height: 39px;
@@ -7037,7 +7040,7 @@ input[type="radio"] {
 
 }
 
-/* ----------------------------------------------------------------- 
+/* -----------------------------------------------------------------
                          9. COLOR SWITCHER
 ------------------------------------------------------------------*/
 
@@ -7391,7 +7394,7 @@ th,td{
     margin: auto;
 }
 tr i{
-    font-size: 1.5em; 
+    font-size: 1.5em;
 }
 
 tr button,tr a {
@@ -8674,7 +8677,7 @@ tr button,tr a {
     max-height: 200px;
 }
 
-@media (max-width: 767px) { 
+@media (max-width: 767px) {
     .prof-row:not(:last-child) {
         border-bottom: none
     }

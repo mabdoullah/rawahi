@@ -13,7 +13,7 @@
                         <div class="breadcrumb-menu text-center">
                             <ul>
                                 <li class="active"> <a href="{{route('index')}}">الرئيسية</a> </li>
-                                <li> <h2 class="page-title">تعديل بيانات الوكيل</h2></li>
+                                <li> <h2 class="page-title">تعديل الملف الشخصي</h2></li>
                             </ul>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                     <div class="col-md-12">
                         <div class="tab-content mar-tb-30 add_list_content">
                             <div class="tab-pane fade show active" id="general_info">
-                                <h4> <i class="ion-ios-information"></i>الوكيل:-</h4>
+                                <h4> <i class="ion-ios-information"></i>تعديل بياناتي:-</h4>
                                 @if(session()->has('master_error'))
                                 <div class="alert alert-danger text-center" role="alert">
                                   {{ session()->get('master_error') }}
@@ -45,8 +45,8 @@
                                   @method('PUT')
                                    <div class="col-md-6">
                                        <div class="form-group {{ $errors->has( 'name' ) ? 'has-error' : '' }}">
-                                           <label> الاسم الاول</label>
-                                           <input required type="text" class="form-control filter-input"placeholder="الإسم الاول"  name="name" value="{{old('name', $agent->name)}}">
+                                           <label>الإسم</label>
+                                           <input  type="text" class="form-control filter-input"placeholder="الإسم"  name="name" value="{{old('name', $agent->name)}}">
                                            @if( $errors->has( 'name' ) )
                                                  <span class="help-block text-danger">
                                                      {{ $errors->first( 'name' ) }}
@@ -58,7 +58,7 @@
                                    <div class="col-md-6">
                                        <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                                            <label>  البريد الالكتروني</label>
-                                           <input required type="email" class="form-control filter-input"placeholder="البريد الالكتروني " name="email" value="{{old('email', $agent->email)}}">
+                                           <input  type="email" class="form-control filter-input"placeholder="البريد الالكتروني " name="email" value="{{old('email', $agent->email)}}">
                                            @if( $errors->has( 'email' ) )
                                                  <span class="help-block text-danger">
                                                      {{ $errors->first( 'email' ) }}
@@ -66,11 +66,11 @@
                                              @endif
                                        </div>
                                    </div>
-                          
+
                                    <div class="col-md-6 ">
                                        <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
                                            <label>  رقم الجوال</label>
-                                           <input required dir='ltr' class="form-control filter-input"placeholder="رقم الجوال" name="phone" value="{{old('phone', $agent->phone)}}">
+                                           <input  dir='ltr' class="form-control filter-input"placeholder="رقم الجوال" name="phone" value="{{old('phone', $agent->phone)}}">
                                            @if( $errors->has( 'phone' ) )
                                                  <span class="help-block text-danger">
                                                      {{ $errors->first( 'phone' ) }}
@@ -83,7 +83,7 @@
                                    <div class="col-md-6">
                                        <div class="form-group {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }}">
                                            <label> تاريخ الميلاد</label>
-                                           <input required type="date" class="form-control filter-input"placeholder="  تاريخ الميلاد" name="birth_date" value="{{old('birth_date', $agent->birth_date)}}">
+                                           <input  type="date" class="form-control filter-input"placeholder="  تاريخ الميلاد" name="birth_date" value="{{old('birth_date', $agent->birth_date)}}">
                                            @if( $errors->has( 'birth_date' ) )
                                                    <span class="help-block text-danger">
                                                        {{ $errors->first( 'birth_date' ) }}

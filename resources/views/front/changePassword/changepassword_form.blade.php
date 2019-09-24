@@ -21,6 +21,7 @@
                     <div class="tab-pane fade show active" id="general_info">
                         <h4> <i class="ion-ios-information"></i>تغير كلمة السر</h4>
                           <div class="row">
+                            <div class="col-md-12">
                             <div class="col-md-6">
                                 <div class="form-group {{$errors->has('old_password') ? 'has-error' : '' }}">
                                     <label> كلمة السر القديمة</label>
@@ -32,6 +33,8 @@
                                         @endif
                                 </div>
                             </div>
+                          </div>
+                          <div class="col-md-12">
                             <div class="col-md-6">
                                 <div class="form-group {{$errors->has('new_password') ? 'has-error' : '' }}">
                                     <label> كلمة السر الجديدة</label>
@@ -45,7 +48,8 @@
                                         @endif
                                 </div>
                             </div>
-
+                           </div>
+                           <div class="col-md-12">
                             <div class="col-md-6">
                                 <div class="form-group {{ $errors->has( 'confirm_password' ) ? 'has-error' : '' }}">
                                     <label> تاكيد كلمه السر </label>
@@ -57,7 +61,7 @@
                                       @endif
                                 </div>
                             </div>
-
+                          </div>
                             <div class="col-md-4">
                                 <button type="submit" class="btn v7 mar-top-20">حفظ</button>
                             </div>

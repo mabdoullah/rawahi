@@ -12,7 +12,7 @@ class ChangePasswordController extends Controller
 {
   public function change()
   {
-    return view('front.ChangePassword.index');
+    return view('front.changePassword.changepassword_form');
   }
   public function update(Request $request)
   {
@@ -21,7 +21,7 @@ class ChangePasswordController extends Controller
         'new_password' => 'min:8|required_with:confirm_password|same:confirm_password',
     ]);
     if ($validator->fails()) {
-        return redirect('changepassword/index')
+        return redirect('password/change')
             ->withErrors($validator)
             ->withInput()
             ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
@@ -31,14 +31,14 @@ class ChangePasswordController extends Controller
       $table_name=currentUser()->getTable();
       $ckeck_password=DB::table($table_name)->where('id',currentUser()->id)->update(['password' => bcrypt($request->new_password)]);
       if($ckeck_password){
-        return redirect('changepassword/index')->with('success', 'تم تغير كلمة السر بنجاح');;
+        return redirect('password/change')->with('success', 'تم تغير كلمة السر بنجاح');;
       }
       else{
-        return redirect('changepassword/index')->with('master_error', '!خطأ:لم يتم تغير كلمة السر')->withInput();
+        return redirect('password/change')->with('master_error', '!خطأ:لم يتم تغير كلمة السر')->withInput();
       }
     }
     else{
-      return redirect('changepassword/index')->with('master_error', 'كلمة السر القديمة غير صحيحة')->withInput();
+      return redirect('password/change')->with('master_error', 'كلمة السر القديمة غير صحيحة')->withInput();
     }
 }
   }

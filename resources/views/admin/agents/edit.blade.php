@@ -9,7 +9,7 @@
 <div class='row'>
   @if(session()->has('master_error'))
   <div class="col-12">
-    <div class="alert alert-success text-center" style="display:inline-block; width: 100% " role="alert">
+    <div class="alert alert-danger text-center" style="display:inline-block; width: 100% " role="alert">
       <div class="alert-text">
       </div>
       {{ session()->get('master_error') }}
@@ -136,7 +136,6 @@
     <!--end::Form-->
   </div>
   <!--end::Portlet-->
-</div>
 </div>
 </div>
 

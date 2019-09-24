@@ -2,7 +2,7 @@
 <div id="DeleteModal" class="modal fade " role="dialog" >
    <div class="modal-dialog ">
      <!-- Modal content-->
-     <form action="{{route('embassador.destroy','default')}}" id="deleteForm" method="DELETE">
+     <form action="{{route('ambassadors.destroy','default')}}" id="deleteForm" method="DELETE">
          <div class="modal-content ">
              <div class="modal-header">
 
