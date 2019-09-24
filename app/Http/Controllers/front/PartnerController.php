@@ -18,7 +18,9 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        $partners = Partner::where('embassador_id', embassadorUser()->id)->latest()->orderBy('id')->paginate(10);
+        $partners = Partner::with('citydata')->
+        where('embassador_id', embassadorUser()->id)->latest()->orderBy('id')->paginate(10);
+        
         return view('front.partners.index', compact('partners'));
     }
 
@@ -118,7 +120,8 @@ class PartnerController extends Controller
      */
     public function show($id)
     {
-        $partner = Partner::findOrFail($id);
+        $partner = Partner::with('citydata')->
+        findOrFail($id);
         if (!$partner) {
             return redirect('/');
         }

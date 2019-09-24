@@ -44,13 +44,17 @@
                                 <h4>عفوا لا يوجد شركاء لعرضها</h4>
                               </div>
                               @else
+                              <div class="over-flo">
                                 <table class="table">
                                     <thead class="thead-dark">
                                         <tr>
                                               <th scope="col">إسم الشريك</th>
                                               <th scope="col">الايميل </th>
 
-                                              <th scope="col">التليفون</th>
+                                              <th scope="col">التليفون</th>.
+                                              <th scope="col">المدينة</th>
+                                              <th scope="col">صوره الشريك</th>
+
                                             <th scope="col">تعديل بروفايل الشريك</th>
 
 
@@ -66,7 +70,8 @@
                                             <td>{{$partner->email}}</td>
 
                                             <td>{{$partner->phone}}</td>
-                                            <td><img src="{{$partner->image}}" alt="" srcset=""></td>
+                                            <td>{{$partner->citydata->name}}</td>
+                                            <td><img src="images/partners/{{$partner->image}}" alt="partnerimg" class="imgpartner"></td>
 
 
 
@@ -92,6 +97,8 @@
 
                                     </tbody>
                                 </table>
+                            </div>    
+
                                 <!-- start deleteconfirmation Modal -->
                                      @include('front.partners.deletepartner')
                                 <!-- end deleteconfirmation Modal -->
@@ -131,34 +138,34 @@
                                                         <div class="tab-pane fade profile show active" id="home"
                                                             role="tabpanel" aria-labelledby="home-tab">
                                                             <div class="row data-right-top">
-                                                                <div class="col-md-4">
+                                                                <div class="col-md-4" id="img" >
                                                                     <div class="profile-img" >
-                                                                        <img src="" alt="" srcset="" id="show-image">
+                                                                        <img src=""  id="show-image">
 
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-8">
                                                                     <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <label > الاسم الشريك</label>
+                                                                        <div class="col-md-6 ">
+                                                                            <label  id='namep'> الاسم الشريك</label>
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             <p id="show-name"> </p>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <label>البريد الالكتروني</label>
+                                                                            <label id='email'>البريد الالكتروني</label>
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             <p id="show-email"></p>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                        <label>العنوان</label>
+                                                                        <label id="address">العنوان</label>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <p id="show-address"></p>
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                            <label>رقم الجوال</label>
+                                                                            <label id="phone">رقم الجوال</label>
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             <p id="show-phone"></p>
@@ -170,16 +177,54 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row">
+                                                                    <div class="col-md-3 col-12">
+                                                                        <label id="part-type">نوع الشريك </label>
+                                                                    </div>
+                                                                    <div class="col-md-3 col-12">
+                                                                        <p id="show-part-type"></p>
+                                                                    </div>
+                                                                    <div class="col-md-3 col-12">
+                                                                        <label id="citydata">المدينة</label>
+                                                                    </div>
+                                                                    <div class="col-md-3 col-12">
+                                                                        <p id='show-city'> </p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-3 col-12">
+                                                                        <label id="facebook">الفيس بوك </label>
+                                                                    </div>
+                                                                    <div class="col-md-3 col-12">
+                                                                        <p id="show-facebook"> </p>
+                                                                    </div>
+                                                                    <div class="col-md-3 col-12">
+                                                                        <label id="insatgram"> انستجرام</label>
+                                                                    </div>
+                                                                    <div class="col-md-3 col-12">
+                                                                        <p id='show-insatgram'> </p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-3 col-12">
+                                                                        <label id="twitter">التوتير</label>
+                                                                    </div>
+                                                                    <div class="col-md-3 col-12">
+                                                                        <p id='show-twitter'> </p>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            <div class="row">
+                                                                   
                                                                 <div class="col-md-3 col-12">
-                                                                    <label>وصف الشريك </label>
+                                                                    <label id='about'>وصف الشريك </label>
                                                                 </div>
                                                                 <div class="col-md-3 col-12">
                                                                     <p id="show-about"></p>
                                                                 </div>
 
                                                             </div>
-                                                        </div>
-                                                        <!-- <div class="tab-pane fade" id="profile" role="tabpanel"
+                                                         </div>
+                                                    {{--<div class="tab-pane fade" id="profile" role="tabpanel"
                                                                     aria-labelledby="profile-tab">
                                                                     <div class="row">
                                                                         <div class="col-md-6">
@@ -230,7 +275,7 @@
                                                                 </div> -->
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             </form>
                                             <button type="button" class="btn btn-secondary"
                                                 data-dismiss="modal">أغلاق</button>
@@ -264,19 +309,84 @@
             data:{id:id},
             success: function(response){
           // Add response in Modal body
+          
           var img=response['image'];
           var image="./images/partners/"+img;
           $('#myTabContent').find('p').empty();
-          $('#show-image').attr('src',image);
-          $('#show-name').append(response['legal_name']);
-          $('#show-email').append(response['email']);
-          $('#show-address').append(response['map_address']);
-          $('#show-phone').append(response['phone']);
+         
+          if (response['image']) {
+            $('#show-image').attr('src',image);
+          }else{
+            document.getElementById("img").style.display = "none";
+
+          }
+
+          if (response['legal_name']) {
+            $('#show-name').append(response['legal_name']);
+          }else{
+            document.getElementById("namep").style.display = "none";
+
+          }
+          if (response['email']) {
+            $('#show-email').append(response['email']);
+          }else{
+            document.getElementById("email").style.display = "none";
+
+          }
+          if (response['map_address']) {
+            $('#show-address').append(response['map_address']);
+          }else{
+            document.getElementById("address").style.display = "none";
+
+          }
+          if (response['phone']) {
+     
+            $('#show-phone').append(response['phone']);
+          }else{
+            document.getElementById("phone").style.display = "none";
+
+          }
+        
+          if (response['about']) {
+
           $('#show-about').append(response['about']);
 
+        }else{
+          document.getElementById("about").style.display = "none";
+          }
+        if (response['partner_type']) {
+        $('#show-part-type').append(response['partner_type']);
 
+        }else{
+        document.getElementById("part-type").style.display = "none";
+        } 
+        if (response['citydata']['name']) {
+        $('#show-city').append(response['citydata']['name']);
 
-      }
+        }else{
+        document.getElementById("citydata").style.display = "none";
+        }  
+
+        if (response['facebook']) {
+        $('#show-facebook').append(response['facebook']);
+
+        }else{
+        document.getElementById("facebook").style.display = "none";
+        }  
+
+        if (response['instagram']) {
+        $('#show-insatgram').append(response['instagram']);
+
+        }else{
+        document.getElementById("instagram").style.display = "none";
+        }   
+        if (response['twitter']) {
+        $('#show-twitter').append(response['twitter']);
+
+        }else{
+        document.getElementById("twitter").style.display = "none";
+        }    
+            }
       });
     });
     </script>
