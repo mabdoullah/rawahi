@@ -49,17 +49,17 @@ Route::namespace('front')->group(function () {
 
     Route::middleware(['auth:agent,embassador'])->group(function () {
       // agent and embassador can edit and update embassador data
-      Route::get("embassador/{id}/edit","EmbassadorController@edit")->name('embassador.edit');
-      Route::put("embassador/{id}","EmbassadorController@update")->name('embassador.update');
+      Route::get("ambassadors/{id}/edit","AmbassadorController@edit")->name('ambassadors.edit');
+      Route::put("ambassadors/{id}","AmbassadorController@update")->name('ambassadors.update');
     });
     //
     Route::middleware(['auth:agent'])->group(function () {
       // agent permission for embassadors
-      Route::get("embassador/create","EmbassadorController@create")->name('embassador.create');
-      Route::get("embassador/{id}","EmbassadorController@show")->name('embassador.show');
-      Route::get("embassador","EmbassadorController@index")->name('embassador.index');
-      Route::POST("embassador/store","EmbassadorController@store")->name('embassador.store');
-      Route::DELETE("embassador/{id}","EmbassadorController@destroy")->name('embassador.destroy');
+      Route::get("ambassadors/create","AmbassadorController@create")->name('ambassadors.create');
+      Route::get("ambassadors/{id}","AmbassadorController@show")->name('ambassadors.show');
+      Route::get("ambassadors","AmbassadorController@index")->name('ambassadors.index');
+      Route::POST("ambassadors/store","AmbassadorController@store")->name('ambassadors.store');
+      Route::DELETE("ambassadors/{id}","AmbassadorController@destroy")->name('ambassadors.destroy');
       // agent can update his Data
       Route::get("agent/{id}/edit","AgentController@edit")->name('agent.edit');
       Route::put("agent/{id}","AgentController@update")->name('agent.update');
@@ -91,16 +91,6 @@ Route::namespace('front')->group(function () {
       Route::any('logout','LoginCustomController@logout');
 
 
-      Route::get('user/verify/{token}', 'VerifyCustomController@verifyUser');
+      Route::get('user/verify/{token}', 'LoginCustomController@verifyUser');
 
 });
-
-
-
-
-
-
-
-
-
-

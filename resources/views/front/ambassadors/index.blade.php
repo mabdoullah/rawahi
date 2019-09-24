@@ -48,7 +48,7 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-md-12 pad-top-30 pad-bot-30">
-                                                <form action="{{route('embassador.index')}}" id="searchForm" method="get" class="hero__form v2 filter">
+                                                <form action="{{route('ambassadors.index')}}" id="searchForm" method="get" class="hero__form v2 filter">
                                                      <div class="row">
                                                          <div class="col-lg-4 col-md-12">
                                                              <input type="text" id='search_name' name='search_name'placeholder="بحث بالأسم" value="" class="hero__form-input custom-select">
@@ -99,9 +99,9 @@
                                                     <td>{{$embassador->citydata->name}}</td>
                                                     <td>
                                                         <!-- edit -->
-                                                        <a class="btn v8 view-buttons"  href="{{route('embassador.edit',$embassador->id)}}"> تعديل <i class="icofont-edit"></i></a>
+                                                        <a class="btn v8 view-buttons"  href="{{route('ambassadors.edit',$embassador->id)}}"> تعديل <i class="icofont-edit"></i></a>
                                                         <!-- show -->
-                                                        <a type="button"  data-showembassid ="{{$embassador->id}}" class="btn v8 view-buttons show_button"  data-toggle="modal"data-target="#exampleModal"   href="{{route('embassador.show',$embassador->id)}}"> عرض <i class="icofont-eye-alt"></i></a>
+                                                        <a type="button"  data-showembassid ="{{$embassador->id}}" class="btn v8 view-buttons show_button"  data-toggle="modal"data-target="#exampleModal"   href="{{route('ambassadors.show',$embassador->id)}}"> عرض <i class="icofont-eye-alt"></i></a>
                                                             <!-- delete -->
                                                         {{--<button  class="v8 btn view-buttons" data-toggle="modal" data-embassadorid="{{$embassador->id}}" data-target="#DeleteModal" > حذف<i class="icofont-ui-delete"></i></button>--}}
                                                     </td>
@@ -121,11 +121,12 @@
                                                 @endif
                                             </tbody>
                                         </table>
-                                </div>        
+                                </div>
                                {{ $embassdors->links() }}
+                             </div>
                                @endif
-                              @include('front.embassadors.delete_modal')
-                              @include('front.embassadors.show_modal')
+                              @include('front.ambassadors.delete_modal')
+                              @include('front.ambassadors.show_modal')
                            </div>
                        </div>
                    </div>
