@@ -55,8 +55,8 @@ class EmbassadorController extends Controller
         $searchByName = trim(request('search'));
         $searchByEmail = trim(request('search_byemail'));
         $searchByPhone = trim(request('search_byphone'));
-        $searchByAgent = trim(request('search_agent'));
-
+        $searchByAgent = request('search_agent');
+// dd($searchByAgent);
         $agents = Agent::all(); 
         $agent_id = $request->agent;
 
@@ -72,36 +72,36 @@ class EmbassadorController extends Controller
 
 
 
-          if(request()->has('search_name') && request()->get('search')!= '' ){
+          if(request()->has('search') && request()->get('search')!= '' ){
             $embassadors->where(function ($q) use ($searchByName) {
             $q->where('embassadors.first_name','like',"%".$searchByName."%")
               ->orWhere('embassadors.second_name','like',"%".$searchByName."%");});
          }
+
          if(request()->has('search_byphone') && request()->get('search_byphone')!= '' ){
             $embassadors->where(function ($q) use ($searchByPhone) {
-
             $q->where('embassadors.phone','like',"%".$searchByPhone."%");});
          }
 
          if(request()->has('search_byemail') && request()->get('search_byemail')!= '' ){
             $embassadors->where(function ($q) use ($searchByEmail) {
-
             $q->where('embassadors.email','like',"%".$searchByEmail."%");});
          }
 
-         if(request()->has('search_agent') && request()->get('search_agent')!= '' ){
+         if(request()->has('search_agent') && request()->get('search_agent') != '' ){
             $embassadors->where(function ($q) use ($searchByAgent) {
-
             $q->where('agents.id',$searchByAgent);});
          }
-            if($agent_id){
+        //  dd($embassadors->get());
 
-                $embassadors = $embassadors->where('embassadors.agent_id', $agent_id);
-            }              
+            // if($agent_id){
+
+            //     $embassadors = $embassadors->where('embassadors.agent_id', $agent_id);
+            // }              
     
 
             $embassadors = $embassadors->paginate(10);
-
+// dd($embassadors);
 
             return view('admin.embassadors.index')->with('agents', $agents)->with('show_embassador',$show_embassador)->with('embassadors',$embassadors)->with('agent_id',$agent_id);
 

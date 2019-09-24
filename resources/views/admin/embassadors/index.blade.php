@@ -1,7 +1,17 @@
+<style>
+
+.kt-grid.kt-grid--hor:not(.kt-grid--desktop):not(.kt-grid--desktop-and-tablet):not(.kt-grid--tablet):not(.kt-grid--tablet-and-mobile):not(.kt-grid--mobile) > .kt-grid__item.kt-grid__item--fluid, .kt-grid.kt-grid--hor:not(.kt-grid--desktop):not(.kt-grid--desktop-and-tablet):not(.kt-grid--tablet):not(.kt-grid--tablet-and-mobile):not(.kt-grid--mobile) > .kt-grid__item.kt-grid__item--fluid {
+  display: inline-block !important;
+  flex: none  !important;
+}
+
+</style>
+
 @extends('admin.master.app')
 @section('content')
 
 
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
 
 <div class='row'>
   @if(session()->has('master_error'))
@@ -47,7 +57,7 @@
         <div class="row">
               <div class="col-md-12">
                 <select class="form-control " name="search_agent" id="agentname">
-                  <option value="0">اختر الوكيل</option>
+                  <option value="">اختر الوكيل</option>
 
                   @foreach ($agents as $agent)
                   <option value="{{$agent->id}}" @if($agent->id == $agent_id) selected="selected" @endif >
