@@ -819,6 +819,15 @@ ul.list-inline li {
     color: #fff;
 }
 
+.disabled-id{
+    background-color: #ddd;
+}
+
+.disabled-id p{
+    padding:5px;
+    color: black;
+}
+
 /*-----------------------------------------------------------
                 Buttons & Links
 -------------------------------------------------------------*/
@@ -8695,3 +8704,6 @@ tr button,tr a {
     font-weight: 500;
     color: black;
 }
+
+
+
