@@ -5,7 +5,7 @@
 <div class='row'>
   @if(session()->has('master_error'))
   <div class="col-12">
-    <div class="alert alert-success text-center" style="display:inline-block; width: 100% " role="alert">
+    <div class="alert alert-danger text-center" style="display:inline-block; width: 100% " role="alert">
       <div class="alert-text">
       </div>
       {{ session()->get('master_error') }}
@@ -22,7 +22,6 @@
   </div>
   @endif
 </div>
-<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
 
   <div class="row">
   <div class="kt-portlet kt-portlet--mobile"  style="display:inline-block">
@@ -149,7 +148,7 @@
 
 </div>
 </div>
-</div>
+
 
 @endsection
 
