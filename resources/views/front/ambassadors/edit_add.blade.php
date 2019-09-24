@@ -55,7 +55,15 @@
                                   <form class="row" action="{{route('ambassadors.store')}}" method="POST" enctype="multipart/form-data">
                                     @endif
                                     @csrf
-                                   <div class="col-md-6">
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label > رقم السفير</label>
+                                            <div class="form-control filter-input disabled-id"><p>12</p></div>
+                                        </div>
+
+                                    </div>
+                                   <div class="col-md-5">
                                        <div class="form-group {{ $errors->has( 'first_name' ) ? 'has-error' : '' }}">
                                            <label> الاسم الاول</label>
                                            <input  type="text" class="form-control filter-input"placeholder="الإسم الاول"  name="first_name"  value="{{ old('first_name') ?? $embassador->first_name ?? null }}" >
@@ -66,7 +74,7 @@
                                              @endif
                                        </div>
                                    </div>
-                                   <div class="col-md-6">
+                                   <div class="col-md-5">
                                        <div class="form-group {{ $errors->has( 'second_name' ) ? 'has-error' : '' }}">
                                            <label> الاسم الاخير</label>
                                            <input  type="text" class="form-control filter-input"placeholder="الإسم الاخير " name="second_name" value="{{ old('second_name') ?? $embassador->second_name ?? null }}"  >
