@@ -842,16 +842,14 @@ ul.list-inline li {
 .pagination,
 .pagination > li{
     display: inline-block;
-}{
-    display: inline-block;
-}
-.page-item.active .page-link
 
-{
+}
+.page-item.active .page-link{
     background-color: #fa8f1b !important;
     border-color:#fa8f1b
 }
- .page-link:hover{
+
+.page-link:hover{
     background-color: #fa8f1b;
     border-color:#fa8f1b
 
