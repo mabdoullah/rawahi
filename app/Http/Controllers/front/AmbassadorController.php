@@ -170,7 +170,7 @@ class AmbassadorController extends Controller
                   'email' => 'required|email|'.update_unique_validate('email',$id,'embassadors'),
                   'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.update_unique_validate('phone',$id,'embassadors'),
                   'city' => 'required|exists:cities,id',
-                  'birth_date' => 'date|before:-18 years|required',
+                  // 'birth_date' => 'date|before:-18 years|required',
                   ]);
               if ($validator->fails()) {
                   return redirect('ambassadors/'.$id.'/edit')
