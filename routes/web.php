@@ -27,13 +27,15 @@ Route::group(['prefix' => 'admin', 'namespace'=>'admin' ,'as'=>'admin.' ], funct
       Route::resource("agent","AgentController");
       Route::resource("embassador","EmbassadorController");
       Route::resource("partners","PartnerController");
+      Route::get('search-partner-list','PartnerController@searchpartner')->name('searchpartners');
       Route::GET("settings/password","ChangePasswordController@change")->name('settings.password');
       Route::POST("password/update","ChangePasswordController@update")->name('password.update');
 
   });
 
   Route::get('get-embassador-list','PartnerController@getembassadorList');
-  Route::get('get-partner-list','PartnerController@getpartnerList');
+  Route::get('get-partner-list','PartnerController@getpartnerList')->name('getpartner');
+  
 
   Route::get("login","AdminLoginCustomController@login");
   Route::post("login","AdminLoginCustomController@dologin");

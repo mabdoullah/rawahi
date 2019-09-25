@@ -8706,5 +8706,8 @@ tr button,tr a {
     color: black;
 }
 
-
-
+.imgpartner{
+    max-width: 100px;
+    max-height: 100px;
+    
+}

@@ -55,6 +55,11 @@ class Embassador extends Authenticatable
     {
         return $this->belongsTo('App\Agent');
     }
+    public function partners()
+    {
+        return $this->hasMany('App\Partner','embassador_id');
+    }
+    
 
 
 }
