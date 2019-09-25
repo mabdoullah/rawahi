@@ -26,25 +26,25 @@
       <div class="col-lg-12">
 
         <div class="form-group {{ $errors->has( 'agent' ) ? 'has-error' : '' }}">
-        
+{{--         
           
           <div class="row">
               <label for="search">اسم الشريك </label>
               
               <div class="col-md-12 form-group">
                 <form action="{{route('admin.searchpartners')}} ">
-                <input type="search" name="search" id="searchpartner"  >
+                <input type="search" name="search" id="searchpartner" value='' >
                   @if( $errors->has( 'search' ) )
                   <span class="help-block text-danger">
                     {{ $errors->first( 'search' ) }}
                   </span>
                   @endif
-                </form>
+              
                   </div> <br><br>
            <div class="col-md-5">
             
             <select class="form-control " name="agent" id="agent">
-            <option value=" " selected>اختر الوكيل</option>
+            <option value="" selected>اختر الوكيل</option>
 
             @foreach($agents as $key => $agent)
             <option value="{{$key}}"> {{$agent}}</option>
@@ -56,13 +56,14 @@
               {{ $errors->first( 'agent' ) }}
             </span>
             @endif
+          
             </div> 
 
              <div class="col-md-5">
             <select class="form-control " name="embassador" id="embassador">
         
 
-                <option value="0">اختر السفير </option>
+                <option value="">اختر السفير </option>
                 </select>
     
                 @if( $errors->has( 'embassador' ) )
@@ -72,8 +73,9 @@
                 @endif
                 </div> 
             <button  type="submit" class='btn btn-primary'> ابحث</button>
+          </form>
         </div>
-        </div>
+        </div> --}}
 
         <!--begin: Datatable -->
         <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
@@ -87,14 +89,19 @@
             </tr>
           </thead>
           <tbody id='table-result'>
-        
-               @foreach ($partners as $partner) 
+            
+              
+                  
+                      
+              
+                  @foreach($partners as $partner)
+              
               <tr>
 
 
 
                   <td>{{$partner->legal_name}}</td>
-                  <td>{{$partner->email}}</td>
+                 <td>{{$partner->email}}</td>
 
                   <td>{{$partner->phone}}</td>
 
@@ -117,8 +124,9 @@
                   </td>
 
               </tr>
+              
               @endforeach
-
+              
   
           </tbody>
 
@@ -147,7 +155,7 @@
 
 
 @endsection
-@push('jqueryCode')
+{{-- @push('jqueryCode')
     
 
 <script type="text/javascript">
@@ -157,29 +165,26 @@
 
  $('#agent').change(function(){
     var agentID = $(this).val(); 
-    if(agentID){
-        $.ajax({
-           type:"GET",
-           url:"{{url('admin/get-embassador-list')}}?agent_id="+agentID,
-           success:function(res){       
-            console.log(res);   
-        
-            if(res){
-                $("#embassador").empty();
-                $("#embassador").append('<option>اختر السفير</option>');
-                $.each(res,function(key,value){
-                    $("#embassador").append('<option value="'+key+'">'+value+'</option>');
-                });
-           
-            }else{
-               $("#embassador").empty();
-            }
-           }
-        });
+     if(agentID){
+       
+            $.ajax({
+               type:"GET",
+               url:"{{url('admin/get-embassador-list')}}?agent_id="+agentID,
+               success:function(res){
+                  // console.log(res);
+                  $("#embassador").empty();
+                  if(res){
+                      $("#embassador").append("<option value=''>اختر السفير</option>");
+                      $.each(res,function(key,value){
+                          $("#embassador").append("<option value='"+key+"'>"+value+"</option>");
+                      });
+                  }
+               }
+            });
     }else{
         $("#embassador").empty();
         $("#agent").empty();
-    }      
+    }
    });
 
 
@@ -220,4 +225,4 @@
       
  });
 </script>
-@endpush
+@endpush --}}

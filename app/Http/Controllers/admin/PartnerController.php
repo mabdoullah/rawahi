@@ -6,6 +6,7 @@ use App\City;
 use App\Embassador;
 use App\Http\Controllers\Controller;
 use App\Partner;
+use App\Agent;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -20,77 +21,91 @@ class PartnerController extends Controller
     {
         $agents = DB::table("agents")->pluck("name", "id");
         $partners = Partner::orderBy('id', 'DESC')->get();
-        foreach($partners as $partner){
-            $partner->agent;
-            $partner->created_at;
-            $agents = $partner->post_os;
-            $embassadors = $partner->embassadors;
-            $agents = $partner->agents;
 
-            foreach($embassadors as $embassador){
-                $embassador = Embassador::where('id', $embassador->embassador_id)->first();
-                $embassador['first_name'] = $embassador['first_name'];
-            }
-
-            foreach($agents as $agent){
-                $agent = Agent::where('id', $agent->agent_id)->first();
-                $agent['name'] = $agent['name'];
-            }
-
-         
-        }
-
+        // $agentpartners=  Agent::with(['embassadors.partners' => function ($query) {
+        //     $query->select('*');
+      
+        // }])->get();
+       
         
+     
 
-
-
-        
 
         return view('admin.partners.index', compact('agents', 'partners'));
     }
 /*================================ end index function=========================*/
 
-/*================================ start getembassadorList function=========================*/
+// /*================================ start getembassadorList function=========================*/
 
-    public function getembassadorList(Request $request)
-    {
-        $embassadors = DB::table("embassadors")
-            ->where("agent_id", $request->agent_id)
-            ->pluck("first_name", "id");
-        return response()->json($embassadors);
-    }
-/*================================ end getembassadorList function=========================*/
+//     public function getembassadorList(Request $request)
+//     {
+//         $embassadors = DB::table("embassadors")
+//             ->where("agent_id", $request->agent_id)
+//             ->pluck("first_name", "id");
+//         return response()->json($embassadors);
+//     }
+// /*================================ end getembassadorList function=========================*/
 
-/*================================ start getpartnerList function=========================*/
+// /*================================ start getpartnerList function=========================*/
 
-    public function getpartnerList(Request $request)
-    {
-        $partners = DB::table("partners")
-            ->where("embassador_id", $request->embassador_id)
-            ->pluck("legel_name", "id");
+//     public function getpartnerList(Request $request)
+//     {
+//         $partners = DB::table("partners")
+//             ->where("embassador_id", $request->embassador_id)
+//             ->pluck("legel_name", "id");
 
-        return response()->json($partners);
-    }
+//         return response()->json($partners);
+//     }
 /*================================ end getpartnerList function=========================*/
 
 /*================================ start searchpartner function=========================*/
 
-    public function searchpartner(Request $request)
-    {
-        $partners = Partner::orderBy('id', 'DESC');
-        $agents = DB::table("agents")->pluck("name", "id");
+//     public function searchpartner(Request $request)
+//     {
+//         $embassador_id = request()->get('embassador');
 
-        if (request()->has('search') && request()->get('search') != '') {
-            $partners->where('legal_name', 'like', '%' . request()->get('search') . '%');
-        }
-        $partners = $partners->get();
-        return view('admin.partners.index', compact('partners', 'agents'));
+        
 
-    }
-/*================================ end searchpartner function=========================*/
+//         $partners = Partner::orderBy('id', 'DESC');
+//         $agents = DB::table("agents")->pluck("name", "id");
+//         $search=$request->search;
+//         // if (request()->has('agent') && request()->get('agent') != '') {
+//             $agentpartners = Agent::with(
+//                 ['embassadors' => function ($query1) use ($embassador_id) {
+//                     $query1->where('sid',$embassador_id);
+//                 }]
+//                 )
+
+//             //    ->with(['embassadors.partners' => function ($query) use ($search,$embassador_id) {
+//             //         $query->orwhere(function($q) use ($search,$embassador_id) {
+//             //             $q->where('embassador_id',$embassador_id);
+//             //         })
+//             //         ->where(function($q1) use ($search) {
+//             //             $q1->where('rrlegal_name', 'like', '%' .$search . '%');
+//             //         });
+//             //     }])
+//             // ->orwhere(function($q2) use ($search) {
+//             //     $q2->where('id','!=',0)->orwhere('id',request()->get('agent'));
+//             // })
+//             ->get();
+//             dd($agentpartners);
+
+//         //   }
+//         //   if (request()->has('search') && request()->get('search') != '') {
+//         //     $agentpartners->where('legal_name', 'like', '%' . request()->get('search') . '%');
+//         // }
+//         // dd($agentpartners->get());
+//         $partners =[];
+
+        
+       
+//         return view('admin.partners.index', compact('partners', 'agents','agentpartners'));
+
+//     }
+// /*================================ end searchpartner function=========================*/
 
 /*================================ start create function=========================*/
-    public function create()
+     public function create()
     {
         $embassadors = Embassador::all();
 
@@ -98,6 +113,9 @@ class PartnerController extends Controller
 
         return view('admin.partners.create', compact('cities', 'embassadors'));
     }
+/*================================ end create function=========================*/
+
+/*================================ Store store function=========================*/
 
     public function store(Request $request)
     {

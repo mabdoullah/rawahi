@@ -28,16 +28,8 @@ class Partner extends Authenticatable
         , 'twitter',
     ];
 
-    public function citydata()
-    {
-        return $this->belongsTo('App\City','city','id');
-    }
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+
     protected $table = 'partners';
 
     /**
@@ -57,4 +49,14 @@ class Partner extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function citydata()
+    {
+        return $this->belongsTo('App\City','city','id');
+    }
+
+    public function embassadors()
+    {
+        return $this->belongsTo('App\Embassador','embassador_id','id');
+    }
 }
