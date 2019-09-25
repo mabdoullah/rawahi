@@ -95,10 +95,11 @@
       <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
         <thead>
           <tr>
-            <th>المدينة</th>
             <th>الاسم</th>
-            <th>الاميل</th>
             <th>رقم التليفون</th>
+            <th>البريد الالكترونى</th>
+            <th>المدينة</th>
+
             <th> تاريخ الميلاد</th>
             <th>العمليات</th>
 
@@ -107,10 +108,11 @@
         <tbody id='table-result'>
           @foreach($agents as $agent)
           <tr>
-            <td>{{$agent->city_name}}</td>
             <td>{{$agent->name}}</td>
-            <td class="d-none d-lg-block">{{$agent->email}}</td>
             <td>{{$agent->phone}}</td>
+            <td class="d-none d-lg-block">{{$agent->email}}</td>
+            <td>{{$agent->city_name}}</td>
+
             <td>{{$agent->birth_date}}</td>
             <td>
               <a href="{{ route('admin.agent.edit', $agent->agent_id)}}" class="btn btn-primary">تعديل</a>

@@ -103,7 +103,7 @@ class EmbassadorController extends Controller
             $embassadors = $embassadors->paginate(10);
 // dd($embassadors);
 
-            return view('admin.embassadors.index')->with('agents', $agents)->with('show_embassador',$show_embassador)->with('embassadors',$embassadors)->with('searchByName',$searchByName)->with('searchByEmail',$searchByEmail)->with('searchByPhone',$searchByPhone)->with('agent_id',$agent_id);
+            return view('admin.embassadors.index')->with('searchByAgent', $searchByAgent)->with('agents', $agents)->with('show_embassador',$show_embassador)->with('embassadors',$embassadors)->with('searchByName',$searchByName)->with('searchByEmail',$searchByEmail)->with('searchByPhone',$searchByPhone)->with('agent_id',$agent_id);
 
 
 

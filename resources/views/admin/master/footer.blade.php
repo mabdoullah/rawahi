@@ -318,6 +318,7 @@
            <script>
     $('#kt_datepicker_2').datepicker({
                 format: 'yyyy-mm-dd',   
+                
                 autoclose: true,
                 todayHighlight: true
             });
