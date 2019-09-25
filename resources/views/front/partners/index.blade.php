@@ -52,30 +52,30 @@
                                            <div class="col-md-12 pad-top-30 pad-bot-30">
                                                <form action="{{route('ambassadors.index')}}" id="searchForm" method="get" class="hero__form v2 filter">
                                                     <div class="row">
-                                                        <div class="col-lg-4 col-md-12">
+                                                        <div class="col-lg-2 col-md-12">
                                                             <input type="text" id='search_name' name='search_name'placeholder="بحث بالأسم" value="{{ old('search_name') ?? $searchByName ?? null }}" class="hero__form-input custom-select">
                                                         </div>
-                                                        <div class="col-lg-3 col-md-12">
+                                                        <div class="col-lg-2 col-md-12">
                                                             <input type="text" id='search_email' name='search_email'placeholder="بحث بالأميل" value="{{ old('search_email') ?? $searchByEmail ?? null }}" class="hero__form-input custom-select">
                                                         </div>
                                                         <div class="col-lg-3 col-md-12">
                                                             <select class=" nice-select hero__form-input custom-select"  name="search_city" id="search_city">
                                                                  <option value="">اختر المدينة</option>
-                                                                      {{--  @foreach ($cities as $city)
+                                                                        @foreach ($cities as $city)
                                                                          <option {{ (old('search_city', isset($searchByCity) ? $searchByCity:'' ) == $city->id) ? 'selected':''  }}  value="{{$city->id}}">
                                                                         {{$city->name}}
                                                                          </option>
-                                                                           @endforeach--}}
+                                                                           @endforeach
                                                             </select>
                                                         </div>
                                                         <div class="col-lg-3 col-md-12">
-                                                            <select class=" nice-select hero__form-input custom-select"  name="search_city" id="search_city">
-                                                                 <option value="">اختر المدينة</option>
-                                                                      {{--  @foreach ($cities as $city)
-                                                                         <option {{ (old('search_city', isset($searchByCity) ? $searchByCity:'' ) == $city->id) ? 'selected':''  }}  value="{{$city->id}}">
-                                                                        {{$city->name}}
+                                                            <select class=" nice-select hero__form-input custom-select"  name="search_type" id="search_type">
+                                                                 <option value="">اختر نوع الشريك</option>
+                                                                       @foreach ($types as $key=>$type)
+                                                                         <option {{ (old('search_type', isset($search_type) ? $search_type:'' ) == $key) ? 'selected':''  }}  value="{{$key}}">
+                                                                        {{$type}}
                                                                          </option>
-                                                                           @endforeach--}}
+                                                                           @endforeach
                                                             </select>
                                                         </div>
                                                         <div class="col-lg-2 col-md-12 text-center">

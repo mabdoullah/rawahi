@@ -16,14 +16,25 @@ class PartnerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-         
-        
-        $partners = Partner::with('citydata')->
-        where('embassador_id', embassadorUser()->id)->latest()->orderBy('id')->paginate(10);
-        
-        return view('front.partners.index', compact('partners'));
+      $searchByName=$request->search_name;
+      $searchByEmail=$request->search_email;
+      $searchByCity=$request->search_city;
+      $search_type=$request->search_type;
+      $cities = City::where('country_id', 191)->get();
+      $types=partnersTypesArray();
+      $partners = Partner::with('citydata')
+                         ->where('embassador_id', embassadorUser()->id)
+                         ->latest()->orderBy('id')->paginate(10);
+
+        return view('front.partners.index', compact('partners'))
+            ->with('searchByName', $searchByName)
+            ->with('searchByEmail', $searchByEmail)
+            ->with('searchByCity', $searchByCity)
+            ->with('search_type', $search_type)
+            ->with('types', $types)
+            ->with('cities', $cities);
     }
 
     /**
@@ -33,12 +44,7 @@ class PartnerController extends Controller
      */
     public function create()
     {
-
-
-
-
         $cities = City::where('country_id', 191)->get();
-
         return view('front.partners.create', compact('cities'));
     }
 
