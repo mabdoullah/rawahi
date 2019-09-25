@@ -819,6 +819,15 @@ ul.list-inline li {
     color: #fff;
 }
 
+.disabled-id{
+    background-color: #ddd;
+}
+
+.disabled-id p{
+    padding:5px;
+    color: black;
+}
+
 /*-----------------------------------------------------------
                 Buttons & Links
 -------------------------------------------------------------*/
@@ -833,16 +842,14 @@ ul.list-inline li {
 .pagination,
 .pagination > li{
     display: inline-block;
-}{
-    display: inline-block;
-}
-.page-item.active .page-link
 
-{
+}
+.page-item.active .page-link{
     background-color: #fa8f1b !important;
     border-color:#fa8f1b
 }
- .page-link:hover{
+
+.page-link:hover{
     background-color: #fa8f1b;
     border-color:#fa8f1b
 
@@ -6449,7 +6456,7 @@ label.fix_spacing {
     font-weight: 400 !important;
 }
 
-.add_list_content .filter-input {margin-top: 0 !important;color: #999 !important;font-weight: 300;font-size: 15px;text-align: right !important;}
+.add_list_content .filter-input {width: 100%;margin-top: 0 !important;color: #999 !important;font-weight: 300;font-size: 15px;text-align: right !important;}
 
 .add_list_content h4 {
     margin: 20px 0;
@@ -8698,3 +8705,6 @@ tr button,tr a {
     font-weight: 500;
     color: black;
 }
+
+
+

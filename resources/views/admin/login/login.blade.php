@@ -39,10 +39,15 @@
       					<div class="kt-login__head">
       						<h3 class="kt-login__title">تسجيل الدخول</h3>
       					</div>
+                @if(session()->has('custom_error'))
+                <div class=" text-danger text-center" role="alert">
+                  {{ session()->get('custom_error') }}
+                </div>
+                @endif
 						<form class="kt-form" action="{{url('admin/login')}}" method="post">
 								@csrf
       						<div class="input-group">
-								  
+
 								<input dir="rtl" class="form-control is-invalid" type="text" placeholder="البريد الإلكتروني" name="email" autocomplete="off"
 								  value="{{old('email')}}" aria-describedby="email-error">
 								  @if( $errors->has( 'email' ) )

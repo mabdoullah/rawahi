@@ -21,8 +21,8 @@
                     <div class="tab-pane fade show active" id="general_info">
                         <h4> <i class="ion-ios-information"></i>تغير كلمة السر</h4>
                           <div class="row">
-                            <div class="col-md-12">
-                            <div class="col-md-6">
+
+                            <div class="col-md-4">
                                 <div class="form-group {{$errors->has('old_password') ? 'has-error' : '' }}">
                                     <label> كلمة السر القديمة</label>
                                     <input  name="old_password" type="password"class="form-control filter-input"placeholder="كلمة السر القديمة"value="{{ old('old_password')}}">
@@ -33,9 +33,9 @@
                                         @endif
                                 </div>
                             </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="col-md-6">
+
+
+                            <div class="col-md-4">
                                 <div class="form-group {{$errors->has('new_password') ? 'has-error' : '' }}">
                                     <label> كلمة السر الجديدة</label>
                                     <input  name="new_password" type="password"
@@ -48,9 +48,9 @@
                                         @endif
                                 </div>
                             </div>
-                           </div>
-                           <div class="col-md-12">
-                            <div class="col-md-6">
+
+
+                            <div class="col-md-4">
                                 <div class="form-group {{ $errors->has( 'confirm_password' ) ? 'has-error' : '' }}">
                                     <label> تاكيد كلمه السر </label>
                                     <input  type="password" class="form-control filter-input"placeholder="تاكيد كلمه السر  " name="confirm_password" value="{{ old('confirm_password')}}">
@@ -61,9 +61,9 @@
                                       @endif
                                 </div>
                             </div>
-                          </div>
+
                             <div class="col-md-4">
-                                <button type="submit" class="btn v7 mar-top-20">حفظ</button>
+                                <button type="submit" class="btn v7 mar-top-20">حفظ التغييرات</button>
                             </div>
                           </div>
                     </div>
