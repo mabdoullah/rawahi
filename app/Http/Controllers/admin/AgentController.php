@@ -47,7 +47,7 @@ class AgentController extends Controller
                     $q->where('agents.email','like',"%".$searchByEmail."%");});
                  }
                 $agents = $agents->paginate(10);
-                return view('admin.agents.index')->with('agents', $agents)->with('show_agent',$show_agent);
+                return view('admin.agents.index')->with('agents', $agents)->with('searchByName',$searchByName)->with('searchByPhone',$searchByPhone)->with('searchByEmail',$searchByEmail)->with('show_agent',$show_agent);
 
             }
     /**

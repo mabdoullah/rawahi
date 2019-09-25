@@ -75,28 +75,39 @@
   
 
 
+         
+
+
+
           <div class="form-group row">
-            <label class="col-form-label col-lg-3 col-sm-12 form-group {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }}"> تاريخ ميلادك</label>
-            <div class="col-lg-4 col-md-9 col-sm-12">
-              <div class="input-group date">
+           <div class="col-lg-6 ">
+           <div class=" {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }} ">    
+            <label >ادخل تاريخ ميلادك</label> 
+
+              <div class=" date">
+              <div class="input-group">
                 <input type="text" class="form-control" readonly="" placeholder=" تاريخ الميلاد" id="kt_datepicker_2" name="birth_date" value={{$embassador->birth_date}}>
-                @if( $errors->has( 'birth_date' ) )
-                <span class="help-block text-danger">
-                  {{ $errors->first( 'birth_date' ) }}
-                </span>
-                @endif
                 <div class="input-group-append">
                   <span class="input-group-text">
                     <i class="la la-calendar-check-o"></i>
                   </span>
                 </div>
+                </div>
+                @if( $errors->has( 'birth_date' ) )
+                <span class="help-block text-danger">
+                  {{ $errors->first( 'birth_date' ) }}
+                </span>
+                @endif
+               
+                
               </div>
             </div>
-          </div>
+            </div>
 
+       </div>
           <div class="form-group row">
             <div class="col-lg-6">
-                <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
+                <div class=" {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
                   <label> رقم الجوال</label>
                   <input  class="form-control text-left " placeholder="رقم الجوال" name="phone" value={{ $embassador->phone }}>
                   @if( $errors->has( 'phone' ) )
@@ -110,7 +121,7 @@
 
           <div class="form-group row">
             <div class="col-lg-6">
-              <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
+              <div class=" {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                 <label> البريد الالكتروني</label>
                 <input  type="email" class="form-control " placeholder="البريد الالكتروني " name="email" value={{ $embassador->email }}>
                 @if( $errors->has( 'email' ) )
@@ -121,9 +132,10 @@
               </div>
           </div>
           </div>
-
+          
+            <div class="form-group row">
             <div class="col-lg-6">
-              <div class="form-group {{ $errors->has( 'city' ) ? 'has-error' : '' }}">
+              <div class=" {{ $errors->has( 'city' ) ? 'has-error' : '' }}">
                 <label> المدينه </label>
                 <select class="form-control " name="city" id="city">
 
@@ -141,11 +153,12 @@
                 @endif
               </div>
               </div>
-
+              </div>
            
 
+              <div class="form-group row">
               <div class="col-lg-6">
-                <div class="form-group {{ $errors->has( 'agent' ) ? 'has-error' : '' }}">
+                <div class=" {{ $errors->has( 'agent' ) ? 'has-error' : '' }}">
                   <label> اختار الشريك </label>
                   <select class="form-control " name="agent_id" id="agentname">
                     @foreach ($agents as $agent)
@@ -161,7 +174,7 @@
                   @endif
                 </div>
               </div>
-            </div>
+              </div>
               <div class="kt-portlet__foot">
             <div class="kt-form__actions">
               <div class="row">
@@ -172,7 +185,7 @@
 
               </div>
        
-
+              </div>
           </div>
           </div>
       </form>

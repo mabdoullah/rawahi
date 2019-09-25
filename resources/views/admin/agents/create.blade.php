@@ -55,8 +55,9 @@
               </span>
               @endif
             </div>
-            <div class="col-lg-6">
-              <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
+            </div>
+          <div class="form-group row">
+              <div class="col-lg-6 {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                 <label> البريد الالكتروني</label>
                 <input type="email" class="form-control " placeholder="البريد الالكتروني " name="email" value="{{ old('email')}}">
                 @if( $errors->has( 'email' ) )
@@ -65,11 +66,11 @@
                 </span>
                 @endif
               </div>
-            </div>
           </div>
+          
           <div class="form-group row">
             <div class="col-lg-6">
-              <div class="form-group {{ $errors->has( 'city' ) ? 'has-error' : '' }}">
+              <div class=" {{ $errors->has( 'city' ) ? 'has-error' : '' }}">
                 <label> المدينه </label>
                 <select class="form-control " name="city" id="city">
                   <option value="0">اختر المدينة</option>
@@ -87,10 +88,10 @@
                 @endif
               </div>
             </div>
+          </div>
 
-
-            <div class="col-lg-6">
-              <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
+            <div class="form-group row">
+              <div class="col-lg-6 {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
                 <label> رقم الجوال</label>
                 <input dir='ltr' class="form-control text-left" placeholder="رقم الجوال" name="phone" value="{{ old('phone')}}">
                 @if( $errors->has( 'phone' ) )
@@ -100,10 +101,10 @@
                 @endif
               </div>
             </div>
-          </div>
+          
           <div class="form-group row">
             <div class="col-lg-6">
-              <div class="form-group {{ $errors->has( 'password' ) ? 'has-error' : '' }}">
+              <div class=" {{ $errors->has( 'password' ) ? 'has-error' : '' }}">
                 <label> كلمه السر </label>
                 <input type="password" class="form-control " placeholder="كلمه السر" value="{{ old('password')}}" name="password">
                 @if( $errors->has( 'password' ) )
@@ -113,9 +114,9 @@
                 @endif
               </div>
             </div>
-
-            <div class="col-lg-6">
-              <div class="form-group {{ $errors->has( 'confirm_password' ) ? 'has-error' : '' }}">
+          </div>
+            <div class="form-group row">
+              <div class="col-lg-6 {{ $errors->has( 'confirm_password' ) ? 'has-error' : '' }}">
                 <label> تاكيد كلمه السر </label>
                 <input type="password" class="form-control " placeholder="تاكيد كلمه السر  " name="confirm_password" value="{{ old('confirm_password')}}">
                 @if( $errors->has( 'confirm_password' ) )
@@ -125,32 +126,37 @@
                 @endif
               </div>
             </div>
-          </div>
+          
 
 
           <div class="form-group row">
+           <div class="col-lg-6 ">
+           <div class=" {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }} ">    
+            <label >ادخل تاريخ ميلادك</label> 
 
-            <label class="col-form-label col-lg-3 col-sm-12 form-group {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }}">ادخل تاريخ ميلادك</label>
-            <div class="col-lg-4 col-md-9 col-sm-12">
-              <div class="input-group date">
+              <div class=" date">
+              <div class="input-group">
                 <input type="text" class="form-control" readonly="" placeholder=" تاريخ الميلاد" id="kt_datepicker_2" name="birth_date" value="{{ old('birth_date')}}">
-                @if( $errors->has( 'birth_date' ) )
-                <span class="help-block text-danger">
-                  {{ $errors->first( 'birth_date' ) }}
-                </span>
-                @endif
                 <div class="input-group-append">
                   <span class="input-group-text">
                     <i class="la la-calendar-check-o"></i>
                   </span>
                 </div>
+                </div>
+                @if( $errors->has( 'birth_date' ) )
+                <span class="help-block text-danger">
+                  {{ $errors->first( 'birth_date' ) }}
+                </span>
+                @endif
+               
+                
               </div>
             </div>
-          </div>
+            </div>
 
+       </div>
 
-
-        </div>
+       
         <div class="kt-portlet__foot">
           <div class="kt-form__actions">
             <div class="row">

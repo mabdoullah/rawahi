@@ -53,6 +53,8 @@
                         </span>
                         @endif
                     </div>
+                    </div>
+                    <div class="form-group row">
                     <div class="col-lg-6 {{ $errors->has( 'second_name' ) ? 'has-error' : '' }}">
                         <label> الاسم الاخير</label>
                         <input class="form-control " placeholder="الاسم الاخير" name="second_name" value="{{ old('second_name')}}">
@@ -62,8 +64,10 @@
                         </span>
                         @endif
                     </div>
+                    </div>
+                    <div class="form-group row">
                     <div class="col-lg-6">
-                        <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
+                        <div class=" {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                             <label> البريد الالكتروني</label>
                             <input class="form-control " placeholder="البريد الالكتروني " name="email" value="{{ old('email')}}">
                             @if( $errors->has( 'email' ) )
@@ -73,11 +77,11 @@
                             @endif
                         </div>
                     </div>
-                </div>
+                    </div>
 
                 <div class="form-group row">
                     <div class="col-lg-6">
-                        <div class="form-group {{ $errors->has( 'agent' ) ? 'has-error' : '' }}">
+                        <div class=" {{ $errors->has( 'agent' ) ? 'has-error' : '' }}">
                             <label> المدينه </label>
                             <select class="form-control " name="city" id="city">
                                 <option value="0">اختر المدينة</option>
@@ -95,8 +99,10 @@
                             @endif
                         </div>
                     </div>
+                </div>
+                <div class="form-group row">     
                     <div class="col-lg-6">
-                        <div class="form-group {{ $errors->has( 'city' ) ? 'has-error' : '' }}">
+                        <div class="{{ $errors->has( 'city' ) ? 'has-error' : '' }}">
                             <label> الوكلاء </label>
                             <select class="form-control " name="agent_id" id="agentname">
                                 @foreach ($agents as $agent)
@@ -112,9 +118,10 @@
                         </div>
 
                     </div>
+                </div>
 
-                    <div class="col-lg-6">
-                        <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
+                    <div class="form-group row">
+                        <div class="col-lg-6 {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
                             <label> رقم الجوال</label>
                             <input class="form-control " placeholder="رقم الجوال" name="phone" value="{{ old('phone')}}">
                             @if( $errors->has( 'phone' ) )
@@ -124,10 +131,10 @@
                             @endif
                         </div>
                     </div>
-                </div>
+                
                 <div class="form-group row">
                     <div class="col-lg-6">
-                        <div class="form-group {{ $errors->has( 'password' ) ? 'has-error' : '' }}">
+                        <div class=" {{ $errors->has( 'password' ) ? 'has-error' : '' }}">
                             <label> كلمه السر </label>
                             <input type="password" class="form-control " placeholder="كلمه السر" value="{{ old('password')}}" name="password">
                             @if( $errors->has( 'password' ) )
@@ -137,9 +144,9 @@
                             @endif
                         </div>
                     </div>
-
-                    <div class="col-lg-6">
-                        <div class="form-group {{ $errors->has( 'confirm_password' ) ? 'has-error' : '' }}">
+                </div>
+                    <div class="form-group row">
+                        <div class="col-lg-6 {{ $errors->has( 'confirm_password' ) ? 'has-error' : '' }}">
                             <label> تاكيد كلمه السر </label>
                             <input type="password" class="form-control " placeholder="تاكيد كلمه السر  " name="confirm_password" value="{{ old('confirm_password')}}">
                             @if( $errors->has( 'confirm_password' ) )
@@ -149,31 +156,38 @@
                             @endif
                         </div>
                     </div>
-                </div>
+                
 
 
+
+            
 
                 <div class="form-group row">
+           <div class="col-lg-6 ">
+           <div class=" {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }} ">    
+            <label >ادخل تاريخ ميلادك</label> 
 
-                    <label class="col-form-label col-lg-3 col-sm-12 form-group {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }}">ادخل تاريخ ميلادك</label>
-                    <div class="col-lg-4 col-md-9 col-sm-12">
-                        <div class="input-group date">
-                            <input type="text" class="form-control" readonly="" placeholder=" تاريخ الميلاد" id="kt_datepicker_2" name="birth_date"  value="{{ old('birth_date')}}">
-                            @if( $errors->has( 'birth_date' ) )
-                            <span class="help-block text-danger">
-                                {{ $errors->first( 'birth_date' ) }}
-                            </span>
-                            @endif
-                            <div class="input-group-append">
-                                <span class="input-group-text">
-                                    <i class="la la-calendar-check-o"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+              <div class=" date">
+              <div class="input-group">
+                <input type="text" class="form-control" readonly="" placeholder=" تاريخ الميلاد" id="kt_datepicker_2" name="birth_date" value="{{ old('birth_date')}}">
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i class="la la-calendar-check-o"></i>
+                  </span>
                 </div>
+                </div>
+                @if( $errors->has( 'birth_date' ) )
+                <span class="help-block text-danger">
+                  {{ $errors->first( 'birth_date' ) }}
+                </span>
+                @endif
+               
+                
+              </div>
+            </div>
+            </div>
 
-
+       </div>
 
 
 

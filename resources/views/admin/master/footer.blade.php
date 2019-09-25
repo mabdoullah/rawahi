@@ -316,13 +316,9 @@
 
            <script src="{{asset('admin_design/js/scripts.bundle.js')}}" type="text/javascript"></script>
            <script>
-    // $('#kt_datepicker_2').datepicker({
-    //     autoclose : true,
-    //     todayHighlight: true
-    // });
-
     $('#kt_datepicker_2').datepicker({
-                format: 'yyyy-mm-dd',
+                format: 'yyyy-mm-dd',   
+                
                 autoclose: true,
                 todayHighlight: true
             });
