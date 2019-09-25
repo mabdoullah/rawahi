@@ -91,7 +91,7 @@
           
           <div class="form-group row">
             <div class="col-lg-6">
-              <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
+              <div class=" {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
                 <label> رقم الجوال</label>
                 <input  class="form-control text-left" placeholder="رقم الجوال" dir='ltr' name="phone" value={{ $agent->phone }}>
                 @if( $errors->has( 'phone' ) )
@@ -105,7 +105,7 @@
 
           <div class="form-group row">
             <div class="col-lg-6">
-              <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
+              <div class=" {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                 <label> البريد الالكتروني</label>
                 <input  type="email" class="form-control " placeholder="البريد الالكتروني " name="email" value={{ $agent->email }}>
                 @if( $errors->has( 'email' ) )
@@ -118,7 +118,7 @@
           </div>
             <div class="form-group row">
           <div class="col-lg-6">
-            <div class="form-group {{ $errors->has( 'city' ) ? 'has-error' : '' }}">
+            <div class=" {{ $errors->has( 'city' ) ? 'has-error' : '' }}">
               <label> المدينه </label>
               <select class="form-control " name="city" id="city">
 
