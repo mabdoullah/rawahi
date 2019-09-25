@@ -44,6 +44,52 @@
                                 <h4>عفوا لا يوجد شركاء لعرضها</h4>
                               </div>
                               @else
+
+
+                              <div class="filter-wrapper style1 v2 ">
+                                   <div class="container">
+                                       <div class="row">
+                                           <div class="col-md-12 pad-top-30 pad-bot-30">
+                                               <form action="{{route('ambassadors.index')}}" id="searchForm" method="get" class="hero__form v2 filter">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-12">
+                                                            <input type="text" id='search_name' name='search_name'placeholder="بحث بالأسم" value="{{ old('search_name') ?? $searchByName ?? null }}" class="hero__form-input custom-select">
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-12">
+                                                            <input type="text" id='search_email' name='search_email'placeholder="بحث بالأميل" value="{{ old('search_email') ?? $searchByEmail ?? null }}" class="hero__form-input custom-select">
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-12">
+                                                            <select class=" nice-select hero__form-input custom-select"  name="search_city" id="search_city">
+                                                                 <option value="">اختر المدينة</option>
+                                                                      {{--  @foreach ($cities as $city)
+                                                                         <option {{ (old('search_city', isset($searchByCity) ? $searchByCity:'' ) == $city->id) ? 'selected':''  }}  value="{{$city->id}}">
+                                                                        {{$city->name}}
+                                                                         </option>
+                                                                           @endforeach--}}
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-12">
+                                                            <select class=" nice-select hero__form-input custom-select"  name="search_city" id="search_city">
+                                                                 <option value="">اختر المدينة</option>
+                                                                      {{--  @foreach ($cities as $city)
+                                                                         <option {{ (old('search_city', isset($searchByCity) ? $searchByCity:'' ) == $city->id) ? 'selected':''  }}  value="{{$city->id}}">
+                                                                        {{$city->name}}
+                                                                         </option>
+                                                                           @endforeach--}}
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-lg-2 col-md-12 text-center">
+                                                            <button type="submit" name="" class="btn  v3" >بحث</button>
+                                                        </div>
+                                                     </div>
+                                               </form>
+                                            </div>
+                                       </div>
+                                    </div>
+                              </div>
+
+
+
                               <div class="over-flo">
                                 <table class="table">
                                     <thead class="thead-dark">
@@ -97,7 +143,7 @@
 
                                     </tbody>
                                 </table>
-                            </div>    
+                            </div>
 
                                 <!-- start deleteconfirmation Modal -->
                                      @include('front.partners.deletepartner')
@@ -211,10 +257,10 @@
                                                                     <div class="col-md-3 col-12">
                                                                         <p id='show-twitter'> </p>
                                                                     </div>
-                                                                    
+
                                                                 </div>
                                                             <div class="row">
-                                                                   
+
                                                                 <div class="col-md-3 col-12">
                                                                     <label id='about'>وصف الشريك </label>
                                                                 </div>
@@ -312,7 +358,7 @@
           var img=response['partner']['image'];
           var image="./images/partners/"+img;
           $('#myTabContent').find('p').empty();
-         
+
           if (response['partner']['image']) {
             $('#show-image').attr('src',image);
           }else{
@@ -339,13 +385,13 @@
 
           }
           if (response['partner']['phone']) {
-     
+
             $('#show-phone').append(response['partner']['phone']);
           }else{
             document.getElementById("phone").style.display = "none";
 
           }
-        
+
           if (response['partner']['about']) {
 
           $('#show-about').append(response['partner']['about']);
@@ -356,42 +402,42 @@
         if (response['partner']['partner_type']) {
 
             $.each(response['types'], function( index, value ) {
-                
+
                 if (response['partner']['partner_type']==index) {
                     $('#show-part-type').append(value);
 
                 }
 });
-      
+
         }else{
         document.getElementById("part-type").style.display = "none";
-        } 
+        }
         if (response['partner']['citydata']['name']) {
         $('#show-city').append(response['partner']['citydata']['name']);
 
         }else{
         document.getElementById("citydata").style.display = "none";
-        }  
+        }
 
         if (response['partner']['facebook']) {
         $('#show-facebook').append(response['partner']['facebook']);
 
         }else{
         document.getElementById("facebook").style.display = "none";
-        }  
+        }
 
         if (response['partner']['instagram']) {
         $('#show-insatgram').append(response['partner']['instagram']);
 
         }else{
         document.getElementById("instagram").style.display = "none";
-        }   
+        }
         if (response['partner']['twitter']) {
         $('#show-twitter').append(response['partner']['twitter']);
 
         }else{
         document.getElementById("twitter").style.display = "none";
-        }    
+        }
             }
       });
     });
