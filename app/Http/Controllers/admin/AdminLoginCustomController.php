@@ -28,14 +28,10 @@ class AdminLoginCustomController extends Controller
 
 		$check = Admin::select('email')->where('email',$request->email)->first();
 		if(empty($check)){
-      dd('rfryrt');
-
 			session()->flash('custom_error','البريد الإلكترونى غير مسجل');
 			return redirect()->back()->withInput();
 		}
-
 		$rememberme = request('rememberme') == 1 ? true :false;
-
 		if(Auth::guard('admin')->attempt(['email'=>request('email'),'password'=>request('password')],$rememberme)){
 		 	return redirect( 'admin/' );
 		 }else{
