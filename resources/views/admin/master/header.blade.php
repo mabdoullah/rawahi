@@ -91,12 +91,6 @@
 </div>
 <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround">
     <ul class="kt-nav kt-margin-t-10 kt-margin-b-10">
-      <li class="kt-nav__item kt-nav__item--active">
-        <a href="{{route('admin.password.change')}}" class="kt-nav__link">
-            <span class="kt-nav__link-text">    تغير كلمة السر</span>
-        </a>
-      </li>
-
         <li class="kt-nav__item kt-nav__item--active">
             <a href="{{url('admin/logout')}}" class="kt-nav__link">
                 <span class="kt-nav__link-text">تسجيل خروج</span>

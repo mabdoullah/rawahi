@@ -27,7 +27,7 @@ Route::group(['prefix' => 'admin', 'namespace'=>'admin' ,'as'=>'admin.' ], funct
       Route::resource("agent","AgentController");
       Route::resource("embassador","EmbassadorController");
       Route::resource("partners","PartnerController");
-      Route::GET("password/change","ChangePasswordController@change")->name('password.change');
+      Route::GET("settings/password","ChangePasswordController@change")->name('settings.password');
       Route::POST("password/update","ChangePasswordController@update")->name('password.update');
 
   });

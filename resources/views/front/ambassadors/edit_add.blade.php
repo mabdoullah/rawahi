@@ -55,14 +55,14 @@
                                   <form class="row" action="{{route('ambassadors.store')}}" method="POST" enctype="multipart/form-data">
                                     @endif
                                     @csrf
-
+                                    @if(isset($embassador))
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label > رقم السفير</label>
-                                            <div class="form-control filter-input disabled-id"><p>12</p></div>
+                                            <div class="form-control filter-input disabled-id"><p>{{$embassador->generate_id}}</p></div>
                                         </div>
-
                                     </div>
+                                    @endif
                                    <div class="col-md-5">
                                        <div class="form-group {{ $errors->has( 'first_name' ) ? 'has-error' : '' }}">
                                            <label> الاسم الاول</label>

@@ -21,7 +21,7 @@ class ChangePasswordController extends Controller
         'new_password' => 'min:8|required_with:confirm_password|same:confirm_password',
     ]);
     if ($validator->fails()) {
-        return redirect('admin/password/change')
+        return redirect('admin/settings/password')
             ->withErrors($validator)
             ->withInput()
             ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
@@ -33,14 +33,14 @@ class ChangePasswordController extends Controller
       $table_name=adminUser()->getTable();
       $ckeck_password=Admin::whereId(adminUser()->id)->update(['password' => bcrypt($request->new_password)]);
       if($ckeck_password){
-        return redirect('admin/password/change')->with('success', 'تم تغير كلمة السر بنجاح');;
+        return redirect('admin/settings/password')->with('success', 'تم تغير كلمة السر بنجاح');;
       }
       else{
-        return redirect('admin/password/change')->with('master_error', '!خطأ:لم يتم تغير كلمة السر')->withInput();
+        return redirect('admin/settings/password')->with('master_error', '!خطأ:لم يتم تغير كلمة السر')->withInput();
       }
     }
     else{
-      return redirect('admin/password/change')->with('master_error', 'كلمة السر القديمة غير صحيحة')->withInput();
+      return redirect('admin/settings/password')->with('master_error', 'كلمة السر القديمة غير صحيحة')->withInput();
     }
 }
   }

@@ -135,7 +135,7 @@ class AmbassadorController extends Controller
     public function edit($id)
     {
         $cities = City::where('country_id',191)->get();
-        $embassador=Embassador::where('id',$id)->select('id','first_name','second_name','email','phone','city','birth_date','agent_id')->first();
+        $embassador=Embassador::where('id',$id)->select('id','generate_id','first_name','second_name','email','phone','city','birth_date','agent_id')->first();
         if(!$embassador)
         {
           return redirect('ambassadors');
