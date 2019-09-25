@@ -53,7 +53,7 @@ class Embassador extends Authenticatable
 
     public function agent()
     {
-        return $this->belongsTo('App\Agent');
+        return $this->belongsTo('App\Agent','agent_id');
     }
     public function partners()
     {

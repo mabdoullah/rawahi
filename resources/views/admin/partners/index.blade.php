@@ -25,15 +25,14 @@
     <div class="form-group row">
       <div class="col-lg-12">
 
-        {{-- <div class="form-group {{ $errors->has( 'agent' ) ? 'has-error' : '' }}"> --}}
-{{--         
+        <div class="form-group {{ $errors->has( 'agent' ) ? 'has-error' : '' }}">
+        
           
           <div class="row">
-              <label for="search">اسم الشريك </label>
               
-              <div class="col-md-12 form-group">
+              <div class="col-3 form-group">
                 <form action="{{route('admin.searchpartners')}} ">
-                <input type="search" name="search" id="searchpartner" value='' >
+                <input type="search"  class="form-control" name="search" id="searchpartner"  placeholder="بحث باسم الشريك..." value='' >
                   @if( $errors->has( 'search' ) )
                   <span class="help-block text-danger">
                     {{ $errors->first( 'search' ) }}
@@ -41,7 +40,7 @@
                   @endif
               
                   </div> <br><br>
-           <div class="col-md-5">
+           <div class="col-3">
             
             <select class="form-control " name="agent" id="agent">
             <option value="" selected>اختر الوكيل</option>
@@ -59,8 +58,8 @@
           
             </div> 
 
-             <div class="col-md-5">
-            <select class="form-control " name="embassador" id="embassador">
+             <div class="col-3">
+            <select class="form-control " name="embassador" id="embassador generalSearch">
         
 
                 <option value="">اختر السفير </option>
@@ -72,10 +71,12 @@
                 </span>
                 @endif
                 </div> 
+                <div class="col-1">
             <button  type="submit" class='btn btn-primary'> ابحث</button>
+                </div>
           </form>
         </div>
-        </div> --}}
+        </div>
 
         <!--begin: Datatable -->
         <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
@@ -90,9 +91,10 @@
           </thead>
           <tbody id='table-result'>
             
-              
+            
                   
                       
+           
               
                   @foreach($partners as $partner)
               
@@ -126,6 +128,8 @@
               </tr>
               
               @endforeach
+        
+         
               
   
           </tbody>
@@ -155,7 +159,7 @@
 
 
 @endsection
-{{-- @push('jqueryCode')
+@push('jqueryCode')
     
 
 <script type="text/javascript">
@@ -166,12 +170,11 @@
  $('#agent').change(function(){
     var agentID = $(this).val(); 
      if(agentID){
-       
             $.ajax({
                type:"GET",
                url:"{{url('admin/get-embassador-list')}}?agent_id="+agentID,
                success:function(res){
-                  // console.log(res);
+                  console.log(res);
                   $("#embassador").empty();
                   if(res){
                       $("#embassador").append("<option value=''>اختر السفير</option>");
@@ -225,4 +228,4 @@
       
  });
 </script>
-@endpush --}}
+@endpush

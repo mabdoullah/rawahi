@@ -22,86 +22,71 @@ class PartnerController extends Controller
         $agents = DB::table("agents")->pluck("name", "id");
         $partners = Partner::orderBy('id', 'DESC')->get();
 
-        // $agentpartners=  Agent::with(['embassadors.partners' => function ($query) {
-        //     $query->select('*');
-      
-        // }])->get();
-       
         
      
 
 
-        return view('admin.partners.index', compact('agents', 'partners'));
+        return view('admin.partners.index', compact('agents', 'partners',''));
     }
 /*================================ end index function=========================*/
 
 // /*================================ start getembassadorList function=========================*/
 
-//     public function getembassadorList(Request $request)
-//     {
-//         $embassadors = DB::table("embassadors")
-//             ->where("agent_id", $request->agent_id)
-//             ->pluck("first_name", "id");
-//         return response()->json($embassadors);
-//     }
+    public function getembassadorList(Request $request)
+    {
+        $embassadors = DB::table("embassadors")
+            ->where("agent_id", $request->agent_id)
+            ->pluck("first_name", "id");
+        return response()->json($embassadors);
+    }
 // /*================================ end getembassadorList function=========================*/
 
 // /*================================ start getpartnerList function=========================*/
 
-//     public function getpartnerList(Request $request)
-//     {
-//         $partners = DB::table("partners")
-//             ->where("embassador_id", $request->embassador_id)
-//             ->pluck("legel_name", "id");
+    public function getpartnerList(Request $request)
+    {
+        $partners = DB::table("partners")
+            ->where("embassador_id", $request->embassador_id)
+            ->pluck("legel_name", "id");
 
-//         return response()->json($partners);
-//     }
+        return response()->json($partners);
+    }
 /*================================ end getpartnerList function=========================*/
 
 /*================================ start searchpartner function=========================*/
 
-//     public function searchpartner(Request $request)
-//     {
-//         $embassador_id = request()->get('embassador');
+    public function searchpartner(Request $request)
+    {
+        $embassador_id = request()->get('embassador');
+        $agent_id = request()->get('agent');
+        // $partners = Partner::orderBy('id', 'DESC');
+        $agents = Agent::pluck("name", "id");
+        $search=$request->search;
+            $partners = Partner::
+                with('embassador')
+                ->with(['embassador.agent' => function ($query) use ($agent_id) {
+                    $query->where('id',$agent_id);
+                }]);
+                if(!empty($search)){
+                    $partners->where('legal_name','like','%'.$search .'%');
+                }
+                if(!empty($embassador_id)){
+                    $partners->where('embassador_id',$embassador_id);
+                }
+                
 
-        
+                $partners =  $partners->orderBy('id', 'DESC')->get();
 
-//         $partners = Partner::orderBy('id', 'DESC');
-//         $agents = DB::table("agents")->pluck("name", "id");
-//         $search=$request->search;
-//         // if (request()->has('agent') && request()->get('agent') != '') {
-//             $agentpartners = Agent::with(
-//                 ['embassadors' => function ($query1) use ($embassador_id) {
-//                     $query1->where('sid',$embassador_id);
-//                 }]
-//                 )
 
-//             //    ->with(['embassadors.partners' => function ($query) use ($search,$embassador_id) {
-//             //         $query->orwhere(function($q) use ($search,$embassador_id) {
-//             //             $q->where('embassador_id',$embassador_id);
-//             //         })
-//             //         ->where(function($q1) use ($search) {
-//             //             $q1->where('rrlegal_name', 'like', '%' .$search . '%');
-//             //         });
-//             //     }])
-//             // ->orwhere(function($q2) use ($search) {
-//             //     $q2->where('id','!=',0)->orwhere('id',request()->get('agent'));
-//             // })
-//             ->get();
-//             dd($agentpartners);
 
-//         //   }
-//         //   if (request()->has('search') && request()->get('search') != '') {
-//         //     $agentpartners->where('legal_name', 'like', '%' . request()->get('search') . '%');
-//         // }
-//         // dd($agentpartners->get());
-//         $partners =[];
-
+               
+             
+                
         
        
-//         return view('admin.partners.index', compact('partners', 'agents','agentpartners'));
+        return view('admin.partners.index',compact('partners', 'agents'));
 
-//     }
+         }
 // /*================================ end searchpartner function=========================*/
 
 /*================================ start create function=========================*/
