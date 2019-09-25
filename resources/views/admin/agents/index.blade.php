@@ -57,17 +57,17 @@
           <div class="row kt-input-icon kt-input-icon--right kt-subheader__search">
 
             <div class="col-3">
-              <input type="text" class="form-control" name='search' placeholder="بحث بالاسم..." id="generalSearch">
+              <input type="text" class="form-control" name='search' placeholder="بحث بالاسم..." id="generalSearch" value="{{ old('search') ?? $searchByName ?? null }}" >
 
             </div>
 
             <div class="col-3">
-              <input type="text" class="form-control" name='search_byphone' placeholder="بحث برقم الجوال..." id="generalSearch">
+              <input type="text" class="form-control" name='search_byphone' placeholder="بحث برقم الجوال..." id="generalSearch" value="{{ old('searchByPhone') ?? $searchByPhone ?? null }}">
 
             </div>
 
             <div class="col-3">
-              <input type="text" class="form-control" name='search_byemail' placeholder="بحث الاميل..." id="generalSearch">
+              <input type="text" class="form-control" name='search_byemail' placeholder="بحث الاميل..." id="generalSearch" value="{{ old('search_byemail') ?? $searchByEmail ?? null }}">
 
             </div>
             <div class="col-2">
