@@ -25,7 +25,7 @@
     <div class="form-group row">
       <div class="col-lg-12">
 
-        <div class="form-group {{ $errors->has( 'agent' ) ? 'has-error' : '' }}">
+        {{-- <div class="form-group {{ $errors->has( 'agent' ) ? 'has-error' : '' }}"> --}}
 {{--         
           
           <div class="row">

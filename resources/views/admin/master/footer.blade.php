@@ -239,6 +239,8 @@
       <!-- end::Global Config -->
 
     <!--begin:: Global Mandatory Vendors -->
+    
+
 <script src="{{asset('admin_design/vendors/general/jquery/dist/jquery.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin_design/vendors/general/popper.js/dist/umd/popper.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin_design/vendors/general/bootstrap/dist/js/bootstrap.min.js')}}" type="text/javascript"></script>
@@ -306,11 +308,25 @@
 <script src="{{asset('admin_design/vendors/general/jquery.repeater/src/jquery.input.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin_design/vendors/general/jquery.repeater/src/repeater.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin_design/vendors/general/dompurify/dist/purify.js')}}" type="text/javascript"></script>
+
+
 <!--end:: Global Optional Vendors -->
 
 <!--begin::Global Theme Bundle(used by all pages) -->
 
            <script src="{{asset('admin_design/js/scripts.bundle.js')}}" type="text/javascript"></script>
+           <script>
+    // $('#kt_datepicker_2').datepicker({
+    //     autoclose : true,
+    //     todayHighlight: true
+    // });
+
+    $('#kt_datepicker_2').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true
+            });
+</script>
       <!--end::Global Theme Bundle -->
 
                   <!--begin::Page Vendors(used by this page) -->

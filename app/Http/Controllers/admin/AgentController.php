@@ -96,7 +96,7 @@ class AgentController extends Controller
         $agent->admin_id = adminUser()->id;
         $save_agent=$agent->save();
         if($save_agent){
-            return redirect('admin/agent')->with('success', ' تم التعديل!');
+            return redirect('admin/agent')->with('success', ' تم التسجيل بنجاح!');
         }
     }
     /**

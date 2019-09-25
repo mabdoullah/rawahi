@@ -35,7 +35,7 @@
 -->
 </div>
 </div>
-<!-- end:: Aside -->	
+<!-- end:: Aside -->
 <!-- begin:: Aside Menu -->
 <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
 
@@ -43,7 +43,7 @@
 
 <ul class="kt-menu__nav ">
 
-   
+
       <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
         <a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
           <span class="kt-menu__link-text">الوكلاء</span>
@@ -58,7 +58,7 @@
             </ul>
           </div>
       </li>
-  
+
       <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
         <a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
           <span class="kt-menu__link-text">السفراء</span>
@@ -73,8 +73,8 @@
             </ul>
           </div>
       </li>
-        
-  
+
+
       @if(1==2)
         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
           <a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
@@ -91,8 +91,8 @@
             </div>
         </li>
       @endif
-  
-  
+
+
         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
           <a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
             <span class="kt-menu__link-text">الاعدادات</span>
@@ -102,12 +102,13 @@
           <div class="kt-menu__submenu ">
             <span class="kt-menu__arrow"></span>
             <ul class="kt-menu__subnav">
-              <li class="kt-menu__item " aria-haspopup="true" ><a href="{{ url('admin/settings/info')}}" class="kt-menu__link"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">تعديل بياناتى</span></a></li>
+              <li class="kt-menu__item " aria-haspopup="true"><a href="{{ url('admin/settings/info')}}" class="kt-menu__link"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">تعديل بياناتى</span></a></li>
+              <li class="kt-menu__item " aria-haspopup="true"><a href="{{route('admin.settings.password')}}" class="kt-menu__link"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">تغير كلمة السر</span></a></li>
             </ul>
           </div>
         </li>
 
-       
+
 </ul>
 
 </div>
