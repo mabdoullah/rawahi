@@ -46,7 +46,7 @@
 
             <div class="col-2">
               <select class="form-control " name="search_agent" id="agentname">
-                <option >اختر الوكيل</option>
+                <option value="">اختر الوكيل</option>
 
                 @foreach ($agents as $agent)
                 <option value="{{$agent->id}}" @if($agent->id == $agent_id) selected="selected" @endif >
@@ -85,7 +85,7 @@
               <th>رقم السفير</th>
 
                 <th>المدينة</th>
-                <th >الاسم الاول</th>
+                <th>الاسم الاول</th>
                 <th>الاسم الثانى</th>
                 <th>الاميل</th>
                 <th>رقم التليفون</th>
