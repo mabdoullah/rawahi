@@ -40,13 +40,13 @@
         <form width="100%" class="kt-margin-l-20" style="margin:auto" id="kt_subheader_search_form" action="{{route('admin.embassador.index') }}">
           <div class="row kt-input-icon kt-input-icon--right kt-subheader__search">
             <div class="col-3">
-              <input type="text" class="form-control" name='search' placeholder="بحث بالاسم..." id="generalSearch">
+              <input type="text" class="form-control" name='search' placeholder="بحث بالاسم..." id="generalSearch" value="{{ old('search') ?? $searchByName ?? null }}">
 
             </div>
 
             <div class="col-2">
               <select class="form-control " name="search_agent" id="agentname">
-                <option value="">اختر الوكيل</option>
+                <option >اختر الوكيل</option>
 
                 @foreach ($agents as $agent)
                 <option value="{{$agent->id}}" @if($agent->id == $agent_id) selected="selected" @endif >
@@ -61,10 +61,10 @@
               @endif
             </div>
             <div class="col-3">
-              <input type="text" class="form-control" name='search_byphone' placeholder="بحث برقم الجوال..." id="generalSearch">
+              <input type="text" class="form-control" name='search_byphone' placeholder="بحث برقم الجوال..." id="generalSearch" value="{{ old('searchByPhone') ?? $searchByPhone ?? null }}">
             </div>
             <div class="col-3">
-              <input type="text" class="form-control" name='search_byemail' placeholder="بحث الاميل..." id="generalSearch">
+              <input type="text" class="form-control" name='search_byemail' placeholder="بحث الاميل..." id="generalSearch" value="{{ old('search_byemail') ?? $searchByEmail ?? null }}">
             </div>
             <div class="col-1">
               <button class="btn btn-primary" type="submit"> بحث </button>
@@ -85,7 +85,7 @@
               <th>رقم السفير</th>
 
                 <th>المدينة</th>
-                <th>الاسم الاول</th>
+                <th >الاسم الاول</th>
                 <th>الاسم الثانى</th>
                 <th>الاميل</th>
                 <th>رقم التليفون</th>
