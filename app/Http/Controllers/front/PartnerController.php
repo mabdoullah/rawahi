@@ -34,9 +34,6 @@ class PartnerController extends Controller
     public function create()
     {
 
-
-
-
         $cities = City::where('country_id', 191)->get();
 
         return view('front.partners.create', compact('cities'));
@@ -142,16 +139,16 @@ class PartnerController extends Controller
      */
     public function edit($id)
     {
-
         $partner = Partner::find($id);
         if (!$partner) return redirect('/');
 
-        if(embassadorUser() && embassadorUser()->id != $partner->embassador_id){
-            return ' غير مسموح لك بتعديل هذا الشريك';
+        if(embassadorUser()){
+            if(!isEmailVerified()) return redirect('email-not-verified');
+            if(embassadorUser()->id != $partner->embassador_id) return redirect('/');    
         }
-        if(partnerUser() && partnerUser()->id != $partner->id){
-            return ' غير مسموح لك بتعديل هذا الشريك';
-        }
+        
+        if(partnerUser() && partnerUser()->id != $partner->id) return redirect('/');
+        
 
         $cities = City::where('country_id', 191)->get(['id', "name"]);
 
@@ -168,6 +165,17 @@ class PartnerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $partner = Partner::find($id);
+        if (!$partner) return redirect('/');
+
+        if(embassadorUser()){
+            if(!isEmailVerified()) return redirect('email-not-verified');
+            if(embassadorUser()->id != $partner->embassador_id) return redirect('/');    
+        }
+        
+        if(partnerUser() && partnerUser()->id != $partner->id) return redirect('/');
+        
+
         // first tab
         $validator = Validator::make($request->all(), [
             'partner_type' => 'required',
@@ -215,17 +223,6 @@ class PartnerController extends Controller
 
         ]);
 
-
-
-        $partner = Partner::find($id);
-        if (!$partner) return redirect('/');
-
-        if(embassadorUser() && embassadorUser()->id != $partner->embassador_id){
-            return ' غير مسموح لك بتعديل هذا الشريك';
-        }
-        if(partnerUser() && partnerUser()->id != $partner->id){
-            return ' غير مسموح لك بتعديل هذا الشريك';
-        }
 
 
 

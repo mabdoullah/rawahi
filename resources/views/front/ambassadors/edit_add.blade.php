@@ -63,7 +63,7 @@
                                         </div>
                                     </div>
                                     @endif
-                                   <div class="col-md-5">
+                                   <div class=" @if(isset($embassador)) col-md-5 @else col-md-6 @endif">
                                        <div class="form-group {{ $errors->has( 'first_name' ) ? 'has-error' : '' }}">
                                            <label> الاسم الاول</label>
                                            <input  type="text" class="form-control filter-input"placeholder="الإسم الاول"  name="first_name"  value="{{ old('first_name') ?? $embassador->first_name ?? null }}" >
@@ -74,7 +74,7 @@
                                              @endif
                                        </div>
                                    </div>
-                                   <div class="col-md-5">
+                                   <div class=" @if(isset($embassador)) col-md-5 @else col-md-6 @endif">
                                        <div class="form-group {{ $errors->has( 'second_name' ) ? 'has-error' : '' }}">
                                            <label> الاسم الاخير</label>
                                            <input  type="text" class="form-control filter-input"placeholder="الإسم الاخير " name="second_name" value="{{ old('second_name') ?? $embassador->second_name ?? null }}"  >

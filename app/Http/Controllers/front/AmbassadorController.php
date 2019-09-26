@@ -134,25 +134,25 @@ class AmbassadorController extends Controller
      */
     public function edit($id)
     {
-        $cities = City::where('country_id',191)->get();
-        $embassador=Embassador::where('id',$id)->select('id','generate_id','first_name','second_name','email','phone','city','birth_date','agent_id')->first();
-        if(!$embassador)
-        {
-          return redirect('ambassadors');
+      
+        $embassador = Embassador::find($id);
+        if(empty($embassador)) return redirect('embassador');
+
+        if(embassadorUser() && embassadorUser()->id != $embassador->id) return redirect('/');
+        
+        if(agentUser()){
+            if(!isEmailVerified()) return redirect('email-not-verified');
+            if(agentUser()->id != $embassador->agent_id) return redirect('/');
         }
-      else{
+         
+        $cities = City::where('country_id',191)->get();
+        
+        return view('front.embassadors.edit_add',compact('cities','embassador'));
+        
 
-            if((agentUser())&&(($embassador->agent_id == agentUser()->id)))
-              {
-                return view('front.ambassadors.edit_add')->with('cities', $cities)->with('embassador', $embassador);
-              }
-            if((embassadorUser())&&($embassador->id == embassadorUser()->id))
-              {
-                return view('front.ambassadors.edit_add')->with('cities', $cities)->with('embassador', $embassador);
-              }
-               return redirect('ambassadors')->with('master_error', 'غير مسموح لك تعديل هذا السفير');
+        // return redirect('embassador')->with('master_error', 'غير مسموح لك تعديل هذا السفير');
 
-          }
+        
     }
 
     /**
@@ -164,11 +164,17 @@ class AmbassadorController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $embassador = Embassador::find($id);
-      if(!$embassador)
-      {
-        return redirect('ambassadors');
-      }
+        $embassador = Embassador::find($id);
+        if(empty($embassador)) return redirect('embassador');
+
+        if(embassadorUser() && embassadorUser()->id != $embassador->id) return redirect('/');
+        
+        if(agentUser()){
+            if(!isEmailVerified()) return redirect('email-not-verified');
+            if(agentUser()->id != $embassador->agent_id) return redirect('/');
+        }
+
+
 
       $validator = Validator::make($request->all(), [
                   'first_name' => 'required|max:18',
