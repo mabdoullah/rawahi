@@ -19,18 +19,16 @@ class PartnerController extends Controller
 
     public function index()
     {
+        $embassador_id = request()->get('embassador');
+
         $agents = DB::table("agents")->pluck("name", "id");
         $partners = Partner::orderBy('id', 'DESC')->get();
 
-        
-     
-
-
-        return view('admin.partners.index', compact('agents', 'partners',''));
+        return view('admin.partners.index', compact('agents', 'partners'));
     }
 /*================================ end index function=========================*/
 
-// /*================================ start getembassadorList function=========================*/
+/*================================ start getembassadorList function=========================*/
 
     public function getembassadorList(Request $request)
     {
@@ -39,9 +37,9 @@ class PartnerController extends Controller
             ->pluck("first_name", "id");
         return response()->json($embassadors);
     }
-// /*================================ end getembassadorList function=========================*/
+ /*================================ end getembassadorList function=========================*/
 
-// /*================================ start getpartnerList function=========================*/
+/*================================ start getpartnerList function=========================*/
 
     public function getpartnerList(Request $request)
     {
@@ -78,13 +76,12 @@ class PartnerController extends Controller
                 $partners =  $partners->orderBy('id', 'DESC')->get();
 
 
-
                
              
                 
         
        
-        return view('admin.partners.index',compact('partners', 'agents'));
+        return view('admin.partners.index',compact('partners', 'agents','embassadors'));
 
          }
 // /*================================ end searchpartner function=========================*/

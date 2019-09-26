@@ -59,7 +59,7 @@
             </div> 
 
              <div class="col-3">
-            <select class="form-control " name="embassador" id="embassador generalSearch">
+            <select class="form-control" name="embassador" id="embassador">
         
 
                 <option value="">اختر السفير </option>
@@ -86,6 +86,8 @@
                 <th>الايميل </th>
                 <th>التليفون</th>
                 <th>المدينة </th>
+                <th>السفير</th>
+               
                 <th>تعديل بروفايل الشريك</th>
             </tr>
           </thead>
@@ -97,10 +99,10 @@
            
               
                   @foreach($partners as $partner)
+                  
+                  
               
               <tr>
-
-
 
                   <td>{{$partner->legal_name}}</td>
                  <td>{{$partner->email}}</td>
@@ -109,7 +111,13 @@
 
 
                   <td>{{$partner->map_address}}</td>
-
+                   
+                  <td>
+                    {{$partner->embassador->first_name}}
+                    <label class="text-right">{{$partner->embassador->generate_id}}</label>
+                  </td>
+                 
+           
               <td>
                {{-- edit  --}}
                       {{-- <a class="btn v8 view-buttons" href="{{route('partners.edit',$partner->id)}}"> تعديل <i
@@ -128,7 +136,7 @@
               </tr>
               
               @endforeach
-        
+            
          
               
   
@@ -169,12 +177,13 @@
 
  $('#agent').change(function(){
     var agentID = $(this).val(); 
+  
      if(agentID){
             $.ajax({
                type:"GET",
                url:"{{url('admin/get-embassador-list')}}?agent_id="+agentID,
                success:function(res){
-                  console.log(res);
+                  // console.log(res);
                   $("#embassador").empty();
                   if(res){
                       $("#embassador").append("<option value=''>اختر السفير</option>");

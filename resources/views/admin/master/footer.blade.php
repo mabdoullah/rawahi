@@ -242,6 +242,8 @@
     
 
 <script src="{{asset('admin_design/vendors/general/jquery/dist/jquery.js')}}" type="text/javascript"></script>
+@stack('jqueryCode')
+
 <script src="{{asset('admin_design/vendors/general/popper.js/dist/umd/popper.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin_design/vendors/general/bootstrap/dist/js/bootstrap.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin_design/vendors/general/js-cookie/src/js.cookie.js')}}" type="text/javascript"></script>
@@ -309,7 +311,6 @@
 <script src="{{asset('admin_design/vendors/general/jquery.repeater/src/repeater.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin_design/vendors/general/dompurify/dist/purify.js')}}" type="text/javascript"></script>
 
-
 <!--end:: Global Optional Vendors -->
 
 <!--begin::Global Theme Bundle(used by all pages) -->
@@ -338,4 +339,4 @@
                           <script src="{{asset('admin_design/js/pages/dashboard.js')}}" type="text/javascript"></script>
                       <!--end::Page Scripts -->
                    
-                      @stack('jqueryCode')
+                     
