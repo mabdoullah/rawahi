@@ -31,7 +31,7 @@
                     </div>
                     @endif
                     <div class="row">
-                    <div class="col-md-4">
+                      <div class="col-md-6">
                         <div class="form-group {{$errors->has('old_password') ? 'has-error' : '' }}">
                             <label for="old_password"> كلمة السر القديمة</label>
                             <input id='old_password' name="old_password" type="password"class="form-control filter-input"placeholder="كلمة السر القديمة"value="{{ old('old_password')}}">
@@ -41,8 +41,10 @@
                                 </span>
                                 @endif
                         </div>
+                      </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-6">
                         <div class="form-group {{$errors->has('new_password') ? 'has-error' : '' }}">
                             <label for="new_password"> كلمة السر الجديدة</label>
                             <input id='new_password' name="new_password" type="password"
@@ -54,8 +56,10 @@
                                 </span>
                                 @endif
                         </div>
+                      </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-6">
                         <div class="form-group {{ $errors->has( 'confirm_password' ) ? 'has-error' : '' }}">
                             <label for="confirm_password"> تاكيد كلمه السر </label>
                             <input id='confirm_password' type="password" class="form-control filter-input"placeholder="تاكيد كلمه السر  " name="confirm_password" value="{{ old('confirm_password')}}">
@@ -65,8 +69,8 @@
                                   </span>
                               @endif
                         </div>
+                      </div>
                     </div>
-                  </div>
           				</div>
           				<div class="kt-portlet__foot">
           					<div class="kt-form__actions">
