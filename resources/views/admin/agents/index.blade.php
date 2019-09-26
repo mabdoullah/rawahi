@@ -110,7 +110,7 @@
           <tr>
             <td>{{$agent->name}}</td>
             <td>{{$agent->phone}}</td>
-            <td class="d-none d-lg-block">{{$agent->email}}</td>
+            <td>{{$agent->email}}</td>
             <td>{{$agent->city_name}}</td>
 
             <td>{{$agent->birth_date}}</td>
