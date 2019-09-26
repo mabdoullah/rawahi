@@ -674,31 +674,6 @@ function readURL(input) {
                 draggable: true,
                 animation: google.maps.Animation.DROP,
 
-<<<<<<< HEAD
-            });
-            
-            infoWindow = new google.maps.InfoWindow;
-
-                // Try HTML5 geolocation.
-                if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    var pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                    };
-
-                    infoWindow.setPosition(pos);
-                    infoWindow.setContent('Location found.');
-                    infoWindow.open(map,marker);
-                    map.setCenter(pos);
-                }, function() {
-                    handleLocationError(true, infoWindow, map.getCenter());
-                });
-                } else {
-                // Browser doesn't support Geolocation
-                handleLocationError(false, infoWindow, map.getCenter());
-=======
->>>>>>> bbcf644721b3489d69e384cdbb94c9bfc8dad4d0
                 }
             );
             
