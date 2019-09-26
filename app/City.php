@@ -14,4 +14,8 @@ class City extends Model
   {
       return $this->hasMany('App\Embassador','city','id');
   }
+  public function partners()
+  {
+      return $this->hasMany('App\Partner','city','id');
+  }
 }

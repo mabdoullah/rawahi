@@ -2,39 +2,34 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class Partner extends Authenticatable
 {
-   use Notifiable;
-    
-   protected $guard = 'partner';    
-   protected $fillable= ['embassador_id'
-                ,'partner_type'
-                ,'legal_name'
-                ,'email'
-                ,'subscription_type'
-                ,'phone'
-                ,'map_address'
-                ,'postel_code' 
-                ,'lat'
-                ,'lng'
-                ,'city'
-                ,'password'
-                ,'about'
-                ,'facebook'
-                ,'instagram'
-                ,'twitter'
-];
+    use Notifiable;
+
+    protected $guard = 'partner';
+    protected $fillable = ['embassador_id'
+        , 'partner_type'
+        , 'legal_name'
+        , 'email'
+        , 'subscription_type'
+        , 'phone'
+        , 'map_address'
+        , 'postel_code'
+        , 'lat'
+        , 'lng'
+        , 'city'
+        , 'password'
+        , 'about'
+        , 'facebook'
+        , 'instagram'
+        , 'twitter',
+    ];
 
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+
     protected $table = 'partners';
 
     /**
@@ -54,4 +49,14 @@ class Partner extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function citydata()
+    {
+        return $this->belongsTo('App\City','city','id');
+    }
+
+    public function embassadors()
+    {
+        return $this->belongsTo('App\Embassador','embassador_id','id');
+    }
 }
