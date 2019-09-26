@@ -60,15 +60,15 @@
             </div> 
 
              <div class="col-md-5">
-            <select class="form-control " name="embassador" id="embassador">
+            <select class="form-control " name="ambassador" id="ambassador">
         
 
                 <option value="">اختر السفير </option>
                 </select>
     
-                @if( $errors->has( 'embassador' ) )
+                @if( $errors->has( 'ambassador' ) )
                 <span class="help-block text-danger">
-                  {{ $errors->first( 'embassador' ) }}
+                  {{ $errors->first( 'ambassador' ) }}
                 </span>
                 @endif
                 </div> 
@@ -169,20 +169,20 @@
        
             $.ajax({
                type:"GET",
-               url:"{{url('admin/get-embassador-list')}}?agent_id="+agentID,
+               url:"{{url('admin/get-ambassador-list')}}?agent_id="+agentID,
                success:function(res){
                   // console.log(res);
-                  $("#embassador").empty();
+                  $("#ambassador").empty();
                   if(res){
-                      $("#embassador").append("<option value=''>اختر السفير</option>");
+                      $("#ambassador").append("<option value=''>اختر السفير</option>");
                       $.each(res,function(key,value){
-                          $("#embassador").append("<option value='"+key+"'>"+value+"</option>");
+                          $("#ambassador").append("<option value='"+key+"'>"+value+"</option>");
                       });
                   }
                }
             });
     }else{
-        $("#embassador").empty();
+        $("#ambassador").empty();
         $("#agent").empty();
     }
    });
@@ -191,12 +191,12 @@
 
 
 
-  $('#embassador').on('change',function(){
-  var embassadorID = $(this).val();    
-  if(embassadorID){
+  $('#ambassador').on('change',function(){
+  var ambassadorID = $(this).val();    
+  if(ambassadorID){
       $.ajax({
          type:"GET",
-         url:"{{url('admin/get-partner-list')}}?embassador_id="+embassadorID,
+         url:"{{url('admin/get-partner-list')}}?ambassador_id="+ambassadorID,
          success:function(res){               
           if(res){
             $('#table-result').html("")

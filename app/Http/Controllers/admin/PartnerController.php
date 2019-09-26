@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\City;
-use App\Embassador;
+use App\Ambassador;
 use App\Http\Controllers\Controller;
 use App\Partner;
 use App\Agent;
@@ -22,7 +22,7 @@ class PartnerController extends Controller
         $agents = DB::table("agents")->pluck("name", "id");
         $partners = Partner::orderBy('id', 'DESC')->get();
 
-        // $agentpartners=  Agent::with(['embassadors.partners' => function ($query) {
+        // $agentpartners=  Agent::with(['ambassadors.partners' => function ($query) {
         //     $query->select('*');
       
         // }])->get();
@@ -35,23 +35,23 @@ class PartnerController extends Controller
     }
 /*================================ end index function=========================*/
 
-// /*================================ start getembassadorList function=========================*/
+// /*================================ start getambassadorList function=========================*/
 
-//     public function getembassadorList(Request $request)
+//     public function getambassadorList(Request $request)
 //     {
-//         $embassadors = DB::table("embassadors")
+//         $ambassadors = DB::table("ambassadors")
 //             ->where("agent_id", $request->agent_id)
 //             ->pluck("first_name", "id");
-//         return response()->json($embassadors);
+//         return response()->json($ambassadors);
 //     }
-// /*================================ end getembassadorList function=========================*/
+// /*================================ end getambassadorList function=========================*/
 
 // /*================================ start getpartnerList function=========================*/
 
 //     public function getpartnerList(Request $request)
 //     {
 //         $partners = DB::table("partners")
-//             ->where("embassador_id", $request->embassador_id)
+//             ->where("ambassador_id", $request->ambassador_id)
 //             ->pluck("legel_name", "id");
 
 //         return response()->json($partners);
@@ -62,7 +62,7 @@ class PartnerController extends Controller
 
 //     public function searchpartner(Request $request)
 //     {
-//         $embassador_id = request()->get('embassador');
+//         $ambassador_id = request()->get('ambassador');
 
         
 
@@ -71,14 +71,14 @@ class PartnerController extends Controller
 //         $search=$request->search;
 //         // if (request()->has('agent') && request()->get('agent') != '') {
 //             $agentpartners = Agent::with(
-//                 ['embassadors' => function ($query1) use ($embassador_id) {
-//                     $query1->where('sid',$embassador_id);
+//                 ['ambassadors' => function ($query1) use ($ambassador_id) {
+//                     $query1->where('sid',$ambassador_id);
 //                 }]
 //                 )
 
-//             //    ->with(['embassadors.partners' => function ($query) use ($search,$embassador_id) {
-//             //         $query->orwhere(function($q) use ($search,$embassador_id) {
-//             //             $q->where('embassador_id',$embassador_id);
+//             //    ->with(['ambassadors.partners' => function ($query) use ($search,$ambassador_id) {
+//             //         $query->orwhere(function($q) use ($search,$ambassador_id) {
+//             //             $q->where('ambassador_id',$ambassador_id);
 //             //         })
 //             //         ->where(function($q1) use ($search) {
 //             //             $q1->where('rrlegal_name', 'like', '%' .$search . '%');
@@ -107,11 +107,11 @@ class PartnerController extends Controller
 /*================================ start create function=========================*/
      public function create()
     {
-        $embassadors = Embassador::all();
+        $ambassadors = Ambassador::all();
 
         $cities = City::where('country_id', 191)->get();
 
-        return view('admin.partners.create', compact('cities', 'embassadors'));
+        return view('admin.partners.create', compact('cities', 'ambassadors'));
     }
 /*================================ end create function=========================*/
 
@@ -121,7 +121,7 @@ class PartnerController extends Controller
     {
         // first tab
         $validator = Validator::make($request->all(), [
-            // 'embassador_id' => 'required|unique:partners,embassador_id|max:255',
+            // 'ambassador_id' => 'required|unique:partners,ambassador_id|max:255',
             'partner_type' => 'required',
             'legal_name' => ' required |max:255',
             'email' => 'required|email|' . unique_validate('email'),
@@ -293,14 +293,14 @@ class PartnerController extends Controller
     // public function destroy(Request $request)
     // {
 
-    //     $partner = Partner::where('id',$auth_user)->select('id','embassador_id')->first();
+    //     $partner = Partner::where('id',$auth_user)->select('id','ambassador_id')->first();
 
     //   if(!$partner)
     //   {
     //     return redirect()->route('partners.index')->with("master_error", "غير مسموح لك بحذف هذا الشريك");
     // }else{
 
-    //     $embassador_id= $auth_user;//$partner->embassador_id;
+    //     $ambassador_id= $auth_user;//$partner->ambassador_id;
 
     //       $delete_partner=DB::table('partners')->where('id', $auth_user)->delete();
     //       return redirect('partners')->with('message', 'تم الحذف بنجاح');

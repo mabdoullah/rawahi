@@ -21,7 +21,7 @@ class PartnerController extends Controller
          
         
         $partners = Partner::with('citydata')->
-        where('embassador_id', embassadorUser()->id)->latest()->orderBy('id')->paginate(10);
+        where('ambassador_id', ambassadorUser()->id)->latest()->orderBy('id')->paginate(10);
         
         return view('front.partners.index', compact('partners'));
     }
@@ -43,7 +43,7 @@ class PartnerController extends Controller
     {
         // first tab
         $validator = Validator::make($request->all(), [
-            // 'embassador_id' => 'required|unique:partners,embassador_id|max:255',
+            // 'ambassador_id' => 'required|unique:partners,ambassador_id|max:255',
             'partner_type' => 'required',
             'legal_name' => ' required |max:255',
             'email' => 'required|email|' . unique_validate('email'),
@@ -105,7 +105,7 @@ class PartnerController extends Controller
             $partner->image = $fileName;
 
         }
-        $partner->embassador_id = embassadorUser()->id;
+        $partner->ambassador_id = ambassadorUser()->id;
         $partner->save();
 
         return redirect()->route('partners.index')->with('message', 'تم التسجيل الشريك بنجاح');
@@ -125,7 +125,7 @@ class PartnerController extends Controller
         if (!$partner) {
             return redirect('/');
         }
-        if ($partner->embassador_id != embassadorUser()->id) {
+        if ($partner->ambassador_id != ambassadorUser()->id) {
             return ' غير مسموح لك بعرض هذا الشريك ';
         }
         return response()->json(['partner'=>$partner,'types'=>$types]);
@@ -142,9 +142,9 @@ class PartnerController extends Controller
         $partner = Partner::find($id);
         if (!$partner) return redirect('/');
 
-        if(embassadorUser()){
+        if(ambassadorUser()){
             if(!isEmailVerified()) return redirect('email-not-verified');
-            if(embassadorUser()->id != $partner->embassador_id) return redirect('/');    
+            if(ambassadorUser()->id != $partner->ambassador_id) return redirect('/');    
         }
         
         if(partnerUser() && partnerUser()->id != $partner->id) return redirect('/');
@@ -168,9 +168,9 @@ class PartnerController extends Controller
         $partner = Partner::find($id);
         if (!$partner) return redirect('/');
 
-        if(embassadorUser()){
+        if(ambassadorUser()){
             if(!isEmailVerified()) return redirect('email-not-verified');
-            if(embassadorUser()->id != $partner->embassador_id) return redirect('/');    
+            if(ambassadorUser()->id != $partner->ambassador_id) return redirect('/');    
         }
         
         if(partnerUser() && partnerUser()->id != $partner->id) return redirect('/');
@@ -241,7 +241,7 @@ class PartnerController extends Controller
         }
 
         $partner->update($request->all());
-        if (embassadorUser()) {
+        if (ambassadorUser()) {
             return redirect()->route('partners.index')->with("message", "تم التعديل بنجاح");
         }elseif(partnerUser()){
             return redirect()->route('partners.edit',$id)->with("message", "تم التعديل بنجاح");
@@ -261,14 +261,14 @@ class PartnerController extends Controller
     // public function destroy(Request $request)
     // {
 
-    //     $partner = Partner::where('id',$auth_user)->select('id','embassador_id')->first();
+    //     $partner = Partner::where('id',$auth_user)->select('id','ambassador_id')->first();
 
     //   if(!$partner)
     //   {
     //     return redirect()->route('partners.index')->with("master_error", "غير مسموح لك بحذف هذا الشريك");
     // }else{
 
-    //     $embassador_id= $auth_user;//$partner->embassador_id;
+    //     $ambassador_id= $auth_user;//$partner->ambassador_id;
 
     //       $delete_partner=DB::table('partners')->where('id', $auth_user)->delete();
     //       return redirect('partners')->with('message', 'تم الحذف بنجاح');
