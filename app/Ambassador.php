@@ -10,18 +10,18 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Traits\VerifyUserTrait;
 
-class Embassador extends Authenticatable
+class Ambassador extends Authenticatable
 {
     use VerifyUserTrait;
     use Notifiable;
-    protected $guard = 'embassador';
+    protected $guard = 'ambassador';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $table = 'embassadors';
+    protected $table = 'ambassadors';
     protected $fillable = [
         'first_name', 'second_name', 'email','phone','phone_key',
         'country','city','birth_date','password','generate_id','agent_id',
@@ -57,7 +57,7 @@ class Embassador extends Authenticatable
     }
     public function partners()
     {
-        return $this->hasMany('App\Partner','embassador_id');
+        return $this->hasMany('App\Partner','ambassador_id');
     }
     
 

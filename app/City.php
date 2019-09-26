@@ -10,9 +10,9 @@ class City extends Model
   protected $fillable = [
       'name', 'country_id',
   ];
-  public function embassadors()
+  public function Ambassadors()
   {
-      return $this->hasMany('App\Embassador','city','id');
+      return $this->hasMany('App\Ambassador','city','id');
   }
   public function partners()
   {

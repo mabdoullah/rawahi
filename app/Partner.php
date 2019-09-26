@@ -10,7 +10,7 @@ class Partner extends Authenticatable
     use Notifiable;
 
     protected $guard = 'partner';
-    protected $fillable = ['embassador_id'
+    protected $fillable = ['ambassador_id'
         , 'partner_type'
         , 'legal_name'
         , 'email'
@@ -55,8 +55,8 @@ class Partner extends Authenticatable
         return $this->belongsTo('App\City','city','id');
     }
 
-    public function embassadors()
+    public function ambassadors()
     {
-        return $this->belongsTo('App\Embassador','embassador_id','id');
+        return $this->belongsTo('App\Ambassador','ambassador_id','id');
     }
 }

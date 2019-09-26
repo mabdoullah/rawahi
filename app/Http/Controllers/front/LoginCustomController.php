@@ -31,17 +31,17 @@ class LoginCustomController extends Controller
 
 		// $user='adsfadsf';
 		// Mail::to('ahmed.sedemy@gmail.com')->send(new VerifyMail($user));
-		// $embassador = \App\Embassador::find(2);
-		// $embassador->verified = 3;
-		// $embassador->save();
+		// $ambassador = \App\Ambassador::find(2);
+		// $ambassador->verified = 3;
+		// $ambassador->save();
 
 		// echo currentUser()->verified;
-		//VerifyUserService::verify($embassador);
+		//VerifyUserService::verify($ambassador);
 	}
 
 	public function login(){
-		// $embassador = \App\Embassador::find(1);
-		// VerifyUserService::verify($embassador);
+		// $ambassador = \App\Ambassador::find(1);
+		// VerifyUserService::verify($ambassador);
 		return view('front.login.login');
 
 	}

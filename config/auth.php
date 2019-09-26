@@ -48,9 +48,9 @@ return [
             'driver' => 'session',
             'provider' => 'agents',
         ],
-        'embassador' => [
+        'ambassador' => [
             'driver' => 'session',
-            'provider' => 'embassadors',
+            'provider' => 'ambassadors',
         ],
         'partner' => [
             'driver' => 'session',
@@ -94,9 +94,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Agent::class,
         ],
-        'embassadors' => [
+        'ambassadors' => [
             'driver' => 'eloquent',
-            'model' => App\Embassador::class,
+            'model' => App\Ambassador::class,
         ],
         'partners' => [
             'driver' => 'eloquent',

@@ -74,21 +74,21 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                            <div class="form-group {{ $errors->has( 'embassdor' ) ? 'has-error' : '' }}">
+                                            <div class="form-group {{ $errors->has( 'ambassdor' ) ? 'has-error' : '' }}">
                                                     <label> السفير </label>
-                                                    <select class="form-control filter-input"  name="embassador_id" id="embassador_id">
+                                                    <select class="form-control filter-input"  name="ambassador_id" id="ambassador_id">
                                                         <option value="0">اختر السفير</option>
-                                                        @foreach ($embassadors as $embassdor)
+                                                        @foreach ($ambassadors as $ambassdor)
                 
-                                                            <option   @if( old('embassdor')==$embassdor->id) selected @endif value="{{$embassdor->id}}">
-                                                            {{$embassdor->first_name}}
+                                                            <option   @if( old('ambassdor')==$ambassdor->id) selected @endif value="{{$ambassdor->id}}">
+                                                            {{$ambassdor->first_name}}
                                                             </option>
                                                         @endforeach
                                                     </select>
                 
-                                                    @if( $errors->has( 'embassdor' ) )
+                                                    @if( $errors->has( 'ambassdor' ) )
                                                             <span class="help-block text-danger">
-                                                                {{ $errors->first( 'embassdor' ) }}
+                                                                {{ $errors->first( 'ambassdor' ) }}
                                                             </span>
                                                         @endif
                                                 </div>

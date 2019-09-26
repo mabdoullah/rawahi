@@ -68,8 +68,8 @@
           <div class="kt-menu__submenu ">
             <span class="kt-menu__arrow"></span>
             <ul class="kt-menu__subnav">
-              <li class="kt-menu__item " aria-haspopup="true" ><a  href="{{route('admin.embassador.index')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">عرض السفراء</span></a></li>
-              <li class="kt-menu__item " aria-haspopup="true" ><a  href="{{route('admin.embassador.create')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">إضافة سفير جديد</span></a></li>
+              <li class="kt-menu__item " aria-haspopup="true" ><a  href="{{route('admin.ambassador.index')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">عرض السفراء</span></a></li>
+              <li class="kt-menu__item " aria-haspopup="true" ><a  href="{{route('admin.ambassador.create')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">إضافة سفير جديد</span></a></li>
             </ul>
           </div>
       </li>

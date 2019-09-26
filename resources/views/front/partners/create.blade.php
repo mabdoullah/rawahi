@@ -201,13 +201,13 @@
                                         {{-- <div class="col-md-6">
                                             <div class="form-group">
                                         <label>رقم السفير</label>
-                                        <input name="embassador_id"  type="number" class="form-control filter-input"
-                                            placeholder="رقم السفير " value="{{ old('embassador_id',
-                                            isset($partner->embassador_id) ? $partner->embassador_id : '') }}">
+                                        <input name="ambassador_id"  type="number" class="form-control filter-input"
+                                            placeholder="رقم السفير " value="{{ old('ambassador_id',
+                                            isset($partner->ambassador_id) ? $partner->ambassador_id : '') }}">
 
-                                            @if( $errors->has( 'embassador_id' ) )
+                                            @if( $errors->has( 'ambassador_id' ) )
                                                    <span class="help-block text-danger">
-                                                       {{ $errors->first( 'embassador_id' ) }}
+                                                       {{ $errors->first( 'ambassador_id' ) }}
                                                    </span>
                                                @endif
 

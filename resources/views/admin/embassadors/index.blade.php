@@ -37,7 +37,7 @@
       </div>
       <div class="kt-portlet__head-label" style="width:85%">
 
-        <form width="100%" class="kt-margin-l-20" style="margin:auto" id="kt_subheader_search_form" action="{{route('admin.embassador.index') }}">
+        <form width="100%" class="kt-margin-l-20" style="margin:auto" id="kt_subheader_search_form" action="{{route('admin.ambassador.index') }}">
           <div class="row kt-input-icon kt-input-icon--right kt-subheader__search">
 
 
@@ -97,23 +97,23 @@
               </tr>
             </thead>
             <tbody id='table-result'>
-              @foreach($embassadors as $embassador)
+              @foreach($ambassadors as $ambassador)
               <tr>
-              <td>{{$embassador->embassador_id}}</td>
+              <td>{{$ambassador->ambassador_id}}</td>
 
-                <td>{{$embassador->first_name}} {{$embassador->second_name}}</td>
-                <td>{{$embassador->city_name}}</td>
+                <td>{{$ambassador->first_name}} {{$ambassador->second_name}}</td>
+                <td>{{$ambassador->city_name}}</td>
 
-                <td>{{$embassador->phone}}</td>
-                <td>{{$embassador->email}}</td>
+                <td>{{$ambassador->phone}}</td>
+                <td>{{$ambassador->email}}</td>
 
-                <td>{{$embassador->agent_name}}</td>
+                <td>{{$ambassador->agent_name}}</td>
 
                 <td>
-                  <a href="{{ route('admin.embassador.edit', $embassador->embassador_id)}}" class="btn btn-primary">تعديل</a>
+                  <a href="{{ route('admin.ambassador.edit', $ambassador->ambassador_id)}}" class="btn btn-primary">تعديل</a>
                 </td>
                 <!-- <td>
-                <form action="{{ route('admin.embassador.destroy', $embassador->embassador_id)}}" method="post">
+                <form action="{{ route('admin.ambassador.destroy', $ambassador->ambassador_id)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">حذف</button>
@@ -139,7 +139,7 @@
 
         </div>
       </div>
-      {{ $embassadors->onEachSide(5)->links() }}
+      {{ $ambassadors->onEachSide(5)->links() }}
 
     </div>
 

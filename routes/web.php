@@ -4,15 +4,15 @@ Route::namespace('front')->group(function () {
     Route::resource("/","HomeController");
 
     
-    Route::middleware(['auth:agent,embassador'])->group(function () {
-      // agent and embassador can edit and update embassador data
+    Route::middleware(['auth:agent,ambassador'])->group(function () {
+      // agent and ambassador can edit and update ambassador data
       Route::get("ambassadors/{id}/edit","AmbassadorController@edit")->name('ambassadors.edit');
       Route::put("ambassadors/{id}","AmbassadorController@update")->name('ambassadors.update');
     });
     //
     Route::middleware(['auth:agent'])->group(function () {
       Route::middleware(['isEmailVerified'])->group(function () {
-        // agent permission for embassadors
+        // agent permission for ambassadors
         Route::get("ambassadors/create","AmbassadorController@create")->name('ambassadors.create');
         Route::get("ambassadors/{id}","AmbassadorController@show")->name('ambassadors.show');
         Route::get("ambassadors","AmbassadorController@index")->name('ambassadors.index');
@@ -24,12 +24,12 @@ Route::namespace('front')->group(function () {
       Route::put("agent/{id}","AgentController@update")->name('agent.update');
     });
      //============================= pratner route =============================== //
-    Route::middleware(['auth:partner,embassador'])->group(function () {
+    Route::middleware(['auth:partner,ambassador'])->group(function () {
       Route::get("partners/{id}/edit","PartnerController@edit")->name('partners.edit');
       Route::put("partners/{id}","PartnerController@update")->name('partners.update');
     });
 
-     Route::middleware(['auth:embassador'])->group(function () {
+     Route::middleware(['auth:ambassador'])->group(function () {
         
         Route::middleware(['isEmailVerified'])->group(function () {
           Route::get("partners/create","PartnerController@create")->name('partners.create');
@@ -42,7 +42,7 @@ Route::namespace('front')->group(function () {
      });
 
       //=============================End pratner route =============================== //
-      Route::middleware(['auth:agent,embassador,partner,user'])->group(function () {
+      Route::middleware(['auth:agent,ambassador,partner,user'])->group(function () {
         Route::GET("password/change","ChangePasswordController@change")->name('password.change');
         Route::POST("password/update","ChangePasswordController@update")->name('password.update');
       });

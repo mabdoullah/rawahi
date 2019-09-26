@@ -50,7 +50,7 @@
             </div>
         </div>
         <!--begin::Form-->
-        <form class="kt-form kt-form--label-right" action="{{route('admin.embassador.store')}}" method="POST" enctype="multipart/form-data">
+        <form class="kt-form kt-form--label-right" action="{{route('admin.ambassador.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="kt-portlet__body">
                 <div class="form-group row">

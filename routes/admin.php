@@ -9,7 +9,7 @@ Route::group(['prefix' => 'admin', 'namespace'=>'admin' ,'as'=>'admin.' ], funct
 
       Route::resource("/","HomeController");
       Route::resource("agent","AgentController");
-      Route::resource("embassador","EmbassadorController");
+      Route::resource("ambassador","AmbassadorController");
       Route::resource("partners","PartnerController");
       Route::get('search-partner-list','PartnerController@searchpartner')->name('searchpartners');
       Route::GET("settings/password","ChangePasswordController@change")->name('settings.password');
@@ -17,7 +17,7 @@ Route::group(['prefix' => 'admin', 'namespace'=>'admin' ,'as'=>'admin.' ], funct
 
   });
 
-  Route::get('get-embassador-list','PartnerController@getembassadorList');
+  Route::get('get-ambassador-list','PartnerController@getambassadorList');
   Route::get('get-partner-list','PartnerController@getpartnerList')->name('getpartner');
   
 

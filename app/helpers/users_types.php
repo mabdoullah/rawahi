@@ -28,9 +28,9 @@
     {
         return userIfLogin('agent');
     }
-    function embassadorUser()
+    function ambassadorUser()
     {
-        return userIfLogin('embassador');
+        return userIfLogin('ambassador');
     }
     function partnerUser()
     {
