@@ -31,6 +31,7 @@ class VerifyMail extends Mailable
     public function build()
     {
         
-        return $this->view('front.verify.email_verify')->with('user',$this->user);
+        return $this->from(env('MAIL_USERNAME'),'rawahi.com')
+                    ->view('front.verify.email_verify')->with('user',$this->user);
     }
 }

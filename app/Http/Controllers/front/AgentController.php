@@ -20,20 +20,17 @@ class AgentController extends Controller
      */
     public function edit($id)
     {
-        $cities = City::where('country_id',191)->get();
-        $agent = Agent::find($id);
-        if(!$agent)
-        {
-          return redirect('/');
-        }
-      else{
 
-            if((agentUser())&&(($agent->id == agentUser()->id)))
-              {
-                return view('front.agents.edit')->with('cities', $cities)->with('agent', $agent);
-              }
-               return redirect('agent/'.$id.'/edit')->with('master_error', 'غير مسموح بتعديل هذا الوكيل');
-          }
+        $agent = Agent::find($id);
+        if(empty($agent)) return redirect('/');
+
+        if(agentUser() && agentUser()->id != $id) return redirect('/');
+
+        $cities = City::where('country_id',191)->get();
+        
+        return view('front.agents.edit',compact('cities','agent'));
+        //  return redirect('agent/'.$id.'/edit')->with('master_error', 'غير مسموح بتعديل هذا الوكيل');
+          
     }
 
     /**
@@ -45,6 +42,12 @@ class AgentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $agent = Agent::find($id);
+        if(empty($agent)) return redirect('/');
+
+        if(agentUser() && agentUser()->id != $id) return redirect('/');
+        
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:18',
             'email' => 'required|email|'.update_unique_validate('email',$id,'agents'),
@@ -60,7 +63,7 @@ class AgentController extends Controller
                         ->withInput()
                         ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
         }
-        $agent = Agent::find($id);
+        
         $agent->name =$request->get('name');
         $agent->email =$request->get('email');
         $agent->phone =$request->get('phone');
@@ -68,10 +71,8 @@ class AgentController extends Controller
         $agent->birth_date =$request->get('birth_date');
         $save_agent=$agent->save();
         if($save_agent){
-          if(agentUser()){
               return redirect('agent/'.$id.'/edit')->with('success', 'تم التعديل بنجاح');
-          }
-       }
+        }
     }
 
 

@@ -24,6 +24,7 @@ class CreateAgentsTable extends Migration
             $table->date('birth_date')->nullable();
             $table->string('password');
             $table->integer('admin_id');
+            $table->boolean('verified')->default(false);
 
             $table->rememberToken();
             $table->timestamps();

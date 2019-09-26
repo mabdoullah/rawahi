@@ -15,9 +15,30 @@ use App\Services\LoginService;
 use App\Services\VerifyUserService;
 
 use Auth;
+
+use App\Mail\VerifyMail;
+use Mail;
+
 class LoginCustomController extends Controller
 {
-    
+	
+	
+	public function test(){
+
+		
+		
+		// echo "<br>";
+
+		// $user='adsfadsf';
+		// Mail::to('ahmed.sedemy@gmail.com')->send(new VerifyMail($user));
+		// $embassador = \App\Embassador::find(2);
+		// $embassador->verified = 3;
+		// $embassador->save();
+
+		// echo currentUser()->verified;
+		//VerifyUserService::verify($embassador);
+	}
+
 	public function login(){
 		// $embassador = \App\Embassador::find(1);
 		// VerifyUserService::verify($embassador);

@@ -49,9 +49,12 @@
               return userIfLogin($guard);
           }
         }
-
         return false;
-        
+    }
+
+
+    function isEmailVerified(){
+        return !(currentUser()->verified > 0 ) ? false : true ;
     }
 
 
