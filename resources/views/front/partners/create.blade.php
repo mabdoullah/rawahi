@@ -664,7 +664,7 @@ function readURL(input) {
             // Create the Google Map using our element and options defined above
             var map = new google.maps.Map(mapElement, mapOptions);
 
-            var image = "{{asset('front/images/others/marker.png')}}" ;
+            var image = "{{asset('front/images/others/Marker.png')}}" ;
             // Let's also add a marker while we're at it
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng({{$lat}}, {{$lng}}),
@@ -687,7 +687,7 @@ function readURL(input) {
 
                     infoWindow.setPosition(pos);
                     infoWindow.setContent('Location found.');
-                    infoWindow.open(map);
+                    infoWindow.open(map,marker);
                     map.setCenter(pos);
                 }, function() {
                     handleLocationError(true, infoWindow, map.getCenter());

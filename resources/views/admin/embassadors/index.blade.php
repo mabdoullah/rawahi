@@ -67,7 +67,7 @@
               <input type="text" class="form-control" name='search_byphone' placeholder="بحث برقم الجوال..." id="generalSearch" value="{{ old('searchByPhone') ?? $searchByPhone ?? null }}">
             </div>
             <div class="col-3">
-              <input type="text" class="form-control" name='search_byemail' placeholder="بحث الاميل..." id="generalSearch" value="{{ old('search_byemail') ?? $searchByEmail ?? null }}">
+              <input type="text" class="form-control" name='search_byemail' placeholder="بحث بالبريد الاكترونى..." id="generalSearch" value="{{ old('search_byemail') ?? $searchByEmail ?? null }}">
             </div>
             <div class="col-1">
               <button class="btn btn-primary" type="submit"> بحث </button>
