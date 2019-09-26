@@ -14,7 +14,7 @@
                             <ul>
                                 <li class="active"> <a href="{{route('index')}}"> الرئيسية</a> </li>\
                                   <li> <a href="{{route('ambassadors.index')}}"> السفراء/</a></li>
-                                @if(isset($embassador))
+                                @if(isset($ambassador))
                                 <li> <h2 class="page-title ">  تعديل بيانات السفير</h2></li>
                                 @else
                                 <li> <h2 class="page-title "> تسجيل سفير جديد</h2></li>
@@ -26,14 +26,14 @@
             </div>
         </div>
         <!--Breadcrumb section ends-->
-        <!--Add embassadors starts-->
+        <!--Add ambassadors starts-->
         <div class="list-details-section section-padding add_list pad-top-50">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tab-content mar-tb-30 add_list_content">
                             <div class="tab-pane fade show active" id="general_info">
-                                @if(isset($embassador))
+                                @if(isset($ambassador))
                                 <h4> <i class="ion-ios-information"></i>تعديل بيانات السفير:-</h4>
                                 @else
                                 <h4> <i class="ion-ios-information"></i>تسجيل سفير جديد:-</h4>
@@ -48,25 +48,25 @@
                                 {{ session()->get('success') }}
                                 </div>
                                 @endif
-                                @if(isset($embassador))
-                                <form class="row" action="{{route('ambassadors.update',$embassador->id)}}" method="post" enctype="multipart/form-data">
+                                @if(isset($ambassador))
+                                <form class="row" action="{{route('ambassadors.update',$ambassador->id)}}" method="post" enctype="multipart/form-data">
                                   @method('PUT')
                                   @else
                                   <form class="row" action="{{route('ambassadors.store')}}" method="POST" enctype="multipart/form-data">
                                     @endif
                                     @csrf
-                                    @if(isset($embassador))
+                                    @if(isset($ambassador))
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label > رقم السفير</label>
-                                            <div class="form-control filter-input disabled-id"><p>{{$embassador->generate_id}}</p></div>
+                                            <div class="form-control filter-input disabled-id"><p>{{$ambassador->generate_id}}</p></div>
                                         </div>
                                     </div>
                                     @endif
-                                   <div class=" @if(isset($embassador)) col-md-5 @else col-md-6 @endif">
+                                   <div class=" @if(isset($ambassador)) col-md-5 @else col-md-6 @endif">
                                        <div class="form-group {{ $errors->has( 'first_name' ) ? 'has-error' : '' }}">
                                            <label> الاسم الاول</label>
-                                           <input  type="text" class="form-control filter-input"placeholder="الإسم الاول"  name="first_name"  value="{{ old('first_name') ?? $embassador->first_name ?? null }}" >
+                                           <input  type="text" class="form-control filter-input"placeholder="الإسم الاول"  name="first_name"  value="{{ old('first_name') ?? $ambassador->first_name ?? null }}" >
                                            @if( $errors->has( 'first_name' ) )
                                                  <span class="help-block text-danger">
                                                      {{ $errors->first( 'first_name' ) }}
@@ -74,10 +74,10 @@
                                              @endif
                                        </div>
                                    </div>
-                                   <div class=" @if(isset($embassador)) col-md-5 @else col-md-6 @endif">
+                                   <div class=" @if(isset($ambassador)) col-md-5 @else col-md-6 @endif">
                                        <div class="form-group {{ $errors->has( 'second_name' ) ? 'has-error' : '' }}">
                                            <label> الاسم الاخير</label>
-                                           <input  type="text" class="form-control filter-input"placeholder="الإسم الاخير " name="second_name" value="{{ old('second_name') ?? $embassador->second_name ?? null }}"  >
+                                           <input  type="text" class="form-control filter-input"placeholder="الإسم الاخير " name="second_name" value="{{ old('second_name') ?? $ambassador->second_name ?? null }}"  >
                                            @if( $errors->has( 'second_name' ) )
                                                  <span class="help-block text-danger">
                                                      {{ $errors->first( 'second_name' ) }}
@@ -88,7 +88,7 @@
                                    <div class="col-md-6">
                                        <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                                            <label>  البريد الالكتروني</label>
-                                           <input  type="email" class="form-control filter-input"placeholder="البريد الالكتروني " name="email"  value="{{ old('email') ?? $embassador->email ?? null }}">
+                                           <input  type="email" class="form-control filter-input"placeholder="البريد الالكتروني " name="email"  value="{{ old('email') ?? $ambassador->email ?? null }}">
                                            @if( $errors->has( 'email' ) )
                                                  <span class="help-block text-danger">
                                                      {{ $errors->first( 'email' ) }}
@@ -128,7 +128,7 @@
                                    <div class="col-md-6 ">
                                        <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
                                            <label>  رقم الجوال</label>
-                                           <input  dir='ltr' class="form-control filter-input text-left"placeholder="رقم الجوال" name="phone" value="{{ old('phone') ?? $embassador->phone ?? null }}"  >
+                                           <input  dir='ltr' class="form-control filter-input text-left"placeholder="رقم الجوال" name="phone" value="{{ old('phone') ?? $ambassador->phone ?? null }}"  >
                                            @if( $errors->has( 'phone' ) )
                                                  <span class="help-block text-danger">
                                                      {{ $errors->first( 'phone' ) }}
@@ -141,7 +141,7 @@
                                    <div class="col-md-6">
                                        <!-- <div id="datepicker" class="input-group date form-group {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }}" data-date-format="mm-dd-yyyy">
                                            <label> تاريخ الميلاد</label>
-                                           <input  type="date" class="form-control filter-input"placeholder="  تاريخ الميلاد" name="birth_date" value="{{ old('birth_date') ?? $embassador->birth_date ?? null }}" >
+                                           <input  type="date" class="form-control filter-input"placeholder="  تاريخ الميلاد" name="birth_date" value="{{ old('birth_date') ?? $ambassador->birth_date ?? null }}" >
                                            @if( $errors->has( 'birth_date' ) )
                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i>
                                                        {{ $errors->first( 'birth_date' ) }}
@@ -162,7 +162,7 @@
                                                 <option value="0">اختر المدينة</option>
                                                 @foreach ($cities as $city)
 
-                                                    <option {{ (old('city', isset($embassador->city) ? $embassador->city:'' ) == $city->id) ? 'selected':''  }} value="{{$city->id}}">
+                                                    <option {{ (old('city', isset($ambassador->city) ? $ambassador->city:'' ) == $city->id) ? 'selected':''  }} value="{{$city->id}}">
                                                     {{$city->name}}
                                                     </option>
                                                 @endforeach
@@ -175,11 +175,11 @@
                                                 @endif
                                         </div>
                                     </div>
-                                    @if(!isset($embassador))
+                                    @if(!isset($ambassador))
                                     <div class="col-md-6">
                                         <div class="form-group {{ $errors->has( 'password' ) ? 'has-error' : '' }}">
                                             <label>  كلمه السر </label>
-                                            <input  type="password" class="form-control filter-input"placeholder="كلمه السر" value="{{ old('password')}}" name="password">
+                                            <input  type="password" class="form-control filter-input" placeholder="كلمه السر" value="{{ old('password')}}" name="password">
                                             @if( $errors->has( 'password' ) )
                                                   <span class="help-block text-danger">
                                                       {{ $errors->first( 'password' ) }}
@@ -190,7 +190,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group {{ $errors->has( 'confirm_password' ) ? 'has-error' : '' }}">
                                             <label> تاكيد كلمه السر </label>
-                                            <input  type="password" class="form-control filter-input"placeholder="تاكيد كلمه السر  " name="confirm_password" value="{{ old('confirm_password')}}">
+                                            <input type="password" class="form-control filter-input" placeholder="تاكيد كلمه السر  " name="confirm_password" value="{{ old('confirm_password')}}">
                                             @if( $errors->has( 'confirm_password' ) )
                                                   <span class="help-block text-danger">
                                                       {{ $errors->first( 'confirm_password' ) }}
@@ -200,7 +200,7 @@
                                     </div>
 @endif
                                    <div class="col-md-4">
-                                       @if(isset($embassador))
+                                       @if(isset($ambassador))
                                        <button type="submit"  class="btn v7">حفظ التعديلات  </button>
                                        @else
                                        <button type="submit"  class="btn v7"> تسجيل سفير  </button>
@@ -216,7 +216,7 @@
                 </div>
             </div>
         </div>
-        <!--Add embassadors ends-->
+        <!--Add ambassadors ends-->
 
 
     <!--Page Wrapper ends-->

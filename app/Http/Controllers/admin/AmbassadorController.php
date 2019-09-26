@@ -5,14 +5,14 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
-use App\Embassador;
+use App\Ambassador;
 use App\City;
 use App\Agent;
 use DB;
 
 use Illuminate\Http\Request;
 
-class EmbassadorController extends Controller
+class AmbassadorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,27 +26,27 @@ class EmbassadorController extends Controller
         // // dd($request);
         // $agent_id = $request->agent;
 
-        // $embassadors = DB::table('embassadors')
-        //     ->join('cities', 'embassadors.city', '=', 'cities.id')
-        //     ->join('agents', 'embassadors.agent_id', '=', 'agents.id')
+        // $ambassadors = DB::table('ambassadors')
+        //     ->join('cities', 'ambassadors.city', '=', 'cities.id')
+        //     ->join('agents', 'ambassadors.agent_id', '=', 'agents.id')
         //     ->select(
         //         'agents.name as agent_name',
-        //         'embassadors.birth_date',
-        //         'embassadors.first_name',
-        //         'embassadors.second_name',
-        //         'embassadors.email',
-        //         'embassadors.phone',
-        //         'embassadors.id as embassador_id',
+        //         'ambassadors.birth_date',
+        //         'ambassadors.first_name',
+        //         'ambassadors.second_name',
+        //         'ambassadors.email',
+        //         'ambassadors.phone',
+        //         'ambassadors.id as ambassador_id',
         //         'cities.name as city_name',
-        //         'embassadors.agent_id as agent_id'
+        //         'ambassadors.agent_id as agent_id'
         //     );
         // if ($agent_id) 
         // {
 
-        //     $embassadors = $embassadors->where('embassadors.agent_id', $agent_id);
+        //     $ambassadors = $ambassadors->where('ambassadors.agent_id', $agent_id);
         // }
-        //  $embassadors = $embassadors->orderBy('embassadors.id', 'desc')->paginate(10);
-        // return view('admin.embassadors.index', compact('agent_id', 'embassadors', 'agents'));
+        //  $ambassadors = $ambassadors->orderBy('ambassadors.id', 'desc')->paginate(10);
+        // return view('admin.ambassadors.index', compact('agent_id', 'ambassadors', 'agents'));
 
 
 
@@ -61,49 +61,49 @@ class EmbassadorController extends Controller
         $agent_id = $request->agent;
 
 
-        $show_embassador='';
-        $embassadors = DB::table('embassadors')
-        ->join('cities', 'embassadors.city', '=', 'cities.id')
-        ->join('agents', 'embassadors.agent_id', '=', 'agents.id')
-        ->select('agents.name as agent_name', 'embassadors.birth_date', 'embassadors.first_name',
-         'embassadors.second_name', 'embassadors.email', 'embassadors.phone', 
-         'embassadors.id as embassador_id',
-          'cities.name as city_name', 'embassadors.agent_id as agent_id')->orderBy('embassador_id','desc');
+        $show_ambassador='';
+        $ambassadors = DB::table('ambassadors')
+        ->join('cities', 'ambassadors.city', '=', 'cities.id')
+        ->join('agents', 'ambassadors.agent_id', '=', 'agents.id')
+        ->select('agents.name as agent_name', 'ambassadors.birth_date', 'ambassadors.first_name',
+         'ambassadors.second_name', 'ambassadors.email', 'ambassadors.phone', 
+         'ambassadors.id as ambassador_id',
+          'cities.name as city_name', 'ambassadors.agent_id as agent_id')->orderBy('ambassador_id','desc');
 
 
 
           if(request()->has('search') && request()->get('search')!= '' ){
-            $embassadors->where(function ($q) use ($searchByName) {
-            $q->where('embassadors.first_name','like',"%".$searchByName."%")
-              ->orWhere('embassadors.second_name','like',"%".$searchByName."%");});
+            $ambassadors->where(function ($q) use ($searchByName) {
+            $q->where('ambassadors.first_name','like',"%".$searchByName."%")
+              ->orWhere('ambassadors.second_name','like',"%".$searchByName."%");});
          }
 
          if(request()->has('search_byphone') && request()->get('search_byphone')!= '' ){
-            $embassadors->where(function ($q) use ($searchByPhone) {
-            $q->where('embassadors.phone','like',"%".$searchByPhone."%");});
+            $ambassadors->where(function ($q) use ($searchByPhone) {
+            $q->where('ambassadors.phone','like',"%".$searchByPhone."%");});
          }
 
          if(request()->has('search_byemail') && request()->get('search_byemail')!= '' ){
-            $embassadors->where(function ($q) use ($searchByEmail) {
-            $q->where('embassadors.email','like',"%".$searchByEmail."%");});
+            $ambassadors->where(function ($q) use ($searchByEmail) {
+            $q->where('ambassadors.email','like',"%".$searchByEmail."%");});
          }
 
          if(request()->has('search_agent') && request()->get('search_agent') != '' ){
-            $embassadors->where(function ($q) use ($searchByAgent) {
+            $ambassadors->where(function ($q) use ($searchByAgent) {
             $q->where('agents.id',$searchByAgent);});
          }
-        //  dd($embassadors->get());
+        //  dd($ambassadors->get());
 
             // if($agent_id){
 
-            //     $embassadors = $embassadors->where('embassadors.agent_id', $agent_id);
+            //     $ambassadors = $ambassadors->where('ambassadors.agent_id', $agent_id);
             // }              
     
 
-            $embassadors = $embassadors->paginate(10);
-// dd($embassadors);
+            $ambassadors = $ambassadors->paginate(10);
+// dd($ambassadors);
 
-            return view('admin.embassadors.index')->with('searchByAgent', $searchByAgent)->with('agents', $agents)->with('show_embassador',$show_embassador)->with('embassadors',$embassadors)->with('searchByName',$searchByName)->with('searchByEmail',$searchByEmail)->with('searchByPhone',$searchByPhone)->with('agent_id',$agent_id);
+            return view('admin.ambassadors.index')->with('searchByAgent', $searchByAgent)->with('agents', $agents)->with('show_ambassador',$show_ambassador)->with('ambassadors',$ambassadors)->with('searchByName',$searchByName)->with('searchByEmail',$searchByEmail)->with('searchByPhone',$searchByPhone)->with('agent_id',$agent_id);
 
 
 
@@ -112,9 +112,9 @@ class EmbassadorController extends Controller
         // }
 
 
-        //->with('embassadors', $embassadors)
+        //->with('ambassadors', $ambassadors)
         //->with('agents', $agents);
-        // ->with('show_embassador', $show_embassador);
+        // ->with('show_ambassador', $show_ambassador);
     }
     /**
      * Show the form for creating a new resource.
@@ -125,7 +125,7 @@ class EmbassadorController extends Controller
     {
         $agents = Agent::all();
         $cities = City::where('country_id', 191)->get();
-        return view('admin.embassadors.create')->with('cities', $cities)->with('agents', $agents);
+        return view('admin.ambassadors.create')->with('cities', $cities)->with('agents', $agents);
     }
 
     /**
@@ -148,30 +148,30 @@ class EmbassadorController extends Controller
             'agent_id' => 'required|exists:agents,id'
         ]);
         if ($validator->fails()) {
-            return redirect('admin/embassador/create')
+            return redirect('admin/ambassador/create')
                 ->withErrors($validator)
                 ->withInput()
                 ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
         }
-        $embassador = new Embassador;
-        $embassador->first_name = $request->first_name;
-        $embassador->second_name = $request->second_name;
-        $embassador->email = $request->email;
-        $embassador->phone = $request->phone;
-        $embassador->phone_key = '+966'; //$request->code;
-        $embassador->country = 191; //id of suadia
-        $embassador->city = $request->city;
-        $embassador->birth_date = $request->birth_date;
-        $embassador->password = bcrypt($request->password);
-        $embassador->agent_id = $request->agent_id;
-        // $embassador->remember_token = $request->_token;
-        $save_embassador = $embassador->save();
-        // dd($embassador);
-        $embassador_id = Embassador::where('id', $embassador->id)->select('id', 'generate_id')->first();
-        $embassador_id->generate_id = $embassador_id->id;
-        $embassador_id->save();
-        if ($save_embassador) {
-            return redirect('admin/embassador')->with('success', 'تم التسجيل بنجاح');
+        $ambassador = new Ambassador;
+        $ambassador->first_name = $request->first_name;
+        $ambassador->second_name = $request->second_name;
+        $ambassador->email = $request->email;
+        $ambassador->phone = $request->phone;
+        $ambassador->phone_key = '+966'; //$request->code;
+        $ambassador->country = 191; //id of suadia
+        $ambassador->city = $request->city;
+        $ambassador->birth_date = $request->birth_date;
+        $ambassador->password = bcrypt($request->password);
+        $ambassador->agent_id = $request->agent_id;
+        // $ambassador->remember_token = $request->_token;
+        $save_ambassador = $ambassador->save();
+        // dd($ambassador);
+        $ambassador_id = Ambassador::where('id', $ambassador->id)->select('id', 'generate_id')->first();
+        $ambassador_id->generate_id = $ambassador_id->id;
+        $ambassador_id->save();
+        if ($save_ambassador) {
+            return redirect('admin/ambassador')->with('success', 'تم التسجيل بنجاح');
         }
     }
     /**
@@ -183,12 +183,12 @@ class EmbassadorController extends Controller
     public function show()
     {
 
-        $show_embassador = DB::table('embassadors')
-            ->join('cities', 'embassadors.city', '=', 'cities.id')
-            ->select('embassadors.first_name', 'embassadors.second_name', 'embassadors.email', 'embassadors.phone', 'embassadors.phone_key', 'embassadors.birth_date', 'embassadors.id as embassador_id', 'cities.name as city_name')
-            ->where('embassadors.id', $id)->first();
-        // $show_embassador = Embassadors::find($id);
-        return response()->json($show_embassador);
+        $show_ambassador = DB::table('ambassadors')
+            ->join('cities', 'ambassadors.city', '=', 'cities.id')
+            ->select('ambassadors.first_name', 'ambassadors.second_name', 'ambassadors.email', 'ambassadors.phone', 'ambassadors.phone_key', 'ambassadors.birth_date', 'ambassadors.id as ambassador_id', 'cities.name as city_name')
+            ->where('ambassadors.id', $id)->first();
+        // $show_ambassador = Ambassadors::find($id);
+        return response()->json($show_ambassador);
     }
 
     /**
@@ -204,9 +204,9 @@ class EmbassadorController extends Controller
 
         $agents = Agent::all();
         $cities = City::where('country_id', 191)->get();
-        $embassador = Embassador::find($id);
-        // return view("admin.embassadors.edit")->with('cities', $cities)->with('embassador', $embassador)->with('agents',$agents);
-        return view('admin.embassadors.edit', compact('agent_id', 'embassador', 'agents', 'cities'));
+        $ambassador = Ambassador::find($id);
+        // return view("admin.ambassadors.edit")->with('cities', $cities)->with('ambassador', $ambassador)->with('agents',$agents);
+        return view('admin.ambassadors.edit', compact('agent_id', 'ambassador', 'agents', 'cities'));
     }
 
     /**
@@ -221,31 +221,31 @@ class EmbassadorController extends Controller
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|max:18',
             'second_name' => 'required|max:18',
-            'email' => 'required|email|' . update_unique_validate('email', $id, 'embassadors'),
-            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|' . update_unique_validate('phone', $id, 'embassadors'),
+            'email' => 'required|email|' . update_unique_validate('email', $id, 'ambassadors'),
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|' . update_unique_validate('phone', $id, 'ambassadors'),
             'city' => 'required|exists:cities,id',
             'birth_date' => 'date|before:-18 years|required',
             'agent_id' => 'required|exists:agents,id'
 
         ]);
         if ($validator->fails()) {
-            return redirect('admin/embassador/' . $id . '/edit')
+            return redirect('admin/ambassador/' . $id . '/edit')
                 ->withErrors($validator)
                 ->withInput()
                 ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
         }
-        $embassador = Embassador::find($id);
-        $embassador->first_name = $request->first_name;
-        $embassador->second_name = $request->second_name;
-        $embassador->email = $request->email;
-        $embassador->phone = $request->phone;
-        $embassador->city = $request->city;
-        $embassador->birth_date = $request->birth_date;
-        $embassador->agent_id = $request->agent_id;
+        $ambassador = Ambassador::find($id);
+        $ambassador->first_name = $request->first_name;
+        $ambassador->second_name = $request->second_name;
+        $ambassador->email = $request->email;
+        $ambassador->phone = $request->phone;
+        $ambassador->city = $request->city;
+        $ambassador->birth_date = $request->birth_date;
+        $ambassador->agent_id = $request->agent_id;
 
-        $save_embassador = $embassador->save();
-        if ($save_embassador) {
-            return redirect('admin/embassador')->with('success', 'تم التعديل بنجاح');
+        $save_ambassador = $ambassador->save();
+        if ($save_ambassador) {
+            return redirect('admin/ambassador')->with('success', 'تم التعديل بنجاح');
         }
     }
 
@@ -299,12 +299,12 @@ class EmbassadorController extends Controller
      */
     public function destroy($id)
     {
-        $embassador = Embassador::find($id);
-        $embassador->delete();
+        $ambassador = Ambassador::find($id);
+        $ambassador->delete();
 
 
-        return redirect('admin/embassador')->with('success', ' تم الحذف!');
+        return redirect('admin/ambassador')->with('success', ' تم الحذف!');
 
-        return redirect('admin.embassadors.index')->with('success', 'Contact deleted!');
+        return redirect('admin.ambassadors.index')->with('success', 'Contact deleted!');
     }
 }

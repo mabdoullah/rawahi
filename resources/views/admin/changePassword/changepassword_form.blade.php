@@ -1,8 +1,7 @@
 @extends('admin.master.app')
 @section('content')
 <!--changepassword starts-->
-<div class="list-details-section section-padding add_list pad-top-100">
-    <div class="container">
+
         <div class="row">
           <!--begin::Portlet-->
           		<div class="kt-portlet">
@@ -80,6 +79,5 @@
           		</div>
           		<!--end::Portlet-->
         </div>
-    </div>
-</div>
+ 
 @endsection

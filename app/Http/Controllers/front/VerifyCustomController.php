@@ -24,5 +24,10 @@ class VerifyCustomController extends Controller
 
 	}
 
+
+	public function emailNotVerified (){
+		return isEmailVerified() ? redirect('/') : view('front.verify.email_not_verified');
+ 		
+	}
 	
 }

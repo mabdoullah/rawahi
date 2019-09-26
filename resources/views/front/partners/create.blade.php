@@ -201,13 +201,13 @@
                                         {{-- <div class="col-md-6">
                                             <div class="form-group">
                                         <label>رقم السفير</label>
-                                        <input name="embassador_id"  type="number" class="form-control filter-input"
-                                            placeholder="رقم السفير " value="{{ old('embassador_id',
-                                            isset($partner->embassador_id) ? $partner->embassador_id : '') }}">
+                                        <input name="ambassador_id"  type="number" class="form-control filter-input"
+                                            placeholder="رقم السفير " value="{{ old('ambassador_id',
+                                            isset($partner->ambassador_id) ? $partner->ambassador_id : '') }}">
 
-                                            @if( $errors->has( 'embassador_id' ) )
+                                            @if( $errors->has( 'ambassador_id' ) )
                                                    <span class="help-block text-danger">
-                                                       {{ $errors->first( 'embassador_id' ) }}
+                                                       {{ $errors->first( 'ambassador_id' ) }}
                                                    </span>
                                                @endif
 
@@ -664,7 +664,7 @@ function readURL(input) {
             // Create the Google Map using our element and options defined above
             var map = new google.maps.Map(mapElement, mapOptions);
 
-            var image = "{{asset('front/images/others/marker.png')}}" ;
+            var image = "{{asset('front/images/others/Marker.png')}}" ;
             // Let's also add a marker while we're at it
             var marker = new google.maps.Marker(
                 {

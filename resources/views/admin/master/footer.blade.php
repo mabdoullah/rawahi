@@ -242,7 +242,6 @@
     
 
 <script src="{{asset('admin_design/vendors/general/jquery/dist/jquery.js')}}" type="text/javascript"></script>
-@stack('jqueryCode')
 
 <script src="{{asset('admin_design/vendors/general/popper.js/dist/umd/popper.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin_design/vendors/general/bootstrap/dist/js/bootstrap.min.js')}}" type="text/javascript"></script>
@@ -316,16 +315,8 @@
 <!--begin::Global Theme Bundle(used by all pages) -->
 
            <script src="{{asset('admin_design/js/scripts.bundle.js')}}" type="text/javascript"></script>
-           <script>
-    $('#kt_datepicker_2').datepicker({
-                format: 'yyyy-mm-dd',   
-                
-                autoclose: true,
-                todayHighlight: true
-            });
-</script>
       <!--end::Global Theme Bundle -->
-
+      @stack('jqueryCode')
                   <!--begin::Page Vendors(used by this page) -->
                
                   <script
@@ -339,4 +330,4 @@
                           <script src="{{asset('admin_design/js/pages/dashboard.js')}}" type="text/javascript"></script>
                       <!--end::Page Scripts -->
                    
-                     
+                 

@@ -1,7 +1,17 @@
 @extends('admin.master.app')
 
 @section('content')
+@push('jqueryCode') 
 
+<script>
+    $('#kt_datepicker_2').datepicker({
+                format: 'yyyy-mm-dd',   
+                
+                autoclose: true,
+                todayHighlight: true
+            });
+</script>
+@endpush
 <!--Page Wrapper starts-->
 
 <!-- begin:: Content -->

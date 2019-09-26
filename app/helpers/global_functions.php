@@ -13,7 +13,7 @@ function partnersTypesArray()
     return $types;
 }
 function usersTables(){
-    return ['admins','agents','embassadors','partners','users'];
+    return ['admins','agents','ambassadors','partners','users'];
 }
 function unique_validate($field){
     $array=[];
@@ -21,7 +21,7 @@ function unique_validate($field){
       array_push($array,'unique:'.$table.",".$field);
     }
     return @implode('|',$array);
-    //return "unique:partners,".$field."|unique:embassadors,".$field."|unique:agents,".$field;
+    //return "unique:partners,".$field."|unique:ambassadors,".$field."|unique:agents,".$field;
 }
 function update_unique_validate($field,$id,$table){
   $array = [];
@@ -33,7 +33,7 @@ function update_unique_validate($field,$id,$table){
     return @implode('|',$array);
 }
 
-function generate_embassador_number($id){
+function generate_ambassador_number($id){
   return $id;
 }
 ?>
