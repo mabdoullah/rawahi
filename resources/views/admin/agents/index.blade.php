@@ -41,42 +41,13 @@
 
 
     <div class="kt-portlet__head kt-portlet__head--lg">
-      <div class="kt-portlet__head-label " style="margin:auto;width:100%">
+      <div class="kt-portlet__head-label ">
         <span class="kt-portlet__head-icon">
           <i class="kt-font-brand flaticon2-line-chart"></i>
         </span>
         <h3 class="kt-portlet__head-title">
           بيانات الوكلاء </h3>
 
-      </div>
-    </div>
-    <div class="kt-portlet__head kt-portlet__head--lg">
-      <div class="kt-portlet__head-label" style="width:85%">
-
-        <form width="100%" class="kt-margin-l-20" id="kt_subheader_search_form" action="{{route('admin.agent.index') }}">
-          <div class="row kt-input-icon kt-input-icon--right kt-subheader__search">
-
-            <div class="col-3">
-              <input type="text" class="form-control" name='search' placeholder="بحث بالاسم..." id="generalSearch" value="{{ old('search') ?? $searchByName ?? null }}" >
-
-            </div>
-
-            <div class="col-3">
-              <input type="text" class="form-control" name='search_byphone' placeholder="بحث برقم الجوال..." id="generalSearch" value="{{ old('searchByPhone') ?? $searchByPhone ?? null }}">
-
-            </div>
-
-            <div class="col-3">
-              <input type="text" class="form-control" name='search_byemail' placeholder="بحث الاميل..." id="generalSearch" value="{{ old('search_byemail') ?? $searchByEmail ?? null }}">
-
-            </div>
-            <div class="col-2">
-              <button class="btn btn-primary" type="submit"> بحث </button>
-            </div>
-
-            </span>
-          </div>
-        </form>
       </div>
       <div class="kt-portlet__head-toolbar">
         <div class="kt-portlet__head-wrapper">
@@ -88,7 +59,35 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="kt-portlet__head kt-portlet__head--lg row">
+      <div class="kt-portlet__head-label col-12" >
 
+        <form style="width: 100%" class="kt-margin-l-20" id="kt_subheader_search_form" action="{{route('admin.agent.index') }}">
+          <div class="row kt-input-icon kt-input-icon--right kt-subheader__search">
+
+            <div class="col">
+              <input type="text" class="form-control" name='search' placeholder="بحث بالاسم..." id="generalSearch" value="{{ old('search') ?? $searchByName ?? null }}" >
+
+            </div>
+
+            <div class="col">
+              <input type="text" class="form-control" name='search_byphone' placeholder="بحث برقم الجوال..." id="generalSearch" value="{{ old('searchByPhone') ?? $searchByPhone ?? null }}">
+
+            </div>
+
+            <div class="col">
+              <input type="text" class="form-control" name='search_byemail' placeholder="بحث الاميل..." id="generalSearch" value="{{ old('search_byemail') ?? $searchByEmail ?? null }}">
+
+            </div>
+            <div class="col-1">
+              <button class="btn btn-primary" type="submit"> بحث </button>
+            </div>
+
+            </span>
+          </div>
+        </form>
+      </div>
     </div>
     <div class="kt-portlet__body">
       <!--begin: Datatable -->
@@ -110,7 +109,7 @@
           <tr>
             <td>{{$agent->name}}</td>
             <td>{{$agent->phone}}</td>
-            <td class="d-none d-lg-block">{{$agent->email}}</td>
+            <td>{{$agent->email}}</td>
             <td>{{$agent->city_name}}</td>
 
             <td>{{$agent->birth_date}}</td>

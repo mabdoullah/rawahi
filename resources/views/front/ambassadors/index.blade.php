@@ -114,7 +114,7 @@
                                                 <tr>
                                                     <td colspan="5">
                                                         <div class="alert alert-info text-center" role="alert">
-                                                        <h4 >عفوا لايوجدنتائج لعرضها</h4>
+                                                        <h4 >عفوا لا يوجد نتائج لعرضها</h4>
                                                         </div>
                                                     </td>
                                                 </tr>

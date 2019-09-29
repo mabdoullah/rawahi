@@ -58,7 +58,7 @@ class Partner extends Authenticatable
         return $this->belongsTo('App\City','city','id');
     }
 
-    public function ambassadors()
+    public function ambassador()
     {
         return $this->belongsTo('App\Ambassador','ambassador_id','id');
     }

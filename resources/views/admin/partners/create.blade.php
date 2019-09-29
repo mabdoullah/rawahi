@@ -38,7 +38,7 @@
                                                </span>
                                         @endif
                                 </div>
-                               
+
                                         <div class="col-md-6">
                                                 <div class="form-group {{ $errors->has( 'partner_type' ) ? 'has-error' : '' }}">
                                                         <label>الفئة</label>
@@ -50,17 +50,17 @@
                                                                        <option  value="{{$key}}">{{$value}}</option>
                                                                   @endforeach
                                                               </select>
-                                  
+
                                                               @if( $errors->has( 'partner_type' ) )
                                                               <span class="help-block text-danger">
                                                                   {{ $errors->first( 'partner_type' ) }}
                                                               </span>
                                                               @endif
                                                           </div>
-                                  
+
                                                           </div>
-                                                          
-                        
+
+
                                 </div>
                                 <div class="col-md-6">
                                         <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
@@ -79,21 +79,21 @@
                                                     <select class="form-control filter-input"  name="ambassador_id" id="ambassador_id">
                                                         <option value="0">اختر السفير</option>
                                                         @foreach ($ambassadors as $ambassdor)
-                
+
                                                             <option   @if( old('ambassdor')==$ambassdor->id) selected @endif value="{{$ambassdor->id}}">
                                                             {{$ambassdor->first_name}}
                                                             </option>
                                                         @endforeach
                                                     </select>
-                
+
                                                     @if( $errors->has( 'ambassdor' ) )
                                                             <span class="help-block text-danger">
                                                                 {{ $errors->first( 'ambassdor' ) }}
                                                             </span>
                                                         @endif
                                                 </div>
-                        
-                        
+
+
                                                </div>
                                     <div class="col-md-12">
                                             <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
@@ -109,7 +109,7 @@
                                            @endif
                                             </div>
                                         </div>
-                                        
+
                             </div>
                             <div class="col-md-12">
                                     <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
@@ -122,8 +122,8 @@
                                             @endif
                                     </div>
                                 </div>
-                                
-                    
+
+
                     <div class="col-md-6">
                             <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                                     <label>  كلمه السر </label>
@@ -135,8 +135,8 @@
                                       @endif
                             </div>
                         </div>
-                        
-            
+
+
             <div class="col-md-6">
                     <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                             <div class="form-group {{ $errors->has( 'confirm_password' ) ? 'has-error' : '' }}">
@@ -203,8 +203,8 @@
                                             </span>
                                         @endif
                                 </div>
-        
-        
+
+
                                </div>
                                <div class="col-md-6">
                                    <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
@@ -217,23 +217,23 @@
                                            </span>
                                        @endif
                                 </div>
-                
-                
+
+
                         </div>
                         <div class="col-md-6">
                                 <div  class="form-group {{ $errors->has( 'map_address' ) ? 'has-error' : '' }}">
                                         <label>العنوان</label>
                                         <input name="map_address" id="map_address"  type="text" class="form-control filter-input"
                                             placeholder="ex. 250, Olayya Street..." value="{{ old('map_address') }}">
-    
+
                                             @if( $errors->has( 'map_address' ) )
                                             <span class="help-block text-danger">
                                                 {{ $errors->first( 'map_address' ) }}
                                             </span>
                                             @endif
                                     </div>
-             
-             
+
+
                      </div>
                      <div class="col-md-6">
                             <div class="form-group {{ $errors->has( 'postel_code' ) ? 'has-error' : '' }}">
@@ -247,32 +247,32 @@
                                         </span>
                                         @endif
                                 </div>
-                           
-         
+
+
                  </div>
                  <div class="col-md-6">
                         <div class="form-group {{ $errors->has( 'lat' ) ? 'has-error' : '' }}">
                                 <input name="lat" type="hidden" id="lat" class="form-control filter-input" value="{{ old('lat') }}">
-                                     
+
                             </div>
-                       
-     
+
+
              </div>
              <div class="col-md-6">
-                   
+
                     <div class="form-group {{ $errors->has( 'lng' ) ? 'has-error' : '' }}">
                             <input name="lng" type="hidden" id="lng" class="form-control filter-input"
                                  value="{{ old('lng',
                                 isset($partner->lng) ? $partner->lng : '') }}" >
                         </div>
- 
+
               </div>
-           
-                  
+
+
               <div class="col-md-12">
-                   
+
                     <div id="map" style="width: 100%;height: 250px;position: relative;overflow: hidden;"></div>
- 
+
               </div>
               <div class="col-md-6">
                     <input type="hidden" >
@@ -291,7 +291,7 @@
                                 </span>
                                 @endif
                         </div>
- 
+
               </div>
               <div class="col-md-4">
                     <div class="form-group {{ $errors->has( 'instagram' ) ? 'has-error' : '' }}">
@@ -305,7 +305,7 @@
                                 @endif
 
                         </div>
- 
+
               </div>
               <div class="col-md-4">
                     <div class="form-group {{ $errors->has( 'twitter' ) ? 'has-error' : '' }}">
@@ -318,7 +318,7 @@
                                 </span>
                                 @endif
                         </div>
- 
+
               </div>
               <div class="col-md-12">
                     <input required type="checkbox" tabindex="3" class="" name="remember"
@@ -334,19 +334,21 @@
                     <div class="col-md-12">
                     <button type="submit" class="btn btn-primary" >حفظ وتسجيل</button>
                     </div>
-                   </div> 
-                </form> 
+                   </div>
+                </form>
              </div>
-                      
+
         </div>
     </div>
-           
-     
+
+
 
 @endsection
 @push('jqueryCode')
 {{-- image show  --}}
 <script>
+$('.input-image-up[src=""]').hide();
+$('.input-image-up:not([src=""])').show();
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -355,6 +357,7 @@ function readURL(input) {
             $('.input-image-up').fadeIn(500);
         }
         reader.readAsDataURL(input.files[0]);
+        $('.input-image-up').css('display', 'block');
     }
 }
 $(".add-listing__input-file").change(function() {
@@ -379,160 +382,251 @@ if(isset($partner->id)){
       }
   ?>
 
-
 <script>
 
-if ($('#map').length > 0) {
-  google.maps.event.addDomListener(window, 'load', init);
+        if ($('#map').length > 0) {
+            google.maps.event.addDomListener(window, 'load', init);
 
-  function init() {
-      // Basic options for a simple Google Map
-      // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-      var mapOptions = {
-          // How zoomed in you want the map to start at (always required)
-          zoom: 15,
+            function init() {
+                // Basic options for a simple Google Map
+                // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+                var mapOptions = {
+                    // How zoomed in you want the map to start at (always required)
+                    zoom: 15,
 
-          // The latitude and longitude to center the map (always required)
-          center: new google.maps.LatLng({{$lat}}, {{$lng}}), // Riyadh
+                    // The latitude and longitude to center the map (always required)
+                    center: new google.maps.LatLng({{$lat}}, {{$lng}}), // Riyadh
 
-          scrollwheel: false,
-
-
-          // How you would like to style the map.
-          // This is where you would paste any style found on Snazzy Maps.
-          styles: [
-              {
-                  "featureType": "administrative",
-                  "elementType": "geometry",
-                  "stylers": [
-                      {
-                          "visibility": "off"
-                      }
-                  ]
-              },
-              {
-                  "featureType": "administrative.land_parcel",
-                  "elementType": "labels",
-                  "stylers": [
-                      {
-                          "visibility": "off"
-                      }
-                  ]
-              },
-              {
-                  "featureType": "poi",
-                  "stylers": [
-                      {
-                          "visibility": "off"
-                      }
-                  ]
-              },
-              {
-                  "featureType": "road",
-                  "elementType": "labels.icon",
-                  "stylers": [
-                      {
-                          "visibility": "off"
-                      }
-                  ]
-              },
-              {
-                  "featureType": "road.local",
-                  "elementType": "labels",
-                  "stylers": [
-                      {
-                          "visibility": "off"
-                      }
-                  ]
-              },
-              {
-                  "featureType": "transit",
-                  "stylers": [
-                      {
-                          "visibility": "off"
-                      }
-                  ]
-              }
-          ]
-      };
-
-      // Get the HTML DOM element that will contain your map
-      // We are using a div with id="map" seen below in the <body>
-      var mapElement = document.getElementById('map');
-
-      // Create the Google Map using our element and options defined above
-      var map = new google.maps.Map(mapElement, mapOptions);
-
-      var image = "{{asset('front/images/others/marker.png')}}" ;
-      // Let's also add a marker while we're at it
-      var marker = new google.maps.Marker({
-          position: new google.maps.LatLng({{$lat}}, {{$lng}}),
-          map: map,
-          icon: image,
-          draggable: true,
-          animation: google.maps.Animation.DROP,
-
-      });
+                    scrollwheel: false,
 
 
+                    // How you would like to style the map.
+                    // This is where you would paste any style found on Snazzy Maps.
+                    styles: [
+                        {
+                            "featureType": "administrative",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "visibility": "off"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "administrative.land_parcel",
+                            "elementType": "labels",
+                            "stylers": [
+                                {
+                                    "visibility": "off"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "poi",
+                            "stylers": [
+                                {
+                                    "visibility": "off"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road",
+                            "elementType": "labels.icon",
+                            "stylers": [
+                                {
+                                    "visibility": "off"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.local",
+                            "elementType": "labels",
+                            "stylers": [
+                                {
+                                    "visibility": "off"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "transit",
+                            "stylers": [
+                                {
+                                    "visibility": "off"
+                                }
+                            ]
+                        }
+                    ]
+                };
 
+                // Get the HTML DOM element that will contain your map
+                // We are using a div with id="map" seen below in the <body>
+                var mapElement = document.getElementById('map');
 
-  marker.addListener('click', toggleBounce);
+                // Create the Google Map using our element and options defined above
+                var map = new google.maps.Map(mapElement, mapOptions);
 
-      function toggleBounce() {
-          if (marker.getAnimation() !== null) {
-              marker.setAnimation(null);
-          } else {
-              marker.setAnimation(google.maps.Animation.BOUNCE);
-          }
-      }
-      let geocoder;
-      google.maps.event.addListener(marker,'dragend',function (e) {
-          console.log(marker.getPosition());
-          geocoder = new google.maps.Geocoder();
+                var image = "{{asset('front/images/others/Marker.png')}}" ;
+                // Let's also add a marker while we're at it
+                var marker = new google.maps.Marker(
+                    {
+                    position: new google.maps.LatLng({{$lat}}, {{$lng}}),
+                    map: map,
+                    icon: image,
+                    draggable: true,
+                    animation: google.maps.Animation.DROP,
 
-          let lat = marker.getPosition().lat(),
-              lng = marker.getPosition().lng();
-
-
-
-          var latlng = new google.maps.LatLng(lat,lng);
-
-          geocoder.geocode({'latLng' : latlng},function (results, status) {
-
-              console.log( status,google.maps.GeocoderStatus  );
-
-              if (status == google.maps.GeocoderStatus.OK) {
-                  console.log(results[1],lat,lng );
-
-                  $('#lat').val(lat);
-                  $('#lng').val(lng);
-                  $('#map_address').val(results[1].formatted_address);
-                  var addressC = results[1].address_components,
-                      i;
-                  for ( i =0;i<addressC.length;i++){
-                      if (results[1].address_components[i].types[0] === "postal_code") {
-                          $('#zipCode').val(results[1].address_components[i].long_name);
-                      }
-                  }
-
-              }
-          });
-
-
-
-      })
-  }
-
-}
-
-// Intialize Map
+                    }
+                );
 
 
 
 
 
 
-</script>
+
+            marker.addListener('click', toggleBounce);
+
+                function toggleBounce() {
+                    if (marker.getAnimation() !== null) {
+                        marker.setAnimation(null);
+                    } else {
+                        marker.setAnimation(google.maps.Animation.BOUNCE);
+                    }
+                }
+
+
+                var geocoder = new google.maps.Geocoder();
+                google.maps.event.addListener(marker,'dragend',function (e) {
+                    // console.log(marker.getPosition());
+
+
+                    setValuesToInputs(marker);
+
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                function setValuesToInputs(marker){
+
+
+                    let lat = marker.getPosition().lat(),
+                        lng = marker.getPosition().lng();
+
+
+
+                    var latlng = new google.maps.LatLng(lat,lng);
+
+                    geocoder.geocode({'latLng' : latlng},function (results, status) {
+
+                        // var addresslocation =results[1].formatted_address;
+
+                        // console.log( status,google.maps.GeocoderStatus  );
+
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            // console.log(results[1],lat,lng );
+
+                            $('#lat').val(lat);
+                            $('#lng').val(lng);
+                            let map_address = '' ,addressC='',postal_code='';
+
+                            if (typeof results[1] !== 'undefined') {
+                                if(typeof results[1].formatted_address !== 'undefined'){
+                                    map_address = results[1].formatted_address;
+                                }
+
+                                if(typeof results[1].address_components !== 'undefined'){
+                                    addressC = results[1].address_components
+
+                                    for (let i =0;i<addressC.length;i++){
+                                        if (addressC[i].types[0] === "postal_code") {
+                                            postal_code  = addressC[i].long_name;
+                                        }
+                                    }
+
+                                }
+                            }
+
+                            $('#map_address').val(map_address);
+
+                            $('#zipCode').val(postal_code);
+
+                        }
+
+                    });
+                }
+
+
+
+
+                @if(!isset($partner->id))
+
+                    //infoWindow = new google.maps.InfoWindow;
+
+                    // Try HTML5 geolocation.
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            // console.log('position',position);
+                            var pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                            };
+
+                            // infoWindow.setPosition(pos);
+                            // infoWindow.setContent( addresslocation);
+                            marker.setPosition(pos);
+                            // infoWindow.open(map, marker);
+
+                            map.setCenter(pos);
+
+
+                            setValuesToInputs(marker);
+
+                        }, function() {
+                            //handleLocationError(true, infoWindow, map.getCenter());
+                        });
+                    } else {
+                        // Browser doesn't support Geolocation
+                        //  handleLocationError(false, infoWindow, map.getCenter());
+                    }
+
+
+                    // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                    //     infoWindow.setPosition(pos);
+                    //     infoWindow.setContent(browserHasGeolocation ?
+                    //                         'Error: The Geolocation service failed.' :
+                    //                         'Error: Your browser doesn\'t support geolocation.');
+                    //     infoWindow.open(map);
+                    // }
+
+                @endif
+
+
+
+
+            }
+
+        }
+
+        // Intialize Map
+
+
+
+
+
+    </script>
+
+
+
 {{-- end map --}}
 @endpush

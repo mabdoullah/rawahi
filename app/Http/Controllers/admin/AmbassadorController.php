@@ -42,7 +42,7 @@ class AmbassadorController extends Controller
         //         'cities.name as city_name',
         //         'ambassadors.agent_id as agent_id'
         //     );
-        // if ($agent_id) 
+        // if ($agent_id)
         // {
 
         //     $ambassadors = $ambassadors->where('ambassadors.agent_id', $agent_id);
@@ -53,13 +53,13 @@ class AmbassadorController extends Controller
 
 
 
-        
+
         $searchByName = trim(request('search'));
         $searchByEmail = trim(request('search_byemail'));
         $searchByPhone = trim(request('search_byphone'));
         $searchByAgent = request('search_agent');
 // dd($searchByAgent);
-        $agents = Agent::all(); 
+        $agents = Agent::all();
         $agent_id = $request->agent;
 
 
@@ -68,7 +68,7 @@ class AmbassadorController extends Controller
         ->join('cities', 'ambassadors.city', '=', 'cities.id')
         ->join('agents', 'ambassadors.agent_id', '=', 'agents.id')
         ->select('agents.name as agent_name', 'ambassadors.birth_date', 'ambassadors.first_name',
-         'ambassadors.second_name', 'ambassadors.email', 'ambassadors.phone', 
+         'ambassadors.second_name', 'ambassadors.email', 'ambassadors.phone',
          'ambassadors.id as ambassador_id',
           'cities.name as city_name', 'ambassadors.agent_id as agent_id')->orderBy('ambassador_id','desc');
 
@@ -99,8 +99,8 @@ class AmbassadorController extends Controller
             // if($agent_id){
 
             //     $ambassadors = $ambassadors->where('ambassadors.agent_id', $agent_id);
-            // }              
-    
+            // }
+
 
             $ambassadors = $ambassadors->paginate(10);
 // dd($ambassadors);
