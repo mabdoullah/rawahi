@@ -1,3 +1,4 @@
+
 <header class="header transparent scroll-hide">
     <!--Main Menu starts-->
     <div class="site-navbar-wrap v2">
@@ -20,8 +21,7 @@
                                     <li class="has-children ">
                                         <a href="javascript:;">
                                             {{(currentUser()->name)?? (currentUser()->first_name ?? currentUser()->legal_name)}}
-                                        </a>
-
+                                        </a>     
 
                                         <ul class="dropdown">
                                           <!-- start edit profile -->

@@ -39,7 +39,7 @@ class AmbassadorController extends Controller
           $ambassdors->with(['citydata' => function ($query) use ($searchByCity){
                      $query->select('id', 'name')->where('id',$searchByCity);}]);
         }
-     $ambassdors = $ambassdors->orderBy('embassadors.id', 'desc')->paginate(10);
+     $ambassdors = $ambassdors->orderBy('ambassadors.id', 'desc')->paginate(10);
     return view('front.ambassadors.index')
     ->with('searchByName', $searchByName)
     ->with('searchByEmail', $searchByEmail)
