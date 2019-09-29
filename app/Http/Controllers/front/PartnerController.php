@@ -269,6 +269,7 @@ class PartnerController extends Controller
         }
 
         $partner->update($request->all());
+        unlink($fileName);
         if (ambassadorUser()) {
 
             if($current_email != $partner->email){

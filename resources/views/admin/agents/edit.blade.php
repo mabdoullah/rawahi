@@ -1,17 +1,6 @@
 @extends('admin.master.app')
 
 @section('content')
-@push('jqueryCode') 
-
-<script>
-    $('#kt_datepicker_2').datepicker({
-                format: 'yyyy-mm-dd',   
-                
-                autoclose: true,
-                todayHighlight: true
-            });
-</script>
-@endpush
 <!--Page Wrapper starts-->
 
 <!-- begin:: Content -->
@@ -74,8 +63,8 @@
 
           <div class="form-group row">
            <div class="col-lg-6 ">
-           <div class=" {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }} ">    
-            <label >ادخل تاريخ ميلادك</label> 
+           <div class=" {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }} ">
+            <label >ادخل تاريخ ميلادك</label>
 
               <div class=" date">
               <div class="input-group">
@@ -91,14 +80,14 @@
                   {{ $errors->first( 'birth_date' ) }}
                 </span>
                 @endif
-               
-                
+
+
               </div>
             </div>
             </div>
 
        </div>
-          
+
           <div class="form-group row">
             <div class="col-lg-6">
               <div class=" {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
@@ -170,3 +159,12 @@
 </div>
 
 @endsection
+@push('jqueryCode') 
+<script>
+    $('#kt_datepicker_2').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true
+            });
+</script>
+@endpush

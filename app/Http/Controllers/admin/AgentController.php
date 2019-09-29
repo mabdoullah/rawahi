@@ -163,8 +163,7 @@ class AgentController extends Controller
             'name' => 'required|max:18',
             // 'email' => 'required|email|'.unique_validate('email'),
             'email' => 'required|email|'.update_unique_validate('email',$id,'agents'),
-
-            'phone' => 'required|regex:/(01)[0-9]{8}/|'.update_unique_validate('phone',$id,'agents'),
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.update_unique_validate('phone',$id,'agents'),
             'city' => 'required|exists:cities,id',
             'birth_date' => 'date|before:-18 years|required',
             // 'confirm_password' => 'min:8'

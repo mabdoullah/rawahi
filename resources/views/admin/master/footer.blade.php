@@ -324,10 +324,11 @@
                   
                           <script src="{{asset('admin_design/vendors/custom/fullcalendar/fullcalendar.bundle.js')}}" type="text/javascript"></script>
                           
-                          @stack('jqueryCode')
+                        
 
                   <!--begin::Page Scripts(used by this page) -->
                           <script src="{{asset('admin_design/js/pages/dashboard.js')}}" type="text/javascript"></script>
                       <!--end::Page Scripts -->
+                      @stack('jqueryCode')
                    
                  

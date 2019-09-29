@@ -19,7 +19,7 @@ class PartnerController extends Controller
 
     public function index()
     {
-        $ambassador_id = request()->get('ambassador');
+        $ambassador_id = request()->get('ambassador_id');
 
         $agents = DB::table("agents")->pluck("name", "id");
         $partners = Partner::orderBy('id', 'DESC')->get();
@@ -44,17 +44,6 @@ class PartnerController extends Controller
     }
  /*================================ end getambassadorList function=========================*/
 
-/*================================ start getpartnerList function=========================*/
-
-    public function getpartnerList(Request $request)
-    {
-        $partners = DB::table("partners")
-            ->where("ambassador_id", $request->ambassador_id)
-            ->pluck("legel_name", "id");
-
-        return response()->json($partners);
-    }
-/*================================ end getpartnerList function=========================*/
 
 /*================================ start searchpartner function=========================*/
 
@@ -94,11 +83,10 @@ class PartnerController extends Controller
 /*================================ start create function=========================*/
      public function create()
     {
-        $ambassadors = Ambassador::all();
-
+        $agents = Agent::all();
         $cities = City::where('country_id', 191)->get();
 
-        return view('admin.partners.create', compact('cities', 'ambassadors'));
+        return view('admin.partners.create', compact('cities', 'ambassador_id','agents'));
     }
 /*================================ end create function=========================*/
 
@@ -106,55 +94,30 @@ class PartnerController extends Controller
 
     public function store(Request $request)
     {
-        // first tab
+  
         $validator = Validator::make($request->all(), [
-            // 'ambassador_id' => 'required|unique:partners,ambassador_id|max:255',
             'partner_type' => 'required',
             'legal_name' => ' required |max:255',
             'email' => 'required|email|' . unique_validate('email'),
-
-            'password' => 'min:8|required_with:confirm_password|same:confirm_password',
-
-        ]);
-        if ($validator->fails()) {
-            session()->flash('activeTab', '');
-            return redirect('partners/create')
-                ->withErrors($validator)
-                ->withInput()
-                ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
-        }
-
-        // second tab
-        $validator = Validator::make($request->all(), [
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        if ($validator->fails()) {
-            session()->flash('activeTab', 'tab2');
-            return redirect('partners/create')
-                ->withErrors($validator)
-                ->withInput()
-                ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
-        }
-
-        // third tab
-        $validator = Validator::make($request->all(), [
+            'password' => 'min:8|required_with:confirm_password|same:confirm_password',
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|' . unique_validate('phone'),
             'city' => 'required|exists:cities,id',
-        ]);
+            'map_address' => 'required|max:255',
+            'ambassador_id' => 'required',
+            'remember'=>'required',
 
+
+
+        ]);
         if ($validator->fails()) {
-            session()->flash('activeTab', 'tab3');
-            return redirect('partners/create')
+            return redirect('admin/partners/create')
                 ->withErrors($validator)
                 ->withInput()
                 ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
         }
 
-        $validator = Validator::make($request->all(), [
-            'map_address' => 'required|max:255',
-
-        ]);
+     
 
         $partner = new Partner($request->all());
 
@@ -170,9 +133,10 @@ class PartnerController extends Controller
             $partner->image = $fileName;
 
         }
+        $ambassador_id = request()->get('ambassador_id');
+
 
         $partner->save();
-
         return redirect()->route('admin.partners.index')->with('message', 'تم التسجيل الشريك بنجاح');
     }
 /*================================ end create function=========================*/
@@ -193,10 +157,15 @@ class PartnerController extends Controller
     public function edit($id)
     {
         $partner = Partner::find($id);
-        $ambassadors= Ambassador::all();
+        $agent_id = $partner->ambassador->agent->id;
+        $agents = Agent::all();
+
+        $ambassadors = Ambassador::where('agent_id',$agent_id)->get();
+
+    
         $cities = City::where('country_id', 191)->get(['id', "name"]);
         $isChecked='true';
-        return view('admin.partners.edit', compact('partner', 'cities','$ambassadors','isChecked'));
+        return view('admin.partners.edit', compact('partner','agents','ambassadors' ,'agent_id','cities','isChecked'));
     }
 /*================================ end edit function=========================*/
 

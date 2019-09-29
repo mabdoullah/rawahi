@@ -176,7 +176,6 @@
 
 @push('jqueryCode')
 <script>
-
 $(function () {
   var date = new Date();
     $("#kt_datepicker_2").datepicker({
