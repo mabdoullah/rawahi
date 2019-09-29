@@ -12,22 +12,22 @@
     /* ----------------------------------------
            datepicker
     ------------------------------------------- */
-    $("#datepicker-from").datepicker({
-        autoclose: true,
-        todayHighlight: true
-    });
-    $("#datepicker-to").datepicker({
-        autoclose: true,
-        todayHighlight: true
-    });
-
-    $(function () {
-        $("#datepicker").datepicker({ 
-              autoclose: true, 
-              todayHighlight: true,
-        }).datepicker('update', new Date());  
-        
-      });
+    // $("#datepicker-from").datepicker({
+    //     autoclose: true,
+    //     todayHighlight: true
+    // });
+    // $("#datepicker-to").datepicker({
+    //     autoclose: true,
+    //     todayHighlight: true
+    // });
+    //
+    // $(function () {
+    //     $("#datepicker").datepicker({
+    //           autoclose: true,
+    //           todayHighlight: true,
+    //     }).datepicker('update', new Date());
+    //
+    //   });
 
     /*----------------------------------------
           Scroll to top
@@ -301,7 +301,7 @@
         siteMenuClone();
 
         /*-------------------------------------------------
-                    rating stars in reviews 
+                    rating stars in reviews
         /*-------------------------------------------------*/
 
         var rateLine = $('.contact-form__rate-bx'),
@@ -609,7 +609,7 @@
             $(this).parent().siblings("input.input-number").val(quantity - 1);
         }
     });
-    
+
     /*-------------------------------------
               Add Listing
      -------------------------------------*/

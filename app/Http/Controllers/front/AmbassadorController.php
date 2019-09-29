@@ -39,7 +39,7 @@ class AmbassadorController extends Controller
           $ambassdors->with(['citydata' => function ($query) use ($searchByCity){
                      $query->select('id', 'name')->where('id',$searchByCity);}]);
         }
-     $ambassdors = $ambassdors->orderBy('embassadors.id', 'desc')->paginate(10);
+     $ambassdors = $ambassdors->orderBy('ambassadors.id', 'desc')->paginate(10);
     return view('front.ambassadors.index')
     ->with('searchByName', $searchByName)
     ->with('searchByEmail', $searchByEmail)
@@ -78,7 +78,7 @@ class AmbassadorController extends Controller
             // 'confirm_password' => 'min:8'
         ]);
         if ($validator->fails()) {
-            return redirect('ambassador/create')
+            return redirect('ambassadors/create')
                 ->withErrors($validator)
                 ->withInput()
                 ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
