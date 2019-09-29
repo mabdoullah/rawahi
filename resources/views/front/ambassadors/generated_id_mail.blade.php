@@ -91,6 +91,10 @@
         .overflow-hide{
             overflow-x: hidden;
         }
+        .number{
+            color: #FFAB0B;
+            font-size: 5em;
+        }
 
     </style>
 </head>
@@ -102,11 +106,11 @@
         </div>
         <hr class="center">
         <div class="center">
-            <h1 class="mr-bt-50"> مرحبا {{($user->name)?? ($user->first_name ?? $user->legal_name)}}</h1>
+            <h1 class="mr-bt-50"> مرحبا {{$ambassador->first_name}}</h1>
         </div>
-        <h3 class="mr-bt-40 center"> قبل أن نتمكن من إكمال طلبك ، نحتاج إلى التحقق من صحة عنوان بريدك الإلكتروني لذا من فضلك انقر الزر في الاسفل : </h3>
-        <div class="center mr-bt-40 ">
-            <a class="verify" href="{{url('user/verify', $user->verifyUser->token)}}">تاكيد البريد الالكتروني</a>
+        <h3 class="mr-bt-40 center"> نحن سعداء بتسجيلك معنا بنجاح كسفير لمنصة رواهى بهذا الرقم : </h3>
+        <div class="center  number">
+            {{$ambassador->generate_id}}
         </div>
     </section>
 </body>

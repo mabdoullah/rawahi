@@ -3,11 +3,14 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
+use App\Traits\VerifyUserTrait;
 
 class User extends Authenticatable
 {
+    use VerifyUserTrait;
+
     use Notifiable;
     protected $guard = 'user';
 

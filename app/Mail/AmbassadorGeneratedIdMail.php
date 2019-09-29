@@ -7,20 +7,19 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class VerifyMail extends Mailable
+class AmbassadorGeneratedIdMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
-
+    public $ambassador;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($ambassador)
     {
-        $this->user = $user;
+        $this->ambassador = $ambassador;
     }
 
     /**
@@ -30,9 +29,8 @@ class VerifyMail extends Mailable
      */
     public function build()
     {
-        
-        return $this->subject('تفعيل البريد الإلكترونى لمنصة رواهى')
+        return $this->subject('رقم السفير الخاص بك لمنصة رواهى')
                       ->from(env('MAIL_FROM'),'rawahi.com')
-                      ->view('front.verify.email_verify')->with('user',$this->user);
+                      ->view('front.ambassadors.generated_id_mail')->with('ambassador',$this->ambassador);
     }
 }

@@ -12,6 +12,8 @@ use DB;
 
 use Illuminate\Http\Request;
 
+use App\Services\VerifyUserService;
+
 class AmbassadorController extends Controller
 {
     /**
@@ -171,6 +173,9 @@ class AmbassadorController extends Controller
         $ambassador_id->generate_id = $ambassador_id->id;
         $ambassador_id->save();
         if ($save_ambassador) {
+
+            VerifyUserService::verify($ambassador);
+
             return redirect('admin/ambassador')->with('success', 'تم التسجيل بنجاح');
         }
     }
@@ -235,6 +240,8 @@ class AmbassadorController extends Controller
                 ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
         }
         $ambassador = Ambassador::find($id);
+        $current_email = $ambassador->email;
+
         $ambassador->first_name = $request->first_name;
         $ambassador->second_name = $request->second_name;
         $ambassador->email = $request->email;
@@ -245,6 +252,11 @@ class AmbassadorController extends Controller
 
         $save_ambassador = $ambassador->save();
         if ($save_ambassador) {
+
+            if($current_email != $ambassador->email){
+                VerifyUserService::verify($ambassador);
+            }
+
             return redirect('admin/ambassador')->with('success', 'تم التعديل بنجاح');
         }
     }

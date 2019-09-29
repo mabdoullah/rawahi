@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 // use App\Country;
 use Illuminate\Support\Facades\Validator;
+use App\Services\VerifyUserService;
 
 class AmbassadorController extends Controller
 {
@@ -75,7 +76,7 @@ class AmbassadorController extends Controller
             // 'confirm_password' => 'min:8'
         ]);
         if ($validator->fails()) {
-            return redirect('ambassador/create')
+            return redirect('ambassadors/create')
                 ->withErrors($validator)
                 ->withInput()
                 ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
@@ -96,11 +97,10 @@ class AmbassadorController extends Controller
         $generate_id=generate_ambassador_number($ambassador->id);
         Ambassador::where('id', $ambassador->id)->update(['generate_id' =>$generate_id]);
         if($save_ambassador){
-          // dd($ambassador->getGuard());
-          // dd($save_ambassador);
-          // VerifyUserService::createUser($ambassador,'ambassador');
 
-            return redirect('ambassadors')->with('success', 'تم تسجيل سفير بنجاح');
+          VerifyUserService::verify($ambassador);
+
+          return redirect('ambassadors')->with('success', 'تم تسجيل سفير بنجاح');
         }
     }
     /**
@@ -174,7 +174,7 @@ class AmbassadorController extends Controller
             if(agentUser()->id != $ambassador->agent_id) return redirect('/');
         }
 
-
+      
 
       $validator = Validator::make($request->all(), [
                   'first_name' => 'required|max:18',
@@ -182,7 +182,7 @@ class AmbassadorController extends Controller
                   'email' => 'required|email|'.update_unique_validate('email',$id,'ambassadors'),
                   'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.update_unique_validate('phone',$id,'ambassadors'),
                   'city' => 'required|exists:cities,id',
-                  // 'birth_date' => 'date|before:-18 years|required',
+                  'birth_date' => 'date|before:-18 years|required',
                   ]);
               if ($validator->fails()) {
                   return redirect('ambassadors/'.$id.'/edit')
@@ -190,6 +190,10 @@ class AmbassadorController extends Controller
                               ->withInput()
                               ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
               }
+      
+      
+      $current_email = $ambassador->email;
+
       $ambassador->first_name = $request->first_name;
       $ambassador->second_name = $request->second_name;
       $ambassador->email = $request->email;
@@ -199,6 +203,10 @@ class AmbassadorController extends Controller
       $save_ambassador=$ambassador->save();
       if($save_ambassador){
         if(agentUser()){
+
+            if($current_email != $ambassador->email){
+              VerifyUserService::verify($ambassador);
+            }
             return redirect('ambassadors')->with('success', 'تم التعديل بنجاح');
         }
         if(ambassadorUser()){

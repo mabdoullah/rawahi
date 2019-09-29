@@ -36,7 +36,12 @@ class LoginCustomController extends Controller
 		// $ambassador->save();
 
 		// echo currentUser()->verified;
+		$ambassador= \App\Ambassador::find(1);
+		
 		//VerifyUserService::verify($ambassador);
+
+		\App\Services\AmbassadorService::sendGeneratedIdMail(1);
+
 	}
 
 	public function login(){

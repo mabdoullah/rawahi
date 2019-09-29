@@ -169,7 +169,7 @@
               <div class="form-group row">
               <div class="col-lg-6">
                 <div class=" {{ $errors->has( 'agent' ) ? 'has-error' : '' }}">
-                  <label> اختار الشريك </label>
+                  <label> اختار الوكيل </label>
                   <select class="form-control " name="agent_id" id="agentname">
                     @foreach ($agents as $agent)
                     <option value="{{$agent->id}}" @if($agent->id == $ambassador->agent_id) selected="selected" @endif >
@@ -189,12 +189,10 @@
             <div class="kt-form__actions">
               <div class="row">
                 <div class="col-lg-6">
-                  <button type="submit" class="btn btn-primary">تحديث الوكيل</button>
+                  <button type="submit" class="btn btn-primary">تحديث بيانات السفير</button>
                   <button type="reset" class="btn btn-secondary">إعادة تعيين</button>
                 </div>
-
               </div>
-       
               </div>
           </div>
           </div>

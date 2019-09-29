@@ -4,6 +4,9 @@ namespace App\Services;
 use App\VerifyUser;
 use App\Mail\VerifyMail;
 use Mail;
+
+use App\Services\AmbassadorService;
+
 class VerifyUserService{
     
     public function __construct(){
@@ -13,6 +16,8 @@ class VerifyUserService{
     public static function verify($user){
        
         // dd($user);
+        $user->verified=0;
+        $user->save();
 
         VerifyUser::where('user_id',$user->id)->where('guard',$user->getGuard())->delete();
 
@@ -22,7 +27,6 @@ class VerifyUserService{
             'guard' => $user->getGuard()
           ]);
         // dd($user->verifyUser);
-
 
          Mail::to($user->email)->send(new VerifyMail($user));
     }
@@ -50,6 +54,12 @@ class VerifyUserService{
 
 
         VerifyUser::where('token',$verifyUser->token)->delete();
+
+
+        if($verifyUser->guard == 'ambassador'){
+            AmbassadorService::sendGeneratedIdMail($verifyUser->user_id);
+        }
+
 
     }
 

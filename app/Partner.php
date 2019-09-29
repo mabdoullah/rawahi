@@ -5,8 +5,11 @@ namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use App\Traits\VerifyUserTrait;
+
 class Partner extends Authenticatable
 {
+    use VerifyUserTrait;
     use Notifiable;
 
     protected $guard = 'partner';

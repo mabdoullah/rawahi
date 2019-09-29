@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Agent;
 use App\City;
 use DB;
-
+use App\Services\VerifyUserService;
 use Illuminate\Http\Request;
 
 class AgentController extends Controller
@@ -96,6 +96,9 @@ class AgentController extends Controller
         $agent->admin_id = adminUser()->id;
         $save_agent=$agent->save();
         if($save_agent){
+
+            VerifyUserService::verify($agent);
+
             return redirect('admin/agent')->with('success', ' تم التسجيل بنجاح!');
         }
     }
@@ -173,14 +176,20 @@ class AgentController extends Controller
                         ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
         }
         $agent = Agent::find($id);
+        $current_email = $agent->email;
+
         $agent->name =$request->get('name');
         $agent->email =$request->get('email');
         $agent->phone =$request->get('phone');
         $agent->city =$request->get('city');
         $agent->birth_date =$request->get('birth_date');
 
-
         $agent->save();
+
+
+        if($current_email != $agent->email){
+            VerifyUserService::verify($agent);
+        }
 
         return redirect('admin/agent')->with('success', ' تم التعديل!');
 

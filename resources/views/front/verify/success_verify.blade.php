@@ -38,7 +38,6 @@
                                             @if(!currentUser())
                                                 <a class="btn v8 " href="{{url('login')}}"> تسجيل الدخول </a>    
                                             @endif
-                                            
                                             <a class="btn v8 " href="registration-form.html">  الرئيسية </a>  
                                         </div>                                            
                                     </div>

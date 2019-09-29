@@ -20,7 +20,7 @@ class VerifyCustomController extends Controller
 		
 		$VerifyUserService->verifySuccess($verifyUser);
 
-		return  view('front.verify.success_verify');
+		return view('front.verify.success_verify');
 
 	}
 

@@ -211,7 +211,7 @@
                     <div class="kt-form__actions">
                         <div class="row">
                             <div class="col-lg-6">
-                                <button type="submit" class="btn btn-primary">تسجيل الوكيل</button>
+                                <button type="submit" class="btn btn-primary">تسجيل سفير جديد</button>
                                 <button type="reset" class="btn btn-secondary">إعادة تعيين</button>
                             </div>
                         </div>
