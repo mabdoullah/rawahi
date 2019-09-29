@@ -189,7 +189,7 @@
             <div class="kt-form__actions">
               <div class="row">
                 <div class="col-lg-6">
-                  <button type="submit" class="btn btn-primary">تحديث الوكيل</button>
+                  <button type="submit" class="btn btn-primary">تحديث السفير</button>
                   <button type="reset" class="btn btn-secondary">إعادة تعيين</button>
                 </div>
 

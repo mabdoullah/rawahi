@@ -35,13 +35,25 @@
           بيانات السفراء </h3>
 
       </div>
-      <div class="kt-portlet__head-label" style="width:85%">
+      <div class="kt-portlet__head-toolbar">
+      <div class="kt-portlet__head-wrapper">
+        <div class="kt-portlet__head-actions">
+          <a href="/admin/ambassador/create" class="btn btn-brand btn-elevate btn-icon-sm">
+            <i class="la la-plus"></i>
+            اضافة السفير
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <div class="kt-portlet__head kt-portlet__head--lg row">  
+      <div class="kt-portlet__head-label col-12" >
 
-        <form width="100%" class="kt-margin-l-20" style="margin:auto" id="kt_subheader_search_form" action="{{route('admin.ambassador.index') }}">
+        <form style="width:100%"  class="kt-margin-l-20" style="margin:auto" id="kt_subheader_search_form" action="{{route('admin.ambassador.index') }}">
           <div class="row kt-input-icon kt-input-icon--right kt-subheader__search">
 
 
-          <div class="col-2">
+          <div class="col">
               <select class="form-control " name="search_agent" id="agentname">
                 <option value="">اختر الوكيل</option>
 
@@ -57,16 +69,16 @@
               </span>
               @endif
             </div>
-            <div class="col-3">
+            <div class="col">
               <input type="text" class="form-control" name='search' placeholder="بحث بالاسم..." id="generalSearch" value="{{ old('search') ?? $searchByName ?? null }}">
 
             </div>
 
            
-            <div class="col-3">
+            <div class="col">
               <input type="text" class="form-control" name='search_byphone' placeholder="بحث برقم الجوال..." id="generalSearch" value="{{ old('searchByPhone') ?? $searchByPhone ?? null }}">
             </div>
-            <div class="col-3">
+            <div class="col">
               <input type="text" class="form-control" name='search_byemail' placeholder="بحث بالبريد الاكترونى..." id="generalSearch" value="{{ old('search_byemail') ?? $searchByEmail ?? null }}">
             </div>
             <div class="col-1">
@@ -77,7 +89,7 @@
           </div>
         </form>
       </div>
-    </div>
+  </div>  
     <div class="kt-portlet__body">
       <div class="form-group row">
         <div class="col-lg-12">

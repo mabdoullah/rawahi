@@ -90,6 +90,7 @@
   </div>
   <!--end::Portlet-->
 </div>
+</div>
 
 @endsection
 
