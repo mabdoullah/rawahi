@@ -480,6 +480,34 @@ if ($('#map').length > 0) {
 
 </script>
 {{-- end map --}}
+<script >
 
+    $('#agent').change(function(){
+        var agentID = $(this).val(); 
+         if(agentID){
+                $.ajax({
+                   type:"GET",
+                   url:"{{url('admin/get-ambassador-list')}}?agent_id="+agentID,
+                   success:function(res){
+                      $("#ambassador").empty();
+                      if(res){
+                          $("#ambassador").append("<option value=''>اختر السفير</option>");
+                          $.each(res,function(key,value){
+                              $("#ambassador").append("<option value='"+key+"'>"+value+"</option>");
+                          });
+                      }
+                   }
+                });
+        }else{
+            $("#ambassador").empty();
+            $("#agent").empty();
+        }
+       });
+     
+    
+    
+    
+       
+    </script>
 
 @endpush

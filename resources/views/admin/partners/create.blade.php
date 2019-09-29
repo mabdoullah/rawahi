@@ -27,7 +27,7 @@
                         @csrf
                         <div class="kt-portlet__body">
                             <div class="form-group row">
-                                <div class="col-md-6 {{ $errors->has( 'name' ) ? 'has-error' : '' }}">
+                                <div class="col-md-6 {{ $errors->has( 'legal_name' ) ? 'has-error' : '' }}">
                                         <label>إسم الشريك</label>
                                     <input name="legal_name"  type="text" class="form-control filter-input"
                                         placeholder="الإسم التجاري للشريك" value="{{ old('legal_name') }}">
@@ -44,10 +44,10 @@
                                                         <label>الفئة</label>
                                                         <div  tabindex="0"><spanclass="current"></span>
 
-                                                              <select class="form-control" name="partner_type"  id="partner_type" value={{old('partner_type')}} >
+                                                              <select class="form-control" name="partner_type"  id="partner_type" value="{{old('partner_type')}}" >
                                                                     <option selected disabled > اختر الفئة</option>
                                                                  @foreach (partnersTypesArray() as $key => $value)
-                                                                       <option  value="{{$key}}">{{$value}}</option>
+                                                                       <option @if(old('partner_type') == $key)  'selected' @endif value="{{$key}}">{{$value}}</option>
                                                                   @endforeach
                                                               </select>
 
@@ -76,7 +76,7 @@
                                     
                                     <div class="col-6">
             
-                                        <select class="form-control " name="agent" id="agent">
+                                    <select class="form-control " name="agent" id="agent" value="{{old('agent')}}">
                                         <option value="" selected>اختر الوكيل</option>
                             
                                         @foreach($agents as $key => $agent)
@@ -93,15 +93,15 @@
                                         </div> 
                             
                                          <div class="col-6">
-                                        <select class="form-control" name="ambassador" id="ambassador">
+                                        <select class="form-control" name="ambassador_id" id="ambassador" value="">
                                     
                             
                                             <option value="">اختر السفير </option>
                                             </select>
                                 
-                                            @if( $errors->has( 'ambassador' ) )
+                                            @if( $errors->has( 'ambassador_id' ) )
                                             <span class="help-block text-danger">
-                                              {{ $errors->first( 'ambassador' ) }}
+                                              {{ $errors->first( 'ambassador_id' ) }}
                                             </span>
                                             @endif
                                             </div> 
@@ -331,15 +331,13 @@
 
               </div>
               <div class="col-md-12">
-                    <input required type="checkbox" tabindex="3" class="" name="remember"
-                    id="remember">
-                <label for="remember">أوافق على <a href="terms.html">الشروط
-                        والأحكام</a></label>
-                        @if( $errors->has( 'remember' ) )
-                        <span class="help-block text-danger">
-                            {{ $errors->first( 'remember' ) }}
-                        </span>
-                        @endif
+                <input  type="checkbox"  tabindex="3" class="" name="remember" id="remember" value='1'>
+                <label for="remember">أوافق على <a href="terms.html">الشروط    والأحكام</a></label>
+                  @if( $errors->has( 'remember' ) )
+                  <span class="help-block text-danger">
+                      {{ $errors->first( 'remember' ) }}
+                  </span>
+                  @endif
               </div>
                     <div class="col-md-12">
                     <button type="submit" class="btn btn-primary" >حفظ وتسجيل</button>

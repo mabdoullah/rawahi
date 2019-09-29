@@ -105,6 +105,7 @@ class PartnerController extends Controller
             'city' => 'required|exists:cities,id',
             'map_address' => 'required|max:255',
             'ambassador_id' => 'required',
+            'remember'=>'required',
 
 
 

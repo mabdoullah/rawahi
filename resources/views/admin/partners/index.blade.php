@@ -130,7 +130,7 @@
            
               <td>
                {{-- edit  --}}
-                      <a class="btn btn-warning" href="{{route('admin.partners.edit',$partner->id)}}"> تعديل <i
+                      <a class="btn btn-primary" href="{{route('admin.partners.edit',$partner->id)}}"> تعديل <i
                       class="icofont-edit"></i>
                       </a>  
               {{--  show --}}
