@@ -44,7 +44,7 @@
                                                         <label>الفئة</label>
                                                         <div  tabindex="0"><spanclass="current"></span>
 
-                                                              <select class="form-control" name="partner_type"  id="partner_type" >
+                                                              <select class="form-control" name="partner_type"  id="partner_type" value={{old('partner_type')}} >
                                                                     <option selected disabled > اختر الفئة</option>
                                                                  @foreach (partnersTypesArray() as $key => $value)
                                                                        <option  value="{{$key}}">{{$value}}</option>
@@ -62,7 +62,7 @@
                                                           
                         
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                         <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                                             <label> البريد الالكتروني</label>
                                             <input required type="email" class="form-control " placeholder="البريد الالكتروني " name="email" value="{{ old('email')}}">
@@ -73,28 +73,38 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                            <div class="form-group {{ $errors->has( 'ambassdor' ) ? 'has-error' : '' }}">
-                                                    <label> السفير </label>
-                                                    <select class="form-control filter-input"  name="ambassador_id" id="ambassador_id">
-                                                        <option value="0">اختر السفير</option>
-                                                        @foreach ($ambassadors as $ambassdor)
-                
-                                                            <option   @if( old('ambassdor')==$ambassdor->id) selected @endif value="{{$ambassdor->id}}">
-                                                            {{$ambassdor->first_name}}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                
-                                                    @if( $errors->has( 'ambassdor' ) )
-                                                            <span class="help-block text-danger">
-                                                                {{ $errors->first( 'ambassdor' ) }}
-                                                            </span>
-                                                        @endif
-                                                </div>
-                        
-                        
-                                               </div>
+                                    
+                                    <div class="col-6">
+            
+                                        <select class="form-control " name="agent" id="agent">
+                                        <option value="" selected>اختر الوكيل</option>
+                            
+                                        @foreach($agents as $key => $agent)
+                                        <option value="{{$agent->id}}"> {{$agent->name}}</option>
+                                        @endforeach
+                                        </select>
+                            
+                                        @if( $errors->has( 'agent' ) )
+                                        <span class="help-block text-danger">
+                                          {{ $errors->first( 'agent' ) }}
+                                        </span>
+                                        @endif
+                                      
+                                        </div> 
+                            
+                                         <div class="col-6">
+                                        <select class="form-control" name="ambassador" id="ambassador">
+                                    
+                            
+                                            <option value="">اختر السفير </option>
+                                            </select>
+                                
+                                            @if( $errors->has( 'ambassador' ) )
+                                            <span class="help-block text-danger">
+                                              {{ $errors->first( 'ambassador' ) }}
+                                            </span>
+                                            @endif
+                                            </div> 
                                     <div class="col-md-12">
                                             <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                                             <label>نوع الاشتراك</label>
@@ -333,6 +343,8 @@
               </div>
                     <div class="col-md-12">
                     <button type="submit" class="btn btn-primary" >حفظ وتسجيل</button>
+                    <button type="reset" class="btn btn-secondary">إعادة تعيين</button>
+
                     </div>
                    </div> 
                 </form> 
@@ -345,7 +357,15 @@
 
 @endsection
 @push('jqueryCode')
+
+
+
+
+
+
+
 {{-- image show  --}}
+
 <script>
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -626,4 +646,35 @@ if(isset($partner->id)){
 
 
 {{-- end map --}}
+<script >
+
+    $('#agent').change(function(){
+        var agentID = $(this).val(); 
+         if(agentID){
+                $.ajax({
+                   type:"GET",
+                   url:"{{url('admin/get-ambassador-list')}}?agent_id="+agentID,
+                   success:function(res){
+                      $("#ambassador").empty();
+                      if(res){
+                          $("#ambassador").append("<option value=''>اختر السفير</option>");
+                          $.each(res,function(key,value){
+                              $("#ambassador").append("<option value='"+key+"'>"+value+"</option>");
+                          });
+                      }
+                   }
+                });
+        }else{
+            $("#ambassador").empty();
+            $("#agent").empty();
+        }
+       });
+     
+    
+    
+    
+       
+    </script>
+
+
 @endpush
