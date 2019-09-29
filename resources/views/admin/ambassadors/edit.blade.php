@@ -1,7 +1,17 @@
 @extends('admin.master.app')
 
 @section('content')
+@push('jqueryCode') 
 
+<script>
+    $('#kt_datepicker_2').datepicker({
+                format: 'yyyy-mm-dd',   
+                
+                autoclose: true,
+                todayHighlight: true
+            });
+</script>
+@endpush
 
 
 <div class='row'>
@@ -41,7 +51,7 @@
         </div>
       </div>
       <!--begin::Form-->
-      <form class="kt-form kt-form--label-right" action="{{ route('admin.embassador.update', $embassador->id) }}" method="POST" enctype="multipart/form-data">
+      <form class="kt-form kt-form--label-right" action="{{ route('admin.ambassador.update', $ambassador->id) }}" method="POST" enctype="multipart/form-data">
         @method('PATCH')
 
         @csrf
@@ -51,7 +61,7 @@
           <div class="form-group row">
             <div class="col-lg-6 {{ $errors->has( 'name' ) ? 'has-error' : '' }}">
               <label> الاسم الاول</label>
-              <input  type="text" class="form-control " placeholder="الاسم" name="first_name" value={{ $embassador->first_name }}>
+              <input  type="text" class="form-control " placeholder="الاسم" name="first_name" value={{ $ambassador->first_name }}>
               @if( $errors->has( 'first_name' ) )
               <span class="help-block text-danger">
                 {{ $errors->first( 'first_name' ) }}
@@ -63,7 +73,7 @@
           <div class="form-group row">
             <div class="col-lg-6 {{ $errors->has( 'name' ) ? 'has-error' : '' }}">
               <label> الاسم الاخير</label>
-              <input  type="text" class="form-control " placeholder="الاسم" name="second_name" value={{ $embassador->second_name }}>
+              <input  type="text" class="form-control " placeholder="الاسم" name="second_name" value={{ $ambassador->second_name }}>
               @if( $errors->has( 'second_name' ) )
               <span class="help-block text-danger">
                 {{ $errors->first( 'second_name' ) }}
@@ -86,7 +96,7 @@
 
               <div class=" date">
               <div class="input-group">
-                <input type="text" class="form-control" readonly="" placeholder=" تاريخ الميلاد" id="kt_datepicker_2" name="birth_date" value={{$embassador->birth_date}}>
+                <input type="text" class="form-control" readonly="" placeholder=" تاريخ الميلاد" id="kt_datepicker_2" name="birth_date" value={{$ambassador->birth_date}}>
                 <div class="input-group-append">
                   <span class="input-group-text">
                     <i class="la la-calendar-check-o"></i>
@@ -109,7 +119,7 @@
             <div class="col-lg-6">
                 <div class=" {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
                   <label> رقم الجوال</label>
-                  <input  class="form-control text-left " placeholder="رقم الجوال" name="phone" value={{ $embassador->phone }}>
+                  <input  class="form-control text-left " placeholder="رقم الجوال" name="phone" value={{ $ambassador->phone }}>
                   @if( $errors->has( 'phone' ) )
                   <span class="help-block text-danger">
                     {{ $errors->first( 'phone' ) }}
@@ -123,7 +133,7 @@
             <div class="col-lg-6">
               <div class=" {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                 <label> البريد الالكتروني</label>
-                <input  type="email" class="form-control " placeholder="البريد الالكتروني " name="email" value={{ $embassador->email }}>
+                <input  type="email" class="form-control " placeholder="البريد الالكتروني " name="email" value={{ $ambassador->email }}>
                 @if( $errors->has( 'email' ) )
                 <span class="help-block text-danger">
                   {{ $errors->first( 'email' ) }}
@@ -140,7 +150,7 @@
                 <select class="form-control " name="city" id="city">
 
                   @foreach ($cities as $city)
-                  <option value="{{$city->id}}" @if($city->id == $embassador->city) selected="selected" @endif >
+                  <option value="{{$city->id}}" @if($city->id == $ambassador->city) selected="selected" @endif >
                     {{$city->name}}
                   </option>
                   @endforeach
@@ -162,7 +172,7 @@
                   <label> اختار الشريك </label>
                   <select class="form-control " name="agent_id" id="agentname">
                     @foreach ($agents as $agent)
-                    <option value="{{$agent->id}}" @if($agent->id == $embassador->agent_id) selected="selected" @endif >
+                    <option value="{{$agent->id}}" @if($agent->id == $ambassador->agent_id) selected="selected" @endif >
                           {{$agent->name}}
                     @endforeach
                   </select>
@@ -179,7 +189,7 @@
             <div class="kt-form__actions">
               <div class="row">
                 <div class="col-lg-6">
-                  <button type="submit" class="btn btn-primary">تحديث الوكيل</button>
+                  <button type="submit" class="btn btn-primary">تحديث السفير</button>
                   <button type="reset" class="btn btn-secondary">إعادة تعيين</button>
                 </div>
 

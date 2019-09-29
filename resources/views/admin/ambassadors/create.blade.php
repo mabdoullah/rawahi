@@ -1,7 +1,17 @@
 @extends('admin.master.app')
 
 @section('content')
+@push('jqueryCode') 
 
+<script>
+    $('#kt_datepicker_2').datepicker({
+                format: 'yyyy-mm-dd',   
+                
+                autoclose: true,
+                todayHighlight: true
+            });
+</script>
+@endpush
 <!--Page Wrapper starts-->
 
 <!-- begin:: Content -->
@@ -40,7 +50,7 @@
             </div>
         </div>
         <!--begin::Form-->
-        <form class="kt-form kt-form--label-right" action="{{route('admin.embassador.store')}}" method="POST" enctype="multipart/form-data">
+        <form class="kt-form kt-form--label-right" action="{{route('admin.ambassador.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="kt-portlet__body">
                 <div class="form-group row">
@@ -201,7 +211,7 @@
                     <div class="kt-form__actions">
                         <div class="row">
                             <div class="col-lg-6">
-                                <button type="submit" class="btn btn-primary">تسجيل الوكيل</button>
+                                <button type="submit" class="btn btn-primary">تسجيل السفير</button>
                                 <button type="reset" class="btn btn-secondary">إعادة تعيين</button>
                             </div>
                         </div>

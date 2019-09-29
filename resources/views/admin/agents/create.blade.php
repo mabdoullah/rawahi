@@ -2,7 +2,17 @@
 
 @section('content')
 
+@push('jqueryCode') 
 
+<script>
+    $('#kt_datepicker_2').datepicker({
+                format: 'yyyy-mm-dd',   
+                
+                autoclose: true,
+                todayHighlight: true
+            });
+</script>
+@endpush
 <div class='row'>
   @if(session()->has('master_error'))
   <div class="col-12">

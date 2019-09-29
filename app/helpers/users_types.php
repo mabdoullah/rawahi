@@ -28,9 +28,9 @@
     {
         return userIfLogin('agent');
     }
-    function embassadorUser()
+    function ambassadorUser()
     {
-        return userIfLogin('embassador');
+        return userIfLogin('ambassador');
     }
     function partnerUser()
     {
@@ -49,9 +49,12 @@
               return userIfLogin($guard);
           }
         }
-
         return false;
-        
+    }
+
+
+    function isEmailVerified(){
+        return !(currentUser()->verified > 0 ) ? false : true ;
     }
 
 

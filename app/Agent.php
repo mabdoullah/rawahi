@@ -40,9 +40,9 @@ class Agent extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function embassadors()
+    public function ambassadors()
     {
-        return $this->hasMany('App\Embassador','agent_id');
+        return $this->hasMany('App\Ambassador','agent_id');
     }
     
 }

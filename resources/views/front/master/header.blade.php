@@ -25,8 +25,8 @@
 
                                         <ul class="dropdown">
                                           <!-- start edit profile -->
-                                          @if(embassadorUser())
-                                             <li ><a class="button-view"  href="{{route('ambassadors.edit',embassadorUser()->id)}}">تعديل الملف الشخصي </a></li>
+                                          @if(ambassadorUser())
+                                             <li ><a class="button-view"  href="{{route('ambassadors.edit',ambassadorUser()->id)}}">تعديل الملف الشخصي </a></li>
                                           @endif
                                           @if(agentUser())
                                              <li><a class="button-view" href="{{route('agent.edit',agentUser()->id)}}">تعديل  الملف الشخصي </a></li>
@@ -46,7 +46,7 @@
                                     @endif
 
                                     <!-- start buttons on phone -->
-                                    @if(embassadorUser())
+                                    @if(ambassadorUser())
                                     <li class="d-lg-none"><a class="button-view btn v1" href="{{route('partners.create')}}">إضافة شريك<i class="ion-plus-round"></i></a></li>
                                     <li class="d-lg-none"><a class="button-view btn v1" href="{{route('partners.index')}}">الشركاء  </a></li>
                                     @endif
@@ -65,8 +65,8 @@
                         </div>
                         <!-- start buttons in web -->
                         <div class="add-list float-left">
-                          <!-- buttons allowed only for embassador -->
-                            @if(embassadorUser())
+                          <!-- buttons allowed only for ambassador -->
+                            @if(ambassadorUser())
                                 <a class="button-view btn v8" href="{{route('partners.create')}}">إضافة شريك <i
                                     class="ion-plus-round"></i></a>
                                 <a class="button-view btn v8" href="{{route('partners.index')}}">الشركاء </a>

@@ -39,7 +39,7 @@
                                {{ session()->get('success') }}
                                </div>
                                @endif
-                            {{--   @if(!count($embassdors))
+                            {{--   @if(!count($ambassdors))
                                <div class="alert alert-info text-center" role="alert">
                                  <h4 >عفوا لا يوجد سفراء لعرضها</h4>
                                 </div>
@@ -87,30 +87,30 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if($embassdors)
+                                                @if($ambassdors)
                                                 @php $count=0;@endphp
-                                                @foreach($embassdors as $embassador)
-                                                @if($embassador->citydata)
+                                                @foreach($ambassdors as $ambassador)
+                                                @if($ambassador->citydata)
                                                 @php   $count=$count+1; @endphp
                                                 <tr>
-                                                    <td>{{$embassador->first_name}}</td>
-                                                    <td>{{$embassador->email}}</td>
-                                                    <td>{{$embassador->phone}}</td>
-                                                    <td>{{$embassador->citydata->name}}</td>
+                                                    <td>{{$ambassador->first_name}}</td>
+                                                    <td>{{$ambassador->email}}</td>
+                                                    <td>{{$ambassador->phone}}</td>
+                                                    <td>{{$ambassador->citydata->name}}</td>
                                                     <td>
                                                         <!-- edit -->
-                                                        <a class="btn v8 view-buttons"  href="{{route('ambassadors.edit',$embassador->id)}}"> تعديل <i class="icofont-edit"></i></a>
+                                                        <a class="btn v8 view-buttons"  href="{{route('ambassadors.edit',$ambassador->id)}}"> تعديل <i class="icofont-edit"></i></a>
                                                         <!-- show -->
-                                                        <a type="button"  data-showembassid ="{{$embassador->id}}" class="btn v8 view-buttons show_button"  data-toggle="modal"data-target="#exampleModal"   href="{{route('ambassadors.show',$embassador->id)}}"> عرض <i class="icofont-eye-alt"></i></a>
+                                                        <a type="button"  data-showambassid ="{{$ambassador->id}}" class="btn v8 view-buttons show_button"  data-toggle="modal"data-target="#exampleModal"   href="{{route('ambassadors.show',$ambassador->id)}}"> عرض <i class="icofont-eye-alt"></i></a>
                                                             <!-- delete -->
-                                                        {{--<button  class="v8 btn view-buttons" data-toggle="modal" data-embassadorid="{{$embassador->id}}" data-target="#DeleteModal" > حذف<i class="icofont-ui-delete"></i></button>--}}
+                                                        {{--<button  class="v8 btn view-buttons" data-toggle="modal" data-ambassadorid="{{$ambassador->id}}" data-target="#DeleteModal" > حذف<i class="icofont-ui-delete"></i></button>--}}
                                                     </td>
 
                                                 </tr>
                                                 @endif
                                                 @endforeach
                                                 @endif
-                                                @if(($count==0)||(!$embassdors))
+                                                @if(($count==0)||(!$ambassdors))
                                                 <tr>
                                                     <td colspan="5">
                                                         <div class="alert alert-info text-center" role="alert">
@@ -122,7 +122,7 @@
                                             </tbody>
                                         </table>
                                 </div>
-                               {{ $embassdors->links() }}
+                               {{ $ambassdors->links() }}
                              </div>
                             {{--   @endif--}}
                               @include('front.ambassadors.delete_modal')
@@ -141,7 +141,7 @@
 $(".show_button").click(function(e){
     e.preventDefault();
     var show_action = $(this).attr("href");
-    var id= $(this).data('showembassid');
+    var id= $(this).data('showambassid');
     $.ajax({
         dataType: 'json',
         type:'GET',
@@ -166,9 +166,9 @@ $(".show_button").click(function(e){
 <script type="text/javascript">
   $('#DeleteModal').on('show.bs.modal', function (e) {
       var button = $(e.relatedTarget);
-    var embassador_id=button.data('embassadorid');
+    var ambassador_id=button.data('ambassadorid');
     var modal=$(this);
-    modal.find('.modal-body #delete_id').val(embassador_id);
+    modal.find('.modal-body #delete_id').val(ambassador_id);
   });
   function formSubmit()
       {

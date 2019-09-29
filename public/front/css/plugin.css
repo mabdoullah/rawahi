@@ -134,10 +134,10 @@
   position: absolute;
 }
 .datepicker-dropdown.datepicker-orient-left:before {
-  left: 6px;
+  right: 6px;
 }
 .datepicker-dropdown.datepicker-orient-left:after {
-  left: 7px;
+  right: 7px;
 }
 .datepicker-dropdown.datepicker-orient-right:before {
   right: 6px;

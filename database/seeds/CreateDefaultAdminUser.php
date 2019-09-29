@@ -27,18 +27,18 @@ class CreateDefaultAdminUser extends Seeder
         // DB::table('agents')->insert($arr);
 
 
-        // DB::table('embassadors')->truncate();
+        // DB::table('ambassadors')->truncate();
 	    // $arr = array(
-        //     array('first_name' => 'embassadoruser','second_name' => 'embassadoruser' ,'email' => "embassador@rawahi.com",'password' => bcrypt(123456789)
+        //     array('first_name' => 'ambassadoruser','second_name' => 'ambassadoruser' ,'email' => "ambassador@rawahi.com",'password' => bcrypt(123456789)
         //     ,'agent_id'=>1)
         // );
-        // DB::table('embassadors')->insert($arr);
+        // DB::table('ambassadors')->insert($arr);
 
         // DB::table('partners')->truncate();
 	    // $arr = array(
         //     array('partner_type'=>1,
         //         'legal_name' => 'partneruser' ,'email' => "partner@rawahi.com",'password' => bcrypt(123456789)
-        //     ,'embassador_id'=>1)
+        //     ,'ambassador_id'=>1)
         // );
         // DB::table('partners')->insert($arr);
 

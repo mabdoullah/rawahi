@@ -35,21 +35,30 @@
           بيانات السفراء </h3>
 
       </div>
-      <div class="kt-portlet__head-label" style="width:85%">
+      <div class="kt-portlet__head-toolbar">
+      <div class="kt-portlet__head-wrapper">
+        <div class="kt-portlet__head-actions">
+          <a href="/admin/ambassador/create" class="btn btn-brand btn-elevate btn-icon-sm">
+            <i class="la la-plus"></i>
+            اضافة السفير
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <div class="kt-portlet__head kt-portlet__head--lg row">  
+      <div class="kt-portlet__head-label col-12" >
 
-        <form width="100%" class="kt-margin-l-20" style="margin:auto" id="kt_subheader_search_form" action="{{route('admin.embassador.index') }}">
+        <form style="width:100%"  class="kt-margin-l-20" style="margin:auto" id="kt_subheader_search_form" action="{{route('admin.ambassador.index') }}">
           <div class="row kt-input-icon kt-input-icon--right kt-subheader__search">
-            <div class="col-3">
-              <input type="text" class="form-control" name='search' placeholder="بحث بالاسم..." id="generalSearch" value="{{ old('search') ?? $searchByName ?? null }}">
 
-            </div>
 
-            <div class="col-2">
+          <div class="col">
               <select class="form-control " name="search_agent" id="agentname">
                 <option value="">اختر الوكيل</option>
 
                 @foreach ($agents as $agent)
-                <option value="{{$agent->id}}" @if($agent->id == $agent_id) selected="selected" @endif >
+                <option value="{{$agent->id}}" @if($agent->id == $searchByAgent) selected="selected" @endif >
                   {{$agent->name}}
                   @endforeach
               </select>
@@ -60,11 +69,17 @@
               </span>
               @endif
             </div>
-            <div class="col-3">
+            <div class="col">
+              <input type="text" class="form-control" name='search' placeholder="بحث بالاسم..." id="generalSearch" value="{{ old('search') ?? $searchByName ?? null }}">
+
+            </div>
+
+           
+            <div class="col">
               <input type="text" class="form-control" name='search_byphone' placeholder="بحث برقم الجوال..." id="generalSearch" value="{{ old('searchByPhone') ?? $searchByPhone ?? null }}">
             </div>
-            <div class="col-3">
-              <input type="text" class="form-control" name='search_byemail' placeholder="بحث الاميل..." id="generalSearch" value="{{ old('search_byemail') ?? $searchByEmail ?? null }}">
+            <div class="col">
+              <input type="text" class="form-control" name='search_byemail' placeholder="بحث بالبريد الاكترونى..." id="generalSearch" value="{{ old('search_byemail') ?? $searchByEmail ?? null }}">
             </div>
             <div class="col-1">
               <button class="btn btn-primary" type="submit"> بحث </button>
@@ -74,7 +89,7 @@
           </div>
         </form>
       </div>
-    </div>
+  </div>  
     <div class="kt-portlet__body">
       <div class="form-group row">
         <div class="col-lg-12">
@@ -84,33 +99,33 @@
               <tr>
               <th>رقم السفير</th>
 
+                <th>الاسم </th>
                 <th>المدينة</th>
-                <th>الاسم الاول</th>
-                <th>الاسم الثانى</th>
-                <th>الاميل</th>
                 <th>رقم التليفون</th>
-                <th> اسم الشريك</th>
+                <th>البريد الاكترونى</th>
+
+                <th> اسم الوكيل</th>
                 <th>العمليات</th>
               </tr>
             </thead>
             <tbody id='table-result'>
-              @foreach($embassadors as $embassador)
+              @foreach($ambassadors as $ambassador)
               <tr>
-              <td>{{$embassador->embassador_id}}</td>
+              <td>{{$ambassador->ambassador_id}}</td>
 
-                <td>{{$embassador->city_name}}</td>
-                <td>{{$embassador->first_name}}</td>
-                <td>{{$embassador->second_name}}</td>
-                <td>{{$embassador->email}}</td>
-                <td>{{$embassador->phone}}</td>
+                <td>{{$ambassador->first_name}} {{$ambassador->second_name}}</td>
+                <td>{{$ambassador->city_name}}</td>
 
-                <td>{{$embassador->agent_name}}</td>
+                <td>{{$ambassador->phone}}</td>
+                <td>{{$ambassador->email}}</td>
+
+                <td>{{$ambassador->agent_name}}</td>
 
                 <td>
-                  <a href="{{ route('admin.embassador.edit', $embassador->embassador_id)}}" class="btn btn-primary">تعديل</a>
+                  <a href="{{ route('admin.ambassador.edit', $ambassador->ambassador_id)}}" class="btn btn-primary">تعديل</a>
                 </td>
                 <!-- <td>
-                <form action="{{ route('admin.embassador.destroy', $embassador->embassador_id)}}" method="post">
+                <form action="{{ route('admin.ambassador.destroy', $ambassador->ambassador_id)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">حذف</button>
@@ -136,7 +151,7 @@
 
         </div>
       </div>
-      {{ $embassadors->onEachSide(5)->links() }}
+      {{ $ambassadors->onEachSide(5)->links() }}
 
     </div>
 

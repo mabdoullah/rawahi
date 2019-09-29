@@ -25,15 +25,14 @@
     <div class="form-group row">
       <div class="col-lg-12">
 
-        {{-- <div class="form-group {{ $errors->has( 'agent' ) ? 'has-error' : '' }}"> --}}
-{{--         
+        <div class="form-group {{ $errors->has( 'agent' ) ? 'has-error' : '' }}">
+        
           
           <div class="row">
-              <label for="search">اسم الشريك </label>
               
-              <div class="col-md-12 form-group">
+              <div class="col-3 form-group">
                 <form action="{{route('admin.searchpartners')}} ">
-                <input type="search" name="search" id="searchpartner" value='' >
+                <input type="search"  class="form-control" name="search" id="searchpartner"  placeholder="بحث باسم الشريك..." value='' >
                   @if( $errors->has( 'search' ) )
                   <span class="help-block text-danger">
                     {{ $errors->first( 'search' ) }}
@@ -41,7 +40,7 @@
                   @endif
               
                   </div> <br><br>
-           <div class="col-md-5">
+           <div class="col-3">
             
             <select class="form-control " name="agent" id="agent">
             <option value="" selected>اختر الوكيل</option>
@@ -59,23 +58,25 @@
           
             </div> 
 
-             <div class="col-md-5">
-            <select class="form-control " name="embassador" id="embassador">
+             <div class="col-3">
+            <select class="form-control" name="ambassador" id="ambassador">
         
 
                 <option value="">اختر السفير </option>
                 </select>
     
-                @if( $errors->has( 'embassador' ) )
+                @if( $errors->has( 'ambassador' ) )
                 <span class="help-block text-danger">
-                  {{ $errors->first( 'embassador' ) }}
+                  {{ $errors->first( 'ambassador' ) }}
                 </span>
                 @endif
                 </div> 
+                <div class="col-1">
             <button  type="submit" class='btn btn-primary'> ابحث</button>
+                </div>
           </form>
         </div>
-        </div> --}}
+        </div>
 
         <!--begin: Datatable -->
         <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
@@ -85,20 +86,23 @@
                 <th>الايميل </th>
                 <th>التليفون</th>
                 <th>المدينة </th>
+                <th>السفير</th>
+               
                 <th>تعديل بروفايل الشريك</th>
             </tr>
           </thead>
           <tbody id='table-result'>
             
-              
+            
                   
                       
+           
               
                   @foreach($partners as $partner)
+                  
+                  
               
               <tr>
-
-
 
                   <td>{{$partner->legal_name}}</td>
                  <td>{{$partner->email}}</td>
@@ -107,7 +111,13 @@
 
 
                   <td>{{$partner->map_address}}</td>
-
+                   
+                  <td>
+                    {{$partner->ambassador->first_name}}
+                    <label class="text-right">{{$partner->ambassador->generate_id}}</label>
+                  </td>
+                 
+           
               <td>
                {{-- edit  --}}
                       {{-- <a class="btn v8 view-buttons" href="{{route('partners.edit',$partner->id)}}"> تعديل <i
@@ -126,6 +136,8 @@
               </tr>
               
               @endforeach
+            
+         
               
   
           </tbody>
@@ -155,7 +167,7 @@
 
 
 @endsection
-{{-- @push('jqueryCode')
+@push('jqueryCode')
     
 
 <script type="text/javascript">
@@ -165,24 +177,24 @@
 
  $('#agent').change(function(){
     var agentID = $(this).val(); 
+  
      if(agentID){
-       
             $.ajax({
                type:"GET",
-               url:"{{url('admin/get-embassador-list')}}?agent_id="+agentID,
+               url:"{{url('admin/get-ambassador-list')}}?agent_id="+agentID,
                success:function(res){
                   // console.log(res);
-                  $("#embassador").empty();
+                  $("#ambassador").empty();
                   if(res){
-                      $("#embassador").append("<option value=''>اختر السفير</option>");
+                      $("#ambassador").append("<option value=''>اختر السفير</option>");
                       $.each(res,function(key,value){
-                          $("#embassador").append("<option value='"+key+"'>"+value+"</option>");
+                          $("#ambassador").append("<option value='"+key+"'>"+value+"</option>");
                       });
                   }
                }
             });
     }else{
-        $("#embassador").empty();
+        $("#ambassador").empty();
         $("#agent").empty();
     }
    });
@@ -191,12 +203,12 @@
 
 
 
-  $('#embassador').on('change',function(){
-  var embassadorID = $(this).val();    
-  if(embassadorID){
+  $('#ambassador').on('change',function(){
+  var ambassadorID = $(this).val();    
+  if(ambassadorID){
       $.ajax({
          type:"GET",
-         url:"{{url('admin/get-partner-list')}}?embassador_id="+embassadorID,
+         url:"{{url('admin/get-partner-list')}}?ambassador_id="+ambassadorID,
          success:function(res){               
           if(res){
             $('#table-result').html("")
@@ -225,4 +237,4 @@
       
  });
 </script>
-@endpush --}}
+@endpush

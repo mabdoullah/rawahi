@@ -31,7 +31,8 @@ class CreatePartnersTable extends Migration {
 
 
 			$table->string('subscription_type')->nullable();
-			$table->integer('embassador_id')->unsigned();
+			$table->integer('ambassador_id')->unsigned();
+			$table->boolean('verified')->default(false);
 			$table->rememberToken();
             $table->timestamps();
 		});
