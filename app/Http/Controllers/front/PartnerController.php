@@ -24,9 +24,21 @@ class PartnerController extends Controller
       $search_type=$request->search_type;
       $cities = City::where('country_id', 191)->get();
       $types=partnersTypesArray();
-      $partners = Partner::with('citydata')
-                         ->where('embassador_id', embassadorUser()->id)
-                         ->latest()->orderBy('id')->paginate(10);
+
+      $partners = Partner::with('citydata')->where('embassador_id', embassadorUser()->id)
+                            ->where(function ($q1) use ($searchByName) {
+                                  $q1->where('legal_name','like',"%".$searchByName."%");})
+                            ->where(function ($q2) use ($searchByEmail) {
+                                  $q2->where('email','like',"%".$searchByEmail."%");});
+        if(isset($search_type)){
+          $partners->where(function ($q3) use ($search_type) {
+                   $q3->where('partner_type',$search_type);});
+        }
+        if(isset($searchByCity)){
+          $partners->with(['citydata' => function ($query) use ($searchByCity){
+                     $query->select('id', 'name')->where('id',$searchByCity);}]);
+        }
+          $partners =  $partners ->latest()->orderBy('id')->paginate(10);
 
         return view('front.partners.index', compact('partners'))
             ->with('searchByName', $searchByName)
@@ -238,15 +250,18 @@ class PartnerController extends Controller
         // $partner = new Partner($request->all());
 
         if ($file = $request->hasFile('image')) {
+            $old_image=$partner->image;
             $file = $request->file('image');
             $fileName = rand() . '.' . $file->getClientOriginalExtension();
             $destinationPath = public_path() . '/images/partners';
             Image::make($file->getRealPath())->resize(100, 100)->stream();
-
             $file->move($destinationPath, $fileName);
-
             $partner->image = $fileName;
-
+            if(!empty($old_image)){
+              if(file_exists(public_path('images/partners/'.$old_image))){
+              unlink(public_path('images/partners/'.$old_image));
+             }
+            }
         }
 
         $partner->update($request->all());

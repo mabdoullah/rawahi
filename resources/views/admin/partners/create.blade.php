@@ -38,7 +38,7 @@
                                                </span>
                                         @endif
                                 </div>
-                               
+
                                         <div class="col-md-6">
                                                 <div class="form-group {{ $errors->has( 'partner_type' ) ? 'has-error' : '' }}">
                                                         <label>الفئة</label>
@@ -50,17 +50,17 @@
                                                                        <option  value="{{$key}}">{{$value}}</option>
                                                                   @endforeach
                                                               </select>
-                                  
+
                                                               @if( $errors->has( 'partner_type' ) )
                                                               <span class="help-block text-danger">
                                                                   {{ $errors->first( 'partner_type' ) }}
                                                               </span>
                                                               @endif
                                                           </div>
-                                  
+
                                                           </div>
-                                                          
-                        
+
+
                                 </div>
                                 <div class="col-md-6">
                                         <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
@@ -79,21 +79,21 @@
                                                     <select class="form-control filter-input"  name="embassador_id" id="embassador_id">
                                                         <option value="0">اختر السفير</option>
                                                         @foreach ($embassadors as $embassdor)
-                
+
                                                             <option   @if( old('embassdor')==$embassdor->id) selected @endif value="{{$embassdor->id}}">
                                                             {{$embassdor->first_name}}
                                                             </option>
                                                         @endforeach
                                                     </select>
-                
+
                                                     @if( $errors->has( 'embassdor' ) )
                                                             <span class="help-block text-danger">
                                                                 {{ $errors->first( 'embassdor' ) }}
                                                             </span>
                                                         @endif
                                                 </div>
-                        
-                        
+
+
                                                </div>
                                     <div class="col-md-12">
                                             <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
@@ -109,7 +109,7 @@
                                            @endif
                                             </div>
                                         </div>
-                                        
+
                             </div>
                             <div class="col-md-12">
                                     <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
@@ -122,8 +122,8 @@
                                             @endif
                                     </div>
                                 </div>
-                                
-                    
+
+
                     <div class="col-md-6">
                             <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                                     <label>  كلمه السر </label>
@@ -135,8 +135,8 @@
                                       @endif
                             </div>
                         </div>
-                        
-            
+
+
             <div class="col-md-6">
                     <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                             <div class="form-group {{ $errors->has( 'confirm_password' ) ? 'has-error' : '' }}">
@@ -203,8 +203,8 @@
                                             </span>
                                         @endif
                                 </div>
-        
-        
+
+
                                </div>
                                <div class="col-md-6">
                                    <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
@@ -217,23 +217,23 @@
                                            </span>
                                        @endif
                                 </div>
-                
-                
+
+
                         </div>
                         <div class="col-md-6">
                                 <div  class="form-group {{ $errors->has( 'map_address' ) ? 'has-error' : '' }}">
                                         <label>العنوان</label>
                                         <input name="map_address" id="map_address"  type="text" class="form-control filter-input"
                                             placeholder="ex. 250, Olayya Street..." value="{{ old('map_address') }}">
-    
+
                                             @if( $errors->has( 'map_address' ) )
                                             <span class="help-block text-danger">
                                                 {{ $errors->first( 'map_address' ) }}
                                             </span>
                                             @endif
                                     </div>
-             
-             
+
+
                      </div>
                      <div class="col-md-6">
                             <div class="form-group {{ $errors->has( 'postel_code' ) ? 'has-error' : '' }}">
@@ -247,32 +247,32 @@
                                         </span>
                                         @endif
                                 </div>
-                           
-         
+
+
                  </div>
                  <div class="col-md-6">
                         <div class="form-group {{ $errors->has( 'lat' ) ? 'has-error' : '' }}">
                                 <input name="lat" type="hidden" id="lat" class="form-control filter-input" value="{{ old('lat') }}">
-                                     
+
                             </div>
-                       
-     
+
+
              </div>
              <div class="col-md-6">
-                   
+
                     <div class="form-group {{ $errors->has( 'lng' ) ? 'has-error' : '' }}">
                             <input name="lng" type="hidden" id="lng" class="form-control filter-input"
                                  value="{{ old('lng',
                                 isset($partner->lng) ? $partner->lng : '') }}" >
                         </div>
- 
+
               </div>
-           
-                  
+
+
               <div class="col-md-12">
-                   
+
                     <div id="map" style="width: 100%;height: 250px;position: relative;overflow: hidden;"></div>
- 
+
               </div>
               <div class="col-md-6">
                     <input type="hidden" >
@@ -291,7 +291,7 @@
                                 </span>
                                 @endif
                         </div>
- 
+
               </div>
               <div class="col-md-4">
                     <div class="form-group {{ $errors->has( 'instagram' ) ? 'has-error' : '' }}">
@@ -305,7 +305,7 @@
                                 @endif
 
                         </div>
- 
+
               </div>
               <div class="col-md-4">
                     <div class="form-group {{ $errors->has( 'twitter' ) ? 'has-error' : '' }}">
@@ -318,7 +318,7 @@
                                 </span>
                                 @endif
                         </div>
- 
+
               </div>
               <div class="col-md-12">
                     <input required type="checkbox" tabindex="3" class="" name="remember"
@@ -334,19 +334,21 @@
                     <div class="col-md-12">
                     <button type="submit" class="btn btn-primary" >حفظ وتسجيل</button>
                     </div>
-                   </div> 
-                </form> 
+                   </div>
+                </form>
              </div>
-                      
+
         </div>
     </div>
-           
-     
+
+
 
 @endsection
 @push('jqueryCode')
 {{-- image show  --}}
 <script>
+$('.input-image-up[src=""]').hide();
+$('.input-image-up:not([src=""])').show();
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -355,6 +357,7 @@ function readURL(input) {
             $('.input-image-up').fadeIn(500);
         }
         reader.readAsDataURL(input.files[0]);
+        $('.input-image-up').css('display', 'block');
     }
 }
 $(".add-listing__input-file").change(function() {

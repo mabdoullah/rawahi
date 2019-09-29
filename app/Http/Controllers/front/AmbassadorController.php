@@ -26,16 +26,19 @@ class AmbassadorController extends Controller
       $searchByCity=$request->search_city;
       $show_embassador = '';
       $cities = City::where('country_id', 191)->get();
-      $embassdors = Embassador::with(['citydata' => function ($query) use ($searchByCity){
-                                     $query->select('id', 'name')->where('id','like',"%".$searchByCity."%");}])
-                              ->select('generate_id','first_name', 'email', 'phone', 'id','city')
+
+      $embassdors = Embassador::with('citydata')->select('generate_id','first_name', 'email', 'phone', 'id','city')
                               ->where('agent_id', agentUser()->id)
                               ->where(function ($q1) use ($searchByName) {
                                  $q1->where('first_name','like',"%".$searchByName."%")
-                                    ->orWhere('second_name','like',"%".$searchByName."%");})
-                              ->where(function ($q2) use ($searchByEmail) {
+                                  ->orWhere('second_name','like',"%".$searchByName."%");})
+                            ->where(function ($q2) use ($searchByEmail) {
                                 $q2->where('email','like',"%".$searchByEmail."%");});
 
+        if(isset($searchByCity)){
+          $embassdors->with(['citydata' => function ($query) use ($searchByCity){
+                     $query->select('id', 'name')->where('id',$searchByCity);}]);
+        }
      $embassdors = $embassdors->orderBy('embassadors.id', 'desc')->paginate(10);
     return view('front.ambassadors.index')
     ->with('searchByName', $searchByName)

@@ -175,7 +175,7 @@ return [
         'partner_type'              =>'الفئه',
         'legal_name'            =>'اسم الشريك',
         'subscription_type'     =>' نوع الاشتراك',
-        'remember'              =>'يجب ان توفق على الشروط',
+        'remember'              =>'بند الشروط',
         'new_password'          =>'كلمة السر الجديدة',
         'old_password'          =>'كلمة السر القديمة',
 
