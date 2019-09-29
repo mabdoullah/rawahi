@@ -1,18 +1,6 @@
 @extends('admin.master.app')
 
 @section('content')
-
-@push('jqueryCode') 
-
-<script>
-    $('#kt_datepicker_2').datepicker({
-                format: 'yyyy-mm-dd',   
-                
-                autoclose: true,
-                todayHighlight: true
-            });
-</script>
-@endpush
 <div class='row'>
   @if(session()->has('master_error'))
   <div class="col-12">
@@ -77,7 +65,7 @@
                 @endif
               </div>
           </div>
-          
+
           <div class="form-group row">
             <div class="col-lg-6">
               <div class=" {{ $errors->has( 'city' ) ? 'has-error' : '' }}">
@@ -111,7 +99,7 @@
                 @endif
               </div>
             </div>
-          
+
           <div class="form-group row">
             <div class="col-lg-6">
               <div class=" {{ $errors->has( 'password' ) ? 'has-error' : '' }}">
@@ -136,13 +124,13 @@
                 @endif
               </div>
             </div>
-          
+
 
 
           <div class="form-group row">
            <div class="col-lg-6 ">
-           <div class=" {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }} ">    
-            <label >ادخل تاريخ ميلادك</label> 
+           <div class=" {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }} ">
+            <label >ادخل تاريخ ميلادك</label>
 
               <div class=" date">
               <div class="input-group">
@@ -158,15 +146,15 @@
                   {{ $errors->first( 'birth_date' ) }}
                 </span>
                 @endif
-               
-                
+
+
               </div>
             </div>
             </div>
 
        </div>
 
-       
+
         <div class="kt-portlet__foot">
           <div class="kt-form__actions">
             <div class="row">
@@ -185,3 +173,17 @@
   </div>
 </div>
 @endsection
+
+@push('jqueryCode')
+<script>
+
+$(function () {
+  var date = new Date();
+    $("#kt_datepicker_2").datepicker({
+        format: 'yyyy-mm-dd',
+          autoclose: true,
+          todayHighlight: true,
+    }).datepicker('update', new Date((date.getFullYear() - 18 ),1,1));
+  });
+  </script>
+@endpush

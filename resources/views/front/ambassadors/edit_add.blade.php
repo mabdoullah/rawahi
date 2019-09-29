@@ -237,7 +237,6 @@ $(function () {
     .datepicker('update', new Date((date.getFullYear() - 18 ),1,1))
     @endif
     ;
-
   });
   </script>
 @endpush

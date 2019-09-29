@@ -22,10 +22,11 @@
     // });
     //
     // $(function () {
+    //   var date = new Date();
     //     $("#datepicker").datepicker({
     //           autoclose: true,
     //           todayHighlight: true,
-    //     }).datepicker('update', new Date());
+    //     }).datepicker('update', new Date((date.getFullYear() - 18 ),1,1))
     //
     //   });
 
