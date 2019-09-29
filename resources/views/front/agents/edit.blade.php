@@ -81,21 +81,17 @@
 
 
                                    <div class="col-md-6">
-                                       <!-- <div class="form-group {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }}">
-                                           <label> تاريخ الميلاد</label>
-                                           <input  type="date" class="form-control filter-input"placeholder="  تاريخ الميلاد" name="birth_date" value="{{old('birth_date', $agent->birth_date)}}">
-                                           @if( $errors->has( 'birth_date' ) )
-                                                   <span class="help-block text-danger">
-                                                       {{ $errors->first( 'birth_date' ) }}
-                                                   </span>
-                                           @endif
-                                       </div> -->
-                                       <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-                                            <label> تاريخ الميلاد</label>
-                                            <input  class="form-control filter-input"
-                                            placeholder="  تاريخ الميلاد" type="text" readonly />
-                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                        </div>
+                                    <div id="datepicker" class="input-group date {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }}" data-date-format="yyyy-mm-dd">
+                                        <label> تاريخ الميلاد</label>
+                                        <input id ='birth_date' name ='birth_date' class="form-control filter-input"
+                                        placeholder="  تاريخ الميلاد" type="text" readonly  value="{{ old('birth_date') ?? $agent->birth_date ?? null }}"/>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                    @if( $errors->has( 'birth_date' ) )
+                                            <span class="help-block text-danger">
+                                                {{ $errors->first( 'birth_date' ) }}
+                                            </span>
+                                    @endif
                                    </div>
 
                                     <div class="col-md-6 offset-md-6">
@@ -135,3 +131,15 @@
     <!--Page Wrapper ends-->
 
 @endsection
+@push('jqueryCode')
+<script>
+
+$(function () {
+  var date = new Date();
+    $("#datepicker").datepicker({
+          autoclose: true,
+          todayHighlight: true,
+    });
+  });
+  </script>
+@endpush
