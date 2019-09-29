@@ -193,10 +193,10 @@ class PartnerController extends Controller
     public function edit($id)
     {
         $partner = Partner::find($id);
-        $embassadors= Embassador::all();
+        $ambassadors= Ambassador::all();
         $cities = City::where('country_id', 191)->get(['id', "name"]);
         $isChecked='true';
-        return view('admin.partners.edit', compact('partner', 'cities','embassadors','isChecked'));
+        return view('admin.partners.edit', compact('partner', 'cities','$ambassadors','isChecked'));
     }
 /*================================ end edit function=========================*/
 
