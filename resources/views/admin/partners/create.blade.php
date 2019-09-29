@@ -38,7 +38,7 @@
                                                </span>
                                         @endif
                                 </div>
-                               
+
                                         <div class="col-md-6">
                                                 <div class="form-group {{ $errors->has( 'partner_type' ) ? 'has-error' : '' }}">
                                                         <label>الفئة</label>
@@ -50,17 +50,17 @@
                                                                        <option  value="{{$key}}">{{$value}}</option>
                                                                   @endforeach
                                                               </select>
-                                  
+
                                                               @if( $errors->has( 'partner_type' ) )
                                                               <span class="help-block text-danger">
                                                                   {{ $errors->first( 'partner_type' ) }}
                                                               </span>
                                                               @endif
                                                           </div>
-                                  
+
                                                           </div>
-                                                          
-                        
+
+
                                 </div>
                                 <div class="col-md-12">
                                         <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
@@ -119,7 +119,7 @@
                                            @endif
                                             </div>
                                         </div>
-                                        
+
                             </div>
                             <div class="col-md-12">
                                     <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
@@ -132,8 +132,8 @@
                                             @endif
                                     </div>
                                 </div>
-                                
-                    
+
+
                     <div class="col-md-6">
                             <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                                     <label>  كلمه السر </label>
@@ -145,8 +145,8 @@
                                       @endif
                             </div>
                         </div>
-                        
-            
+
+
             <div class="col-md-6">
                     <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                             <div class="form-group {{ $errors->has( 'confirm_password' ) ? 'has-error' : '' }}">
@@ -213,8 +213,8 @@
                                             </span>
                                         @endif
                                 </div>
-        
-        
+
+
                                </div>
                                <div class="col-md-6">
                                    <div class="form-group {{ $errors->has( 'phone' ) ? 'has-error' : '' }}">
@@ -227,23 +227,23 @@
                                            </span>
                                        @endif
                                 </div>
-                
-                
+
+
                         </div>
                         <div class="col-md-6">
                                 <div  class="form-group {{ $errors->has( 'map_address' ) ? 'has-error' : '' }}">
                                         <label>العنوان</label>
                                         <input name="map_address" id="map_address"  type="text" class="form-control filter-input"
                                             placeholder="ex. 250, Olayya Street..." value="{{ old('map_address') }}">
-    
+
                                             @if( $errors->has( 'map_address' ) )
                                             <span class="help-block text-danger">
                                                 {{ $errors->first( 'map_address' ) }}
                                             </span>
                                             @endif
                                     </div>
-             
-             
+
+
                      </div>
                      <div class="col-md-6">
                             <div class="form-group {{ $errors->has( 'postel_code' ) ? 'has-error' : '' }}">
@@ -257,32 +257,32 @@
                                         </span>
                                         @endif
                                 </div>
-                           
-         
+
+
                  </div>
                  <div class="col-md-6">
                         <div class="form-group {{ $errors->has( 'lat' ) ? 'has-error' : '' }}">
                                 <input name="lat" type="hidden" id="lat" class="form-control filter-input" value="{{ old('lat') }}">
-                                     
+
                             </div>
-                       
-     
+
+
              </div>
              <div class="col-md-6">
-                   
+
                     <div class="form-group {{ $errors->has( 'lng' ) ? 'has-error' : '' }}">
                             <input name="lng" type="hidden" id="lng" class="form-control filter-input"
                                  value="{{ old('lng',
                                 isset($partner->lng) ? $partner->lng : '') }}" >
                         </div>
- 
+
               </div>
-           
-                  
+
+
               <div class="col-md-12">
-                   
+
                     <div id="map" style="width: 100%;height: 250px;position: relative;overflow: hidden;"></div>
- 
+
               </div>
               <div class="col-md-6">
                     <input type="hidden" >
@@ -301,7 +301,7 @@
                                 </span>
                                 @endif
                         </div>
- 
+
               </div>
               <div class="col-md-4">
                     <div class="form-group {{ $errors->has( 'instagram' ) ? 'has-error' : '' }}">
@@ -315,7 +315,7 @@
                                 @endif
 
                         </div>
- 
+
               </div>
               <div class="col-md-4">
                     <div class="form-group {{ $errors->has( 'twitter' ) ? 'has-error' : '' }}">
@@ -328,7 +328,7 @@
                                 </span>
                                 @endif
                         </div>
- 
+
               </div>
               <div class="col-md-12">
                     <input required type="checkbox" tabindex="3" class="" name="remember"
@@ -346,14 +346,14 @@
                     <button type="reset" class="btn btn-secondary">إعادة تعيين</button>
 
                     </div>
-                   </div> 
-                </form> 
+                   </div>
+                </form>
              </div>
-                      
+
         </div>
     </div>
-           
-     
+
+
 
 @endsection
 @push('jqueryCode')
@@ -367,6 +367,8 @@
 {{-- image show  --}}
 
 <script>
+$('.input-image-up[src=""]').hide();
+$('.input-image-up:not([src=""])').show();
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -375,6 +377,7 @@ function readURL(input) {
             $('.input-image-up').fadeIn(500);
         }
         reader.readAsDataURL(input.files[0]);
+        $('.input-image-up').css('display', 'block');
     }
 }
 $(".add-listing__input-file").change(function() {
@@ -398,25 +401,25 @@ if(isset($partner->id)){
           $lng = 46.6753;
       }
   ?>
-  
+
 <script>
 
         if ($('#map').length > 0) {
             google.maps.event.addDomListener(window, 'load', init);
-    
+
             function init() {
                 // Basic options for a simple Google Map
                 // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
                 var mapOptions = {
                     // How zoomed in you want the map to start at (always required)
                     zoom: 15,
-    
+
                     // The latitude and longitude to center the map (always required)
                     center: new google.maps.LatLng({{$lat}}, {{$lng}}), // Riyadh
-    
+
                     scrollwheel: false,
-    
-    
+
+
                     // How you would like to style the map.
                     // This is where you would paste any style found on Snazzy Maps.
                     styles: [
@@ -474,14 +477,14 @@ if(isset($partner->id)){
                         }
                     ]
                 };
-    
+
                 // Get the HTML DOM element that will contain your map
                 // We are using a div with id="map" seen below in the <body>
                 var mapElement = document.getElementById('map');
-    
+
                 // Create the Google Map using our element and options defined above
                 var map = new google.maps.Map(mapElement, mapOptions);
-    
+
                 var image = "{{asset('front/images/others/Marker.png')}}" ;
                 // Let's also add a marker while we're at it
                 var marker = new google.maps.Marker(
@@ -491,18 +494,18 @@ if(isset($partner->id)){
                     icon: image,
                     draggable: true,
                     animation: google.maps.Animation.DROP,
-    
+
                     }
                 );
-                
-               
-    
-    
-                
-    
-    
+
+
+
+
+
+
+
             marker.addListener('click', toggleBounce);
-    
+
                 function toggleBounce() {
                     if (marker.getAnimation() !== null) {
                         marker.setAnimation(null);
@@ -510,86 +513,86 @@ if(isset($partner->id)){
                         marker.setAnimation(google.maps.Animation.BOUNCE);
                     }
                 }
-    
-    
+
+
                 var geocoder = new google.maps.Geocoder();
                 google.maps.event.addListener(marker,'dragend',function (e) {
                     // console.log(marker.getPosition());
-                    
-                   
+
+
                     setValuesToInputs(marker);
-    
+
                 });
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 function setValuesToInputs(marker){
-                    
-    
+
+
                     let lat = marker.getPosition().lat(),
                         lng = marker.getPosition().lng();
-                        
-    
-    
+
+
+
                     var latlng = new google.maps.LatLng(lat,lng);
-    
+
                     geocoder.geocode({'latLng' : latlng},function (results, status) {
-                        
+
                         // var addresslocation =results[1].formatted_address;
-    
+
                         // console.log( status,google.maps.GeocoderStatus  );
-    
+
                         if (status == google.maps.GeocoderStatus.OK) {
                             // console.log(results[1],lat,lng );
-    
+
                             $('#lat').val(lat);
                             $('#lng').val(lng);
                             let map_address = '' ,addressC='',postal_code='';
-    
+
                             if (typeof results[1] !== 'undefined') {
                                 if(typeof results[1].formatted_address !== 'undefined'){
                                     map_address = results[1].formatted_address;
                                 }
-    
+
                                 if(typeof results[1].address_components !== 'undefined'){
                                     addressC = results[1].address_components
-    
+
                                     for (let i =0;i<addressC.length;i++){
                                         if (addressC[i].types[0] === "postal_code") {
                                             postal_code  = addressC[i].long_name;
                                         }
                                     }
-    
+
                                 }
                             }
-                            
+
                             $('#map_address').val(map_address);
-                            
+
                             $('#zipCode').val(postal_code);
-                           
+
                         }
-                        
+
                     });
                 }
-               
-    
-    
-    
+
+
+
+
                 @if(!isset($partner->id))
-            
+
                     //infoWindow = new google.maps.InfoWindow;
-    
+
                     // Try HTML5 geolocation.
                     if (navigator.geolocation) {
                         navigator.geolocation.getCurrentPosition(function(position) {
@@ -598,17 +601,17 @@ if(isset($partner->id)){
                             lat: position.coords.latitude,
                             lng: position.coords.longitude
                             };
-    
+
                             // infoWindow.setPosition(pos);
                             // infoWindow.setContent( addresslocation);
                             marker.setPosition(pos);
                             // infoWindow.open(map, marker);
-    
+
                             map.setCenter(pos);
-    
-    
+
+
                             setValuesToInputs(marker);
-    
+
                         }, function() {
                             //handleLocationError(true, infoWindow, map.getCenter());
                         });
@@ -616,8 +619,8 @@ if(isset($partner->id)){
                         // Browser doesn't support Geolocation
                         //  handleLocationError(false, infoWindow, map.getCenter());
                     }
-    
-    
+
+
                     // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                     //     infoWindow.setPosition(pos);
                     //     infoWindow.setContent(browserHasGeolocation ?
@@ -625,24 +628,24 @@ if(isset($partner->id)){
                     //                         'Error: Your browser doesn\'t support geolocation.');
                     //     infoWindow.open(map);
                     // }
-    
+
                 @endif
-    
-    
-    
-    
+
+
+
+
             }
-    
+
         }
-    
+
         // Intialize Map
-    
-    
-    
-    
-    
+
+
+
+
+
     </script>
-       
+
 
 
 {{-- end map --}}

@@ -130,9 +130,9 @@
            
               <td>
                {{-- edit  --}}
-                      {{-- <a class="btn v8 view-buttons" href="{{route('partners.edit',$partner->id)}}"> تعديل <i
+                      <a class="btn btn-warning" href="{{route('admin.partners.edit',$partner->id)}}"> تعديل <i
                       class="icofont-edit"></i>
-                      </a> --}}
+                      </a>  
               {{--  show --}}
                   {{-- <a type="button"  class="btn v8 view-buttons show_button"  data-toggle="modal"data-target="#show"   href="{{route('partners.show',$partner->id)}}"> عرض <i class="icofont-eye-alt"></i></a> --}}
 

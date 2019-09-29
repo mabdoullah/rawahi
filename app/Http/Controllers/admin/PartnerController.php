@@ -24,9 +24,9 @@ class PartnerController extends Controller
         $agents = DB::table("agents")->pluck("name", "id");
         $partners = Partner::orderBy('id', 'DESC')->get();
 
-      
-        
-     
+
+
+
 
 
         return view('admin.partners.index', compact('agents', 'partners'));
@@ -65,16 +65,16 @@ class PartnerController extends Controller
                 if(!empty($ambassador_id)){
                     $partners->where('ambassador_id',$ambassador_id);
                 }
-                
+
 
                 $partners =  $partners->orderBy('id', 'DESC')->get();
 
 
-               
-             
-                
-        
-       
+
+
+
+
+
         return view('admin.partners.index',compact('partners', 'agents','ambassadors'));
 
          }
@@ -155,13 +155,16 @@ class PartnerController extends Controller
 
     public function edit($id)
     {
-
         $partner = Partner::find($id);
+        $agent_id = $partner->ambassador->agent->id;
+        $agents = Agent::all();
 
+        $ambassadors = Ambassador::where('agent_id',$agent_id)->get();
+
+    
         $cities = City::where('country_id', 191)->get(['id', "name"]);
-
-        return view('admin.partners.create', compact('partner', 'cities'));
-
+        $isChecked='true';
+        return view('admin.partners.edit', compact('partner','agents','ambassadors' ,'agent_id','cities','isChecked'));
     }
 /*================================ end edit function=========================*/
 
@@ -169,65 +172,42 @@ class PartnerController extends Controller
 
     public function update(Request $request, $id)
     {
-        // first tab
-        $validator = Validator::make($request->all(), [
+          $checked='';
+          $partner = Partner::find($id);
+          if(!$partner){
+            return redirect('admin/partners')->with('master_error','عفوا لا يوجد شريك لتعديله');
+          }
+          $validator = Validator::make($request->all(), [
             'partner_type' => 'required',
-            'legal_name' => ' required |max:255',
+            'legal_name' => 'required |max:255',
             'email' => 'required|email|' . update_unique_validate('email', $id, 'partners'),
-
-        ]);
-        if ($validator->fails()) {
-            session()->flash('activeTab', '');
-            return redirect('partners/create')
-                ->withErrors($validator)
-                ->withInput()
-                ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
-        }
-
-        // second tab
-        $validator = Validator::make($request->all(), [
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        if ($validator->fails()) {
-            session()->flash('activeTab', 'tab2');
-            return redirect('partners/create')
-                ->withErrors($validator)
-                ->withInput()
-                ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
-        }
-
-        // third tab
-        $validator = Validator::make($request->all(), [
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|' . update_unique_validate('phone', $id, 'partners'),
             'city' => 'required|exists:cities,id',
-        ]);
-
+            'map_address' => 'required|max:255',
+            'remember'=>'required',
+          ]);
         if ($validator->fails()) {
-            session()->flash('activeTab', 'tab3');
-            return redirect('partners/create')
+          $failedRules = $validator->failed();
+            return redirect('admin/partners/'.$id.'/edit')
                 ->withErrors($validator)
                 ->withInput()
                 ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
         }
 
-        $validator = Validator::make($request->all(), [
-            'map_address' => 'required|max:255',
-
-        ]);
-
-        $partner = Partner::find($id);
-
         if ($file = $request->hasFile('image')) {
+            $old_image=$partner->image;
             $file = $request->file('image');
             $fileName = rand() . '.' . $file->getClientOriginalExtension();
             $destinationPath = public_path() . '/images/partners';
             Image::make($file->getRealPath())->resize(100, 100)->stream();
-
             $file->move($destinationPath, $fileName);
-
             $partner->image = $fileName;
-
+            if(!empty($old_image)){
+              if(file_exists(public_path('images/partners/'.$old_image))){
+              unlink(public_path('images/partners/'.$old_image));
+             }
+            }
         }
 
         $partner->update($request->all());

@@ -26,17 +26,20 @@ class AmbassadorController extends Controller
       $searchByCity=$request->search_city;
       $show_ambassador = '';
       $cities = City::where('country_id', 191)->get();
-      $ambassdors = Ambassador::with(['citydata' => function ($query) use ($searchByCity){
-                                     $query->select('id', 'name')->where('id','like',"%".$searchByCity."%");}])
-                              ->select('generate_id','first_name', 'email', 'phone', 'id','city')
+
+      $ambassdors = Ambassador::with('citydata')->select('generate_id','first_name', 'email', 'phone', 'id','city')
                               ->where('agent_id', agentUser()->id)
                               ->where(function ($q1) use ($searchByName) {
                                  $q1->where('first_name','like',"%".$searchByName."%")
-                                    ->orWhere('second_name','like',"%".$searchByName."%");})
-                              ->where(function ($q2) use ($searchByEmail) {
+                                  ->orWhere('second_name','like',"%".$searchByName."%");})
+                            ->where(function ($q2) use ($searchByEmail) {
                                 $q2->where('email','like',"%".$searchByEmail."%");});
 
-     $ambassdors = $ambassdors->orderBy('ambassadors.id', 'desc')->paginate(10);
+        if(isset($searchByCity)){
+          $ambassdors->with(['citydata' => function ($query) use ($searchByCity){
+                     $query->select('id', 'name')->where('id',$searchByCity);}]);
+        }
+     $ambassdors = $ambassdors->orderBy('embassadors.id', 'desc')->paginate(10);
     return view('front.ambassadors.index')
     ->with('searchByName', $searchByName)
     ->with('searchByEmail', $searchByEmail)
@@ -75,7 +78,7 @@ class AmbassadorController extends Controller
             // 'confirm_password' => 'min:8'
         ]);
         if ($validator->fails()) {
-            return redirect('ambassador/create')
+            return redirect('ambassadors/create')
                 ->withErrors($validator)
                 ->withInput()
                 ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
@@ -134,25 +137,25 @@ class AmbassadorController extends Controller
      */
     public function edit($id)
     {
-      
+
         $ambassador = Ambassador::find($id);
         if(empty($ambassador)) return redirect('ambassador');
 
         if(ambassadorUser() && ambassadorUser()->id != $ambassador->id) return redirect('/');
-        
+
         if(agentUser()){
             if(!isEmailVerified()) return redirect('email-not-verified');
             if(agentUser()->id != $ambassador->agent_id) return redirect('/');
         }
-         
+
         $cities = City::where('country_id',191)->get();
-        
+
         return view('front.ambassadors.edit_add',compact('cities','ambassador'));
-        
+
 
         // return redirect('ambassador')->with('master_error', 'غير مسموح لك تعديل هذا السفير');
 
-        
+
     }
 
     /**
@@ -168,7 +171,7 @@ class AmbassadorController extends Controller
         if(empty($ambassador)) return redirect('ambassador');
 
         if(ambassadorUser() && ambassadorUser()->id != $ambassador->id) return redirect('/');
-        
+
         if(agentUser()){
             if(!isEmailVerified()) return redirect('email-not-verified');
             if(agentUser()->id != $ambassador->agent_id) return redirect('/');

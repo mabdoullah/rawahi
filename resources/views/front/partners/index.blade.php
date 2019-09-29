@@ -39,259 +39,121 @@
                                 {{ session()->get('message') }}
                                 </div>
                                 @endif
-                             @if(!count($partners))
+
+                            {{-- @if(!count($partners))
                               <div class="alert alert-info text-center" role="alert">
                                 <h4>عفوا لا يوجد شركاء لعرضها</h4>
                               </div>
-                              @else
-                              <div class="over-flo">
-                                <table class="table">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                              <th scope="col">إسم الشريك</th>
-                                              <th scope="col">الايميل </th>
+                              @else--}}
 
-                                              <th scope="col">التليفون</th>.
-                                              <th scope="col">المدينة</th>
-                                              <th scope="col">صوره الشريك</th>
-
-                                            <th scope="col">تعديل بروفايل الشريك</th>
-
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                            @foreach ($partners as $partner)
-                                        <tr>
-
-
-
-                                            <td>{{$partner->legal_name}}</td>
-                                            <td>{{$partner->email}}</td>
-
-                                            <td>{{$partner->phone}}</td>
-                                            <td>{{$partner->citydata->name}}</td>
-                                            <td><img src="images/partners/{{$partner->image}}" alt="partnerimg" class="imgpartner img-fluid"></td>
-
-
-
-                                            <td>
-
-                                        </form>
-                                        {{--  edit --}}
-                                               <a class="btn v8 view-buttons" href="{{route('partners.edit',$partner->id)}}"> تعديل <i
-                                                class="icofont-edit"></i>
-                                                </a>
-                                        {{--  show --}}
-                                            <a type="button"  class="btn v8 view-buttons show_button"  data-toggle="modal"data-target="#show"   href="{{route('partners.show',$partner->id)}}"> عرض <i class="icofont-eye-alt"></i></a>
-
-                                        {{--  delete --}}
-                                            {{-- <button type="button" class="view-buttons btn v8 deleterow" data-partid="{{$partner->id}}" data-toggle="modal" data-target="#delete">حذف
-                                            <i class="icofont-ui-delete"></i>
-                                            </button>  --}}
-
-                                            </td>
-
-                                        </tr>
-                                        @endforeach
-
-                                    </tbody>
-                                </table>
-                            </div>    
-
-                                <!-- start deleteconfirmation Modal -->
-                                     @include('front.partners.deletepartner')
-                                <!-- end deleteconfirmation Modal -->
-                                     {!! $partners->links()!!}
-                                @endif
-                                <div class="modal fade" id="show" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header ">
-                                                <h5 class="modal-title " id="exampleModalLabel"> بيانات الشريك</h5>
-                                                <button type="button" class="sm-left close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="post">
-                                                    <div class="row">
-
-
-                                                    </div>
-                                            </div>
-                                            <div class="row">
-
-                                                <div class="col-md-12">
-                                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                                                <li class="nav-item">
-                                                                    <a class="nav-link active" id="home-tab"
-                                                                        data-toggle="tab" href="#home" role="tab"
-                                                                        aria-controls="home"
-                                                                        aria-selected="true">البيانات</a>
-                                                                </li>
-
-                                                            </ul>
-                                                    <div class="tab-content profile-tab" id="myTabContent">
-                                                        <div class="tab-pane fade profile show active" id="home"
-                                                            role="tabpanel" aria-labelledby="home-tab">
-                                                            <div class="row data-right-top">
-                                                                <div class="col-md-4" id="img" >
-                                                                    <div class="profile-img" >
-                                                                        <img src=""  id="show-image">
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-8">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6 ">
-                                                                            <label  id='namep'> الاسم الشريك</label>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <p id="show-name"> </p>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label id='email'>البريد الالكتروني</label>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <p id="show-email"></p>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                        <label id="address">العنوان</label>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <p id="show-address"></p>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                            <label id="phone">رقم الجوال</label>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <p id="show-phone"></p>
-                                                                        </div>
-
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                    <div class="col-md-3 col-12">
-                                                                        <label id="part-type">نوع الشريك </label>
-                                                                    </div>
-                                                                    <div class="col-md-3 col-12">
-                                                                        <p id="show-part-type"></p>
-                                                                    </div>
-                                                                    <div class="col-md-3 col-12">
-                                                                        <label id="citydata">المدينة</label>
-                                                                    </div>
-                                                                    <div class="col-md-3 col-12">
-                                                                        <p id='show-city'> </p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-3 col-12">
-                                                                        <label id="facebook">الفيس بوك </label>
-                                                                    </div>
-                                                                    <div class="col-md-3 col-12">
-                                                                        <p id="show-facebook"> </p>
-                                                                    </div>
-                                                                    <div class="col-md-3 col-12">
-                                                                        <label id="insatgram"> انستجرام</label>
-                                                                    </div>
-                                                                    <div class="col-md-3 col-12">
-                                                                        <p id='show-insatgram'> </p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-3 col-12">
-                                                                        <label id="twitter">التوتير</label>
-                                                                    </div>
-                                                                    <div class="col-md-3 col-12">
-                                                                        <p id='show-twitter'> </p>
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                            <div class="row">
-                                                                   
-                                                                <div class="col-md-3 col-12">
-                                                                    <label id='about'>وصف الشريك </label>
-                                                                </div>
-                                                                <div class="col-md-3 col-12">
-                                                                    <p id="show-about"></p>
-                                                                </div>
-
-                                                            </div>
-                                                         </div>
-                                                    {{--<div class="tab-pane fade" id="profile" role="tabpanel"
-                                                                    aria-labelledby="profile-tab">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <label>Experience</label>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <p>Expert</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <label>Hourly Rate</label>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <p>10$/hr</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <label>Total Projects</label>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <p>230</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <label>English Level</label>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <p>Expert</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <label>Availability</label>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <p>6 months</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-12">
-                                                                            <label>Your Bio</label><br />
-                                                                            <p>Your detail description</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div> -->
-                                                    </div>
-                                                </div>
-                                            </div> --}}
-                                            </form>
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">أغلاق</button>
-                                        </div>
-                                        <!-- <div class="modal-footer">
-
-                                            </div> -->
-                                    </div>
+<!--start search box -->
+      <div class="filter-wrapper style1 v2 ">
+           <div class="container">
+               <div class="row">
+                   <div class="col-md-12 pad-top-30 pad-bot-30">
+                       <form action="{{route('partners.index')}}" id="searchForm" method="get" class="hero__form v2 filter">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-12">
+                                    <input type="text" id='search_name' name='search_name'placeholder="بحث بالأسم" value="{{ old('search_name') ?? $searchByName ?? null }}" class="hero__form-input custom-select">
                                 </div>
-                            </div>
+                                <div class="col-lg-2 col-md-12">
+                                    <input type="text" id='search_email' name='search_email'placeholder="بحث بالأميل" value="{{ old('search_email') ?? $searchByEmail ?? null }}" class="hero__form-input custom-select">
+                                </div>
+                                <div class="col-lg-3 col-md-12">
+                                    <select class=" nice-select hero__form-input custom-select"  name="search_city" id="search_city">
+                                         <option value="">اختر المدينة</option>
+                                                @foreach ($cities as $city)
+                                                 <option {{ (old('search_city', isset($searchByCity) ? $searchByCity:'' ) == $city->id) ? 'selected':''  }}  value="{{$city->id}}">
+                                                {{$city->name}}
+                                                 </option>
+                                                   @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-lg-3 col-md-12">
+                                    <select class=" nice-select hero__form-input custom-select"  name="search_type" id="search_type">
+                                         <option value="">اختر نوع الشريك</option>
+                                               @foreach ($types as $key=>$type)
+                                                 <option {{ (old('search_type', isset($search_type) ? $search_type:'' ) == $key) ? 'selected':''  }}  value="{{$key}}">
+                                                {{$type}}
+                                                 </option>
+                                                   @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-lg-2 col-md-12 text-center">
+                                    <button type="submit" name="" class="btn  v3" >بحث</button>
+                                </div>
+                             </div>
+                       </form>
+                    </div>
+               </div>
+            </div>
+      </div>
+<!--end search box -->
+
+<!--start result table -->
+    <div class="over-flo">
+      <table class="table">
+          <thead class="thead-dark">
+              <tr>
+                    <th scope="col">إسم الشريك</th>
+                    <th scope="col">الايميل </th>
+                    <th scope="col">التليفون</th>
+                    <th scope="col">المدينة</th>
+                    <th scope="col">صوره الشريك</th>
+                  <th scope="col">تعديل بروفايل الشريك</th>
+              </tr>
+          </thead>
+          <tbody>
+            @if($partners)
+            @php $count=0;@endphp
+            @foreach($partners as $partner)
+            @if($partner->citydata)
+            @php   $count=$count+1; @endphp
+              <tr>
+                  <td>{{$partner->legal_name}}</td>
+                  <td>{{$partner->email}}</td>
+                  <td>{{$partner->phone}}</td>
+                  <td>{{$partner->citydata->name}}</td>
+                  <td><img src="images/partners/{{$partner->image}}" alt="partnerimg" class="imgpartner img-fluid"></td>
+                  <td>
+              {{--  edit --}}
+                     <a class="btn v8 view-buttons" href="{{route('partners.edit',$partner->id)}}"> تعديل <iclass="icofont-edit"></i></a>
+              {{--  show --}}
+                  <a type="button"  class="btn v8 view-buttons show_button"  data-toggle="modal"data-target="#show"   href="{{route('partners.show',$partner->id)}}"> عرض <i class="icofont-eye-alt"></i></a>
+              {{--  delete --}}
+                  {{-- <button type="button" class="view-buttons btn v8 deleterow" data-partid="{{$partner->id}}" data-toggle="modal" data-target="#delete">حذف
+                  <i class="icofont-ui-delete"></i>
+                  </button>  --}}
+                  </td>
+              </tr>
+              @endif
+              @endforeach
+              @endif
+              @if(($count==0)||(!$partners))
+              <tr>
+                  <td colspan="6">
+                      <div class="alert alert-info text-center" role="alert">
+                        <h4 >عفوا لا يوجد نتائج لعرضها</h4>
+                      </div>
+                  </td>
+              </tr>
+              @endif
+          </tbody>
+      </table>
+  </div>
+  {{ $partners->links() }}
+</div>
+<!--end result table -->
+  <!-- start deleteconfirmation Modal -->
+       @include('front.partners.deletepartner')
+       <!-- start show modal -->
+       @include('front.partners.show_modal')
+
+                              {{--  @endif--}}
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
     <!--view page ends-->
 
     @endsection
@@ -312,7 +174,7 @@
           var img=response['partner']['image'];
           var image="./images/partners/"+img;
           $('#myTabContent').find('p').empty();
-         
+
           if (response['partner']['image']) {
             $('#show-image').attr('src',image);
           }else{
@@ -339,13 +201,13 @@
 
           }
           if (response['partner']['phone']) {
-     
+
             $('#show-phone').append(response['partner']['phone']);
           }else{
             document.getElementById("phone").style.display = "none";
 
           }
-        
+
           if (response['partner']['about']) {
 
           $('#show-about').append(response['partner']['about']);
@@ -356,42 +218,42 @@
         if (response['partner']['partner_type']) {
 
             $.each(response['types'], function( index, value ) {
-                
+
                 if (response['partner']['partner_type']==index) {
                     $('#show-part-type').append(value);
 
                 }
 });
-      
+
         }else{
         document.getElementById("part-type").style.display = "none";
-        } 
+        }
         if (response['partner']['citydata']['name']) {
         $('#show-city').append(response['partner']['citydata']['name']);
 
         }else{
         document.getElementById("citydata").style.display = "none";
-        }  
+        }
 
         if (response['partner']['facebook']) {
         $('#show-facebook').append(response['partner']['facebook']);
 
         }else{
         document.getElementById("facebook").style.display = "none";
-        }  
+        }
 
         if (response['partner']['instagram']) {
         $('#show-insatgram').append(response['partner']['instagram']);
 
         }else{
         document.getElementById("instagram").style.display = "none";
-        }   
+        }
         if (response['partner']['twitter']) {
         $('#show-twitter').append(response['partner']['twitter']);
 
         }else{
         document.getElementById("twitter").style.display = "none";
-        }    
+        }
             }
       });
     });

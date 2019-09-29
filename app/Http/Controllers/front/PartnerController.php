@@ -16,14 +16,37 @@ class PartnerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-         
-        
-        $partners = Partner::with('citydata')->
-        where('ambassador_id', ambassadorUser()->id)->latest()->orderBy('id')->paginate(10);
-        
-        return view('front.partners.index', compact('partners'));
+      $searchByName=$request->search_name;
+      $searchByEmail=$request->search_email;
+      $searchByCity=$request->search_city;
+      $search_type=$request->search_type;
+      $cities = City::where('country_id', 191)->get();
+      $types=partnersTypesArray();
+
+      $partners = Partner::with('citydata')->where('ambassador_id', ambassadorUser()->id)
+                            ->where(function ($q1) use ($searchByName) {
+                                  $q1->where('legal_name','like',"%".$searchByName."%");})
+                            ->where(function ($q2) use ($searchByEmail) {
+                                  $q2->where('email','like',"%".$searchByEmail."%");});
+        if(isset($search_type)){
+          $partners->where(function ($q3) use ($search_type) {
+                   $q3->where('partner_type',$search_type);});
+        }
+        if(isset($searchByCity)){
+          $partners->with(['citydata' => function ($query) use ($searchByCity){
+                     $query->select('id', 'name')->where('id',$searchByCity);}]);
+        }
+          $partners =  $partners ->latest()->orderBy('id')->paginate(10);
+
+        return view('front.partners.index', compact('partners'))
+            ->with('searchByName', $searchByName)
+            ->with('searchByEmail', $searchByEmail)
+            ->with('searchByCity', $searchByCity)
+            ->with('search_type', $search_type)
+            ->with('types', $types)
+            ->with('cities', $cities);
     }
 
     /**
@@ -33,9 +56,7 @@ class PartnerController extends Controller
      */
     public function create()
     {
-
         $cities = City::where('country_id', 191)->get();
-
         return view('front.partners.create', compact('cities'));
     }
 
@@ -144,11 +165,11 @@ class PartnerController extends Controller
 
         if(ambassadorUser()){
             if(!isEmailVerified()) return redirect('email-not-verified');
-            if(ambassadorUser()->id != $partner->ambassador_id) return redirect('/');    
+            if(ambassadorUser()->id != $partner->ambassador_id) return redirect('/');
         }
-        
+
         if(partnerUser() && partnerUser()->id != $partner->id) return redirect('/');
-        
+
 
         $cities = City::where('country_id', 191)->get(['id', "name"]);
 
@@ -170,11 +191,11 @@ class PartnerController extends Controller
 
         if(ambassadorUser()){
             if(!isEmailVerified()) return redirect('email-not-verified');
-            if(ambassadorUser()->id != $partner->ambassador_id) return redirect('/');    
+            if(ambassadorUser()->id != $partner->ambassador_id) return redirect('/');
         }
-        
+
         if(partnerUser() && partnerUser()->id != $partner->id) return redirect('/');
-        
+
 
         // first tab
         $validator = Validator::make($request->all(), [
@@ -229,15 +250,18 @@ class PartnerController extends Controller
         // $partner = new Partner($request->all());
 
         if ($file = $request->hasFile('image')) {
+            $old_image=$partner->image;
             $file = $request->file('image');
             $fileName = rand() . '.' . $file->getClientOriginalExtension();
             $destinationPath = public_path() . '/images/partners';
             Image::make($file->getRealPath())->resize(100, 100)->stream();
-
             $file->move($destinationPath, $fileName);
-
             $partner->image = $fileName;
-
+            if(!empty($old_image)){
+              if(file_exists(public_path('images/partners/'.$old_image))){
+              unlink(public_path('images/partners/'.$old_image));
+             }
+            }
         }
 
         $partner->update($request->all());
