@@ -2,16 +2,18 @@
 
 @section('content')
 <div class='row'>
+<div class="col-12">
         @if(session()->has('master_error'))
-        <div class="alert alert-danger text-center" role="alert">
-            {{ session()->get('master_error') }}
+        <div style="display:inline-block; width: 100% ;" class="alert alert-danger text-center " role="alert">
+         {{ session()->get('master_error') }}
         </div>
         @endif
         @if(session()->has('message'))
-        <div class="alert alert-success text-center" role="alert">
-            {{ session()->get('message') }}
+        <div style="display:inline-block; width: 100% ;" class="alert alert-success  text-center" role="alert">
+           {{ session()->get('message') }}
         </div>
         @endif
+        </div>     
         <div class="col-md-12">
                 <!--begin::Portlet-->
                 <div class="kt-portlet">
@@ -75,8 +77,8 @@
                                     </div>
                                     
                                     <div class="col-6">
-            
-                                    <select class="form-control " name="agent" id="agent" value="{{old('agent')}}">
+                                    <label> اختر الوكيل </label>
+                                    <select class="form-control form-group  " name="agent" id="agent" value="{{old('agent')}}">
                                         <option value="" selected>اختر الوكيل</option>
                             
                                         @foreach($agents as $key => $agent)
@@ -93,7 +95,8 @@
                                         </div> 
                             
                                          <div class="col-6">
-                                        <select class="form-control" name="ambassador_id" id="ambassador" value="">
+                                         <label> اختر السفير </label>
+                                        <select class="form-control form-group " name="ambassador_id" id="ambassador" value="">
                                     
                             
                                             <option value="">اختر السفير </option>
@@ -173,7 +176,7 @@
                                     <div class="add-listing__input-file-wrap">
                                         <i class="ion-ios-cloud-upload"></i>
                                         <p>إضغط هنا لرفع الشعار</p>
-                                        <img class="input-image-up" src="" alt="image"/>
+                                        <img class="input-image-up" src="" alt="image" style="max-width:200px;max-height:200px;"/>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -279,7 +282,7 @@
               </div>
 
 
-              <div class="col-md-12">
+              <div class="col-md-12 form-group ">
 
                     <div id="map" style="width: 100%;height: 250px;position: relative;overflow: hidden;"></div>
 
