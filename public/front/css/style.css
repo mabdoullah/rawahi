@@ -693,6 +693,11 @@ section.coupon {
     opacity: 0.9;
 }
 
+span.date-format {
+    font-weight: 100;
+    color: grey;
+}
+
 
 /*-----------------------------------------------------------
                     Typography

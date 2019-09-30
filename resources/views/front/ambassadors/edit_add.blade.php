@@ -56,14 +56,16 @@
                                     @endif
                                     @csrf
                                     @if(isset($ambassador))
-                                    <div class="col-md-2">
+                                    
+                                    <div class="col-md-1 offset-md-11">
                                         <div class="form-group">
                                             <label > رقم السفير</label>
                                             <div class="form-control filter-input disabled-id"><p>{{$ambassador->generate_id}}</p></div>
                                         </div>
                                     </div>
+                                   
                                     @endif
-                                   <div class=" @if(isset($ambassador)) col-md-5 @else col-md-6 @endif">
+                                   <div class="  col-md-6 ">
                                        <div class="form-group {{ $errors->has( 'first_name' ) ? 'has-error' : '' }}">
                                            <label> الاسم الاول</label>
                                            <input  type="text" class="form-control filter-input"placeholder="الإسم الاول"  name="first_name"  value="{{ old('first_name') ?? $ambassador->first_name ?? null }}" >
@@ -74,7 +76,7 @@
                                              @endif
                                        </div>
                                    </div>
-                                   <div class=" @if(isset($ambassador)) col-md-5 @else col-md-6 @endif">
+                                   <div class=" col-md-6">
                                        <div class="form-group {{ $errors->has( 'second_name' ) ? 'has-error' : '' }}">
                                            <label> الاسم الاخير</label>
                                            <input  type="text" class="form-control filter-input"placeholder="الإسم الاخير " name="second_name" value="{{ old('second_name') ?? $ambassador->second_name ?? null }}"  >
@@ -140,7 +142,8 @@
 
                                    <div class="col-md-6">
                                     <div id="datepicker" class="input-group date {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }}" data-date-format="yyyy-mm-dd">
-                                        <label> تاريخ الميلاد</label>
+                                        <label> تاريخ الميلاد <span class="date-format">(يوم/شهر/سنه)</span> </label>
+                                        
                                         <input id ='birth_date' name ='birth_date' class="form-control filter-input"
                                         placeholder="  تاريخ الميلاد" type="text" readonly  value="{{ old('birth_date') ?? $ambassador->birth_date ?? null }}"/>
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
