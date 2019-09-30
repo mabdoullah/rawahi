@@ -50,12 +50,10 @@ class AgentController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:18',
-            'email' => 'required|email|'.update_unique_validate('email',$id,'agents'),
-
+            'email' => 'required|'.valid_email().'|'.update_unique_validate('email',$id,'agents'),
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.update_unique_validate('phone',$id,'agents'),
             'city' => 'required|exists:cities,id',
             'birth_date' => 'date|before:-18 years|required',
-            // 'confirm_password' => 'min:8'
         ]);
         if ($validator->fails()) {
           return Redirect::back()
