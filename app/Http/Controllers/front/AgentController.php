@@ -9,6 +9,7 @@ use App\City;
 use DB;
 
 use Illuminate\Http\Request;
+use App\Services\VerifyUserService;
 
 class AgentController extends Controller
 {
@@ -27,10 +28,10 @@ class AgentController extends Controller
         if(agentUser() && agentUser()->id != $id) return redirect('/');
 
         $cities = City::where('country_id',191)->get();
-        
+
         return view('front.agents.edit',compact('cities','agent'));
         //  return redirect('agent/'.$id.'/edit')->with('master_error', 'غير مسموح بتعديل هذا الوكيل');
-          
+
     }
 
     /**
@@ -46,7 +47,7 @@ class AgentController extends Controller
         if(empty($agent)) return redirect('/');
 
         if(agentUser() && agentUser()->id != $id) return redirect('/');
-        
+
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:18',
@@ -61,7 +62,9 @@ class AgentController extends Controller
                         ->withInput()
                         ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
         }
-        
+
+        $current_email = $agent->email;
+
         $agent->name =$request->get('name');
         $agent->email =$request->get('email');
         $agent->phone =$request->get('phone');
@@ -69,6 +72,10 @@ class AgentController extends Controller
         $agent->birth_date =$request->get('birth_date');
         $save_agent=$agent->save();
         if($save_agent){
+              if($current_email != $agent->email){
+                  VerifyUserService::verify($agent);
+                  return redirect('agent/'.$id.'/edit')->with('success', 'تم التعديل بنجاح - لقد تم ارسال رسالة تفعيل على '.$agent->email);
+              }
               return redirect('agent/'.$id.'/edit')->with('success', 'تم التعديل بنجاح');
         }
     }

@@ -114,7 +114,11 @@
                   <td>{{$partner->email}}</td>
                   <td>{{$partner->phone}}</td>
                   <td>{{$partner->citydata->name}}</td>
-                  <td><img src="images/partners/{{$partner->image}}" alt="partnerimg" class="imgpartner img-fluid"></td>
+                  <td>
+                    @if($partner->image)
+                    <img src="images/partners/{{$partner->image}}" alt="partnerimg" class="imgpartner img-fluid">
+                    @endif
+                  </td>
                   <td>
               {{--  edit --}}
                      <a class="btn v8 view-buttons" href="{{route('partners.edit',$partner->id)}}"> تعديل <iclass="icofont-edit"></i></a>

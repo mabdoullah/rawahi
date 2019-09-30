@@ -5,6 +5,7 @@ namespace App\Http\Controllers\front;
 use App;
 use App\City;
 use App\Ambassador;
+use App\Partner;
 use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Http\Request;
@@ -71,7 +72,7 @@ class AmbassadorController extends Controller
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|max:18',
             'second_name' => 'required|max:18',
-            'email' => 'required|email|' . unique_validate('email'),
+            'email' => 'required|'.valid_email().'|'. unique_validate('email'),
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|' . unique_validate('phone'),
             'city' => 'required|exists:cities,id',
             'birth_date' => 'date|before:-18 years|required',
@@ -139,7 +140,7 @@ class AmbassadorController extends Controller
     {
 
         $ambassador = Ambassador::find($id);
-        if(empty($ambassador)) return redirect('ambassador');
+        if(empty($ambassador)) return redirect('ambassadors');
 
         if(ambassadorUser() && ambassadorUser()->id != $ambassador->id) return redirect('/');
 
@@ -168,7 +169,7 @@ class AmbassadorController extends Controller
     public function update(Request $request, $id)
     {
         $ambassador = Ambassador::find($id);
-        if(empty($ambassador)) return redirect('ambassador');
+        if(empty($ambassador)) return redirect('ambassadors');
 
         if(ambassadorUser() && ambassadorUser()->id != $ambassador->id) return redirect('/');
 
@@ -177,12 +178,12 @@ class AmbassadorController extends Controller
             if(agentUser()->id != $ambassador->agent_id) return redirect('/');
         }
 
-      
+
 
       $validator = Validator::make($request->all(), [
                   'first_name' => 'required|max:18',
                   'second_name' => 'required|max:18',
-                  'email' => 'required|email|'.update_unique_validate('email',$id,'ambassadors'),
+                  'email' => 'required|'.valid_email().'|'.update_unique_validate('email',$id,'ambassadors'),
                   'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.update_unique_validate('phone',$id,'ambassadors'),
                   'city' => 'required|exists:cities,id',
                   'birth_date' => 'date|before:-18 years|required',
@@ -193,8 +194,8 @@ class AmbassadorController extends Controller
                               ->withInput()
                               ->with('master_error', 'يجب إصلاح الأخطاء التى تظهر في الاسفل');
               }
-      
-      
+
+
       $current_email = $ambassador->email;
 
       $ambassador->first_name = $request->first_name;
@@ -205,15 +206,16 @@ class AmbassadorController extends Controller
       $ambassador->birth_date = $request->birth_date;
       $save_ambassador=$ambassador->save();
       if($save_ambassador){
+        $msg = "تم التعديل بنجاح";
+        if($current_email != $ambassador->email){
+          VerifyUserService::verify($ambassador);
+          $msg.= " - "." لقد تم ارسال رسالة تفعيل على ".$ambassador->email;
+        }
         if(agentUser()){
-
-            if($current_email != $ambassador->email){
-              VerifyUserService::verify($ambassador);
-            }
-            return redirect('ambassadors')->with('success', 'تم التعديل بنجاح');
+            return redirect('ambassadors')->with('success', $msg);
         }
         if(ambassadorUser()){
-            return redirect('ambassadors/'.$id.'/edit')->with('success', 'تم التعديل بنجاح');
+            return redirect('ambassadors/'.$id.'/edit')->with('success', $msg);
         }
      }
 
@@ -227,15 +229,25 @@ class AmbassadorController extends Controller
      */
     public function destroy(Request $request)
     {
+      dd('utyuty');
       $id=$request->delete_id;
-      $ambassador=Ambassador::where('id',$id)->select('id','agent_id')->first();
+      $ambassador=Ambassador::find($id);
       if(!$ambassador)
       {  return redirect('ambassadors');}
       else
-      { $agent_id=$ambassador->agent_id;
-        if($agent_id==agentUser()->id){
-          $delete_ambassador=DB::table('ambassadors')->where('id', $id)->delete();
-          return redirect('ambassadors')->with('success', 'تم الحذف بنجاح');
+      {
+        if($ambassador->agent_id==agentUser()->id){
+          $partners=Partner::where('ambassador_id',$ambassador->id)->select('id')->get();
+          // soft_deletes
+          if($partners)
+            {
+             $delete_ambassador=Ambassador::where('id', $id)->delete();
+            }
+              if(!$partners){
+                $delete_ambassador=Ambassador::where('id', $id)->forceDelete();
+
+              }
+  return redirect('ambassadors')->with('success', 'تم الحذف بنجاح');
         }
         else{
           return redirect('ambassadors')->with('master_error', 'غير مسموح بحذف هذا السفير');

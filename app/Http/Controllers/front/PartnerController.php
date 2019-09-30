@@ -69,7 +69,7 @@ class PartnerController extends Controller
             // 'ambassador_id' => 'required|unique:partners,ambassador_id|max:255',
             'partner_type' => 'required',
             'legal_name' => ' required |max:255',
-            'email' => 'required|email|' . unique_validate('email'),
+            'email' => 'required|'. valid_email().'|'. unique_validate('email'),
 
             'password' => 'min:8|required_with:confirm_password|same:confirm_password',
 
@@ -205,7 +205,7 @@ class PartnerController extends Controller
         $validator = Validator::make($request->all(), [
             'partner_type' => 'required',
             'legal_name' => ' required |max:255',
-            'email' => 'required|email|' . update_unique_validate('email', $id, 'partners'),
+            'email' => 'required|'.valid_email() .'|'. update_unique_validate('email', $id, 'partners'),
 
         ]);
         if ($validator->fails()) {
@@ -269,18 +269,21 @@ class PartnerController extends Controller
         }
 
         $partner->update($request->all());
-        unlink($fileName);
-        if (ambassadorUser()) {
 
-            if($current_email != $partner->email){
-                VerifyUserService::verify($partner);
-            }
 
-            return redirect()->route('partners.index')->with("message", "تم التعديل بنجاح");
-        }elseif(partnerUser()){
-            return redirect()->route('partners.edit',$id)->with("message", "تم التعديل بنجاح");
-
+        $msg = "تم التعديل بنجاح";
+        if($current_email != $partner->email){
+          VerifyUserService::verify($partner);
+          $msg.= " - "." لقد تم ارسال رسالة تفعيل على ".$partner->email;
         }
+        if(partnerUser()){
+          return redirect('partners/'.$id.'/edit')->with('message', $msg);
+        }
+        if(ambassadorUser()){
+        return  redirect('partners')->with("message", $msg);
+        }
+
+
 
 
         //$obj->where('name',$name)->update($arr);

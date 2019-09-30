@@ -56,14 +56,14 @@
                                     @endif
                                     @csrf
                                     @if(isset($ambassador))
-                                    
-                                    <div class="col-md-1 offset-md-11">
+
+                                    <div class="col-md-2 offset-md-11">
                                         <div class="form-group">
                                             <label > رقم السفير</label>
                                             <div class="form-control filter-input disabled-id"><p>{{$ambassador->generate_id}}</p></div>
                                         </div>
                                     </div>
-                                   
+
                                     @endif
                                    <div class="  col-md-6 ">
                                        <div class="form-group {{ $errors->has( 'first_name' ) ? 'has-error' : '' }}">
@@ -90,7 +90,7 @@
                                    <div class="col-md-6">
                                        <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                                            <label>  البريد الالكتروني</label>
-                                           <input  type="email" class="form-control filter-input"placeholder="البريد الالكتروني " name="email"  value="{{ old('email') ?? $ambassador->email ?? null }}">
+                                           <input  type="text" class="form-control filter-input"placeholder="البريد الالكتروني " name="email"  dir="ltr" value="{{ old('email') ?? $ambassador->email ?? null }}">
                                            @if( $errors->has( 'email' ) )
                                                  <span class="help-block text-danger">
                                                      {{ $errors->first( 'email' ) }}
@@ -143,7 +143,7 @@
                                    <div class="col-md-6">
                                     <div id="datepicker" class="input-group date {{ $errors->has( 'birth_date' ) ? 'has-error' : '' }}" data-date-format="yyyy-mm-dd">
                                         <label> تاريخ الميلاد <span class="date-format">(يوم/شهر/سنه)</span> </label>
-                                        
+
                                         <input id ='birth_date' name ='birth_date' class="form-control filter-input"
                                         placeholder="  تاريخ الميلاد" type="text" readonly  value="{{ old('birth_date') ?? $ambassador->birth_date ?? null }}"/>
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -226,10 +226,8 @@
 
 @endsection
 
-
 @push('jqueryCode')
 <script>
-
 $(function () {
   var date = new Date();
     $("#datepicker").datepicker({
