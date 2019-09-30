@@ -483,7 +483,7 @@ if(isset($partner->id)){
                 // Create the Google Map using our element and options defined above
                 var map = new google.maps.Map(mapElement, mapOptions);
 
-                var image = "{{asset('front/images/others/Marker.png')}}" ;
+                var image = "{{asset('front/images/others/marker.png')}}" ;
                 // Let's also add a marker while we're at it
                 var marker = new google.maps.Marker(
                     {
