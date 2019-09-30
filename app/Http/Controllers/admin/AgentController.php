@@ -71,7 +71,7 @@ class AgentController extends Controller
     {
       $validator = Validator::make($request->all(), [
                   'name' => 'required|max:18',
-                  'email' => 'required|email|'.unique_validate('email'),
+                  'email' => 'required|'.valid_email().'|'.unique_validate('email'),
                   'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.unique_validate('phone'),
                   'city' => 'required|exists:cities,id',
                   'birth_date' => 'date|before:-18 years|required',
@@ -135,18 +135,7 @@ class AgentController extends Controller
 
 
 
-        // $edit_agent='';
-        // $all_agents_cities = DB::table('agents')
-        //     ->join('cities', 'agents.city', '=', 'cities.id')
-        //     ->select('agents.name','agents.password','agents.birth_date','agents.email','agents.phone','agents.id as agent_id','cities.name as city_name' )
-        //     ->orderBy('agents.id','desc')->first();
-        //     return view('admin.agents.edit')->with('all_agents_cities', $all_agents_cities)->with('edit_agent',$edit_agent);
-
-
-        //;
-        // $agent = Agent::find($id);
-        // return view('admin.agents.edit', compact('agent'));
-        // return view('admin.agents.edit')->with('cities', $cities)->with('agent', $agent);
+  
 
     }
 
@@ -161,8 +150,7 @@ class AgentController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:18',
-            // 'email' => 'required|email|'.unique_validate('email'),
-            'email' => 'required|email|'.update_unique_validate('email',$id,'agents'),
+            'email' => 'required|'.valid_email().'|'.update_unique_validate('email',$id,'agents'),
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.update_unique_validate('phone',$id,'agents'),
             'city' => 'required|exists:cities,id',
             'birth_date' => 'date|before:-18 years|required',

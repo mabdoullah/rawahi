@@ -139,7 +139,7 @@
                             <div class="col-md-6">
                                 <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                                     <label>البريد الإلكتروني الرسمي</label>
-                                    <input name="email"  type="text" class="form-control filter-input"
+                                    <input name="email"  dir="ltr" type="text" class="form-control filter-input"
                                         placeholder="سيكون البريد الإلكتروني هو اسم المستخدم"  value="{{old('email',
                                         isset($partner->email) ? $partner->email : '') }}">
 

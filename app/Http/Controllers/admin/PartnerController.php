@@ -98,7 +98,7 @@ class PartnerController extends Controller
         $validator = Validator::make($request->all(), [
             'partner_type' => 'required',
             'legal_name' => ' required |max:255',
-            'email' => 'required|email|' . unique_validate('email'),
+            'email' => 'required|'.valid_email() .'|'. unique_validate('email'),
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'password' => 'min:8|required_with:confirm_password|same:confirm_password',
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|' . unique_validate('phone'),
@@ -181,7 +181,7 @@ class PartnerController extends Controller
           $validator = Validator::make($request->all(), [
             'partner_type' => 'required',
             'legal_name' => 'required |max:255',
-            'email' => 'required|email|' . update_unique_validate('email', $id, 'partners'),
+            'email' => 'required|'.valid_email() .'|'. update_unique_validate('email', $id, 'partners'),
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|' . update_unique_validate('phone', $id, 'partners'),
             'city' => 'required|exists:cities,id',

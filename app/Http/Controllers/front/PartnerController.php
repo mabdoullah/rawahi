@@ -69,7 +69,7 @@ class PartnerController extends Controller
             // 'ambassador_id' => 'required|unique:partners,ambassador_id|max:255',
             'partner_type' => 'required',
             'legal_name' => ' required |max:255',
-            'email' => 'required|email|' . unique_validate('email'),
+            'email' => 'required|'. valid_email().'|'. unique_validate('email'),
 
             'password' => 'min:8|required_with:confirm_password|same:confirm_password',
 
@@ -205,7 +205,7 @@ class PartnerController extends Controller
         $validator = Validator::make($request->all(), [
             'partner_type' => 'required',
             'legal_name' => ' required |max:255',
-            'email' => 'required|email|' . update_unique_validate('email', $id, 'partners'),
+            'email' => 'required|'.valid_email() .'|'. update_unique_validate('email', $id, 'partners'),
 
         ]);
         if ($validator->fails()) {

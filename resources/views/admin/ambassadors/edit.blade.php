@@ -120,7 +120,7 @@
             <div class="col-lg-6">
               <div class=" {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                 <label> البريد الالكتروني</label>
-                <input  type="email" class="form-control " placeholder="البريد الالكتروني " name="email" value={{ $ambassador->email }}>
+                <input  type="text" class="form-control " placeholder="البريد الالكتروني " dir="ltr" name="email" value={{ $ambassador->email }}>
                 @if( $errors->has( 'email' ) )
                 <span class="help-block text-danger">
                   {{ $errors->first( 'email' ) }}
