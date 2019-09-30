@@ -24,7 +24,7 @@
     </div>
     @endif
   </div>
-
+  <div class="row">
   <div class="kt-portlet kt-portlet--mobile">
     <div class="kt-portlet__head kt-portlet__head--lg">
       <div class="kt-portlet__head-label">
@@ -91,8 +91,8 @@
       </div>
   </div>  
     <div class="kt-portlet__body">
-      <div class=" row">
-        <div class="col-lg-12">
+      <!-- <div class=" row">
+        <div class="col-lg-12"> -->
           <!--begin: Datatable -->
           <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
             <thead>
@@ -138,8 +138,8 @@
 
           </table>
           <!--end: Datatable -->
-        </div>
-        </div>
+        <!-- </div>
+        </div> -->
         <div class="row">
           <div class="col-sm-12 col-md-5">
             <div class="col-sm-12 col-md-7 dataTables_pager">
@@ -157,7 +157,7 @@
     </div>
 
   </div>
-
+  </div>
 </div>
 </div>
 

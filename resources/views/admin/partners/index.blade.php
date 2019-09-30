@@ -129,8 +129,10 @@
                   <td>{{$partner->map_address}}</td>
                    
                   <td>
-                    {{$partner->ambassador->first_name}} 
-                    <label style="border:1px solid black;border-radius=50%;border-radius: 50%;width:20px;display:block;text-align:center;margin:auto;background-color:#5867dd;color:white;">{{$partner->ambassador->generate_id}}</label>
+                    <p class="text-center mb-1">{{$partner->ambassador->first_name}}  </p>
+                    <div class="text-center">
+                    <label class="ambassador-id text-center">{{$partner->ambassador->generate_id}}</label>
+                    </div>
                   </td>
                  
            
