@@ -18,6 +18,9 @@
        <!--begin:: Global Mandatory Vendors -->
 <link href="{{asset('admin_design/vendors/general/perfect-scrollbar/css/perfect-scrollbar.rtl.css')}}" rel="stylesheet" type="text/css" />
 <!--end:: Global Mandatory Vendors -->
+<!--begin::Custom Theme Styles -->
+<link href="{{asset('admincustom.css')}}" rel="stylesheet" type="text/css" />
+        <!--end::Custom Theme Styles -->
 
 <!--begin:: Global Optional Vendors -->
 <link href="{{asset('admin_design/vendors/general/tether/dist/css/tether.rtl.css')}}" rel="stylesheet" type="text/css" />

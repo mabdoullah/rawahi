@@ -72,7 +72,7 @@ class AmbassadorController extends Controller
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|max:18',
             'second_name' => 'required|max:18',
-            'email' => 'required|email|' . unique_validate('email'),
+            'email' => 'required|'.valid_email().'|'. unique_validate('email'),
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|' . unique_validate('phone'),
             'city' => 'required|exists:cities,id',
             'birth_date' => 'date|before:-18 years|required',
@@ -183,7 +183,7 @@ class AmbassadorController extends Controller
       $validator = Validator::make($request->all(), [
                   'first_name' => 'required|max:18',
                   'second_name' => 'required|max:18',
-                  'email' => 'required|email|'.update_unique_validate('email',$id,'ambassadors'),
+                  'email' => 'required|'.valid_email().'|'.update_unique_validate('email',$id,'ambassadors'),
                   'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.update_unique_validate('phone',$id,'ambassadors'),
                   'city' => 'required|exists:cities,id',
                   'birth_date' => 'date|before:-18 years|required',

@@ -24,33 +24,7 @@ class AmbassadorController extends Controller
 
     public function index(Request $request)
     {
-        // $agents = Agent::all();
-        // // dd($request);
-        // $agent_id = $request->agent;
-
-        // $ambassadors = DB::table('ambassadors')
-        //     ->join('cities', 'ambassadors.city', '=', 'cities.id')
-        //     ->join('agents', 'ambassadors.agent_id', '=', 'agents.id')
-        //     ->select(
-        //         'agents.name as agent_name',
-        //         'ambassadors.birth_date',
-        //         'ambassadors.first_name',
-        //         'ambassadors.second_name',
-        //         'ambassadors.email',
-        //         'ambassadors.phone',
-        //         'ambassadors.id as ambassador_id',
-        //         'cities.name as city_name',
-        //         'ambassadors.agent_id as agent_id'
-        //     );
-        // if ($agent_id)
-        // {
-
-        //     $ambassadors = $ambassadors->where('ambassadors.agent_id', $agent_id);
-        // }
-        //  $ambassadors = $ambassadors->orderBy('ambassadors.id', 'desc')->paginate(10);
-        // return view('admin.ambassadors.index', compact('agent_id', 'ambassadors', 'agents'));
-
-
+    
 
 
 
@@ -142,7 +116,7 @@ class AmbassadorController extends Controller
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|max:18',
             'second_name' => 'required|max:18',
-            'email' => 'required|email|' . unique_validate('email'),
+            'email' => 'required|'.valid_email() .'|'. unique_validate('email'),
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|' . unique_validate('phone'),
             'city' => 'required|exists:cities,id',
             'birth_date' => 'date|before:-18 years|required',
@@ -226,7 +200,7 @@ class AmbassadorController extends Controller
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|max:18',
             'second_name' => 'required|max:18',
-            'email' => 'required|email|' . update_unique_validate('email', $id, 'ambassadors'),
+            'email' => 'required|'.valid_email() .'|'. update_unique_validate('email', $id, 'ambassadors'),
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|' . update_unique_validate('phone', $id, 'ambassadors'),
             'city' => 'required|exists:cities,id',
             'birth_date' => 'date|before:-18 years|required',

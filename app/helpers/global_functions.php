@@ -33,6 +33,12 @@ function update_unique_validate($field,$id,$table){
     return @implode('|',$array);
 }
 
+
+function valid_email() {
+  return "email|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix";
+}
+
+
 function generate_ambassador_number($id){
   return $id;
 }

@@ -59,7 +59,7 @@
                             <div class="col-md-12">
                                     <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                                         <label> البريد الالكتروني</label>
-                                        <input required type="email" class="form-control " placeholder="البريد الالكتروني " name="email" value="{{old('email',$partner->email)}}">
+                                        <input required type="text" class="form-control " placeholder="البريد الالكتروني " dir="ltr" name="email" value="{{old('email',$partner->email)}}">
                                         @if( $errors->has( 'email' ) )
                                         <span class="help-block text-danger">
                                             {{ $errors->first( 'email' ) }}
@@ -68,8 +68,8 @@
                                     </div>
                                 </div>
                                 <div class="col-6">
-            
-                                    <select class="form-control " name="agent" id="agent">
+                                <label> اختر الوكيل </label>
+                                    <select class="form-control form-group" name="agent" id="agent">
                                     <option value="" selected>اختر الوكيل</option>
                         
                                     @foreach($agents as $agent)
@@ -86,7 +86,8 @@
                                     </div> 
                         
                                      <div class="col-6">
-                                    <select class="form-control" name="ambassador" id="ambassador">
+                                     <label> اختر السفير </label>
+                                    <select class="form-control form-group" name="ambassador" id="ambassador">
                         
                                         <option value="">اختر السفير </option>
                                         @foreach ($ambassadors as $ambassador)
@@ -137,7 +138,7 @@
                                                 <div class="add-listing__input-file-wrap">
                                                   <i class="ion-ios-cloud-upload"></i>
                                                   <p>إضغط هنا لرفع الشعار</p>
-                                                  <img id ='myImageupload' class="input-image-up"  src="@if($partner->image){{asset('images/partners/'.$partner->image)}} @endif" alt="image"/>
+                                                  <img id ='myImageupload' class="input-image-up logo-partner"  src="@if($partner->image){{asset('images/partners/'.$partner->image)}} @endif" alt="image"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
@@ -219,7 +220,7 @@
                             <input name="lng" type="hidden" id="lng" class="form-control filter-input"value="{{ old('lng',$partner->lng) }}" >
                         </div>
                       </div>
-                      <div class="col-md-12">
+                      <div class="col-md-12 form-group">
                         <div id="map" style="width: 100%;height: 250px;position: relative;overflow: hidden;"></div>
                       </div>
                      <div class="col-md-6">

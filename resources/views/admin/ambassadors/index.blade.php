@@ -24,7 +24,7 @@
     </div>
     @endif
   </div>
-
+  <div class="row">
   <div class="kt-portlet kt-portlet--mobile">
     <div class="kt-portlet__head kt-portlet__head--lg">
       <div class="kt-portlet__head-label">
@@ -49,7 +49,7 @@
   <div class="kt-portlet__head kt-portlet__head--lg row">  
       <div class="kt-portlet__head-label col-12" >
 
-        <form style="width:100%"  class="kt-margin-l-20" style="margin:auto" id="kt_subheader_search_form" action="{{route('admin.ambassador.index') }}">
+        <form style="width:100%;margin:auto;"  class="kt-margin-l-20"  id="kt_subheader_search_form" action="{{route('admin.ambassador.index') }}">
           <div class="row kt-input-icon kt-input-icon--right kt-subheader__search">
 
 
@@ -85,14 +85,14 @@
               <button class="btn btn-primary" type="submit"> بحث </button>
             </div>
 
-            </span>
+           
           </div>
         </form>
       </div>
   </div>  
     <div class="kt-portlet__body">
-      <div class="form-group row">
-        <div class="col-lg-12">
+      <!-- <div class=" row">
+        <div class="col-lg-12"> -->
           <!--begin: Datatable -->
           <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
             <thead>
@@ -138,7 +138,8 @@
 
           </table>
           <!--end: Datatable -->
-        </div>
+        <!-- </div>
+        </div> -->
         <div class="row">
           <div class="col-sm-12 col-md-5">
             <div class="col-sm-12 col-md-7 dataTables_pager">
@@ -150,13 +151,13 @@
           </div>
 
         </div>
-      </div>
+      
       {{ $ambassadors->onEachSide(5)->links() }}
 
     </div>
 
   </div>
-
+  </div>
 </div>
 </div>
 

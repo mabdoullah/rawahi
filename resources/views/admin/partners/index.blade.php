@@ -31,17 +31,18 @@
       </div>
     </div>
   </div>
-  <div class="kt-portlet__body">
-    <div class="form-group row">
-      <div class="col-lg-12">
+  
 
-        <div class="form-group {{ $errors->has( 'agent' ) ? 'has-error' : '' }}">
         
-          
-          <div class="row">
+        
+          <div class="kt-portlet__head kt-portlet__head--lg row">
+          <div class="kt-portlet__head-label col-12">
               
-              <div class="col-3 form-group">
-                <form action="{{route('admin.searchpartners')}} ">
+          
+                <form action="{{route('admin.searchpartners')}} " class="kt-margin-l-20" style="width:100%;margin:auto;">
+                <div class="row kt-input-icon kt-input-icon--right kt-subheader__search">
+                <div class=" {{ $errors->has( 'agent' ) ? 'has-error' : '' }}"></div>
+                <div class="col ">
                 <input type="search"  class="form-control" name="search" id="searchpartner"  placeholder="بحث باسم الشريك..." value='' >
                   @if( $errors->has( 'search' ) )
                   <span class="help-block text-danger">
@@ -49,8 +50,8 @@
                   </span>
                   @endif
               
-                  </div> <br><br>
-           <div class="col-3">
+                  </div> 
+           <div class="col">
             
             <select class="form-control " name="agent" id="agent">
             <option value="" selected>اختر الوكيل</option>
@@ -68,7 +69,7 @@
           
             </div> 
 
-             <div class="col-3">
+             <div class="col">
             <select class="form-control" name="ambassador" id="ambassador">
         
 
@@ -82,12 +83,17 @@
                 @endif
                 </div> 
                 <div class="col-1">
-            <button  type="submit" class='btn btn-primary'> ابحث</button>
+            <button  type="submit" class='btn btn-primary'> بحث</button>
+                </div>   
+                
                 </div>
           </form>
+       
         </div>
         </div>
-
+        <div class="kt-portlet__body">
+    <div class=" row">
+      <div class="col-lg-12">
         <!--begin: Datatable -->
         <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
           <thead>
@@ -123,8 +129,10 @@
                   <td>{{$partner->map_address}}</td>
                    
                   <td>
-                    {{$partner->ambassador->first_name}}
-                    <label class="text-right">{{$partner->ambassador->generate_id}}</label>
+                    <p class="text-center mb-1">{{$partner->ambassador->first_name}}  </p>
+                    <div class="text-center">
+                    <label class="ambassador-id text-center">{{$partner->ambassador->generate_id}}</label>
+                    </div>
                   </td>
                  
            
@@ -155,6 +163,7 @@
         </table>
         <!--end: Datatable -->
       </div>
+      </div>
       <div class="row">
         <div class="col-sm-12 col-md-5">
           <div class="col-sm-12 col-md-7 dataTables_pager">
@@ -169,7 +178,7 @@
         </div>
 
       </div>
-    </div>
+    
     {{-- {{ $partners->links() }} --}}
 
   </div>
