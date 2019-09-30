@@ -103,7 +103,7 @@
                                                         <!-- show -->
                                                         <a type="button"  data-showambassid ="{{$ambassador->id}}" class="btn v8 view-buttons show_button"  data-toggle="modal"data-target="#exampleModal"   href="{{route('ambassadors.show',$ambassador->id)}}"> عرض <i class="icofont-eye-alt"></i></a>
                                                             <!-- delete -->
-                                                      <button  class="v8 btn view-buttons" data-toggle="modal" data-ambassadorid="{{$ambassador->id}}" data-target="#DeleteModal" > حذف<i class="icofont-ui-delete"></i></button>--}}
+                                                        {{--<button  class="v8 btn view-buttons" data-toggle="modal" data-ambassadorid="{{$ambassador->id}}" data-target="#DeleteModal" > حذف<i class="icofont-ui-delete"></i></button>--}}
                                                     </td>
 
                                                 </tr>
