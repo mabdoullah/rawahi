@@ -1,15 +1,6 @@
 @extends('admin.master.app')
 
 @section('content')
-@push('jqueryCode') 
-<script>
-    $('#kt_datepicker_2').datepicker({
-                format: 'yyyy-mm-dd',
-                autoclose: true,
-                todayHighlight: true
-            });
-</script>
-@endpush
 <!--Page Wrapper starts-->
 
 <!-- begin:: Content -->
@@ -225,3 +216,15 @@
 
 
 @endsection
+@push('jqueryCode')
+<script>
+$(function () {
+  var date = new Date();
+    $("#kt_datepicker_2").datepicker({
+        format: 'yyyy-mm-dd',
+          autoclose: true,
+          todayHighlight: true,
+    }).datepicker('update', new Date((date.getFullYear() - 18 ),1,1));
+  });
+  </script>
+@endpush
