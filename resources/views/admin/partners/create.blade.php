@@ -391,7 +391,7 @@ $(".add-listing__input-file").change(function() {
 
 <?php
 
-if(isset($partner->id)){
+    if(isset($partner->lat) && isset($partner->lng)){
           $lat = $partner->lat;
           $lng = $partner->lng;
       }else{
@@ -586,7 +586,7 @@ if(isset($partner->id)){
 
 
 
-
+                
                 @if(!isset($partner->id))
 
                     //infoWindow = new google.maps.InfoWindow;

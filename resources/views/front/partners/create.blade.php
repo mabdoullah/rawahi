@@ -570,7 +570,7 @@ function readURL(input) {
 
 
       <?php
-      if(isset($partner->id)){
+        if(isset($partner->lat) && isset($partner->lng)){
                 $lat = $partner->lat;
                 $lng = $partner->lng;
        }else{
