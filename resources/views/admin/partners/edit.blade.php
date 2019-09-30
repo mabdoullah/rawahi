@@ -41,7 +41,7 @@
                                 <div class="col-md-6">
                                   <div class="form-group {{ $errors->has( 'partner_type' ) ? 'has-error' : '' }}">
                                       <label>الفئة</label>
-                                        <div  tabindex="0"><spanclass="current"></span>
+                                        <div  tabindex="0"><span class="current"></span>
                                             <select class="form-control" name="partner_type"  id="partner_type" >
                                               <option selected disabled > اختر الفئة</option>
                                                @foreach (partnersTypesArray() as $key => $value)
@@ -315,7 +315,7 @@ $(".add-listing__input-file").change(function() {
 
 <?php
 
-if(isset($partner->id)){
+      if(isset($partner->lat) && isset($partner->lng)){
           $lat = $partner->lat;
           $lng = $partner->lng;
       }else{

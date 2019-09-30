@@ -314,21 +314,21 @@
 
 <!--begin::Global Theme Bundle(used by all pages) -->
 
-           <script src="{{asset('admin_design/js/scripts.bundle.js')}}" type="text/javascript"></script>
-      <!--end::Global Theme Bundle -->
+<script src="{{asset('admin_design/js/scripts.bundle.js')}}" type="text/javascript"></script>
+<!--end::Global Theme Bundle -->
 
-                  <!--begin::Page Vendors(used by this page) -->
-               
-                  <script
-                  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYFTtfLWhG7EDk8aoRiwpTek24HLJ38jQ&amp;libraries=places&amp;callback=initAutocomplete"></script>
-                  
-                          <script src="{{asset('admin_design/vendors/custom/fullcalendar/fullcalendar.bundle.js')}}" type="text/javascript"></script>
-                          
-                        
+<!--begin::Page Vendors(used by this page) -->
 
-                  <!--begin::Page Scripts(used by this page) -->
-                          <script src="{{asset('admin_design/js/pages/dashboard.js')}}" type="text/javascript"></script>
-                      <!--end::Page Scripts -->
-                      @stack('jqueryCode')
-                   
-                 
+<script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYFTtfLWhG7EDk8aoRiwpTek24HLJ38jQ&amp;libraries=places&amp;callback=initAutocomplete"></script>
+
+<script src="{{asset('admin_design/vendors/custom/fullcalendar/fullcalendar.bundle.js')}}" type="text/javascript"></script>
+        
+    
+
+<!--begin::Page Scripts(used by this page) -->
+        <script src="{{asset('admin_design/js/pages/dashboard.js')}}" type="text/javascript"></script>
+    <!--end::Page Scripts -->
+    @stack('jqueryCode')
+
+
