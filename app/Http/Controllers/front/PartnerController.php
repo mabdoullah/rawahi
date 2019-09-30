@@ -269,18 +269,21 @@ class PartnerController extends Controller
         }
 
         $partner->update($request->all());
-        unlink($fileName);
-        if (ambassadorUser()) {
 
-            if($current_email != $partner->email){
-                VerifyUserService::verify($partner);
-            }
 
-            return redirect()->route('partners.index')->with("message", "تم التعديل بنجاح");
-        }elseif(partnerUser()){
-            return redirect()->route('partners.edit',$id)->with("message", "تم التعديل بنجاح");
-
+        $msg = "تم التعديل بنجاح";
+        if($current_email != $partner->email){
+          VerifyUserService::verify($partner);
+          $msg.= " - "." لقد تم ارسال رسالة تفعيل على ".$partner->email;
         }
+        if(partnerUser()){
+          return redirect('partners/'.$id.'/edit')->with('message', $msg);
+        }
+        if(ambassadorUser()){
+        return  redirect('partners')->with("message", $msg);
+        }
+
+
 
 
         //$obj->where('name',$name)->update($arr);

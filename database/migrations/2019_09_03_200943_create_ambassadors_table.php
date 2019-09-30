@@ -28,10 +28,9 @@ class CreateAmbassadorsTable extends Migration
           $table->boolean('verified')->default(false);
           $table->string('generate_id')->unique()->nullable();
          
-
           $table->rememberToken();
           $table->timestamps();
-
+          $table->softDeletes();
 
         });
     }

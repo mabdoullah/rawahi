@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,8 +15,10 @@ class Ambassador extends Authenticatable
 {
     use VerifyUserTrait;
     use Notifiable;
-    protected $guard = 'ambassador';
+    use SoftDeletes;
 
+    protected $guard = 'ambassador';
+    protected $dates = ['deleted_at'];
     /**
      * The attributes that are mass assignable.
      *
@@ -45,6 +49,7 @@ class Ambassador extends Authenticatable
     ];
 
 
+
     public function citydata()
     {
         return $this->belongsTo('App\City','city','id');
@@ -58,7 +63,7 @@ class Ambassador extends Authenticatable
     {
         return $this->hasMany('App\Partner','ambassador_id');
     }
-    
+
 
 
 }

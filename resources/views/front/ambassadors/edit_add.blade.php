@@ -57,7 +57,7 @@
                                     @csrf
                                     @if(isset($ambassador))
 
-                                    <div class="col-md-1 offset-md-11">
+                                    <div class="col-md-2 offset-md-11">
                                         <div class="form-group">
                                             <label > رقم السفير</label>
                                             <div class="form-control filter-input disabled-id"><p>{{$ambassador->generate_id}}</p></div>
