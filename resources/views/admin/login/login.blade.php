@@ -15,9 +15,7 @@
         <!--begin::Global Theme Styles(used by all pages) -->
           <link href="{{asset('admin_design/css/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
         <!--end::Global Theme Styles -->
-		<!--begin::Custom Theme Styles -->
-		<link href="{{asset('admincustom.css')}}" rel="stylesheet" type="text/css" />
-        <!--end::Custom Theme Styles -->
+		
     </head>
     <!-- end::Head -->
     <!-- begin::Body -->

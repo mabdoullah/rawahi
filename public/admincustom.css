@@ -1,24 +1,36 @@
-:root{
-    --font-family-sans-serif:"Cairo" ;
+:root {
+    --font-family-sans-serif: "Cairo";
 }
 
 html,
 body {
-
-    font-size: 15px ;
-    font-family: 'Cairo', sans-serif ;
-    direction: rtl ;
+    font-size: 15px;
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
 }
 
 .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-login__head .kt-login__title {
     font-weight: 700;
-
     color: white;
     font-size: 2rem;
 }
 
-@media (min-width: 1025px){
+@media (min-width: 1025px) {
     .kt-header--fixed.kt-subheader--fixed.kt-subheader--enabled .kt-wrapper {
         padding-top: 90px;
     }
+}
+
+.logo-partner {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.ambassador-id {
+    border-radius: 5px;
+    text-align: center;
+    background-color: #94a1ff6b;
+    color: #4f5dc9;
+    padding: 3px 10px;
+    font-size: .8rem;
 }

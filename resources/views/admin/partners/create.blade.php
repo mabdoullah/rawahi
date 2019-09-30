@@ -176,7 +176,7 @@
                                     <div class="add-listing__input-file-wrap">
                                         <i class="ion-ios-cloud-upload"></i>
                                         <p>إضغط هنا لرفع الشعار</p>
-                                        <img class="input-image-up" src="" alt="image" style="max-width:200px;max-height:200px;"/>
+                                        <img class="input-image-up logo-partner" src="" alt="image" />
                                     </div>
                                 </div>
                                 <div class="col-md-8">
