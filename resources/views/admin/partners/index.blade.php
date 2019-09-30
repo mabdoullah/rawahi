@@ -1,5 +1,15 @@
 @extends('admin.master.app')
 @section('content')
+
+@if(session()->has('message'))
+<div class="col-12">
+  <div class="alert alert-success text-center" style="display:inline-block; width: 100% " role="alert">
+    <div class="alert-text"></div>
+
+    {{ session()->get('message') }}
+  </div>
+</div>
+@endif
 <div class="kt-portlet kt-portlet--mobile">
   <div class="kt-portlet__head kt-portlet__head--lg">
     <div class="kt-portlet__head-label">
@@ -120,9 +130,9 @@
            
               <td>
                {{-- edit  --}}
-                      {{-- <a class="btn v8 view-buttons" href="{{route('partners.edit',$partner->id)}}"> تعديل <i
+                      <a class="btn btn-primary" href="{{route('admin.partners.edit',$partner->id)}}"> تعديل <i
                       class="icofont-edit"></i>
-                      </a> --}}
+                      </a>  
               {{--  show --}}
                   {{-- <a type="button"  class="btn v8 view-buttons show_button"  data-toggle="modal"data-target="#show"   href="{{route('partners.show',$partner->id)}}"> عرض <i class="icofont-eye-alt"></i></a> --}}
 
@@ -177,13 +187,12 @@
 
  $('#agent').change(function(){
     var agentID = $(this).val(); 
-  
      if(agentID){
             $.ajax({
                type:"GET",
                url:"{{url('admin/get-ambassador-list')}}?agent_id="+agentID,
                success:function(res){
-                  // console.log(res);
+                  
                   $("#ambassador").empty();
                   if(res){
                       $("#ambassador").append("<option value=''>اختر السفير</option>");

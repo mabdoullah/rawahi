@@ -27,7 +27,7 @@
                         @csrf
                         <div class="kt-portlet__body">
                             <div class="form-group row">
-                                <div class="col-md-6 {{ $errors->has( 'name' ) ? 'has-error' : '' }}">
+                                <div class="col-md-6 {{ $errors->has( 'legal_name' ) ? 'has-error' : '' }}">
                                         <label>إسم الشريك</label>
                                     <input name="legal_name"  type="text" class="form-control filter-input"
                                         placeholder="الإسم التجاري للشريك" value="{{ old('legal_name') }}">
@@ -44,10 +44,10 @@
                                                         <label>الفئة</label>
                                                         <div  tabindex="0"><spanclass="current"></span>
 
-                                                              <select class="form-control" name="partner_type"  id="partner_type" >
+                                                              <select class="form-control" name="partner_type"  id="partner_type" value="{{old('partner_type')}}" >
                                                                     <option selected disabled > اختر الفئة</option>
                                                                  @foreach (partnersTypesArray() as $key => $value)
-                                                                       <option  value="{{$key}}">{{$value}}</option>
+                                                                       <option @if(old('partner_type') == $key)  'selected' @endif value="{{$key}}">{{$value}}</option>
                                                                   @endforeach
                                                               </select>
 
@@ -62,7 +62,7 @@
 
 
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                         <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                                             <label> البريد الالكتروني</label>
                                             <input required type="email" class="form-control " placeholder="البريد الالكتروني " name="email" value="{{ old('email')}}">
@@ -73,28 +73,38 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                            <div class="form-group {{ $errors->has( 'ambassdor' ) ? 'has-error' : '' }}">
-                                                    <label> السفير </label>
-                                                    <select class="form-control filter-input"  name="ambassador_id" id="ambassador_id">
-                                                        <option value="0">اختر السفير</option>
-                                                        @foreach ($ambassadors as $ambassdor)
-
-                                                            <option   @if( old('ambassdor')==$ambassdor->id) selected @endif value="{{$ambassdor->id}}">
-                                                            {{$ambassdor->first_name}}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-
-                                                    @if( $errors->has( 'ambassdor' ) )
-                                                            <span class="help-block text-danger">
-                                                                {{ $errors->first( 'ambassdor' ) }}
-                                                            </span>
-                                                        @endif
-                                                </div>
-
-
-                                               </div>
+                                    
+                                    <div class="col-6">
+            
+                                    <select class="form-control " name="agent" id="agent" value="{{old('agent')}}">
+                                        <option value="" selected>اختر الوكيل</option>
+                            
+                                        @foreach($agents as $key => $agent)
+                                        <option value="{{$agent->id}}"> {{$agent->name}}</option>
+                                        @endforeach
+                                        </select>
+                            
+                                        @if( $errors->has( 'agent' ) )
+                                        <span class="help-block text-danger">
+                                          {{ $errors->first( 'agent' ) }}
+                                        </span>
+                                        @endif
+                                      
+                                        </div> 
+                            
+                                         <div class="col-6">
+                                        <select class="form-control" name="ambassador_id" id="ambassador" value="">
+                                    
+                            
+                                            <option value="">اختر السفير </option>
+                                            </select>
+                                
+                                            @if( $errors->has( 'ambassador_id' ) )
+                                            <span class="help-block text-danger">
+                                              {{ $errors->first( 'ambassador_id' ) }}
+                                            </span>
+                                            @endif
+                                            </div> 
                                     <div class="col-md-12">
                                             <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                                             <label>نوع الاشتراك</label>
@@ -321,18 +331,18 @@
 
               </div>
               <div class="col-md-12">
-                    <input required type="checkbox" tabindex="3" class="" name="remember"
-                    id="remember">
-                <label for="remember">أوافق على <a href="terms.html">الشروط
-                        والأحكام</a></label>
-                        @if( $errors->has( 'remember' ) )
-                        <span class="help-block text-danger">
-                            {{ $errors->first( 'remember' ) }}
-                        </span>
-                        @endif
+                <input  type="checkbox"  tabindex="3" class="" name="remember" id="remember" value='1'>
+                <label for="remember">أوافق على <a href="terms.html">الشروط    والأحكام</a></label>
+                  @if( $errors->has( 'remember' ) )
+                  <span class="help-block text-danger">
+                      {{ $errors->first( 'remember' ) }}
+                  </span>
+                  @endif
               </div>
                     <div class="col-md-12">
                     <button type="submit" class="btn btn-primary" >حفظ وتسجيل</button>
+                    <button type="reset" class="btn btn-secondary">إعادة تعيين</button>
+
                     </div>
                    </div>
                 </form>
@@ -345,7 +355,15 @@
 
 @endsection
 @push('jqueryCode')
+
+
+
+
+
+
+
 {{-- image show  --}}
+
 <script>
 $('.input-image-up[src=""]').hide();
 $('.input-image-up:not([src=""])').show();
@@ -629,4 +647,35 @@ if(isset($partner->id)){
 
 
 {{-- end map --}}
+<script >
+
+    $('#agent').change(function(){
+        var agentID = $(this).val(); 
+         if(agentID){
+                $.ajax({
+                   type:"GET",
+                   url:"{{url('admin/get-ambassador-list')}}?agent_id="+agentID,
+                   success:function(res){
+                      $("#ambassador").empty();
+                      if(res){
+                          $("#ambassador").append("<option value=''>اختر السفير</option>");
+                          $.each(res,function(key,value){
+                              $("#ambassador").append("<option value='"+key+"'>"+value+"</option>");
+                          });
+                      }
+                   }
+                });
+        }else{
+            $("#ambassador").empty();
+            $("#agent").empty();
+        }
+       });
+     
+    
+    
+    
+       
+    </script>
+
+
 @endpush

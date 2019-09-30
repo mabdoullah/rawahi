@@ -10,7 +10,8 @@ class Partner extends Authenticatable
     use Notifiable;
 
     protected $guard = 'partner';
-    protected $fillable = ['ambassador_id'
+    protected $fillable = [
+        'ambassador_id'
         , 'partner_type'
         , 'legal_name'
         , 'email'

@@ -265,6 +265,7 @@ class PartnerController extends Controller
         }
 
         $partner->update($request->all());
+        unlink($fileName);
         if (ambassadorUser()) {
             return redirect()->route('partners.index')->with("message", "تم التعديل بنجاح");
         }elseif(partnerUser()){

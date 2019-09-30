@@ -56,7 +56,7 @@
                                         </div>
                                   </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                     <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                                         <label> البريد الالكتروني</label>
                                         <input required type="email" class="form-control " placeholder="البريد الالكتروني " name="email" value="{{old('email',$partner->email)}}">
@@ -67,22 +67,41 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group {{ $errors->has( 'embassdor' ) ? 'has-error' : '' }}">
-                                            <label> السفير </label>
-                                            <select class="form-control filter-input"  name="embassador_id" id="embassador_id">
-                                                <option value="">اختر السفير</option>
-                                                @foreach ($embassadors as $embassdor)
-                                                <option   @if( old('embassdor',$embassdor->id)==$embassdor->id) selected @endif value="{{$embassdor->id}}">{{$embassdor->first_name}}</option>
-                                                @endforeach
-                                            </select>
-                                            @if( $errors->has( 'embassdor' ) )
-                                                <span class="help-block text-danger">
-                                                {{ $errors->first( 'embassdor')}}
-                                                </span>
-                                            @endif
-                                        </div>
-                                  </div>
+                                <div class="col-6">
+            
+                                    <select class="form-control " name="agent" id="agent">
+                                    <option value="" selected>اختر الوكيل</option>
+                        
+                                    @foreach($agents as $agent)
+                                    <option value="{{$agent->id}}" @if ($agent->id == $agent_id) selected="selected" @endif>{{$agent->name}}</option>
+                                    @endforeach
+                                    </select>
+                        
+                                    @if( $errors->has( 'agent' ) )
+                                    <span class="help-block text-danger">
+                                      {{ $errors->first( 'agent' ) }}
+                                    </span>
+                                    @endif
+                                  
+                                    </div> 
+                        
+                                     <div class="col-6">
+                                    <select class="form-control" name="ambassador" id="ambassador">
+                        
+                                        <option value="">اختر السفير </option>
+                                        @foreach ($ambassadors as $ambassador)
+                                            
+                                        
+                                        <option value="{{$ambassador->id}}" @if ($ambassador->id == $agent_id) selected="selected" @endif> {{$ambassador->first_name}}</option>
+                                        @endforeach
+                                    </select>
+                            
+                                        @if( $errors->has( 'ambassador' ) )
+                                        <span class="help-block text-danger">
+                                          {{ $errors->first( 'ambassador' ) }}
+                                        </span>
+                                        @endif 
+                                        </div> 
                                   <div class="col-md-12">
                                           <div class="form-group {{ $errors->has( 'subscription_type' ) ? 'has-error' : '' }}">
                                           <label>نوع الاشتراك</label>
@@ -461,4 +480,34 @@ if ($('#map').length > 0) {
 
 </script>
 {{-- end map --}}
+<script >
+
+    $('#agent').change(function(){
+        var agentID = $(this).val(); 
+         if(agentID){
+                $.ajax({
+                   type:"GET",
+                   url:"{{url('admin/get-ambassador-list')}}?agent_id="+agentID,
+                   success:function(res){
+                      $("#ambassador").empty();
+                      if(res){
+                          $("#ambassador").append("<option value=''>اختر السفير</option>");
+                          $.each(res,function(key,value){
+                              $("#ambassador").append("<option value='"+key+"'>"+value+"</option>");
+                          });
+                      }
+                   }
+                });
+        }else{
+            $("#ambassador").empty();
+            $("#agent").empty();
+        }
+       });
+     
+    
+    
+    
+       
+    </script>
+
 @endpush
