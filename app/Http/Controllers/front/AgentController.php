@@ -54,7 +54,6 @@ class AgentController extends Controller
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|'.update_unique_validate('phone',$id,'agents'),
             'city' => 'required|exists:cities,id',
             'birth_date' => 'date|before:-18 years|required',
-            
         ]);
         if ($validator->fails()) {
           return Redirect::back()
