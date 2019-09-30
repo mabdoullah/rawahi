@@ -394,7 +394,7 @@ $(".add-listing__input-file").change(function() {
 
 <?php
 
-if(isset($partner->id)){
+    if(isset($partner->lat) && isset($partner->lng)){
           $lat = $partner->lat;
           $lng = $partner->lng;
       }else{
@@ -486,7 +486,7 @@ if(isset($partner->id)){
                 // Create the Google Map using our element and options defined above
                 var map = new google.maps.Map(mapElement, mapOptions);
 
-                var image = "{{asset('front/images/others/Marker.png')}}" ;
+                var image = "{{asset('front/images/others/marker.png')}}" ;
                 // Let's also add a marker while we're at it
                 var marker = new google.maps.Marker(
                     {
@@ -589,7 +589,7 @@ if(isset($partner->id)){
 
 
 
-
+                
                 @if(!isset($partner->id))
 
                     //infoWindow = new google.maps.InfoWindow;
