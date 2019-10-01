@@ -166,7 +166,7 @@
             <div class="col-md-12">
                     <h4><i class="ion-image"></i> الشعار </h4>
                     <div class="form-group">
-                        <form class="photo-upload">
+                        <div class="photo-upload">
                            <div class="form-group {{ $errors->has( 'image' ) ? 'has-error' : '' }}">
                                 <div class="add-listing__input-file-box">
 
@@ -192,6 +192,7 @@
 
                     </div>
 
+                       </div>
                        </div>
                        <div class="col-md-12">
                             <h4><i class="ion-ios-location"></i> الموقع وبيانات الاتصال:</h4>
@@ -354,7 +355,7 @@
         </div>
     </div>
 
-
+    </div>
 
 @endsection
 @push('jqueryCode')

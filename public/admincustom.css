@@ -34,3 +34,8 @@ body {
     padding: 3px 10px;
     font-size: .8rem;
 }
+
+.admin-logo {
+    max-width: 90px;
+    max-height: 90px;
+}
