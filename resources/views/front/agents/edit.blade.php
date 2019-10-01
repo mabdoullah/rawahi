@@ -58,7 +58,7 @@
                                    <div class="col-md-6">
                                        <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                                            <label>  البريد الالكتروني</label>
-                                           <input  type="text" class="form-control filter-input"placeholder="البريد الالكتروني "dir="ltr" name="email" value="{{old('email', $agent->email)}}">
+                                           <input  type="text" class="form-control filter-input"placeholder="البريد الالكتروني "dir="ltr" style="text-align:right" name="email" value="{{old('email', $agent->email)}}">
                                            @if( $errors->has( 'email' ) )
                                                  <span class="help-block text-danger">
                                                      {{ $errors->first( 'email' ) }}

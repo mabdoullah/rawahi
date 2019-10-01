@@ -90,7 +90,7 @@
                                    <div class="col-md-6">
                                        <div class="form-group {{ $errors->has( 'email' ) ? 'has-error' : '' }}">
                                            <label>  البريد الالكتروني</label>
-                                           <input  type="text" class="form-control filter-input"placeholder="البريد الالكتروني " name="email"  dir="ltr" value="{{ old('email') ?? $ambassador->email ?? null }}">
+                                           <input  type="text" class="form-control filter-input"placeholder="البريد الالكتروني " name="email" dir="ltr" style="text-align:right" value="{{ old('email') ?? $ambassador->email ?? null }}">
                                            @if( $errors->has( 'email' ) )
                                                  <span class="help-block text-danger">
                                                      {{ $errors->first( 'email' ) }}
